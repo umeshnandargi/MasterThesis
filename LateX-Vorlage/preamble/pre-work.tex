@@ -1,0 +1,56 @@
+% ------------------------------------------------------------------------
+% LaTeX - Preambel ******************************************************
+% ------------------------------------------------------------------------
+% pre-work
+% ========================================================================
+% % ToDo kennzeichnen
+\newcommand{\workTodo}[1]{\textcolor{red}{todo: #1}}
+
+% % F�r Datum und Zeit in Fusszeile
+% % !!!Inhalt bei Fertigstellung der Arbeit l�schen
+\newcommand{\workMarkDateTime}{\workTodo{\today{} - \thistime\ Uhr}}
+
+% % Alle Namen werden im Titel und im hyperref-Paket eingetragen
+% % !!! Ueberall f�r <Wert> das Entsprechende eintragen
+
+ % <Typ> Studienarbeit, Dipolmarbeit, Studienarbeit oder Bachlor-Abschlussarbeit
+\newcommand{\workTyp}{\workTodo{<Typ>}\xspace}
+
+ % <Titel> der Arbeit
+\newcommand{\workTitel}{\workTodo{<Titel>}}
+
+ % <Studiengang> z.B. Kommunikationstechnik
+\newcommand{\workStudiengang}{\workTodo{<Studiengang>}\xspace}
+
+% <Semester> mit Jahr z.B. Sommersemester 2008  
+\newcommand{\workSemester}{\workTodo{<Semester>}\xspace}
+
+% <Name> des Studenten
+\newcommand{\workNameStudent}{\workTodo{<Name>}\xspace}
+
+% <Pruefer> Name des pr�fenden (betreuenden) Professor an der Hochschule
+\newcommand{\workPruefer}{\workTodo{<Pruefer>}\xspace} 
+
+
+% %%% Nur bei Abschluss-Arbeiten
+
+% <Datum> der Abgabe der Arbeit (Eidesstatliche Erkl�rung)
+\newcommand{\workDatum}{\today\xspace}
+
+% <Zweitpr�fer>
+\newcommand{\workZweitPruefer}{\workTodo{<Zweitpr�fer>}\xspace}
+
+% <Zeitraum>
+\newcommand{\workZeitraum}{\workTodo{<Zeitraum>}\xspace}
+
+
+% %%% Nur bei Industrie-Arbeiten:
+
+% <Firma>
+\newcommand{\workFirma}{\workTodo{<Firma>}\xspace}
+
+% <Betreuer in der Firma>
+\newcommand{\workBetreuer}{\workTodo{<Betreuer in der Firma>}\xspace}
+
+% Firmenlogo Name hier anpassen, Gr��e (wenn m�glich) nicht �ndern
+\newcommand{\workFirmenLogo}{\includegraphics[width=5cm]{fig/aa-titel/Bosch_4C_S}} 
