@@ -1,28 +1,149 @@
 % Bsp. eines Hauptteils
 
-\chapter{Überblick}
+\chapter{Introduction}
 \label{sec:grundl}
-Dieses Kapitel beinhaltet einen Schnellüberblick für den, der nicht die ganze
-Arbeit im Detail lesen kann.
+\section{Motivation}
+Robotic manipulation plays a crucial role in modern automated production
+systems, particularly in logistics, assembly, and bin-picking applications. A
+fundamental component of such systems is the gripper, which enables robots to
+interact with objects in their environment. Among the most widely used gripping
+technologies are suction-cup grippers and two-finger mechanical grippers, both
+of which offer distinct advantages depending on the object geometry, material
+properties, and task constraints.
 
-\chapter{Ziele und Motivation}
-\label{sec:real}
-Was soll eigentlich erreicht werden? Warum? Wieso lässt man nicht alles so, wie
-es ist? Wer soll von dem Ergebnis profitieren?
+Suction-cup grippers are commonly used for handling flat or smooth surfaces and
+offer fast, simple gripping mechanisms with minimal mechanical complexity. In
+contrast, two-finger grippers provide greater flexibility when handling objects
+with irregular shapes or when force-controlled grasping is required. However,
+selecting optimal grasp parameters and configurations for these grippers is a
+complex problem due to the large number of influencing factors such as object
+geometry, grasp stability, contact forces, and collision constraints.
+Traditional design and tuning approaches often rely on heuristic rules or manual
+parameter adjustment. These methods can be time-consuming and may not produce
+optimal results, particularly in environments where multiple performance
+criteria must be satisfied simultaneously. In practical robotic systems, several
+objectives must be considered at once, such as maximizing grasp stability,
+minimizing collision risk, improving grasp success rate, and ensuring efficient
+robot motion.
+
+To address these challenges, multi-objective optimization techniques provide a
+systematic way to evaluate and optimize multiple competing objectives
+simultaneously. By exploring the design space efficiently, modern optimization
+algorithms can identify high-quality grasp configurations that balance
+performance trade-offs.
+
+In particular, algorithms such as Particle Swarm Optimization (PSO), Bayesian
+optimization methods, and Evolutionary Algorithms (EAs) have shown strong
+potential in solving complex optimization problems in robotics due to their
+ability to handle nonlinear, high-dimensional, and non-convex search spaces.
+
+Therefore, applying multi-objective optimization techniques to the design and
+parameterization of suction-cup and two-finger grippers can significantly
+improve grasp planning and robotic manipulation performance.
+
+\chapter{Goal and Task of the Thesis}
+
+The goal of this thesis is to develop and evaluate a multi-objective
+optimization framework for determining optimal grasp configurations for
+suction-cup and two-finger robotic grippers.
+
+The thesis aims to investigate how different optimization algorithms can be
+applied to improve grasp performance by simultaneously considering multiple
+relevant objectives. These objectives may include grasp stability, force
+distribution, collision avoidance, and grasp feasibility.
+
+To achieve this goal, the following tasks are defined:
+
+\begin{enumerate}
+    \item \textbf{Literature Review}
+
+    Study existing research on robotic grasping, gripper design, and
+    multi-objective optimization techniques used in robotic manipulation.
+
+    \item \textbf{Modeling of Grasping Systems}
+
+    Define appropriate models for suction-cup and two-finger grippers, including
+    the relevant parameters influencing grasp quality.
+
+    \item \textbf{Definition of Optimization Objectives}
+
+    Identify and formulate multiple objective functions that characterize the
+    quality of a grasp.
+
+    \item \textbf{Implementation of Optimization Algorithms}
+
+    Implement and apply different optimization algorithms such as Particle Swarm
+    Optimization, Bayesian-based optimization methods, and Evolutionary
+    Algorithms.
+
+    \item \textbf{Evaluation and Comparison}
+
+    Analyze and compare the performance of the applied algorithms with respect
+    to convergence behavior, computational efficiency, and resulting grasp
+    quality.
+
+    \item \textbf{Result Analysis}
+
+    Evaluate the trade-offs between objectives and determine suitable grasp
+    configurations for both gripper types.
+\end{enumerate}
+
+Through these tasks, the thesis aims to provide insights into how
+multi-objective optimization can enhance robotic grasp planning and contribute
+to more efficient and reliable robotic manipulation systems.
+
+\chapter{Approach}
+
+To address the research objectives, a systematic optimization framework is
+developed for evaluating grasp configurations of suction-cup and two-finger
+grippers.
+
+First, the grasping problem is formulated as a \textbf{multi-objective
+optimization problem}, where several criteria relevant to grasp quality are
+defined as objective functions. These functions may include metrics related to
+grasp stability, contact forces, collision avoidance, and geometric feasibility.
+The optimization variables correspond to parameters such as grasp positions,
+orientations, and gripper configurations.
+
+Next, three different classes of optimization algorithms are applied to explore
+the solution space:
+
+\begin{itemize}
+    \item \textbf{Particle Swarm Optimization (PSO)}, which is a population-based metaheuristic inspired by collective behavior in nature.
+
+    \item \textbf{Bayesian-based optimization methods}, which use probabilistic models to efficiently guide the search toward promising regions of the solution space.
+
+    \item \textbf{Evolutionary Algorithms (EAs)}, which simulate natural selection processes to iteratively improve candidate solutions.
+\end{itemize}
+
+Each algorithm generates a set of candidate grasp configurations and iteratively
+refines them based on the defined objective functions. Because multiple
+objectives are considered simultaneously, the algorithms produce a set of
+\textbf{Pareto-optimal solutions}, representing different trade-offs between
+competing objectives.
+
+The performance of the algorithms is then evaluated through simulation
+experiments. Metrics such as convergence behavior, computational efficiency, and
+quality of the resulting Pareto fronts are analyzed to determine the
+effectiveness of each optimization approach.
+
+Finally, the obtained results are compared for suction-cup and two-finger
+grippers to identify optimal grasping strategies and to evaluate how different
+optimization techniques influence grasp performance.
 
 \chapter{Stand der Technik}
 \label{sec:real-unter}
 Beschreibung des momentanen Standes der Technik und Wissenschaft. Hier muss auch
 klar definiert werden, in welchem Zusammenhang das Problem steht, d.h.
-der Systemkontext und der bekannte Lösungsraum ist klar zu beschreiben 
-(vorhandene.Lösungen
+der Systemkontext und der bekannte Lï¿½sungsraum ist klar zu beschreiben 
+(vorhandene.Lï¿½sungen
 
 \newpage
 \section{Problembeschreibung}
 \label{sec:real-unterWeiter}
 
 \newpage
-\section{Existierende Lösungen}
+\section{Existierende Lï¿½sungen}
 \label{sec:real-unterWeiterNoch}
 
 
@@ -31,12 +152,12 @@ der Systemkontext und der bekannte Lösungsraum ist klar zu beschreiben
 
 Verweise im Text: \cite{doc:stz} und \cite{doc:gun}.
 
-\chapter{Lösungsansatz}
+\chapter{Lï¿½sungsansatz}
 \label{sec:loesung}
-Hier können je nach Art der Arbeit auch verschiedene Lösungsansätze
+Hier kï¿½nnen je nach Art der Arbeit auch verschiedene Lï¿½sungsansï¿½tze
 beschrieben und diskutiert werden.
 
-\chapter{Durchgeführte Arbeiten}
+\chapter{Durchgefï¿½hrte Arbeiten}
 \label{sec:erledigt}
 Es muss klar erkennbar sein, auf was aufgesetzt wurde, d.h. schon vorhanden
 war, und was im Rahmen dieser Arbeit selbst entwickelt wurde.
@@ -49,6 +170,6 @@ Hier kann z.B. eine Bedienanleitung stehen, oder bei Analysen die Analyseergebni
 \chapter{Zusammenfassung}
 \label{sec:zus}
 Kurze Zusammenfassung und evtl. Beschreibung der Punkte, die zu einer
-kompletten, marktreifen Lösung noch fehlen.
+kompletten, marktreifen Lï¿½sung noch fehlen.
 
 
