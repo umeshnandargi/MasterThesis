@@ -10,17 +10,15 @@
 \contentsline {chapter}{\numberline {4}Methodology}{7}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Methodology for Multi-Suction Cup Gripper Optimization}{7}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}Parameterization of the Gripper}{7}{subsection.4.1.1}%
+\contentsline {paragraph}{\nonumberline Assumption}{7}{paragraph*.10}%
 \contentsline {subsection}{\numberline {4.1.2}Initialization}{7}{subsection.4.1.2}%
 \contentsline {subsection}{\numberline {4.1.3}Workpiece Representation}{7}{subsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.1.4}Grasp Generation}{8}{subsection.4.1.4}%
-\contentsline {subsection}{\numberline {4.1.5}Collision Filtering}{8}{subsection.4.1.5}%
-\contentsline {subsection}{\numberline {4.1.6}Clustering of Valid Grasps}{8}{subsection.4.1.6}%
-\contentsline {subsection}{\numberline {4.1.7}Objective Functions}{8}{subsection.4.1.7}%
-\contentsline {subsubsection}{\nonumberline Triangle Area Maximization}{8}{subsubsection*.10}%
-\contentsline {subsubsection}{\nonumberline Grasp Diversity Maximization}{9}{subsubsection*.11}%
-\contentsline {subsection}{\numberline {4.1.8}Optimization Loop}{9}{subsection.4.1.8}%
-\contentsline {subsection}{\numberline {4.1.9}Optimization Algorithms}{9}{subsection.4.1.9}%
-\contentsline {subsection}{\numberline {4.1.10}Output}{10}{subsection.4.1.10}%
+\contentsline {subsection}{\numberline {4.1.4}Optimization Loop}{8}{subsection.4.1.4}%
+\contentsline {subsubsection}{\nonumberline Subprocess: Grasp Evaluation}{8}{subsubsection*.11}%
+\contentsline {subsubsection}{\nonumberline Objective Evaluation}{9}{subsubsection*.12}%
+\contentsline {subsubsection}{\nonumberline Population Update}{9}{subsubsection*.13}%
+\contentsline {subsection}{\numberline {4.1.5}Hyperparameters}{9}{subsection.4.1.5}%
+\contentsline {subsection}{\numberline {4.1.6}Output}{9}{subsection.4.1.6}%
 \contentsline {chapter}{\numberline {5}Stand der Technik}{11}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Problembeschreibung}{12}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Existierende L\IeC {\"\i }\IeC {\textquestiondown }\IeC {\textonehalf }sungen}{13}{section.5.2}%
@@ -32,5 +30,5 @@
 \contentsline {chapter}{\numberline {10}Schluss}{18}{chapter.10}%
 \contentsline {chapter}{\numberline {A}Kapitel im Anhang}{19}{appendix.A}%
 \def \@chapapp {\appendixname }
-\contentsline {chapter}{\nonumberline Literaturverzeichnis}{20}{chapter*.12}%
+\contentsline {chapter}{\nonumberline Literaturverzeichnis}{20}{chapter*.14}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
