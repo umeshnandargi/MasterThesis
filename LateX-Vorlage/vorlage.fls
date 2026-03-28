@@ -611,7 +611,6 @@ INPUT chapters\ch-hauptteil.tex
 INPUT .\chapters\ch-introduction.tex
 INPUT .\chapters\ch-introduction.tex
 INPUT chapters\ch-introduction.tex
-INPUT C:\Users\umesh\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmbx10.tfm
 INPUT .\chapters\ch-methodology.tex
 INPUT .\chapters\ch-methodology.tex
 INPUT chapters\ch-methodology.tex
@@ -624,8 +623,15 @@ INPUT C:\Users\umesh\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\rm-lmbx5.
 INPUT C:\Users\umesh\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-rm.enc
 INPUT C:\Users\umesh\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathit.enc
 INPUT C:\Users\umesh\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-mathsy.enc
+INPUT C:\Users\umesh\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmbx10.tfm
+INPUT C:\Users\umesh\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
+INPUT C:\Users\umesh\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
+INPUT C:\Users\umesh\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
+INPUT C:\Users\umesh\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmtt10.tfm
 INPUT C:\Users\umesh\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr8.tfm
+INPUT C:\Users\umesh\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmtt8.tfm
 INPUT C:\Users\umesh\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmr6.tfm
+INPUT C:\Users\umesh\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmtt8.tfm
 INPUT C:\Users\umesh\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ts1-lmss17.tfm
 INPUT .\chapters\ch-schluss.tex
 INPUT .\chapters\ch-schluss.tex
@@ -644,10 +650,6 @@ INPUT .\chapters\ch-zz-bibEinfach.tex
 INPUT .\chapters\ch-zz-bibEinfach.tex
 INPUT .\chapters\ch-zz-bibEinfach.tex
 INPUT chapters\ch-zz-bibEinfach.tex
-INPUT C:\Users\umesh\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
-INPUT C:\Users\umesh\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
-INPUT C:\Users\umesh\AppData\Local\Programs\MiKTeX\tex\latex\lm\t1lmtt.fd
-INPUT C:\Users\umesh\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\ec-lmtt10.tfm
 INPUT vorlage.aux
 INPUT .\chapters\ch-aa-titel.aux
 INPUT .\chapters\ch-aa-titel.aux

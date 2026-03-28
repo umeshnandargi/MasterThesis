@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.13)  20 MAR 2026 20:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.13)  28 MAR 2026 11:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1478,11 +1478,7 @@ File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 ) (vorlage.aux (chapters/ch-aa-titel.aux)
 Package babel Info: 'ngerman' activates 'german' shorthands.
 (babel)             Reported on input line 11.
- (chapters/ch-aa-vorspiel.aux) (chapters/ch-aa-zusfasg.aux) (chapters/ch-milestone_timeline.aux) (chapters/ch-einleitung.aux) (chapters/ch-hauptteil.aux
-
-LaTeX Warning: Label `sec:grundl' multiply defined.
-
-) (chapters/ch-schluss.aux) (chapters/ch-zz-anhang.aux))
+ (chapters/ch-aa-vorspiel.aux) (chapters/ch-aa-zusfasg.aux) (chapters/ch-milestone_timeline.aux) (chapters/ch-einleitung.aux) (chapters/ch-hauptteil.aux) (chapters/ch-schluss.aux) (chapters/ch-zz-anhang.aux))
 \openout1 = `vorlage.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
@@ -1862,21 +1858,21 @@ Package hyperref Info: bookmark on input line 1:
 (hyperref)             reference {chapter.3}
 (hyperref)             toclevel {0}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `section.3.1' on input line 3.
-Package hyperref Info: bookmark on input line 3:
+Package hyperref Info: Anchor `section.3.1' on input line 4.
+Package hyperref Info: bookmark on input line 4:
 (hyperref)             thecounter {3.1}
 (hyperref)             text {\protect \numberline {\csname sectiontocformat\endcsname }\@currenttocentry }
 (hyperref)             reference {section.3.1}
 (hyperref)             toclevel {1}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `section.3.2' on input line 48.
-Package hyperref Info: bookmark on input line 48:
+Package hyperref Info: Anchor `section.3.2' on input line 33.
+Package hyperref Info: bookmark on input line 33:
 (hyperref)             thecounter {3.2}
 (hyperref)             text {\protect \numberline {\csname sectiontocformat\endcsname }\@currenttocentry }
 (hyperref)             reference {section.3.2}
 (hyperref)             toclevel {1}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `page.4' on input line 54.
+Package hyperref Info: Anchor `page.4' on input line 55.
 [4
 
 
@@ -1884,23 +1880,16 @@ Package hyperref Info: Anchor `page.4' on input line 54.
 
 
 ]
-Package hyperref Info: Anchor `Item.14' on input line 71.
-Package hyperref Info: Anchor `Item.15' on input line 76.
-Package hyperref Info: Anchor `Item.16' on input line 82.
-Package hyperref Info: Anchor `Item.17' on input line 88.
-Package hyperref Info: Anchor `Item.18' on input line 94.
-Package hyperref Info: Anchor `Item.19' on input line 100.
-Package hyperref Info: Anchor `section.3.3' on input line 107.
-Package hyperref Info: bookmark on input line 107:
+Package hyperref Info: Anchor `section.3.3' on input line 61.
+Package hyperref Info: bookmark on input line 61:
 (hyperref)             thecounter {3.3}
 (hyperref)             text {\protect \numberline {\csname sectiontocformat\endcsname }\@currenttocentry }
 (hyperref)             reference {section.3.3}
 (hyperref)             toclevel {1}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `page.5' on input line 113.
- [5]) (chapters/ch-methodology.tex
-Package hyperref Info: Anchor `page.6' on input line 1.
- [6]
+) (chapters/ch-methodology.tex
+Package hyperref Info: Anchor `page.5' on input line 1.
+ [5]
 Package hyperref Info: Anchor `chapter.4' on input line 1.
 
 chapter 4.
@@ -1954,8 +1943,8 @@ Package hyperref Info: bookmark on input line 38:
 (hyperref)             reference {subsection.4.1.4}
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `page.7' on input line 43.
-[7
+Package hyperref Info: Anchor `page.6' on input line 43.
+[6
 
 
 {C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
@@ -1966,14 +1955,18 @@ Package hyperref Info: bookmark on input line 43:
 (hyperref)             reference {subsubsection*.11}
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `Item.20' on input line 49.
-Package hyperref Info: Anchor `Item.21' on input line 55.
-Package hyperref Info: Anchor `Item.22' on input line 70.
-Package hyperref Info: Anchor `Item.23' on input line 84.
+Package hyperref Info: Anchor `Item.14' on input line 49.
+Package hyperref Info: Anchor `Item.15' on input line 55.
+Package hyperref Info: Anchor `Item.16' on input line 70.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 77.
+ (C:\Users\umesh\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+Package hyperref Info: Anchor `Item.17' on input line 84.
 Package hyperref Info: Anchor `equation.4.3' on input line 88.
-Package hyperref Info: Anchor `Item.24' on input line 92.
-Package hyperref Info: Anchor `page.8' on input line 104.
- [8]
+Package hyperref Info: Anchor `Item.18' on input line 92.
+Package hyperref Info: Anchor `page.7' on input line 104.
+ [7]
 Package hyperref Info: Anchor `subsubsection*.12' on input line 106.
 Package hyperref Info: bookmark on input line 106:
 (hyperref)             thecounter {4.1.4.0}
@@ -2006,108 +1999,108 @@ Package hyperref Info: bookmark on input line 144:
 (hyperref)             type {toc}.
 Package hyperref Info: Anchor `equation.4.6' on input line 148.
 )
-Package hyperref Info: Anchor `page.9' on input line 9.
+Package hyperref Info: Anchor `page.8' on input line 13.
+ [8]
+Package hyperref Info: Anchor `page.9' on input line 13.
  [9]
-Package hyperref Info: Anchor `page.10' on input line 9.
- [10]
-Package hyperref Info: Anchor `chapter.5' on input line 9.
+Package hyperref Info: Anchor `chapter.5' on input line 13.
 
 chapter 5.
-Package hyperref Info: bookmark on input line 9:
+Package hyperref Info: bookmark on input line 13:
 (hyperref)             thecounter {5}
 (hyperref)             text {\protect \numberline {\csname \@ifundefined {chaptertocformat}{thechapter}{chaptertocformat}\endcsname }\@currenttocentry }
 (hyperref)             reference {chapter.5}
 (hyperref)             toclevel {0}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `page.11' on input line 16.
-[11
+Package hyperref Info: Anchor `page.10' on input line 20.
+[10
 
 
 ]
-Package hyperref Info: Anchor `section.5.1' on input line 17.
-Package hyperref Info: bookmark on input line 17:
+Package hyperref Info: Anchor `section.5.1' on input line 21.
+Package hyperref Info: bookmark on input line 21:
 (hyperref)             thecounter {5.1}
 (hyperref)             text {\protect \numberline {\csname sectiontocformat\endcsname }\@currenttocentry }
 (hyperref)             reference {section.5.1}
 (hyperref)             toclevel {1}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `page.12' on input line 20.
- [12]
-Package hyperref Info: Anchor `section.5.2' on input line 21.
-Package hyperref Info: bookmark on input line 21:
+Package hyperref Info: Anchor `page.11' on input line 24.
+ [11]
+Package hyperref Info: Anchor `section.5.2' on input line 25.
+Package hyperref Info: bookmark on input line 25:
 (hyperref)             thecounter {5.2}
 (hyperref)             text {\protect \numberline {\csname sectiontocformat\endcsname }\@currenttocentry }
 (hyperref)             reference {section.5.2}
 (hyperref)             toclevel {1}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `section.5.3' on input line 25.
-Package hyperref Info: bookmark on input line 25:
+Package hyperref Info: Anchor `section.5.3' on input line 29.
+Package hyperref Info: bookmark on input line 29:
 (hyperref)             thecounter {5.3}
 (hyperref)             text {\protect \numberline {\csname sectiontocformat\endcsname }\@currenttocentry }
 (hyperref)             reference {section.5.3}
 (hyperref)             toclevel {1}
 (hyperref)             type {toc}.
-Package hyperref Info: Reference (cite) `cite.doc:stz' on input line 28.
-Package hyperref Info: Reference (cite) `cite.doc:gun' on input line 28.
-Package hyperref Info: Anchor `page.13' on input line 30.
- [13
-Package `hyperref' Info: End of reference (cite) `cite.doc:stz', line 28.
-Package `hyperref' Info: End of reference (cite) `cite.doc:gun', line 28.
+Package hyperref Info: Reference (cite) `cite.doc:stz' on input line 32.
+Package hyperref Info: Reference (cite) `cite.doc:gun' on input line 32.
+Package hyperref Info: Anchor `page.12' on input line 34.
+ [12
+Package `hyperref' Info: End of reference (cite) `cite.doc:stz', line 32.
+Package `hyperref' Info: End of reference (cite) `cite.doc:gun', line 32.
 ]
-Package hyperref Info: Anchor `chapter.6' on input line 30.
+Package hyperref Info: Anchor `chapter.6' on input line 34.
 
 chapter 6.
-Package hyperref Info: bookmark on input line 30:
+Package hyperref Info: bookmark on input line 34:
 (hyperref)             thecounter {6}
 (hyperref)             text {\protect \numberline {\csname \@ifundefined {chaptertocformat}{thechapter}{chaptertocformat}\endcsname }\@currenttocentry }
 (hyperref)             reference {chapter.6}
 (hyperref)             toclevel {0}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `page.14' on input line 35.
-[14
+Package hyperref Info: Anchor `page.13' on input line 39.
+[13
 
 
 ]
-Package hyperref Info: Anchor `chapter.7' on input line 35.
+Package hyperref Info: Anchor `chapter.7' on input line 39.
 
 chapter 7.
-Package hyperref Info: bookmark on input line 35:
+Package hyperref Info: bookmark on input line 39:
 (hyperref)             thecounter {7}
 (hyperref)             text {\protect \numberline {\csname \@ifundefined {chaptertocformat}{thechapter}{chaptertocformat}\endcsname }\@currenttocentry }
 (hyperref)             reference {chapter.7}
 (hyperref)             toclevel {0}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `page.15' on input line 40.
-[15
+Package hyperref Info: Anchor `page.14' on input line 44.
+[14
 
 
 ]
-Package hyperref Info: Anchor `chapter.8' on input line 40.
+Package hyperref Info: Anchor `chapter.8' on input line 44.
 
 chapter 8.
-Package hyperref Info: bookmark on input line 40:
+Package hyperref Info: bookmark on input line 44:
 (hyperref)             thecounter {8}
 (hyperref)             text {\protect \numberline {\csname \@ifundefined {chaptertocformat}{thechapter}{chaptertocformat}\endcsname }\@currenttocentry }
 (hyperref)             reference {chapter.8}
 (hyperref)             toclevel {0}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `page.16' on input line 45.
-[16
+Package hyperref Info: Anchor `page.15' on input line 49.
+[15
 
 
 ]
-Package hyperref Info: Anchor `chapter.9' on input line 45.
+Package hyperref Info: Anchor `chapter.9' on input line 49.
 
 chapter 9.
-Package hyperref Info: bookmark on input line 45:
+Package hyperref Info: bookmark on input line 49:
 (hyperref)             thecounter {9}
 (hyperref)             text {\protect \numberline {\csname \@ifundefined {chaptertocformat}{thechapter}{chaptertocformat}\endcsname }\@currenttocentry }
 (hyperref)             reference {chapter.9}
 (hyperref)             toclevel {0}
 (hyperref)             type {toc}.
 )
-Package hyperref Info: Anchor `page.17' on input line 53.
- [17
+Package hyperref Info: Anchor `page.16' on input line 53.
+ [16
 
 
 ]
@@ -2124,8 +2117,8 @@ Package hyperref Info: bookmark on input line 1:
 (hyperref)             toclevel {0}
 (hyperref)             type {toc}.
 )
-Package hyperref Info: Anchor `page.18' on input line 54.
- [18
+Package hyperref Info: Anchor `page.17' on input line 54.
+ [17
 
 
 
@@ -2145,8 +2138,8 @@ Package hyperref Info: bookmark on input line 1:
 (hyperref)             toclevel {0}
 (hyperref)             type {toc}.
 )
-Package hyperref Info: Anchor `page.19' on input line 58.
- [19
+Package hyperref Info: Anchor `page.18' on input line 58.
+ [18
 
 
 
@@ -2162,10 +2155,6 @@ Package hyperref Info: bookmark on input line 1:
 (hyperref)             toclevel {0}
 (hyperref)             type {toc}.
 Package hyperref Info: Anchor `cite.doc:stz' on input line 2.
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2.
-(C:\Users\umesh\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
-File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
 Package hyperref Info: Anchor `cite.doc:gun' on input line 4.
 
 Underfull \hbox (badness 10000) in paragraph at lines 4--5
@@ -2177,8 +2166,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--5
 Package caption Warning: Unused \captionsetup[subfloat] on input line 378.
 See the caption package documentation for explanation.
 
-Package hyperref Info: Anchor `page.20' on input line 67.
-[20
+Package hyperref Info: Anchor `page.19' on input line 67.
+[19
 
 
 
@@ -2190,23 +2179,19 @@ Package `hyperref' Info: End of reference <VerboseLinkInfo>.
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
-
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 36878 strings out of 467867
- 747830 string characters out of 5418334
+ 36875 strings out of 467867
+ 747838 string characters out of 5418334
  1375441 words of memory out of 5000000
- 64902 multiletter control sequences out of 15000+600000
- 729515 words of font info for 111 fonts, out of 8000000 for 9000
+ 64905 multiletter control sequences out of 15000+600000
+ 730157 words of font info for 113 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 112i,21n,111p,11280b,978s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 112i,20n,111p,11280b,978s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmro10.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbo10.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso10.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on vorlage.pdf (29 pages, 463646 bytes).
+Output written on vorlage.pdf (28 pages, 457975 bytes).
 PDF statistics:
- 451 PDF objects out of 1000 (max. 8388607)
- 102 named destinations out of 1000 (max. 500000)
+ 440 PDF objects out of 1000 (max. 8388607)
+ 95 named destinations out of 1000 (max. 500000)
  239 words of extra memory for PDF output out of 10000 (max. 10000000)
 

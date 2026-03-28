@@ -1,5 +1,5 @@
 \chapter{Methodology}
-\label{sec:grundl}
+\label{sec:methodology}
 \section{Methodology for Multi-Suction Cup Gripper Optimization}
 This section describes the optimization framework developed for a multi-suction
 cup gripper consisting of three suction cups arranged in a triangular
@@ -74,7 +74,7 @@ Let $\mathcal{G}_{valid}$ denote the set of valid grasps.
 A fixed number of clusters $K$ is defined as a hyperparameter.
 
 \begin{itemize}
-    \item If $|\mathcal{G}_{valid}| < K$, clustering is skipped.
+    \item If $|\mathcal{G}_{valid}| <  \texttt{nb\_grasps\_clustering} $, clustering is skipped.
     \item Otherwise, clustering is performed based on spatial proximity and
     orientation similarity.
 \end{itemize}
@@ -96,7 +96,7 @@ of the clustered grasps:
 
 \begin{itemize}
     \item Distances between cluster centers are calculated and normalized.
-    \item Optionally, orientation differences between grasps are included.
+    \item Orientation differences between grasps.
 \end{itemize}
 
 The diversity metric encourages wide coverage of the workpiece surface.
@@ -134,7 +134,7 @@ The framework includes several predefined hyperparameters:
 
 \begin{itemize}
     \item Population size $N$
-    \item Number of clusters $K$
+    \item Number of clusters $\texttt{nb\_grasps\_clustering}$
     \item Maximum number of iterations
 \end{itemize}
 
