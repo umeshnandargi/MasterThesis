@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.13)  29 MAR 2026 23:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.13)  1 JUN 2026 11:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1780,7 +1780,7 @@ Class scrbook Warning: \float@addtolists detected!
 (scrbook)              removed from all KOMA-Script classes.
 
 Package hyperref Info: Anchor `figure.caption.9' on input line 2.
-Package hyperref Info: bookmark on input line 30:
+Package hyperref Info: bookmark on input line 29:
 (hyperref)             thecounter {1.1}
 (hyperref)             text {\protect \numberline {\caption@listformat {\caption@p {figure}}{\caption@the {figure}}}{\ignorespaces Master thesis milestone plan}}
 (hyperref)             reference {figure.caption.9}
@@ -2181,15 +2181,15 @@ L3 programming layer <2026-01-19>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 36875 strings out of 467867
- 747838 string characters out of 5418334
- 1375441 words of memory out of 5000000
- 64905 multiletter control sequences out of 15000+600000
+ 36864 strings out of 467867
+ 747636 string characters out of 5418334
+ 1374441 words of memory out of 5000000
+ 64894 multiletter control sequences out of 15000+600000
  730157 words of font info for 113 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  112i,20n,111p,11280b,978s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmro10.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbo10.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso10.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/umesh/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on vorlage.pdf (28 pages, 457705 bytes).
+Output written on vorlage.pdf (28 pages, 457068 bytes).
 PDF statistics:
  440 PDF objects out of 1000 (max. 8388607)
  95 named destinations out of 1000 (max. 500000)
