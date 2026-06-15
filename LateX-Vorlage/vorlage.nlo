@@ -1,0 +1,12 @@
+\nomenclatureentry{a$\mathbf{p}$@[{$\mathbf{p}$}]\begingroup Decision variable vector representing the gripper configuration\nomeqref {3.1}|nompageref}{4}
+\nomenclatureentry{a$(x_i, y_i)$@[{$(x_i, y_i)$}]\begingroup Planar position of the $i$-th suction cup\nomeqref {3.1}|nompageref}{4}
+\nomenclatureentry{a$\mathcal{P}$@[{$\mathcal{P}$}]\begingroup Population of candidate solutions\nomeqref {3.2}|nompageref}{4}
+\nomenclatureentry{a$N$@[{$N$}]\begingroup Population size\nomeqref {3.2}|nompageref}{4}
+\nomenclatureentry{a$\mathcal{G}_{\text{valid}}$@[{$\mathcal{G}_{\text{valid}}$}]\begingroup Set of valid (collision-free) grasps\nomeqref {3.2}|nompageref}{5}
+\nomenclatureentry{a$K$@[{$K$}]\begingroup Number of clusters (hyperparameter)\nomeqref {3.2}|nompageref}{5}
+\nomenclatureentry{a$A(\mathbf{p})$@[{$A(\mathbf{p})$}]\begingroup Area of the triangle formed by the three suction cups\nomeqref {3.3}|nompageref}{5}
+\nomenclatureentry{a$D(\mathbf{p})$@[{$D(\mathbf{p})$}]\begingroup Diversity metric of the grasp distribution\nomeqref {3.3}|nompageref}{5}
+\nomenclatureentry{a$\mathbf{f}(\mathbf{p})$@[{$\mathbf{f}(\mathbf{p})$}]\begingroup Multi-objective function vector\nomeqref {3.4}|nompageref}{6}
+\nomenclatureentry{a$\mathcal{P}^{(t)}$@[{$\mathcal{P}^{(t)}$}]\begingroup Population at iteration $t$\nomeqref {3.5}|nompageref}{6}
+\nomenclatureentry{a$t$@[{$t$}]\begingroup Iteration index\nomeqref {3.5}|nompageref}{6}
+\nomenclatureentry{a$\mathcal{P}^*$@[{$\mathcal{P}^*$}]\begingroup Set of Pareto-optimal solutions\nomeqref {3.6}|nompageref}{6}

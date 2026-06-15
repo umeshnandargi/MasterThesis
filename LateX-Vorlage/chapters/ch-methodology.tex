@@ -14,6 +14,8 @@ orientation remain fixed. Thus, the decision variables are:
 \mathbf{p} =
 [(x_1, y_1), (x_2, y_2), (x_3, y_3)]
 \end{equation}
+\nomenclature{$\mathbf{p}$}{Decision variable vector representing the gripper configuration}
+\nomenclature{$(x_i, y_i)$}{Planar position of the $i$-th suction cup}
 
 Each individual $\mathbf{p}$ forms a triangular base of the gripper.
 \paragraph{Assumption}
@@ -29,6 +31,8 @@ An initial population of candidate solutions is randomly generated:
 \begin{equation}
 \mathcal{P} = \{\mathbf{p}_1, \mathbf{p}_2, \dots, \mathbf{p}_N\}
 \end{equation}
+\nomenclature{$\mathcal{P}$}{Population of candidate solutions}
+\nomenclature{$N$}{Population size}
 
 \subsection{Workpiece Representation}
 
@@ -69,12 +73,14 @@ This step filters out physically infeasible grasps.
 
 \item \textbf{Clustering of Valid Grasps}
 
-Let $\mathcal{G}_{valid}$ denote the set of valid grasps.
+Let $\mathcal{G}_{\text{valid}}$ denote the set of valid grasps.
+\nomenclature{$\mathcal{G}_{\text{valid}}$}{Set of valid (collision-free) grasps}
 
 A fixed number of clusters $K$ is defined as a hyperparameter.
+\nomenclature{$K$}{Number of clusters (hyperparameter)}
 
 \begin{itemize}
-    \item If $|\mathcal{G}_{valid}| <  \texttt{nb\_grasps\_clustering} $, clustering is skipped.
+    \item If $|\mathcal{G}_{\text{valid}}| < \texttt{nb\_grasps\_clustering}$, clustering is skipped.
     \item Otherwise, clustering is performed based on spatial proximity and
     orientation similarity.
 \end{itemize}
@@ -88,11 +94,13 @@ The area of the triangle formed by the suction cups is computed as:
 \begin{equation}
 A(\mathbf{p}) = \frac{1}{2} \left| (x_2 - x_1)(y_3 - y_1) - (x_3 - x_1)(y_2 - y_1) \right|
 \end{equation}
+\nomenclature{$A(\mathbf{p})$}{Area of the triangle formed by the three suction cups}
 
 \item \textbf{Diversity Metric Calculation}
 
 A diversity score $D(\mathbf{p})$ is computed based on the spatial distribution
 of the clustered grasps:
+\nomenclature{$D(\mathbf{p})$}{Diversity metric of the grasp distribution}
 
 \begin{itemize}
     \item Distances between cluster centers are calculated and normalized.
@@ -110,6 +118,7 @@ After the subprocess, each individual $\mathbf{p}$ is assigned objective values:
 \begin{equation}
 \mathbf{f}(\mathbf{p}) = [-A(\mathbf{p}), -D(\mathbf{p})]
 \end{equation}
+\nomenclature{$\mathbf{f}(\mathbf{p})$}{Multi-objective function vector}
 
 where:
 \begin{itemize}
@@ -125,6 +134,8 @@ algorithm, which generates a new population:
 \begin{equation}
 \mathcal{P}^{(t+1)} = \text{Optimizer}(\mathcal{P}^{(t)}, \mathbf{f})
 \end{equation}
+\nomenclature{$\mathcal{P}^{(t)}$}{Population at iteration $t$}
+\nomenclature{$t$}{Iteration index}
 
 The process is repeated until a termination criterion is satisfied.
 
@@ -148,6 +159,7 @@ The optimization produces a set of Pareto-optimal solutions:
 \begin{equation}
 \mathcal{P}^* = \{ \mathbf{p} \mid \mathbf{p} \text{ is Pareto-optimal} \}
 \end{equation}
+\nomenclature{$\mathcal{P}^*$}{Set of Pareto-optimal solutions}
 
 These solutions represent optimal trade-offs between triangle area and grasp
 diversity.
