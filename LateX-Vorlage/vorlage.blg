@@ -1,0 +1,66 @@
+This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: vorlage.aux
+A level-1 auxiliary file: chapters/ch-aa-titel.aux
+A level-1 auxiliary file: chapters/ch-aa-vorspiel.aux
+A level-1 auxiliary file: chapters/ch-aa-zusfasg.aux
+A level-1 auxiliary file: chapters/ch-milestone_timeline.aux
+A level-1 auxiliary file: chapters/ch-hauptteil.aux
+A level-1 auxiliary file: chapters/ch-schluss.aux
+A level-1 auxiliary file: chapters/ch-zz-anhang.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: bib/bib.bib
+Warning--I didn't find a database entry for "doc:stz"
+Warning--I didn't find a database entry for "doc:gun"
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+You've used 8 entries,
+            4087 wiz_defined-function locations,
+            877 strings with 8935 characters,
+and the built_in function-call counts, 7389 in all, are:
+= -- 630
+> -- 157
+< -- 81
++ -- 98
+- -- 28
+* -- 384
+:= -- 1108
+add.period$ -- 16
+call.type$ -- 8
+change.case$ -- 8
+chr.to.int$ -- 183
+cite$ -- 8
+duplicate$ -- 491
+empty$ -- 505
+format.name$ -- 30
+if$ -- 1697
+int.to.chr$ -- 0
+int.to.str$ -- 8
+missing$ -- 76
+newline$ -- 53
+num.names$ -- 8
+pop$ -- 148
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 565
+stack$ -- 0
+substring$ -- 451
+swap$ -- 456
+text.length$ -- 20
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 8
+warning$ -- 0
+while$ -- 33
+width$ -- 9
+write$ -- 114
+(There were 2 warnings)

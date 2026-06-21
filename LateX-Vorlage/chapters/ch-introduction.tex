@@ -60,45 +60,75 @@ To achieve this goal, the following tasks are defined:
 
 \section{Approach}
 
-To address the defined objectives, a multi-objective
-optimization framework is developed.
+To address the defined objectives, a multi-objective optimization framework is
+developed. The framework is built upon the \textit{pymoo}
+library~\cite{pymoo}, which provides a modular infrastructure for evolutionary
+multi-objective optimization. A key architectural decision is the decoupling of
+the optimization logic from the objective function evaluation, which is
+delegated to an external evaluation service accessed via an API call.
 
 The gripper configurations are parameterized using a set of decision variables
-derived from configuration files. For the multi-suction cup gripper, the
+provided by the user. Each variable is defined by its type (continuous or
+integer) and its associated bounds, enabling the framework to handle
+mixed-variable optimization problems. For the multi-suction cup gripper, the
 positions of the suction cups are defined in the planar space, forming a
 triangular arrangement. The height and orientation of the suction cups are
 assumed to be fixed. Each candidate solution is therefore represented by the
-coordinates of three suction cups. In this work, a triangular configuration of
-suction cups is assumed to yield a stable grasp. This work assumes that a
-triangular arrangement of suction cups leads to a stable grasp configuration.
-While alternative configurations may exist, the triangular layout provides a
-minimal and geometrically robust structure for distributing contact forces
-across the workpiece surface.
+coordinates of three suction cups. This work assumes that a triangular
+arrangement of suction cups leads to a stable grasp configuration~\cite{madan2022realrobotchallenge2021}. While
+alternative configurations may exist, the triangular layout provides a minimal
+and geometrically robust structure for distributing contact forces across the
+workpiece surface.
 
-An initial population of candidate configurations is generated and iteratively
-refined using optimization algorithms. For each candidate solution, a subprocess
-is executed to evaluate grasp performance. In this subprocess, grasp candidates
-are generated for each point of the workpiece point cloud. A collision detection
-step ensures that only physically feasible grasps are retained by filtering out
-configurations where the gripper intersects with the workpiece.
+An initial population of candidate configurations is generated using
+mixed-variable sampling and iteratively refined using a user-selected
+multi-objective evolutionary algorithm. The framework supports multiple
+algorithms, including NSGA-II, NSGA-III, MOEA/D, CMOPSO, and SMS-EMOA,
+allowing the user to select the most suitable strategy for the problem at hand.
+
+For each candidate solution, an API call is issued to an external evaluation
+service, which executes the grasp evaluation subprocess. In this subprocess,
+grasp candidates are generated for each point of the workpiece point cloud. A
+collision detection step ensures that only physically feasible grasps are
+retained by filtering out configurations where the gripper intersects with the
+workpiece.
 
 Due to the potentially large number of valid grasp candidates, a clustering step
 is performed to group similar grasps and reduce redundancy. The number of
 clusters is treated as a hyperparameter. If the number of valid grasps is below
-this threshold, clustering is skipped.
+a defined threshold, clustering is skipped.
 
-Based on the filtered and clustered grasps, objective functions are computed.
-These include the maximization of the area of the triangular arrangement of
-suction cups, which is associated with grasp stability, and the maximization of
-a diversity metric that measures the spatial distribution of valid grasp
-clusters across the workpiece surface.
+Based on the filtered and clustered grasps, objective function values are
+computed by the evaluation service and returned to the optimizer. These include
+the maximization of the area of the triangular arrangement of suction cups,
+which is associated with grasp stability, and the maximization of a diversity
+metric that measures the spatial distribution of valid grasp clusters across the
+workpiece surface. Since \textit{pymoo} operates as a minimization framework,
+maximization objectives are negated prior to evaluation.
 
-The evaluated objective values are then used by the optimization algorithms to
-generate new candidate solutions. This iterative process continues until a
-termination criterion is reached. The result of the optimization is a set of
-Pareto-optimal gripper configurations that represent trade-offs between
-competing objectives.
+The evaluated objective values are then used by the selected evolutionary
+algorithm to generate a new population of candidate solutions through selection,
+crossover, and mutation operators. This iterative process continues until a
+termination criterion is satisfied. The framework employs a multi-criteria
+termination strategy: the optimization stops when convergence is detected in
+either the decision variable space or the objective space (evaluated over a
+sliding window), or when a maximum number of generations or function evaluations
+is reached.
+
+Throughout the optimization, the hypervolume indicator is tracked at each
+generation to monitor convergence toward the Pareto front. Optionally, the
+framework supports automated hyperparameter tuning of the selected algorithm
+through a meta-optimization procedure that maximizes the mean hypervolume across
+multiple random seeds.
+
+The result of the optimization is a set of Pareto-optimal gripper
+configurations that represent trade-offs between competing objectives, along
+with the hypervolume progression and total computation time. This information
+enables the user to select an appropriate configuration based on application
+requirements.
 
 The same framework is extended to two-finger grippers by adapting the decision
 variables and objective functions to reflect their specific kinematic and
-geometric properties.
+geometric properties. The modular API-based architecture ensures that only the
+evaluation service needs to be modified, while the optimization pipeline remains
+unchanged.

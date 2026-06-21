@@ -36,9 +36,9 @@
 \begin{spacing}{1} % Vorspiel immer mit Standard-Zeilenabstand setzen
 	\frontmatter
 	% % Titelblatt
-	% \include{chapters/ch-aa-titel}
-	% \include{chapters/ch-aa-vorspiel}
-	% \include{chapters/ch-aa-zusfasg}
+	\include{chapters/ch-aa-titel}
+	\include{chapters/ch-aa-vorspiel}
+	\include{chapters/ch-aa-zusfasg}
 	% % Verzeichnisse
 	\tableofcontents
 	\listoffigures
@@ -60,9 +60,10 @@
 
 % % %%%%%% Literaturverzeichnis (darf im deutschen nicht in den Anhang!)
 % Einfaches Literaturverzeichnis
-\input{chapters/ch-zz-bibEinfach}
+% \input{chapters/ch-zz-bibEinfach}
 % Literaturverzeichnis mit Bibtex
 %\bibliography{bib/bib}
-
+\bibliographystyle{IEEEtran} 
+\bibliography{bib/bib}       
 % %  Inhalt ENDE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}

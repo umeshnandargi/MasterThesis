@@ -1,12 +1,25 @@
-\nomenclatureentry{a$\mathbf{p}$@[{$\mathbf{p}$}]\begingroup Decision variable vector representing the gripper configuration\nomeqref {3.1}|nompageref}{4}
-\nomenclatureentry{a$(x_i, y_i)$@[{$(x_i, y_i)$}]\begingroup Planar position of the $i$-th suction cup\nomeqref {3.1}|nompageref}{4}
-\nomenclatureentry{a$\mathcal{P}$@[{$\mathcal{P}$}]\begingroup Population of candidate solutions\nomeqref {3.2}|nompageref}{4}
-\nomenclatureentry{a$N$@[{$N$}]\begingroup Population size\nomeqref {3.2}|nompageref}{4}
-\nomenclatureentry{a$\mathcal{G}_{\text{valid}}$@[{$\mathcal{G}_{\text{valid}}$}]\begingroup Set of valid (collision-free) grasps\nomeqref {3.2}|nompageref}{5}
-\nomenclatureentry{a$K$@[{$K$}]\begingroup Number of clusters (hyperparameter)\nomeqref {3.2}|nompageref}{5}
-\nomenclatureentry{a$A(\mathbf{p})$@[{$A(\mathbf{p})$}]\begingroup Area of the triangle formed by the three suction cups\nomeqref {3.3}|nompageref}{5}
-\nomenclatureentry{a$D(\mathbf{p})$@[{$D(\mathbf{p})$}]\begingroup Diversity metric of the grasp distribution\nomeqref {3.3}|nompageref}{5}
-\nomenclatureentry{a$\mathbf{f}(\mathbf{p})$@[{$\mathbf{f}(\mathbf{p})$}]\begingroup Multi-objective function vector\nomeqref {3.4}|nompageref}{6}
-\nomenclatureentry{a$\mathcal{P}^{(t)}$@[{$\mathcal{P}^{(t)}$}]\begingroup Population at iteration $t$\nomeqref {3.5}|nompageref}{6}
-\nomenclatureentry{a$t$@[{$t$}]\begingroup Iteration index\nomeqref {3.5}|nompageref}{6}
-\nomenclatureentry{a$\mathcal{P}^*$@[{$\mathcal{P}^*$}]\begingroup Set of Pareto-optimal solutions\nomeqref {3.6}|nompageref}{6}
+\nomenclatureentry{a$\mathbf{p}$@[{$\mathbf{p}$}]\begingroup Decision variable vector representing the gripper configuration\nomeqref {3.1}|nompageref}{5}
+\nomenclatureentry{a$(x_i, y_i)$@[{$(x_i, y_i)$}]\begingroup Planar position of the $i$-th suction cup\nomeqref {3.1}|nompageref}{5}
+\nomenclatureentry{a$\ell_i$@[{$\ell_i$}]\begingroup Lower bound of the $i$-th decision variable\nomeqref {3.2}|nompageref}{5}
+\nomenclatureentry{a$u_i$@[{$u_i$}]\begingroup Upper bound of the $i$-th decision variable\nomeqref {3.2}|nompageref}{5}
+\nomenclatureentry{a$n$@[{$n$}]\begingroup Number of decision variables\nomeqref {3.2}|nompageref}{5}
+\nomenclatureentry{a$\Lambda$@[{$\Lambda$}]\begingroup Set of reference directions for decomposition-based algorithms\nomeqref {3.3}|nompageref}{6}
+\nomenclatureentry{a$\mathcal{P}^{(0)}$@[{$\mathcal{P}^{(0)}$}]\begingroup Initial population of candidate solutions\nomeqref {3.4}|nompageref}{6}
+\nomenclatureentry{a$N$@[{$N$}]\begingroup Population size\nomeqref {3.4}|nompageref}{6}
+\nomenclatureentry{a$\mathcal{G}_{\text{valid}}$@[{$\mathcal{G}_{\text{valid}}$}]\begingroup Set of valid (collision-free) grasps\nomeqref {3.5}|nompageref}{7}
+\nomenclatureentry{a$K_{\min}$@[{$K_{\min}$}]\begingroup Minimum number of valid grasps required for clustering\nomeqref {3.5}|nompageref}{7}
+\nomenclatureentry{a$A(\mathbf{p})$@[{$A(\mathbf{p})$}]\begingroup Area of the triangle formed by the three suction cups\nomeqref {3.7}|nompageref}{8}
+\nomenclatureentry{a$D(\mathbf{p})$@[{$D(\mathbf{p})$}]\begingroup Diversity metric of the grasp distribution\nomeqref {3.7}|nompageref}{8}
+\nomenclatureentry{a$\mathbf{f}(\mathbf{p})$@[{$\mathbf{f}(\mathbf{p})$}]\begingroup Multi-objective function vector\nomeqref {3.7}|nompageref}{8}
+\nomenclatureentry{a$\mathcal{A}$@[{$\mathcal{A}$}]\begingroup Selected multi-objective evolutionary algorithm\nomeqref {3.8}|nompageref}{8}
+\nomenclatureentry{a$t$@[{$t$}]\begingroup Generation index\nomeqref {3.8}|nompageref}{8}
+\nomenclatureentry{a$x_{\text{tol}}$@[{$x_{\text{tol}}$}]\begingroup Design space convergence tolerance\nomeqref {3.8}|nompageref}{8}
+\nomenclatureentry{a$f_{\text{tol}}$@[{$f_{\text{tol}}$}]\begingroup Objective space convergence tolerance\nomeqref {3.8}|nompageref}{8}
+\nomenclatureentry{a$G_{\max}$@[{$G_{\max}$}]\begingroup Maximum number of generations\nomeqref {3.8}|nompageref}{8}
+\nomenclatureentry{a$E_{\max}$@[{$E_{\max}$}]\begingroup Maximum number of function evaluations\nomeqref {3.8}|nompageref}{8}
+\nomenclatureentry{a$\text{HV}^{(t)}$@[{$\text{HV}^{(t)}$}]\begingroup Hypervolume indicator at generation $t$\nomeqref {3.9}|nompageref}{8}
+\nomenclatureentry{a$\mathbf{r}$@[{$\mathbf{r}$}]\begingroup Reference point for hypervolume computation\nomeqref {3.9}|nompageref}{8}
+\nomenclatureentry{a$\mathcal{F}^{(t)}$@[{$\mathcal{F}^{(t)}$}]\begingroup Objective values of the population at generation $t$\nomeqref {3.9}|nompageref}{8}
+\nomenclatureentry{a$\boldsymbol{\theta}$@[{$\boldsymbol{\theta}$}]\begingroup Algorithm hyperparameters\nomeqref {3.10}|nompageref}{9}
+\nomenclatureentry{a$\mathcal{S}$@[{$\mathcal{S}$}]\begingroup Set of random seeds for meta-optimization\nomeqref {3.10}|nompageref}{9}
+\nomenclatureentry{a$\mathcal{P}^*$@[{$\mathcal{P}^*$}]\begingroup Set of Pareto-optimal solutions\nomeqref {3.11}|nompageref}{9}

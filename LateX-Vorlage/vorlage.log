@@ -1,8 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.6.14)  15 JUN 2026 00:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.6.14)  21 JUN 2026 22:49
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/das-un/MasterThesis/MasterThesis/LateX-Vorlage/vorlage
+**/home/das-un/MasterThesis/MasterThesis/LateX-Vorlage/vorlage.tex
 (/home/das-un/MasterThesis/MasterThesis/LateX-Vorlage/vorlage.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -1472,7 +1473,7 @@ Package csquotes Info: ... found 'babel' package.
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count382
 \l__pdf_internal_box=\box79
-) (./vorlage.aux (./chapters/ch-milestone_timeline.aux) (./chapters/ch-hauptteil.aux) (./chapters/ch-schluss.aux) (./chapters/ch-zz-anhang.aux))
+) (./vorlage.aux (./chapters/ch-aa-titel.aux) (./chapters/ch-aa-vorspiel.aux) (./chapters/ch-aa-zusfasg.aux) (./chapters/ch-milestone_timeline.aux) (./chapters/ch-hauptteil.aux) (./chapters/ch-schluss.aux) (./chapters/ch-zz-anhang.aux))
 \openout1 = `vorlage.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
@@ -1561,43 +1562,133 @@ Option `squaren' provided!
  Command \squaren defined by SIunits package!
 
 (./preamble/pre-tablesettings.tex)
-Package hyperref Info: Anchor `chapter*.1' on input line 43.
-LaTeX Font Info:    Trying to load font information for T1+lmss on input line 43.
+\openout2 = `chapters/ch-aa-titel.aux'.
+
+ (./chapters/ch-aa-titel.tex
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 7.
  (/usr/share/texmf/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) (./vorlage.toc
-Package hyperref Info: Reference (link) `chapter.1' on input line 2.
-Package hyperref Info: Reference (link) `chapter.2' on input line 3.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 4.
- (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
+)
+<fig/aa-titel/HE_Logo_4c.pdf, id=7, 126.13202pt x 31.17377pt>
+File: fig/aa-titel/HE_Logo_4c.pdf Graphic file (type pdf)
+<use fig/aa-titel/HE_Logo_4c.pdf>
+Package pdftex.def Info: fig/aa-titel/HE_Logo_4c.pdf  used on input line 9.
+(pdftex.def)             Requested size: 142.26378pt x 35.16219pt.
+<fig/aa-titel/IPA_Logo.jpg, id=8, 602.25pt x 301.125pt>
+File: fig/aa-titel/IPA_Logo.jpg Graphic file (type jpg)
+<use fig/aa-titel/IPA_Logo.jpg>
+Package pdftex.def Info: fig/aa-titel/IPA_Logo.jpg  used on input line 11.
+(pdftex.def)             Requested size: 142.26378pt x 71.13196pt.
+LaTeX Font Info:    Trying to load font information for TS1+lmss on input line 23.
+ (/usr/share/texmf/tex/latex/lm/ts1lmss.fd
+File: ts1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+Package hyperref Info: Anchor `page.i' on input line 45.
+ [1
+
+
+
+
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc} <./fig/aa-titel/HE_Logo_4c.pdf> <./fig/aa-titel/IPA_Logo.jpg>])
+\openout2 = `chapters/ch-aa-vorspiel.aux'.
+
+ (./chapters/ch-aa-vorspiel.tex
+Package hyperref Info: Anchor `chapter*.1' on input line 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--6
+
+ []
+
+
+Overfull \hbox (1.94121pt too wide) in paragraph at lines 4--6
+\T1/lmr/m/n/10.95 Die Ar-beit wurde bisher in gle-icher oder ähn-licher Form keiner an-deren Prü-fungs-be-hörde vorgelegt
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--6
+
+ []
+
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 11.
+(/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 4.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 11.
  (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 4.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 11.
  (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 4.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 11.
  (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 4.
+(Font)              <10> on input line 11.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 4.
+(Font)              <7> on input line 11.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 4.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
+(Font)              <5> on input line 11.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 11.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 11.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 11.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 11.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 11.
+Package hyperref Info: Anchor `page.ii' on input line 11.
+ [2
+
+
+
+
+
+]
+Package hyperref Info: Anchor `chapter*.2' on input line 14.
+Package hyperref Info: Anchor `page.iii' on input line 19.
+ [3
+
+
+]
+Package hyperref Info: Anchor `chapter*.3' on input line 22.
+Package hyperref Info: Anchor `page.iv' on input line 36.
+ [4
+
+
+]
+Package hyperref Info: Anchor `chapter*.4' on input line 38.
+Package hyperref Info: Anchor `page.v' on input line 42.
+ [5
+
+
+])
+\openout2 = `chapters/ch-aa-zusfasg.aux'.
+
+ (./chapters/ch-aa-zusfasg.tex
+Package hyperref Info: Anchor `chapter*.5' on input line 1.
+)
+Package hyperref Info: Anchor `page.vi' on input line 41.
+ [6
+
+
+
+
+
+]
+Package hyperref Info: Anchor `chapter*.6' on input line 43.
+ (./vorlage.toc
+Package hyperref Info: Reference (link) `chapter.1' on input line 2.
+Package hyperref Info: Reference (link) `chapter.2' on input line 3.
 Package hyperref Info: Reference (link) `section.2.1' on input line 4.
 Package hyperref Info: Reference (link) `section.2.2' on input line 5.
 Package hyperref Info: Reference (link) `section.2.3' on input line 6.
@@ -1606,45 +1697,38 @@ Package hyperref Info: Reference (link) `section.3.1' on input line 8.
 Package hyperref Info: Reference (link) `subsection.3.1.1' on input line 9.
 Package hyperref Info: Reference (link) `subsection.3.1.2' on input line 11.
 Package hyperref Info: Reference (link) `subsection.3.1.3' on input line 12.
-Package hyperref Info: Reference (link) `subsection.3.1.4' on input line 13.
-Package hyperref Info: Reference (link) `subsection.3.1.5' on input line 17.
-Package hyperref Info: Reference (link) `subsection.3.1.6' on input line 18.
-Package hyperref Info: Reference (link) `chapter.4' on input line 19.
-Package hyperref Info: Reference (link) `section.4.1' on input line 20.
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 21.
+Package hyperref Info: Reference (link) `subsection.3.1.4' on input line 14.
+Package hyperref Info: Reference (link) `subsection.3.1.5' on input line 15.
+Package hyperref Info: Reference (link) `subsection.3.1.6' on input line 17.
+Package hyperref Info: Reference (link) `subsection.3.1.7' on input line 18.
+Package hyperref Info: Reference (link) `subsection.3.1.8' on input line 19.
+Package hyperref Info: Reference (link) `subsection.3.1.9' on input line 20.
+Package hyperref Info: Reference (link) `subsection.3.1.10' on input line 21.
+Package hyperref Info: Reference (link) `chapter.4' on input line 22.
+Package hyperref Info: Reference (link) `section.4.1' on input line 23.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 24.
  (/usr/share/texmf/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-Package hyperref Info: Reference (link) `section.4.2' on input line 21.
-Package hyperref Info: Reference (link) `section.4.3' on input line 22.
-LaTeX Font Info:    Trying to load font information for TS1+lmss on input line 23.
- (/usr/share/texmf/tex/latex/lm/ts1lmss.fd
-File: ts1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-Package hyperref Info: Reference (link) `chapter.5' on input line 23.
-Package hyperref Info: Reference (link) `chapter.6' on input line 24.
-Package hyperref Info: Reference (link) `chapter.7' on input line 25.
-Package hyperref Info: Reference (link) `chapter.8' on input line 26.
-Package hyperref Info: Reference (link) `chapter.9' on input line 27.
-Package hyperref Info: Reference (link) `appendix.A' on input line 28.
-Package hyperref Info: Reference (link) `chapter*.14' on input line 29.
+Package hyperref Info: Reference (link) `section.4.2' on input line 24.
+Package hyperref Info: Reference (link) `section.4.3' on input line 25.
+Package hyperref Info: Reference (link) `chapter.5' on input line 26.
+Package hyperref Info: Reference (link) `chapter.6' on input line 27.
+Package hyperref Info: Reference (link) `chapter.7' on input line 28.
+Package hyperref Info: Reference (link) `chapter.8' on input line 29.
+Package hyperref Info: Reference (link) `chapter.9' on input line 30.
+Package hyperref Info: Reference (link) `appendix.A' on input line 31.
+Package hyperref Info: Reference (link) `chapter*.19' on input line 32.
 )
 \tf@toc=\write6
 \openout6 = `vorlage.toc'.
 
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 44.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 44.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 44.
-Package hyperref Info: Anchor `page.i' on input line 44.
- [1
+Package hyperref Info: Anchor `page.vii' on input line 44.
+ [7
 
 
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}
 Package `hyperref' Info: End of reference (link) `chapter.1', line 2.
 Package `hyperref' Info: End of reference (link) `chapter.2', line 3.
 Package `hyperref' Info: End of reference (link) `section.2.1', line 4.
@@ -1655,50 +1739,58 @@ Package `hyperref' Info: End of reference (link) `section.3.1', line 8.
 Package `hyperref' Info: End of reference (link) `subsection.3.1.1', line 9.
 Package `hyperref' Info: End of reference (link) `subsection.3.1.2', line 11.
 Package `hyperref' Info: End of reference (link) `subsection.3.1.3', line 12.
-Package `hyperref' Info: End of reference (link) `subsection.3.1.4', line 13.
-Package `hyperref' Info: End of reference (link) `subsection.3.1.5', line 17.
-Package `hyperref' Info: End of reference (link) `subsection.3.1.6', line 18.
-Package `hyperref' Info: End of reference (link) `chapter.4', line 19.
-Package `hyperref' Info: End of reference (link) `section.4.1', line 20.
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}
-Package `hyperref' Info: End of reference (link) `section.4.2', line 21.
-Package `hyperref' Info: End of reference (link) `section.4.3', line 22.
-Package `hyperref' Info: End of reference (link) `chapter.5', line 23.
-Package `hyperref' Info: End of reference (link) `chapter.6', line 24.
-Package `hyperref' Info: End of reference (link) `chapter.7', line 25.
-Package `hyperref' Info: End of reference (link) `chapter.8', line 26.
-Package `hyperref' Info: End of reference (link) `chapter.9', line 27.
-Package `hyperref' Info: End of reference (link) `appendix.A', line 28.
-Package `hyperref' Info: End of reference (link) `chapter*.14', line 29.
+Package `hyperref' Info: End of reference (link) `subsection.3.1.4', line 14.
+Package `hyperref' Info: End of reference (link) `subsection.3.1.5', line 15.
+Package `hyperref' Info: End of reference (link) `subsection.3.1.6', line 17.
+Package `hyperref' Info: End of reference (link) `subsection.3.1.7', line 18.
+Package `hyperref' Info: End of reference (link) `subsection.3.1.8', line 19.
+Package `hyperref' Info: End of reference (link) `subsection.3.1.9', line 20.
+Package `hyperref' Info: End of reference (link) `subsection.3.1.10', line 21.
+Package `hyperref' Info: End of reference (link) `chapter.4', line 22.
+Package `hyperref' Info: End of reference (link) `section.4.1', line 23.
+Package `hyperref' Info: End of reference (link) `section.4.2', line 24.
+Package `hyperref' Info: End of reference (link) `section.4.3', line 25.
+Package `hyperref' Info: End of reference (link) `chapter.5', line 26.
+Package `hyperref' Info: End of reference (link) `chapter.6', line 27.
+Package `hyperref' Info: End of reference (link) `chapter.7', line 28.
+Package `hyperref' Info: End of reference (link) `chapter.8', line 29.
+Package `hyperref' Info: End of reference (link) `chapter.9', line 30.
+Package `hyperref' Info: End of reference (link) `appendix.A', line 31.
+Package `hyperref' Info: End of reference (link) `chapter*.19', line 32.
 ]
-Package hyperref Info: Anchor `chapter*.2' on input line 44.
+Package hyperref Info: Anchor `chapter*.7' on input line 44.
  (./vorlage.lof
-Package hyperref Info: Reference (link) `figure.caption.5' on input line 3.
+Package hyperref Info: Reference (link) `figure.caption.10' on input line 3.
 )
 \tf@lof=\write7
 \openout7 = `vorlage.lof'.
 
-Package hyperref Info: Anchor `page.ii' on input line 45.
- [2
+Package hyperref Info: Anchor `page.viii' on input line 45.
+ [8
 
 
-Package `hyperref' Info: End of reference (link) `figure.caption.5', line 3.
+Package `hyperref' Info: End of reference (link) `figure.caption.10', line 3.
 ]
-Package hyperref Info: Anchor `chapter*.3' on input line 45.
- (./vorlage.lot)
+Package hyperref Info: Anchor `chapter*.8' on input line 45.
+ (./vorlage.lot
+Package hyperref Info: Reference (link) `table.caption.15' on input line 5.
+Package hyperref Info: Reference (link) `table.caption.18' on input line 6.
+)
 \tf@lot=\write8
 \openout8 = `vorlage.lot'.
 
  (./vorlage.nls
-Package hyperref Info: Anchor `page.iii' on input line 2.
- [3
+Package hyperref Info: Anchor `page.ix' on input line 2.
+ [9
 
 
+Package `hyperref' Info: End of reference (link) `table.caption.15', line 5.
+Package `hyperref' Info: End of reference (link) `table.caption.18', line 6.
 ]
-Package hyperref Info: Anchor `chapter*.4' on input line 2.
+Package hyperref Info: Anchor `chapter*.9' on input line 2.
 )
-Package hyperref Info: Anchor `page.iv' on input line 50.
- [4
+Package hyperref Info: Anchor `page.x' on input line 50.
+ [10
 
 
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}]
@@ -1729,11 +1821,11 @@ Class scrbook Warning: \float@addtolists detected!
 (scrbook)              a package that still implements the
 (scrbook)              deprecated \float@addtolist interface.
 
-Package hyperref Info: Anchor `figure.caption.5' on input line 2.
+Package hyperref Info: Anchor `figure.caption.10' on input line 2.
 Package hyperref Info: bookmark on input line 29:
 (hyperref)             thecounter {1.1}
 (hyperref)             text {\protect \numberline {\caption@listformat {\caption@p {figure}}{\caption@the {figure}}}{\ignorespaces Master thesis milestone plan}}
-(hyperref)             reference {figure.caption.5}
+(hyperref)             reference {figure.caption.10}
 (hyperref)             toclevel {1}
 (hyperref)             type {lof}.
 )
@@ -1785,9 +1877,15 @@ Package hyperref Info: bookmark on input line 61:
 (hyperref)             reference {section.2.3}
 (hyperref)             toclevel {1}
 (hyperref)             type {toc}.
-) (./chapters/ch-methodology.tex
-Package hyperref Info: Anchor `page.3' on input line 1.
- [3]
+Package hyperref Info: Reference (cite) `cite.pymoo' on input line 65.
+Package hyperref Info: Reference (cite) `cite.madan2022realrobotchallenge2021' on input line 78.
+Package hyperref Info: Anchor `page.3' on input line 117.
+ [3
+Package `hyperref' Info: End of reference (cite) `cite.pymoo', line 65.
+Package `hyperref' Info: End of reference (cite) `cite.madan2022realrobotchallenge2021', line 78.
+]) (./chapters/ch-methodology.tex
+Package hyperref Info: Anchor `page.4' on input line 1.
+ [4]
 Package hyperref Info: Anchor `chapter.3' on input line 1.
 
 chapter 3.
@@ -1797,114 +1895,180 @@ Package hyperref Info: bookmark on input line 1:
 (hyperref)             reference {chapter.3}
 (hyperref)             toclevel {0}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `section.3.1' on input line 3.
-Package hyperref Info: bookmark on input line 3:
+Package hyperref Info: Anchor `section.3.1' on input line 4.
+Package hyperref Info: bookmark on input line 4:
 (hyperref)             thecounter {3.1}
 (hyperref)             text {\protect \numberline {\csname sectiontocformat\endcsname }\@currenttocentry }
 (hyperref)             reference {section.3.1}
 (hyperref)             toclevel {1}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `subsection.3.1.1' on input line 8.
-Package hyperref Info: bookmark on input line 8:
+Package hyperref Info: Reference (cite) `cite.pymoo' on input line 9.
+Package hyperref Info: Anchor `subsection.3.1.1' on input line 12.
+Package hyperref Info: bookmark on input line 12:
 (hyperref)             thecounter {3.1.1}
 (hyperref)             text {\protect \numberline {\csname subsectiontocformat\endcsname }\@currenttocentry }
 (hyperref)             reference {subsection.3.1.1}
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `equation.3.1.1' on input line 13.
-Package hyperref Info: Anchor `paragraph*.7' on input line 21.
-Package hyperref Info: Anchor `section*.6' on input line 22.
-Package hyperref Info: bookmark on input line 22:
+Package hyperref Info: Anchor `equation.3.1.1' on input line 17.
+Package hyperref Info: Anchor `paragraph*.12' on input line 25.
+Package hyperref Info: Anchor `section*.11' on input line 26.
+Package hyperref Info: bookmark on input line 26:
 (hyperref)             thecounter {3.1.1.0.0}
 (hyperref)             text {\protect \nonumberline \@currenttocentry }
-(hyperref)             reference {paragraph*.7}
+(hyperref)             reference {paragraph*.12}
 (hyperref)             toclevel {4}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `subsection.3.1.2' on input line 27.
-Package hyperref Info: bookmark on input line 27:
+Package hyperref Info: Reference (cite) `cite.madan2022realrobotchallenge2021' on input line 26.
+Package hyperref Info: Anchor `subsection.3.1.2' on input line 31.
+Package hyperref Info: bookmark on input line 31:
 (hyperref)             thecounter {3.1.2}
 (hyperref)             text {\protect \numberline {\csname subsectiontocformat\endcsname }\@currenttocentry }
 (hyperref)             reference {subsection.3.1.2}
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `equation.3.1.2' on input line 31.
-Package hyperref Info: Anchor `subsection.3.1.3' on input line 37.
-Package hyperref Info: bookmark on input line 37:
+Package hyperref Info: Anchor `equation.3.1.2' on input line 36.
+Package hyperref Info: Anchor `subsection.3.1.3' on input line 47.
+Package hyperref Info: bookmark on input line 47:
 (hyperref)             thecounter {3.1.3}
 (hyperref)             text {\protect \numberline {\csname subsectiontocformat\endcsname }\@currenttocentry }
 (hyperref)             reference {subsection.3.1.3}
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `subsection.3.1.4' on input line 42.
-Package hyperref Info: bookmark on input line 42:
+Package hyperref Info: Anchor `page.5' on input line 54.
+[5
+
+
+Package `hyperref' Info: End of reference (cite) `cite.pymoo', line 9.
+Package `hyperref' Info: End of reference (cite) `cite.madan2022realrobotchallenge2021', line 26.
+]
+Package hyperref Info: Anchor `subsubsection*.14' on input line 62.
+Package hyperref Info: Anchor `section*.13' on input line 62.
+Package hyperref Info: bookmark on input line 62:
+(hyperref)             thecounter {3.1.3.0}
+(hyperref)             text {\protect \nonumberline \@currenttocentry }
+(hyperref)             reference {subsubsection*.14}
+(hyperref)             toclevel {3}
+(hyperref)             type {toc}.
+Package hyperref Info: Anchor `table.caption.15' on input line 66.
+Package hyperref Info: bookmark on input line 68:
+(hyperref)             thecounter {3.1}
+(hyperref)             text {\protect \numberline {\caption@listformat {\caption@p {table}}{\caption@the {table}}}{\ignorespaces Supported multi-objective optimization algorithms.}}
+(hyperref)             reference {table.caption.15}
+(hyperref)             toclevel {1}
+(hyperref)             type {lot}.
+Package hyperref Info: Reference (cite) `cite.nsga2' on input line 74.
+Package hyperref Info: Reference (cite) `cite.nsga3' on input line 75.
+Package hyperref Info: Reference (cite) `cite.moead' on input line 76.
+Package hyperref Info: Reference (cite) `cite.smsemoa' on input line 78.
+Package hyperref Info: Reference (cite) `cite.das_dennis' on input line 85.
+Package hyperref Info: Anchor `equation.3.1.3' on input line 87.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 88.
+ (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+Package hyperref Info: Anchor `subsection.3.1.4' on input line 95.
+Package hyperref Info: bookmark on input line 95:
 (hyperref)             thecounter {3.1.4}
 (hyperref)             text {\protect \numberline {\csname subsectiontocformat\endcsname }\@currenttocentry }
 (hyperref)             reference {subsection.3.1.4}
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `page.4' on input line 47.
-[4
-
-
-]
-Package hyperref Info: Anchor `subsubsection*.9' on input line 47.
-Package hyperref Info: Anchor `section*.8' on input line 47.
-Package hyperref Info: bookmark on input line 47:
-(hyperref)             thecounter {3.1.4.0}
-(hyperref)             text {\protect \nonumberline \@currenttocentry }
-(hyperref)             reference {subsubsection*.9}
-(hyperref)             toclevel {3}
-(hyperref)             type {toc}.
-Package hyperref Info: Anchor `Item.1' on input line 53.
-Package hyperref Info: Anchor `Item.2' on input line 59.
-Package hyperref Info: Anchor `Item.3' on input line 74.
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 83.
- (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-Package hyperref Info: Anchor `Item.4' on input line 90.
-Package hyperref Info: Anchor `equation.3.1.3' on input line 94.
-Package hyperref Info: Anchor `Item.5' on input line 99.
-Package hyperref Info: Anchor `page.5' on input line 112.
- [5]
-Package hyperref Info: Anchor `subsubsection*.11' on input line 114.
-Package hyperref Info: Anchor `section*.10' on input line 114.
-Package hyperref Info: bookmark on input line 114:
-(hyperref)             thecounter {3.1.4.0}
-(hyperref)             text {\protect \nonumberline \@currenttocentry }
-(hyperref)             reference {subsubsection*.11}
-(hyperref)             toclevel {3}
-(hyperref)             type {toc}.
-Package hyperref Info: Anchor `equation.3.1.4' on input line 118.
-Package hyperref Info: Anchor `subsubsection*.13' on input line 129.
-Package hyperref Info: Anchor `section*.12' on input line 129.
-Package hyperref Info: bookmark on input line 129:
-(hyperref)             thecounter {3.1.4.0}
-(hyperref)             text {\protect \nonumberline \@currenttocentry }
-(hyperref)             reference {subsubsection*.13}
-(hyperref)             toclevel {3}
-(hyperref)             type {toc}.
-Package hyperref Info: Anchor `equation.3.1.5' on input line 134.
-Package hyperref Info: Anchor `subsection.3.1.5' on input line 142.
-Package hyperref Info: bookmark on input line 142:
+Package hyperref Info: Anchor `equation.3.1.4' on input line 100.
+Package hyperref Info: Anchor `subsection.3.1.5' on input line 106.
+Package hyperref Info: bookmark on input line 106:
 (hyperref)             thecounter {3.1.5}
 (hyperref)             text {\protect \numberline {\csname subsectiontocformat\endcsname }\@currenttocentry }
 (hyperref)             reference {subsection.3.1.5}
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `subsection.3.1.6' on input line 155.
-Package hyperref Info: bookmark on input line 155:
+Package hyperref Info: Reference (link) `subsubsection*.17' on input line 112.
+Package hyperref Info: Anchor `page.6' on input line 113.
+ [6
+Package `hyperref' Info: End of reference (cite) `cite.nsga2', line 74.
+Package `hyperref' Info: End of reference (cite) `cite.nsga3', line 75.
+Package `hyperref' Info: End of reference (cite) `cite.moead', line 76.
+Package `hyperref' Info: End of reference (cite) `cite.smsemoa', line 78.
+Package `hyperref' Info: End of reference (cite) `cite.das_dennis', line 85.
+]
+Package hyperref Info: Anchor `equation.3.1.5' on input line 114.
+Package hyperref Info: Anchor `subsubsection*.17' on input line 125.
+Package hyperref Info: Anchor `section*.16' on input line 125.
+Package hyperref Info: bookmark on input line 125:
+(hyperref)             thecounter {3.1.5.0}
+(hyperref)             text {\protect \nonumberline \@currenttocentry }
+(hyperref)             reference {subsubsection*.17}
+(hyperref)             toclevel {3}
+(hyperref)             type {toc}.
+Package hyperref Info: Anchor `Item.1' on input line 133.
+Package hyperref Info: Anchor `Item.2' on input line 138.
+Package hyperref Info: Anchor `Item.3' on input line 144.
+Package hyperref Info: Anchor `Item.4' on input line 151.
+Package hyperref Info: Anchor `equation.3.1.6' on input line 154.
+Package hyperref Info: Anchor `equation.3.1.7' on input line 161.
+Package hyperref Info: Anchor `page.7' on input line 175.
+ [7
+Package `hyperref' Info: End of reference (link) `subsubsection*.17', line 112.
+]
+Package hyperref Info: Anchor `subsection.3.1.6' on input line 177.
+Package hyperref Info: bookmark on input line 177:
 (hyperref)             thecounter {3.1.6}
 (hyperref)             text {\protect \numberline {\csname subsectiontocformat\endcsname }\@currenttocentry }
 (hyperref)             reference {subsection.3.1.6}
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `equation.3.1.6' on input line 159.
+Package hyperref Info: Anchor `equation.3.1.8' on input line 181.
+Package hyperref Info: Anchor `subsection.3.1.7' on input line 190.
+Package hyperref Info: bookmark on input line 190:
+(hyperref)             thecounter {3.1.7}
+(hyperref)             text {\protect \numberline {\csname subsectiontocformat\endcsname }\@currenttocentry }
+(hyperref)             reference {subsection.3.1.7}
+(hyperref)             toclevel {2}
+(hyperref)             type {toc}.
+Package hyperref Info: Anchor `table.caption.18' on input line 194.
+Package hyperref Info: bookmark on input line 196:
+(hyperref)             thecounter {3.2}
+(hyperref)             text {\protect \numberline {\caption@listformat {\caption@p {table}}{\caption@the {table}}}{\ignorespaces Termination criteria.}}
+(hyperref)             reference {table.caption.18}
+(hyperref)             toclevel {1}
+(hyperref)             type {lot}.
+Package hyperref Info: Anchor `subsection.3.1.8' on input line 216.
+Package hyperref Info: bookmark on input line 216:
+(hyperref)             thecounter {3.1.8}
+(hyperref)             text {\protect \numberline {\csname subsectiontocformat\endcsname }\@currenttocentry }
+(hyperref)             reference {subsection.3.1.8}
+(hyperref)             toclevel {2}
+(hyperref)             type {toc}.
+Package hyperref Info: Reference (cite) `cite.hypervolume' on input line 218.
+Package hyperref Info: Anchor `equation.3.1.9' on input line 221.
+Package hyperref Info: Anchor `subsection.3.1.9' on input line 233.
+Package hyperref Info: bookmark on input line 233:
+(hyperref)             thecounter {3.1.9}
+(hyperref)             text {\protect \numberline {\csname subsectiontocformat\endcsname }\@currenttocentry }
+(hyperref)             reference {subsection.3.1.9}
+(hyperref)             toclevel {2}
+(hyperref)             type {toc}.
+
+Overfull \hbox (8.5107pt too wide) in paragraph at lines 235--240
+\T1/lmr/m/n/10.95 The frame-work op-tion-ally sup-ports au-to-mated tun-ing of al-go-rithm hy-per-pa-ram-e-ters (e.g., crossover
+ []
+
+Package hyperref Info: Anchor `equation.3.1.10' on input line 241.
+Package hyperref Info: Anchor `page.8' on input line 243.
+[8{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}
+Package `hyperref' Info: End of reference (cite) `cite.hypervolume', line 218.
+]
+Package hyperref Info: Anchor `subsection.3.1.10' on input line 249.
+Package hyperref Info: bookmark on input line 249:
+(hyperref)             thecounter {3.1.10}
+(hyperref)             text {\protect \numberline {\csname subsectiontocformat\endcsname }\@currenttocentry }
+(hyperref)             reference {subsection.3.1.10}
+(hyperref)             toclevel {2}
+(hyperref)             type {toc}.
+Package hyperref Info: Anchor `equation.3.1.11' on input line 253.
 )
-Package hyperref Info: Anchor `page.6' on input line 13.
- [6]
-Package hyperref Info: Anchor `page.7' on input line 13.
- [7]
+Package hyperref Info: Anchor `page.9' on input line 13.
+ [9]
 Package hyperref Info: Anchor `chapter.4' on input line 13.
 
 chapter 4.
@@ -1914,8 +2078,8 @@ Package hyperref Info: bookmark on input line 13:
 (hyperref)             reference {chapter.4}
 (hyperref)             toclevel {0}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `page.8' on input line 20.
-[8
+Package hyperref Info: Anchor `page.10' on input line 20.
+[10
 
 
 ]
@@ -1926,8 +2090,8 @@ Package hyperref Info: bookmark on input line 21:
 (hyperref)             reference {section.4.1}
 (hyperref)             toclevel {1}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `page.9' on input line 24.
- [9]
+Package hyperref Info: Anchor `page.11' on input line 24.
+ [11]
 Package hyperref Info: Anchor `section.4.2' on input line 25.
 Package hyperref Info: bookmark on input line 25:
 (hyperref)             thecounter {4.2}
@@ -1942,13 +2106,15 @@ Package hyperref Info: bookmark on input line 29:
 (hyperref)             reference {section.4.3}
 (hyperref)             toclevel {1}
 (hyperref)             type {toc}.
-Package hyperref Info: Reference (cite) `cite.doc:stz' on input line 32.
-Package hyperref Info: Reference (cite) `cite.doc:gun' on input line 32.
-Package hyperref Info: Anchor `page.10' on input line 34.
- [10
-Package `hyperref' Info: End of reference (cite) `cite.doc:stz', line 32.
-Package `hyperref' Info: End of reference (cite) `cite.doc:gun', line 32.
-]
+
+
+LaTeX Warning: Citation `doc:stz' on page 12 undefined on input line 32.
+
+
+LaTeX Warning: Citation `doc:gun' on page 12 undefined on input line 32.
+
+Package hyperref Info: Anchor `page.12' on input line 34.
+[12]
 Package hyperref Info: Anchor `chapter.5' on input line 34.
 
 chapter 5.
@@ -1958,8 +2124,8 @@ Package hyperref Info: bookmark on input line 34:
 (hyperref)             reference {chapter.5}
 (hyperref)             toclevel {0}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `page.11' on input line 39.
-[11
+Package hyperref Info: Anchor `page.13' on input line 39.
+[13
 
 
 ]
@@ -1972,8 +2138,8 @@ Package hyperref Info: bookmark on input line 39:
 (hyperref)             reference {chapter.6}
 (hyperref)             toclevel {0}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `page.12' on input line 44.
-[12
+Package hyperref Info: Anchor `page.14' on input line 44.
+[14
 
 
 ]
@@ -1991,8 +2157,8 @@ Overfull \hbox (7.31535pt too wide) in paragraph at lines 46--48
 \T1/lmr/m/n/10.95 Hier kann z.B. eine Be-di-en-an-leitung ste-hen, oder bei Anal-y-sen die Anal-y-seergeb-nisse. `  Neuigkeiten'
  []
 
-Package hyperref Info: Anchor `page.13' on input line 49.
-[13
+Package hyperref Info: Anchor `page.15' on input line 49.
+[15
 
 
 ]
@@ -2006,8 +2172,8 @@ Package hyperref Info: bookmark on input line 49:
 (hyperref)             toclevel {0}
 (hyperref)             type {toc}.
 )
-Package hyperref Info: Anchor `page.14' on input line 54.
- [14
+Package hyperref Info: Anchor `page.16' on input line 54.
+ [16
 
 
 ]
@@ -2024,8 +2190,8 @@ Package hyperref Info: bookmark on input line 1:
 (hyperref)             toclevel {0}
 (hyperref)             type {toc}.
 )
-Package hyperref Info: Anchor `page.15' on input line 55.
- [15
+Package hyperref Info: Anchor `page.17' on input line 55.
+ [17
 
 
 
@@ -2045,63 +2211,69 @@ Package hyperref Info: bookmark on input line 1:
 (hyperref)             toclevel {0}
 (hyperref)             type {toc}.
 )
-Package hyperref Info: Anchor `page.16' on input line 59.
- [16
+Package hyperref Info: Anchor `page.18' on input line 59.
+ [18
 
 
 
 
 
-] (./chapters/ch-zz-bibEinfach.tex
+] (./vorlage.bbl
 chapter without number
-Package hyperref Info: Anchor `chapter*.14' on input line 1.
-Package hyperref Info: bookmark on input line 1:
+Package hyperref Info: Anchor `chapter*.19' on input line 2.
+Package hyperref Info: bookmark on input line 2:
 (hyperref)             thecounter {A}
 (hyperref)             text {\protect \nonumberline \@currenttocentry }
-(hyperref)             reference {chapter*.14}
+(hyperref)             reference {chapter*.19}
 (hyperref)             toclevel {0}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `cite.doc:stz' on input line 2.
-Package hyperref Info: Anchor `cite.doc:gun' on input line 4.
-
-Underfull \hbox (badness 10000) in paragraph at lines 4--5
-[][]$\T1/lmtt/m/n/10.95 http : / / www . galileocomputing . de / katalog / buecher / titel / gp / titelID-[]768$[][][]\T1/lmr/m/n/10.95 ; \T1/lmr/m/it/10.95 1.
- []
-
+Package hyperref Info: Anchor `cite.pymoo' on input line 23.
+Package hyperref Info: Anchor `cite.madan2022realrobotchallenge2021' on input line 26.
+Package hyperref Info: Anchor `cite.nsga2' on input line 31.
+Package hyperref Info: Anchor `cite.nsga3' on input line 34.
+Package hyperref Info: Anchor `cite.moead' on input line 37.
+Package hyperref Info: Anchor `cite.smsemoa' on input line 40.
+Package hyperref Info: Anchor `cite.das_dennis' on input line 43.
+Package hyperref Info: Anchor `cite.hypervolume' on input line 48.
 )
 
 Package caption Warning: Unused \captionsetup[subfloat] on input line 379.
 See the caption package documentation for explanation.
 
-Package hyperref Info: Anchor `page.17' on input line 68.
-[17
+Package hyperref Info: Anchor `page.19' on input line 69.
+[19
 
 
 
 
-Package `hyperref' Info: End of reference <VerboseLinkInfo>.
-Package `hyperref' Info: End of reference <VerboseLinkInfo>.
-] (./vorlage.aux (./chapters/ch-milestone_timeline.aux) (./chapters/ch-hauptteil.aux) (./chapters/ch-schluss.aux) (./chapters/ch-zz-anhang.aux))
+Package `hyperref' Info: End of reference (link) `subsubsection*.17', line 112.
+Package `hyperref' Info: End of reference (link) `subsubsection*.17', line 112.
+Package `hyperref' Info: End of reference (link) `subsubsection*.17', line 112.
+] (./vorlage.aux (./chapters/ch-aa-titel.aux) (./chapters/ch-aa-vorspiel.aux) (./chapters/ch-aa-zusfasg.aux) (./chapters/ch-milestone_timeline.aux) (./chapters/ch-hauptteil.aux) (./chapters/ch-schluss.aux) (./chapters/ch-zz-anhang.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `vorlage.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 36557 strings out of 474222
- 726545 string characters out of 5748733
+ 36736 strings out of 474222
+ 731040 string characters out of 5748733
  1952975 words of memory out of 5000000
- 57981 multiletter control sequences out of 15000+600000
- 653262 words of font info for 104 fonts, out of 8000000 for 9000
+ 58104 multiletter control sequences out of 15000+600000
+ 661379 words of font info for 113 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 112i,20n,136p,10977b,1022s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmro10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbo10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on vorlage.pdf (21 pages, 333553 bytes).
+ 112i,21n,136p,10981b,1022s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmro10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbo10.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on vorlage.pdf (29 pages, 435547 bytes).
 PDF statistics:
- 370 PDF objects out of 1000 (max. 8388607)
- 306 compressed objects within 4 object streams
- 72 named destinations out of 1000 (max. 500000)
- 205 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 495 PDF objects out of 1000 (max. 8388607)
+ 408 compressed objects within 5 object streams
+ 99 named destinations out of 1000 (max. 500000)
+ 247 words of extra memory for PDF output out of 10000 (max. 10000000)
 
