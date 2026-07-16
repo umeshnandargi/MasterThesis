@@ -1,17 +1,42 @@
 
 \begin{thenomenclature} 
 \nomgroup{A}
-  \item [{$(x_i, y_i)$}]\begingroup Planar position of the $i$-th suction cup\nomeqref {3.1}\nompageref{4}
-  \item [{$\mathbf{f}(\mathbf{p})$}]\begingroup Multi-objective function vector\nomeqref {3.4}\nompageref{6}
-  \item [{$\mathbf{p}$}]\begingroup Decision variable vector representing the gripper configuration\nomeqref {3.1}\nompageref{4}
-  \item [{$\mathcal{G}_{\text{valid}}$}]\begingroup Set of valid (collision-free) grasps\nomeqref {3.2}\nompageref{5}
-  \item [{$\mathcal{P}$}]\begingroup Population of candidate solutions\nomeqref {3.2}\nompageref{4}
-  \item [{$\mathcal{P}^*$}]\begingroup Set of Pareto-optimal solutions\nomeqref {3.6}\nompageref{6}
-  \item [{$\mathcal{P}^{(t)}$}]\begingroup Population at iteration $t$\nomeqref {3.5}\nompageref{6}
-  \item [{$A(\mathbf{p})$}]\begingroup Area of the triangle formed by the three suction cups\nomeqref {3.3}\nompageref{5}
-  \item [{$D(\mathbf{p})$}]\begingroup Diversity metric of the grasp distribution\nomeqref {3.3}\nompageref{5}
-  \item [{$K$}]\begingroup Number of clusters (hyperparameter)\nomeqref {3.2}\nompageref{5}
-  \item [{$N$}]\begingroup Population size\nomeqref {3.2}\nompageref{4}
-  \item [{$t$}]\begingroup Iteration index\nomeqref {3.5}\nompageref{6}
+  \item [{$(x_i, y_i)$}]\begingroup Planar position of the $i$-th suction cup\nomeqref {3.1}\nompageref{5}
+  \item [{$\boldsymbol{\theta}$}]\begingroup Algorithm hyperparameters\nomeqref {3.31}\nompageref{12}
+  \item [{$\delta_{\mathrm{intra}}$}]\begingroup Spatial threshold for selecting additional local representatives\nomeqref {3.19}\nompageref{9}
+  \item [{$\ell_i$}]\begingroup Lower bound of the $i$-th decision variable\nomeqref {3.2}\nompageref{5}
+  \item [{$\Lambda$}]\begingroup Set of reference directions for decomposition-based algorithms\nomeqref {3.3}\nompageref{6}
+  \item [{$\mathbf{f}(\mathbf{p})$}]\begingroup Multi-objective function vector\nomeqref {3.28}\nompageref{11}
+  \item [{$\mathbf{p}$}]\begingroup Decision variable vector representing the gripper configuration\nomeqref {3.1}\nompageref{5}
+  \item [{$\mathbf{r}$}]\begingroup Reference point for hypervolume computation\nomeqref {3.30}\nompageref{12}
+  \item [{$\mathcal{A}$}]\begingroup Selected multi-objective evolutionary algorithm\nomeqref {3.29}\nompageref{11}
+  \item [{$\mathcal{F}^{(t)}$}]\begingroup Objective values of the population at generation $t$\nomeqref {3.30}\nompageref{12}
+  \item [{$\mathcal{G}_{\mathrm{cand}}$}]\begingroup Set of candidate grasps generated from sampled surface points\nomeqref {3.8}\nompageref{8}
+  \item [{$\mathcal{G}_{\mathrm{rep}}$}]\begingroup Reduced representative grasp set used for diversity evaluation\nomeqref {3.19}\nompageref{9}
+  \item [{$\mathcal{G}_{\mathrm{valid}}$}]\begingroup Set of valid (collision-free) grasps\nomeqref {3.8}\nompageref{8}
+  \item [{$\mathcal{P}^*$}]\begingroup Set of Pareto-optimal solutions\nomeqref {3.32}\nompageref{12}
+  \item [{$\mathcal{P}^{(0)}$}]\begingroup Initial population of candidate solutions\nomeqref {3.4}\nompageref{6}
+  \item [{$\mathcal{S}$}]\begingroup Set of sampled surface points on the workpiece\nomeqref {3.6}\nompageref{7}
+  \item [{$\mathcal{Z}$}]\begingroup Set of random seeds for meta-optimization\nomeqref {3.31}\nompageref{12}
+  \item [{$\text{HV}^{(t)}$}]\begingroup Hypervolume indicator at generation $t$\nomeqref {3.30}\nompageref{12}
+  \item [{$A(\mathbf{p})$}]\begingroup Area of the triangle formed by the three suction cups\nomeqref {3.27}\nompageref{11}
+  \item [{$D(\mathbf{p})$}]\begingroup Diversity metric of the grasp distribution\nomeqref {3.27}\nompageref{11}
+  \item [{$d_{\mathrm{geo}}(\mathbf{R}_a,\mathbf{R}_b)$}]\begingroup Geodesic distance between two grasp orientations\nomeqref {3.27}\nompageref{11}
+  \item [{$d_{\mathrm{ori}}(i,j)$}]\begingroup Pairwise orientation distance between grasp poses $i$ and $j$\nomeqref {3.19}\nompageref{9}
+  \item [{$D_{\mathrm{pos}}(\mathbf{p})$}]\begingroup Spatial component of the diversity metric\nomeqref {3.27}\nompageref{11}
+  \item [{$d_{\mathrm{pos}}(i,j)$}]\begingroup Pairwise translational distance between grasp poses $i$ and $j$\nomeqref {3.19}\nompageref{9}
+  \item [{$D_{\mathrm{rot}}(\mathbf{p})$}]\begingroup Orientation component of the diversity metric\nomeqref {3.27}\nompageref{11}
+  \item [{$E_{\max}$}]\begingroup Maximum number of function evaluations\nomeqref {3.29}\nompageref{12}
+  \item [{$f_{\text{tol}}$}]\begingroup Objective space convergence tolerance\nomeqref {3.29}\nompageref{12}
+  \item [{$G_{\max}$}]\begingroup Maximum number of generations\nomeqref {3.29}\nompageref{12}
+  \item [{$M$}]\begingroup Number of initially sampled surface points\nomeqref {3.6}\nompageref{7}
+  \item [{$N$}]\begingroup Population size\nomeqref {3.4}\nompageref{6}
+  \item [{$n$}]\begingroup Number of decision variables\nomeqref {3.2}\nompageref{5}
+  \item [{$n_{\text{obj}}$}]\begingroup Number of Objectives\nomeqref {3.3}\nompageref{6}
+  \item [{$q_{\mathrm{intra}}$}]\begingroup Maximum number of local orientation-diverse representatives\nomeqref {3.19}\nompageref{9}
+  \item [{$s$}]\begingroup Characteristic object scale derived from the mesh bounding box\nomeqref {3.27}\nompageref{11}
+  \item [{$t$}]\begingroup Generation index\nomeqref {3.29}\nompageref{11}
+  \item [{$u_i$}]\begingroup Upper bound of the $i$-th decision variable\nomeqref {3.2}\nompageref{5}
+  \item [{$x_{\text{tol}}$}]\begingroup Design space convergence tolerance\nomeqref {3.29}\nompageref{12}
 
 \end{thenomenclature}

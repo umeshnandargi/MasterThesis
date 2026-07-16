@@ -1,0 +1,554 @@
+
+\section{Implementation of Multi-Suction Cup Gripper Optimization}
+
+This chapter presents the optimization framework developed for a multi-suction
+cup gripper consisting of three suction cups arranged in a triangular
+configuration. The framework uses the multi-objective optimization library
+\textit{pymoo}~\cite{pymoo}, while the evaluation of candidate gripper layouts
+is delegated to an external service through an API. This separation enables a
+modular architecture in which the optimization logic and the domain-specific
+grasp evaluation remain decoupled.
+
+\subsection{Reduced Parameterization of Multi-Suction Cup Gripper}
+
+The gripper consists of three suction cups whose positions must ultimately be
+represented in Cartesian space in order to perform grasp generation, collision
+checking, and objective computation. However, the Cartesian suction cup
+coordinates are not used directly as optimization variables. Instead, the
+layout is parameterized in a reduced form to constrain the search space and
+encode geometric structure.
+
+All three suction cups are constrained to lie on a common circle in the
+gripper plane. Their configuration is therefore defined by one shared radius
+$r$ and three angular parameters $\alpha_1,\alpha_2,\alpha_3$:
+\begin{equation}
+    \mathbf{q} = [r,\alpha_1,\alpha_2,\alpha_3]
+\end{equation}
+\nomenclature{$\mathbf{q}$}{Reduced decision variable vector defining the suction cup layout}
+\nomenclature{$r$}{Common radial distance of the suction cups from the gripper center}
+\nomenclature{$\alpha_i$}{Angular position of the $i$-th suction cup on the circle}
+
+The angular parameters determine the positions of the suction cups on the
+circle, while the common radius determines their distance from the gripper
+center. For a fixed gripper height $z_0$, the Cartesian coordinates of the
+suction cups are obtained through the polar-to-Cartesian transformation
+\begin{equation}
+    \mathbf{c}_i =
+    \begin{bmatrix}
+        r\cos(\alpha_i) \\
+        r\sin(\alpha_i) \\
+        z_0
+    \end{bmatrix},
+    \qquad i=1,2,3.
+\end{equation}
+\nomenclature{$\mathbf{c}_i$}{Cartesian position of the $i$-th suction cup in the gripper frame}
+\nomenclature{$z_0$}{Fixed height coordinate of the suction cups}
+
+The resulting Cartesian gripper configuration is written as
+\begin{equation}
+    \mathbf{p} = [\mathbf{c}_1,\mathbf{c}_2,\mathbf{c}_3].
+\end{equation}
+\nomenclature{$\mathbf{p}$}{Cartesian suction cup configuration derived from the reduced parameterization}
+
+Thus, the optimization is carried out in the reduced 4-dimensional parameter
+space $\mathbf{q}$, while the grasp evaluation operates on the derived
+Cartesian coordinates $\mathbf{p}$.
+
+This formulation reduces the dimensionality of the search space from six planar
+degrees of freedom,
+\begin{equation}
+    [(x_1,y_1),(x_2,y_2),(x_3,y_3)] \in \mathbb{R}^6,
+\end{equation}
+to four variables,
+\begin{equation}
+    [r,\alpha_1,\alpha_2,\alpha_3].
+\end{equation}
+The reduction improves search efficiency and excludes many geometrically
+redundant or undesirable layouts while preserving sufficient flexibility for
+diverse triangular suction cup arrangements.
+
+\paragraph{Assumption}
+A triangular configuration of three suction cups is assumed to yield a stable
+grasp~\cite{madan2022realrobotchallenge2021}. This is motivated by the fact
+that three spatially distributed contact points form a statically stable
+support polygon, enabling effective load distribution and resistance to
+external disturbances.
+
+\subsection{Decision Variables and Bounds for Multi-Suction Cup Gripper}
+
+The optimization is performed over the reduced decision vector
+\begin{equation}
+    \mathbf{q} = [r,\alpha_1,\alpha_2,\alpha_3].
+\end{equation}
+
+All variables are treated as continuous. The angular variables are bounded by
+\begin{equation}
+    \alpha_i \in [0,2\pi), \qquad i=1,2,3,
+\end{equation}
+and the common radius is bounded by
+\begin{equation}
+    r \in [r_{\min},r_{\max}].
+\end{equation}
+\nomenclature{$r_{\min}$}{Lower bound on the common suction cup radius}
+\nomenclature{$r_{\max}$}{Upper bound on the common suction cup radius}
+
+The upper bound $r_{\max}$ is determined from the bounding box of the largest
+workpiece considered during optimization, ensuring that the gripper footprint
+remains compatible with the object dimensions. The lower bound $r_{\min}$ is
+determined from the diameter of an individual suction cup, ensuring that the
+configuration remains physically realizable and that the suction cups do not
+collapse into an excessively compact arrangement.
+
+During initialization, the angular variables are sampled randomly in the
+interval $[0,2\pi)$ and the radius is sampled within $[r_{\min},r_{\max}]$.
+These values are then evolved by the selected optimization algorithm.
+
+\subsection{Optimization Framework of Multi-Suction Cup Gripper}
+
+The problem is formulated as a multi-objective minimization problem and solved
+using the \textit{pymoo} library. The user configures the optimization through
+a request specifying:
+\begin{itemize}
+    \item Population size $N$
+    \item Maximum number of generations $G_{\max}$
+    \item Choice of optimization algorithm
+    \item Number of objectives $n_{\text{obj}}$
+    \item Decision variable definitions and bounds
+    \item Evaluation endpoint URL
+\end{itemize}
+
+\subsubsection{Supported Algorithms}
+
+The framework supports the following multi-objective evolutionary algorithms:
+
+\begin{table}[htbp]
+\centering
+\caption{Supported multi-objective optimization algorithms.}
+\label{tab:algorithms}
+\begin{tabular}{ll}
+\toprule
+\textbf{Identifier} & \textbf{Algorithm} \\
+\midrule
+NSGA2   & Non-dominated Sorting Genetic Algorithm II~\cite{nsga2} \\
+NSGA3   & Non-dominated Sorting Genetic Algorithm III~\cite{nsga3} \\
+MOEAD   & Multi-Objective Evolutionary Algorithm based on Decomposition~\cite{moead} \\
+CMOPSO  & Competitive Multi-Objective Particle Swarm Optimization \\
+SMSEMOA & S-Metric Selection Evolutionary Multi-Objective Algorithm~\cite{smsemoa} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For algorithms requiring reference directions, such as NSGA-III and MOEA/D,
+uniform reference directions are generated using the method of Das and
+Dennis~\cite{das_dennis}:
+\begin{equation}
+    \Lambda =
+    \texttt{get\_reference\_directions}
+    (\text{``das-dennis''},\; n_{\text{obj}},\; n_{\text{partitions}})
+\end{equation}
+\nomenclature{$\Lambda$}{Set of reference directions for decomposition-based algorithms}
+\nomenclature{$n_{\text{obj}}$}{Number of objectives}
+
+\subsection{Initialization of Multi-Suction Cup Gripper Problem}
+
+An initial population of $N$ candidate solutions is generated by sampling the
+reduced decision variables within their bounds:
+\begin{equation}
+    \mathcal{P}^{(0)} = \{\mathbf{q}_1,\mathbf{q}_2,\dots,\mathbf{q}_N\}.
+\end{equation}
+\nomenclature{$\mathcal{P}^{(0)}$}{Initial population of candidate decision vectors}
+\nomenclature{$N$}{Population size}
+
+Each candidate decision vector $\mathbf{q}_k$ is then transformed into a
+Cartesian gripper configuration $\mathbf{p}_k$ before objective evaluation.
+
+\subsection{Objective Function Evaluation of Multi-Suction Cup Gripper via API}
+
+The evaluation of objective values is decoupled from the optimization loop and
+delegated to an external evaluation service. For each candidate solution
+$\mathbf{q}$, the corresponding Cartesian suction cup coordinates are first
+computed by transforming the radial and angular parameters into 3D positions.
+The resulting Cartesian gripper configuration is then passed to the evaluation
+endpoint, which executes the grasp evaluation procedure and returns the
+objective values.
+
+This process can be written as
+\begin{equation}
+    \mathbf{p} = T(\mathbf{q}),
+    \qquad
+    \mathbf{f}(\mathbf{q}) = \mathbf{f}(T(\mathbf{q}))
+    = \texttt{API\_call}(\mathbf{p})
+    \rightarrow
+    [f_1(\mathbf{p}),\; f_2(\mathbf{p})].
+\end{equation}
+where $T(\cdot)$ denotes the transformation from the reduced parameterization
+to Cartesian suction cup coordinates.
+\nomenclature{$T(\mathbf{q})$}{Transformation from reduced decision variables to Cartesian suction cup coordinates}
+
+In the implementation, this transformation is carried out programmatically in
+the evaluation pipeline before grasp generation and objective computation. For
+a candidate radius and list of angles, the suction cup coordinates are
+constructed as
+\begin{equation}
+    \mathbf{c}_i = (r\cos(\alpha_i),\; r\sin(\alpha_i),\; z_0),
+    \qquad i=1,2,3.
+\end{equation}
+
+This architecture enables:
+\begin{itemize}
+    \item Separation of concerns between optimization logic and domain-specific evaluation
+    \item Scalability through independent deployment of the evaluation service
+    \item Reusability of the optimization framework for different problem domains
+\end{itemize}
+
+\subsubsection{Grasp Evaluation}
+\label{sec:grasp_eval}
+
+The evaluation service receives a Cartesian gripper configuration
+$\mathbf{p} = [\mathbf{c}_1,\mathbf{c}_2,\mathbf{c}_3]$ and computes the
+associated grasp quality measures through the following procedure.
+
+\begin{enumerate}
+    \item \textbf{Candidate Grasp Generation}
+
+    A finite set of candidate suction grasps is generated from a uniform
+    sampling of the workpiece surface. Let
+    \begin{equation}
+        \mathcal{U} = \{\mathbf{u}_1,\mathbf{u}_2,\dots,\mathbf{u}_M\}
+    \end{equation}
+    denote the sampled surface points, where $M$ is the number of initial
+    samples. Each sampled point defines one candidate grasp by aligning the
+    tool center point of the gripper with the corresponding surface location
+    and local surface orientation.
+
+    In the initial implementation, $M=100$ surface points were sampled.
+    However, this occasionally resulted in too few valid grasps after
+    collision filtering, which led to unstable behavior of the diversity
+    objective. To reduce this effect, the sampling density was increased to
+    $M=1000$. The denser sampling provides a richer set of grasp candidates
+    and substantially decreases the likelihood of degenerate cases with very
+    few valid grasps.
+    \nomenclature{$\mathcal{U}$}{Set of sampled surface points on the workpiece}
+    \nomenclature{$\mathbf{u}_i$}{Sampled surface point on the workpiece}
+    \nomenclature{$M$}{Number of initially sampled surface points}
+
+    \item \textbf{Collision Filtering}
+
+    The gripper is modeled as a rigid 3D body with fixed height, forming a
+    triangular prism whose base is defined by the three Cartesian suction cup
+    positions contained in $\mathbf{p}$.
+
+    Let
+    \begin{equation}
+        \mathcal{G}_{\mathrm{cand}} = \{g_1,g_2,\dots,g_M\}
+    \end{equation}
+    denote the set of candidate grasps generated from the sampled surface
+    points. After collision checking, only collision-free grasps are retained:
+    \begin{equation}
+        \mathcal{G}_{\mathrm{valid}} =
+        \{ g \in \mathcal{G}_{\mathrm{cand}} \mid g \text{ is collision-free} \}.
+    \end{equation}
+
+    This step removes physically infeasible grasps and yields the set of valid
+    grasp candidates used in subsequent evaluation.
+    \nomenclature{$\mathcal{G}_{\mathrm{cand}}$}{Set of candidate grasps generated from sampled surface points}
+    \nomenclature{$\mathcal{G}_{\mathrm{valid}}$}{Set of valid collision-free grasps}
+
+    \item \textbf{Clustering of Grasps}
+
+    The set $\mathcal{G}_{\mathrm{valid}}$ often contains many grasps that are
+    nearly identical in position and orientation. When the number of valid
+    grasps $m = |\mathcal{G}_{\mathrm{valid}}|$ exceeds a threshold
+    $\texttt{nb\_grasps\_clustering}$, a farthest-point clustering procedure is
+    applied to select a diverse reduced subset. Otherwise, all valid grasps
+    are used directly.
+
+    Each grasp $g_i$ is represented by a pose descriptor
+    \begin{equation}
+        \mathbf{z}_i =
+        [\,\mathrm{vec}(\mathbf{R}_i)^\top,\ \mathbf{t}_i^\top\,]^\top
+        \in \mathbb{R}^{12},
+    \end{equation}
+    where $\mathbf{R}_i \in SO(3)$ is the orientation and
+    $\mathbf{t}_i \in \mathbb{R}^3$ is the position. Two distances are used:
+    the translational distance
+    \begin{equation}
+        d_{\mathrm{pos}}(i,j) = \|\mathbf{t}_i - \mathbf{t}_j\|_2
+    \end{equation}
+    and the orientation distance
+    \begin{equation}
+        d_{\mathrm{ori}}(i,j) =
+        \frac{1}{9}
+        \|\mathrm{vec}(\mathbf{R}_i) - \mathrm{vec}(\mathbf{R}_j)\|_2^2.
+    \end{equation}
+
+    Cluster centers are selected greedily by farthest-point sampling in
+    position space. The first center is the grasp with the largest mean
+    translational distance to all others, and each subsequent center maximizes
+    its minimum distance to the already selected centers. This promotes broad
+    spatial coverage.
+
+    Optionally, orientation diversity is added within each center's local
+    neighborhood. For a selected center $m_k$, grasps within a spatial radius
+    $\delta_{\mathrm{intra}}$ form a neighborhood, from which up to
+    $q_{\mathrm{intra}}$ additional grasps are chosen by farthest-point
+    sampling on $d_{\mathrm{ori}}$, capturing distinct orientations at similar
+    positions.
+
+    The resulting clustered subset
+    \begin{equation}
+        \mathcal{G}_{\mathrm{clustered}} \subseteq \mathcal{G}_{\mathrm{valid}}
+    \end{equation}
+    is then used for diversity evaluation.
+    \nomenclature{$\mathcal{G}_{\mathrm{clustered}}$}{Reduced clustered grasp set used for diversity evaluation}
+    \nomenclature{$d_{\mathrm{pos}}(i,j)$}{Pairwise translational distance between grasp poses $i$ and $j$}
+    \nomenclature{$d_{\mathrm{ori}}(i,j)$}{Pairwise orientation distance between grasp poses $i$ and $j$}
+    \nomenclature{$\delta_{\mathrm{intra}}$}{Spatial threshold for selecting additional local representatives}
+    \nomenclature{$q_{\mathrm{intra}}$}{Maximum number of local orientation-diverse representatives}
+
+    \item \textbf{Triangle Area Calculation}
+
+    The area of the triangle formed by the three suction cups is computed from
+    their Cartesian coordinates. If the planar coordinates of the three cups
+    are $(x_1,y_1)$, $(x_2,y_2)$, and $(x_3,y_3)$, then
+    \begin{equation}
+        A(\mathbf{p}) =
+        \frac{1}{2}
+        \left|
+            (x_2 - x_1)(y_3 - y_1) - (x_3 - x_1)(y_2 - y_1)
+        \right|.
+    \end{equation}
+
+    This objective favors gripper layouts with a wider support polygon, which
+    is associated with improved grasp stability.
+    \nomenclature{$A(\mathbf{p})$}{Area of the triangle formed by the three suction cups}
+
+
+\item \textbf{Diversity Metric Calculation}
+
+A diversity score $D(\mathbf{p})$ is computed to quantify how broadly the
+resulting valid grasp set is distributed in position and orientation.
+
+Let the set used for diversity evaluation contain $n$ grasps. If clustering is
+performed, then
+\begin{equation}
+    n = |\mathcal{G}_{\mathrm{clustered}}|,
+\end{equation}
+otherwise
+\begin{equation}
+    n = |\mathcal{G}_{\mathrm{valid}}|.
+\end{equation}
+
+Let the corresponding grasp positions be
+\begin{equation}
+    \{\mathbf{y}_1,\dots,\mathbf{y}_n\}
+\end{equation}
+and the corresponding orientation matrices be
+\begin{equation}
+    \{\mathbf{R}_1,\dots,\mathbf{R}_n\}.
+\end{equation}
+
+To normalize the spatial term with respect to object size, a characteristic
+object scale is defined as the Euclidean norm of the axis-aligned bounding-box
+extents:
+\begin{equation}
+    s = \|\mathbf{e}\|_2,
+\end{equation}
+where $\mathbf{e} \in \mathbb{R}^3$ contains the bounding-box side lengths.
+\nomenclature{$s$}{Characteristic object scale derived from the mesh bounding box}
+\nomenclature{$\mathbf{e}$}{Axis-aligned bounding-box side lengths of the object}
+\nomenclature{$\mathbf{y}_i$}{Position of grasp $i$ used in diversity evaluation}
+
+The spatial component of diversity is computed as the mean pairwise Euclidean
+distance between grasp positions:
+\begin{equation}
+    D_{\mathrm{pos}}(\mathbf{p}) =
+    \frac{1}{s}
+    \cdot
+    \frac{1}{n(n-1)}
+    \sum_{\substack{i,j=1 \\ i \neq j}}^{n}
+    \|\mathbf{y}_i - \mathbf{y}_j\|_2.
+\end{equation}
+
+The orientation component is computed from the mean pairwise geodesic distance
+between rotation matrices. For two grasp orientations
+$\mathbf{R}_a,\mathbf{R}_b \in SO(3)$, the relative rotation is
+\begin{equation}
+    \Delta \mathbf{R} = \mathbf{R}_a^\top \mathbf{R}_b
+\end{equation}
+and the associated geodesic distance is
+\begin{equation}
+    d_{\mathrm{geo}}(\mathbf{R}_a,\mathbf{R}_b)
+    =
+    \cos^{-1}\left(
+        \frac{\mathrm{tr}(\Delta \mathbf{R}) - 1}{2}
+    \right).
+\end{equation}
+
+For numerical stability, the argument of $\cos^{-1}$ is clipped to the interval
+$[-1,1]$.
+
+The normalized orientation diversity is then defined as
+\begin{equation}
+    D_{\mathrm{rot}}(\mathbf{p}) =
+    \frac{1}{\pi}
+    \cdot
+    \frac{2}{n(n-1)}
+    \sum_{1 \leq i < j \leq n}
+    d_{\mathrm{geo}}(\mathbf{R}_i,\mathbf{R}_j).
+\end{equation}
+
+The final diversity score is computed as the equally weighted combination
+\begin{equation}
+    D(\mathbf{p}) =
+    \mathrm{clip}\left(
+        0.5\,D_{\mathrm{pos}}(\mathbf{p}) +
+        0.5\,D_{\mathrm{rot}}(\mathbf{p}),
+        0, 1
+    \right).
+\end{equation}
+\nomenclature{$D(\mathbf{p})$}{Diversity metric of the grasp distribution}
+\nomenclature{$D_{\mathrm{pos}}(\mathbf{p})$}{Spatial component of the diversity metric}
+\nomenclature{$D_{\mathrm{rot}}(\mathbf{p})$}{Orientation component of the diversity metric}
+\nomenclature{$d_{\mathrm{geo}}(\mathbf{R}_a,\mathbf{R}_b)$}{Geodesic distance between two grasp orientations}
+\nomenclature{$\Delta\mathbf{R}$}{Relative rotation between two grasp orientations}
+\nomenclature{$n$}{Number of grasps used for diversity evaluation}
+
+\paragraph{Continuity considerations}
+Clustering is only applied when the number of valid grasps exceeds the
+predefined threshold $\texttt{nb\_grasps\_clustering}$. If fewer valid grasps
+are available, clustering is skipped and the diversity metric is evaluated
+directly on the valid grasp set. Therefore, the omission of clustering does not
+by itself introduce a discontinuity in the objective function.
+
+A discontinuity may arise only in the degenerate case where fewer than two
+valid grasps remain after collision filtering. Since both the spatial and
+orientation components of the diversity metric are based on pairwise distances,
+these terms cannot be evaluated meaningfully for $n<2$. In that case, the
+corresponding terms are set to zero. As a result, small changes in the gripper
+configuration may cause an abrupt transition between a nonzero diversity score
+and a degenerate zero-valued diversity contribution.
+
+To reduce the likelihood of this case, the number of initially sampled surface
+points was increased from 100 to 1000. The denser surface sampling produces a
+larger set of candidate grasps and makes it much less likely that fewer than
+two valid grasps remain after filtering. Consequently, the diversity metric is
+evaluated on a sufficiently rich grasp set in the vast majority of cases,
+yielding a more stable optimization objective in practice.
+\end{enumerate}
+
+\subsubsection{Objective Evaluation}
+
+After grasp evaluation, each candidate layout is assigned the objective vector
+\begin{equation}
+    \mathbf{f}(\mathbf{q}) = [-A(\mathbf{p}),\; -D(\mathbf{p})],
+    \qquad \mathbf{p} = T(\mathbf{q}).
+\end{equation}
+\nomenclature{$\mathbf{f}(\mathbf{q})$}{Multi-objective function vector for a candidate decision vector}
+
+Here, $A(\mathbf{p})$ is maximized because a larger triangle area is associated
+with improved support and stability, and $D(\mathbf{p})$ is maximized because
+greater diversity of valid grasps is associated with improved robustness.
+Since \textit{pymoo} assumes minimization by convention, both objectives are
+negated.
+
+\subsection{Optimization Loop for Multi-Suction Cup Gripper}
+
+The evolutionary optimization proceeds as follows:
+\begin{equation}
+    \mathcal{P}^{(t+1)} =
+    \mathcal{A}\left(\mathcal{P}^{(t)},\; \mathbf{f}\right),
+    \qquad t = 0,1,\dots
+\end{equation}
+\nomenclature{$\mathcal{A}$}{Selected multi-objective evolutionary algorithm}
+\nomenclature{$t$}{Generation index}
+
+Here, $\mathcal{A}$ denotes the chosen algorithm performing selection,
+crossover, mutation, and survival operations on the population of candidate
+decision vectors.
+
+\subsection{Termination Criteria for Multi-Suction Cup Gripper Optimization}
+
+The optimization terminates when any of the following conditions is satisfied:
+
+\begin{table}[htbp]
+\centering
+\caption{Termination criteria.}
+\label{tab:termination}
+\begin{tabular}{lll}
+\toprule
+\textbf{Criterion} & \textbf{Symbol} & \textbf{Description} \\
+\midrule
+Design space tolerance     & $x_{\text{tol}}$ & Change in decision variables below threshold \\
+Objective space tolerance  & $f_{\text{tol}}$ & Relative improvement in objectives below threshold \\
+Maximum generations        & $G_{\max}$       & Maximum number of generations reached \\
+Maximum evaluations        & $E_{\max}$       & Maximum number of function evaluations reached \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The tolerances are evaluated over a sliding window of $w$ generations.
+\nomenclature{$x_{\text{tol}}$}{Design space convergence tolerance}
+\nomenclature{$f_{\text{tol}}$}{Objective space convergence tolerance}
+\nomenclature{$G_{\max}$}{Maximum number of generations}
+\nomenclature{$E_{\max}$}{Maximum number of function evaluations}
+
+\subsection{Performance Monitoring for Multi-Suction Cup Gripper}
+
+The hypervolume indicator~\cite{hypervolume} is tracked at each generation via
+a callback mechanism:
+\begin{equation}
+    \text{HV}^{(t)} = \text{HV}(\mathcal{F}^{(t)},\mathbf{r})
+\end{equation}
+\nomenclature{$\text{HV}^{(t)}$}{Hypervolume indicator at generation $t$}
+\nomenclature{$\mathbf{r}$}{Reference point for hypervolume computation}
+\nomenclature{$\mathcal{F}^{(t)}$}{Objective values of the population at generation $t$}
+
+Here, $\mathbf{r} \in \mathbb{R}^{n_{\text{obj}}}$ is the reference point and
+$\mathcal{F}^{(t)}$ denotes the set of objective vectors at generation $t$. A
+monotonically increasing hypervolume indicates convergence toward the Pareto
+front.
+
+\subsection{Optional Hyperparameter Optimization for Multi-Suction Cup Gripper Problem}
+
+The framework optionally supports automated tuning of algorithm
+hyperparameters, such as crossover probability and mutation rate, using a
+meta-optimization approach. A \texttt{HyperparameterProblem} is constructed
+around the selected algorithm and evaluated over multiple random seeds. The
+mean hypervolume across runs serves as the meta-objective:
+\begin{equation}
+    \min_{\boldsymbol{\theta}}
+    \left\{
+        -\frac{1}{|\mathcal{Z}|}
+        \sum_{s \in \mathcal{Z}} \text{HV}(\mathcal{F}_s,\mathbf{r})
+    \right\}
+\end{equation}
+\nomenclature{$\boldsymbol{\theta}$}{Algorithm hyperparameters}
+\nomenclature{$\mathcal{Z}$}{Set of random seeds for meta-optimization}
+
+The best hyperparameters are then applied to the main optimization run.
+
+\subsection{Output of Multi-Suction Cup Gripper Optimization}
+
+The optimization produces a set of Pareto-optimal solutions:
+\begin{equation}
+    \mathcal{P}^* =
+    \left\{
+        \mathbf{q}
+        \;\middle|\;
+        \nexists\; \mathbf{q}' \in \mathcal{P} :
+        \mathbf{f}(\mathbf{q}') \preceq \mathbf{f}(\mathbf{q})
+    \right\}.
+\end{equation}
+\nomenclature{$\mathcal{P}^*$}{Set of Pareto-optimal solutions in the reduced decision space}
+
+The final output includes:
+\begin{itemize}
+    \item The Pareto-optimal set $\mathcal{P}^*$ in the reduced decision space, with corresponding objective values
+    \item The associated radial gripper parameterizations $\mathbf{q} = [r,\alpha_1,\alpha_2,\alpha_3]$
+    \item The hypervolume progression $\{\text{HV}^{(0)},\text{HV}^{(1)},\dots,\text{HV}^{(T)}\}$
+    \item Total optimization wall-clock time
+\end{itemize}
+
+These solutions represent optimal trade-offs between grasp diversity and
+triangle area, i.e., grasp robustness and stability.

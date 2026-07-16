@@ -1,0 +1,58 @@
+\section{Motivation}
+\label{sec:motivation}
+
+Robotic grasping is a fundamental capability in automated manufacturing, logistics, and service robotics\cite{Todescato}. The ability to reliably grasp objects of
+varying shapes, sizes, and surface properties remains a challenging problem, particularly in unstructured environments\cite{Dinakaran2022A}. Industrial applications such
+as bin picking, assembly, and material handling require grippers that can operate robustly across a wide range of workpieces\cite{Kang2019Design}.
+
+Among the commonly used end-effectors, suction-cup grippers and two-finger grippers represent two complementary approaches\cite{Courchesne2023A}. Suction grippers are
+widely used for handling objects with smooth surfaces due to their simplicity and speed, whereas two-finger grippers provide flexibility in handling
+objects with complex geometries. Designing optimal configurations for these grippers is non-trivial, as grasp performance depends on multiple
+interacting factors such as geometry, contact distribution, force limits, and collision constraints\cite{Liu2024Topology}.
+
+While the gripper configuration problems are well-motivated in themselves, the \textbf{primary objective of this thesis} is not simply to find the
+best gripper configuration, but to \textbf{systematically apply and compare optimization algorithms} for solving these configuration problems. A large
+number of optimization algorithms exist, spanning evolutionary strategies, decomposition-based methods, indicator-based selection, and Bayesian
+optimization, yet their relative suitability for gripper design problems of this type is not well understood. Different algorithms may exhibit
+substantially different convergence behaviour, solution quality, and robustness depending on the structure of the objective landscape and the
+dimensionality of the search space. Identifying which algorithm class performs best for each gripper problem is therefore a practically relevant and
+scientifically meaningful research question\cite{Doerterler2021Analyzing}.
+
+To provide a rigorous and reproducible basis for this comparison, two gripper configuration problems are formulated as well-defined multi-objective
+optimization tasks. In both cases, a diverse set of workpieces is incorporated directly into the problem formulation by treating each workpiece as a
+separate objective. This design choice ensures that the optimized gripper configurations are not tailored to a single
+geometry, but are instead robust across a range of workpiece shapes. It also increases the dimensionality of the objective space as the number of
+workpieces grows, allowing the benchmarking study to probe algorithm behaviour under varying levels of problem complexity\cite{Guo2022Evolutionary}.
+
+For the \textbf{multi-suction-cup gripper}, the objectives consist of the geometric stability of the suction base together with the grasp diversity
+evaluated independently for each workpiece. These objectives are inherently conflicting: a larger suction base improves stability but increases the
+risk of collisions with the workpiece, reducing the number of feasible grasps.
+
+For the \textbf{two-finger gripper}, each workpiece contributes one objective, representing how well the optimized finger contour conforms to that
+particular workpiece geometry. A finger contour that scores well across all workpieces simultaneously must generalize across diverse geometric
+profiles, making the problem increasingly challenging as more workpieces are added\cite{Liu2024Topology}.
+
+Together, these two problems provide a structured experimental basis for comparing optimization algorithms across varying objective space
+dimensionalities and objective landscape characteristics, within the practically relevant domain of robotic gripper design.
+
+
+% The \textbf{multi-suction-cup gripper} problem is cast as a bi-objective optimization task. The spatial arrangement of suction cups influences two
+% competing performance aspects:
+
+% \begin{enumerate} \item \textbf{Support Triangle Area:} The area of the geometric base formed by the suction cups determines grasp stability and
+%     resistance to external disturbances. A larger base provides better force distribution and tilt resistance.
+
+%     \item \textbf{Grasp Diversity:} The number, spatial location, and orientation of valid collision-free grasps achievable on a given workpiece. This
+%     metric is inherently workpiece-dependent, as the gripper geometry must conform to the object's surface without collisions.
+% \end{enumerate}
+
+% These two objectives are inherently conflicting: a larger suction cup base improves stability but increases the likelihood of collisions with the
+% workpiece, thereby reducing the number of feasible grasps. This conflict makes the problem a suitable benchmark for \textbf{multi-objective
+% evolutionary algorithms} such as NSGA-II, NSGA-III, MOEA/D, SMS-EMOA, and CMOPSO, as well as \textbf{multi-objective Bayesian optimization} methods.
+
+% The \textbf{two-finger gripper} problem is cast as a single-objective optimization task. The finger contour is parameterized by a spline defined
+% through five points, three of which have variable vertical positions $h_{\mathrm{spline},i}$ ($i = 2, 3, 4$), along with the gripper nose length
+% $l_{\mathrm{gn}}$ and depth $d_{\mathrm{gn}}$. The objective is to maximize the voxel-based proximity score $s_{\max}(\mathbf{q})$, computed via
+% FFT-based convolution between the voxelized gripper and workpiece geometries. A configuration is valid only if the required finger opening
+% corresponds to a physical closing motion. This five-dimensional, black-box, single-objective problem serves as a benchmark for
+% \textbf{single-objective evolutionary algorithms} and \textbf{Bayesian optimization} methods.

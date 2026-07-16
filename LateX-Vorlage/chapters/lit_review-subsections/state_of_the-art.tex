@@ -1,0 +1,14 @@
+\section{State of the Art}
+\label{sec:state_of_the_art}
+
+Current research has made substantial progress in robotic grasp planning, adaptive gripper design, and task-specific end-effector optimization. In
+multi-suction grasping, recent methods focus on grasp pose selection, cup activation strategies, and motion safety, but typically assume a fixed
+suction layout and do not systematically study how cup arrangement affects the trade-off between stability and grasp availability
+\cite{Schillinger2023Model-Free} \cite{Geng2025Experimental} \cite{Lee2024Grasp}. In two-finger grasping, prior work has addressed compliant, soft,
+and underactuated finger designs, but direct optimization of rigid jaw geometry using workpiece-dependent, collision-aware metrics remains less
+explored \cite{Sun2022LARG:} \cite{Dong2018Geometric} \cite{Xie2024Design}. Furthermore, none of these works conduct a comparative evaluation of
+optimization algorithms for the respective problem class.
+
+This thesis addresses these gaps by treating gripper geometry as the primary optimization variable for both end-effector types, and by embedding the
+evaluation within a black-box multi-objective framework that enables systematic algorithm benchmarking across a diverse set of workpieces. The
+contribution lies not only in the problem formulations themselves, but in the rigorous comparison of optimization algorithms applied to them.

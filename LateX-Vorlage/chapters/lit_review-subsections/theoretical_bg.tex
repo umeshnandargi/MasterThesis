@@ -1,0 +1,222 @@
+\section{Theoretical Background}
+\label{sec:theoretical_background}
+
+\subsection{Optimization Theory}
+\label{subsec:optimization_theory}
+
+\subsubsection{Black-Box Optimization}
+\label{subsubsec:black_box_optimization}
+
+A black-box optimization problem is one in which the objective function has no known analytical form and no gradient information is available to the
+optimizer\cite{Audet2017Derivative-Free}. The function can only be queried at candidate input points, returning a scalar or vector output. This
+setting arises naturally in engineering design when objectives are evaluated through computationally expensive procedures, making gradient computation
+either impossible or impractical. Because each function evaluation may be costly, black-box optimizers must find high-quality solutions within a
+limited evaluation budget, placing emphasis on sample efficiency\cite{Jones2022Constrained}. The gripper configuration problems addressed in this
+thesis fall squarely within this category: objective values are computed through a series of geometric and numerical calculations applied to the
+candidate gripper configuration, and no closed-form expression exists that directly maps the decision variables to either the contact quality score or
+the grasp diversity metric.
+
+\subsubsection{Multi-Objective Optimization}
+\label{subsubsec:multi_objective_optimization}
+
+Multi-objective optimization (MOO) refers to the simultaneous optimization of two or more conflicting objective functions over a shared decision
+space\cite{Deb2011Multi-objective}. Formally, a multi-objective minimization problem is defined as:
+
+\begin{equation}
+    \min_{\mathbf{x} \in \mathcal{X}} \mathbf{f}(\mathbf{x}) =
+    \bigl(f_1(\mathbf{x}),\, f_2(\mathbf{x}),\, \ldots,\, f_k(\mathbf{x})\bigr)
+\end{equation}
+
+where $\mathbf{x}$ is the decision variable vector, $\mathcal{X}$ is the feasible decision space, and $k \geq 2$ is the number of objectives. When
+objectives conflict, no single solution minimizes all objectives simultaneously. Instead, a set of trade-off solutions exists, collectively forming
+the Pareto front. The goal of a multi-objective optimizer is therefore not to find a single best solution but to approximate this trade-off surface as
+accurately and completely as possible\cite{Deb2011Multi-objective,Gunantara2018A}.
+
+\subsubsection{Pareto Optimality}
+\label{subsubsec:pareto_optimality}
+
+The concept of Pareto optimality provides the theoretical foundation for comparing solutions in a multi-objective setting. A solution
+$\mathbf{x}^{(a)}$ is said to \emph{dominate} $\mathbf{x}^{(b)}$, written $\mathbf{x}^{(a)} \prec \mathbf{x}^{(b)}$, if and only if:
+
+\begin{equation}
+    f_i(\mathbf{x}^{(a)}) \leq f_i(\mathbf{x}^{(b)}) \quad \forall\, i \in
+    \{1,\ldots,k\}
+    \quad \text{and} \quad
+    f_j(\mathbf{x}^{(a)}) < f_j(\mathbf{x}^{(b)}) \quad \text{for at least
+    one } j
+\end{equation}
+
+A solution is called \emph{Pareto optimal} if no other feasible solution dominates it. The set of all Pareto-optimal solutions in the decision space
+is the \emph{Pareto set}, and its image in the objective space is the \emph{Pareto front}. In practice, algorithms compute an approximation of the
+Pareto front, and the quality of this approximation is assessed using performance indicators such as the hypervolume
+indicator\cite{Audet2018Performance,Shang2021A}.
+
+\subsubsection{Evolutionary Algorithms}
+\label{subsubsec:evolutionary_algorithms}
+
+Evolutionary algorithms (EAs) are a family of population-based metaheuristics inspired by the principles of biological evolution. A population of
+candidate solutions is maintained across discrete generations. At each generation, new candidate solutions are generated through variation operators
+typically crossover, which recombines pairs of existing solutions, and mutation, which introduces random perturbations and a selection mechanism
+retains the most promising individuals for the next generation based on their objective values. This loop continues until a termination criterion is
+met, such as a maximum number of function evaluations or convergence of the population\cite{Abulail2025Enhanced}.
+
+EAs are well suited to black-box multi-objective optimization because they require no gradient information, naturally maintain a diverse population of
+trade-off solutions, and are robust to noisy or discontinuous objective landscapes. Multi-objective evolutionary algorithms (MOEAs) extend the basic
+EA framework with selection mechanisms based on Pareto dominance or decomposition, enabling them to approximate the Pareto front in a single
+run\cite{Ishibuchi2017Performance,Li2015An}.
+
+\subsubsection{Bayesian Optimization}
+\label{subsubsec:bayesian_optimization}
+
+Bayesian optimization (BO) is a sequential model-based strategy for the global optimization of expensive black-box functions. A probabilistic
+surrogate model most commonly a Gaussian process (GP) is fitted to the observations collected so far\cite{Frazier2018A}. The GP provides both a mean
+prediction and an uncertainty estimate at unobserved locations, which together define an \emph{acquisition function} that balances exploration of
+uncertain regions with exploitation of promising ones\cite{Frazier2018A,Candelieri2021A}. The point that maximizes the acquisition function is
+selected as the next evaluation, after which the surrogate is updated and the process repeats\cite{Wang2022Recent}.
+
+\subsubsection{Hyperparameter Tuning}
+\label{subsubsec:hyperparameter_tuning}
+
+Optimization algorithms expose a set of hyperparameters such as population size, crossover probability, and mutation rate that control their search
+behaviour but are not adapted during the optimization run itself. The choice of hyperparameters can substantially affect algorithm performance, and
+using default values may systematically favour or disadvantage certain algorithms in a comparative
+study\cite{Sivaprasad2019Optimizer,Ishibuchi2022Difficulties}.
+
+Hyperparameter tuning addresses this by searching the hyperparameter space for settings that improve algorithm performance on the problem at hand
+before the main optimization run begins. In this thesis, algorithm hyperparameters are initialized from the default values provided by the
+\texttt{pymoo} framework\cite{pymoo}. Where the optimization pipeline is configured to do so, a Bayesian optimization procedure is executed prior to
+the main run to replace these defaults with problem-specific settings, reducing the risk of performance bias from incidental parameter
+choices\cite{Probst2018Tunability:}.
+
+%-------------------------------------------------------------------
+\subsection{Multi-Objective Evolutionary Algorithms}
+\label{subsec:moea}
+
+The candidate algorithms evaluated in this thesis are all members of the multi-objective evolutionary algorithm (MOEA) family. Each follows the
+general EA loop described in Section~\ref{subsubsec:evolutionary_algorithms} but differs in how it guides selection toward a well-distributed
+approximation of the Pareto front. Brief introductions to each algorithm are given below.
+
+\subsubsection{NSGA-II}
+\label{subsubsec:nsga2}
+
+The Non-dominated Sorting Genetic Algorithm II (NSGA-II) is among the most widely adopted MOEAs. Its selection mechanism is based on two criteria
+applied in sequence. First, the entire population is sorted into non-domination ranks: all non-dominated solutions receive rank 1, they are removed,
+and the process repeats until every individual has a rank. Second, within the same rank, solutions are ordered by \emph{crowding distance}, a density
+estimate that measures how isolated a solution is from its neighbours in the objective space. Solutions with a higher crowding distance are preferred,
+encouraging spread along the Pareto front. NSGA-II uses an elitist strategy in which the combined parent and offspring population of size $2N$ is
+truncated to $N$ using these two criteria. Its computational complexity per generation is $\mathcal{O}(kN^2)$, where $k$ is the number of objectives
+and $N$ is the population size\cite{nsga2}.
+
+\subsubsection{NSGA-III}
+\label{subsubsec:nsga3}
+
+NSGA-III extends NSGA-II to problems with three or more objectives (many-objective problems), where crowding distance becomes an unreliable diversity
+measure. Instead of crowding distance, NSGA-III uses a set of structured \emph{reference points} distributed uniformly on a normalized hyperplane in
+the objective space. Solutions are associated with their closest reference point, and selection preference is given to solutions that are associated
+with under-represented reference points and lie closest to their reference line. This mechanism explicitly promotes diversity across the objective
+space and has been shown to outperform NSGA-II on problems with three or more objectives\cite{nsga3}.
+
+\subsubsection{MOEA/D}
+\label{subsubsec:moead}
+
+MOEA/D (Multi-Objective Evolutionary Algorithm based on Decomposition) takes a fundamentally different approach from Pareto-ranking methods. The
+multi-objective problem is decomposed into $N$ scalar subproblems using a set of evenly distributed weight vectors and an aggregation function such as
+the weighted Chebyshev scalarization. Each subproblem is optimized simultaneously, with solutions sharing information within a defined neighbourhood
+of weight vectors. This neighbourhood-based collaborative search makes MOEA/D computationally efficient and well suited to problems where the Pareto
+front has a regular structure. Its complexity per generation is lower than NSGA-II, as it avoids global non-dominated sorting\cite{pymoo}.
+
+\subsubsection{SMS-EMOA}
+\label{subsubsec:smsemoa}
+
+The S-Metric Selection Evolutionary Multi-Objective Algorithm (SMS-EMOA) uses the hypervolume indicator directly as its selection criterion. It
+operates as a steady-state algorithm: at each step, a single offspring is generated, added to the population, and the individual that contributes the
+least to the population hypervolume is removed. This ensures that the population always converges toward solutions that maximize the dominated
+hypervolume with respect to a reference point. SMS-EMOA is particularly well suited to problems where solution quality is to be measured by the
+hypervolume indicator, as its selection pressure is directly aligned with that metric\cite{smsemoa}.
+
+\subsubsection{CMOPSO}
+\label{subsubsec:cmopso}
+
+The Competitive Multi-Objective Particle Swarm Optimizer (CMOPSO) adapts the particle swarm optimization (PSO) framework to the multi-objective
+setting. In standard PSO, each particle moves through the decision space guided by its personal best position and a global best position. CMOPSO
+introduces a competitive mechanism in which particles compete in pairs within the swarm; the losing particle updates its velocity by learning from the
+winning particle rather than from a fixed global best. An external archive of non-dominated solutions is maintained to provide guidance and preserve
+diversity across the Pareto front. This competitive selection strategy avoids premature convergence to a single region of the Pareto front and has
+been shown to achieve fast convergence while remaining competitive with dominance-based MOEAs on standard benchmark problems\cite{cmopso}.
+
+%-------------------------------------------------------------------
+\subsection{Gripper Theory and Geometric Representation}
+\label{subsec:gripper_theory}
+
+\subsubsection{Grasp Theory}
+\label{subsubsec:grasp_theory}
+
+A grasp is a configuration of contact points between a gripper and a workpiece such that the gripper can resist external forces and torques applied to
+the object\cite{Prattichizzo2014Robot}. The classical criterion for grasp quality is \emph{force closure}: a grasp is force-closed if the contact
+forces available at the contact points can produce any net wrench on the object, meaning that arbitrary disturbances can be
+resisted\cite{Nguyen1986Constructing}. Force closure requires a sufficient number of contacts with appropriate friction properties and geometric
+placement.
+
+\subsubsection{Suction Cup Gripper and Grasp Diversity}
+\label{subsubsec:suction_cup_theory}
+
+The \emph{diversity} of a grasp set can be quantified by combining two complementary measures of spatial spread.
+
+\paragraph{Geodesic Distance as a Diversity Measure.}
+The geodesic distance between two points on a surface is the length of the shortest path between them that lies entirely on the surface. As a
+diversity measure, geodesic distance captures surface-level spread that Euclidean distance in ambient space does not reflect for curved geometries. A
+larger mean geodesic distance between grasp contact points indicates broader sampling of the workpiece surface, which is desirable for robustness to
+workpiece pose variation\cite{Peyre2010Geodesic}.
+
+\paragraph{Spatial Diversity via Mean Pairwise Euclidean Distance.}
+The spatial spread of a grasp set can be quantified by the mean pairwise Euclidean distance between grasp positions in three-dimensional space,
+normalized by a characteristic object scale $s$ to ensure comparability across objects of different sizes. The characteristic scale is defined as the
+Euclidean norm of the axis-aligned bounding-box extents:
+
+\begin{equation}
+    s = \|\mathbf{e}\|_2
+\end{equation}
+
+where $\mathbf{e} \in \mathbb{R}^3$ contains the bounding-box side lengths. The normalized spatial diversity is then:
+
+\begin{equation}
+    D_{\mathrm{pos}}(\mathbf{p}) =
+    \frac{1}{s}
+    \cdot
+    \frac{1}{n(n-1)}
+    \sum_{\substack{i,j=1 \\ i \neq j}}^{n}
+    \|\mathbf{y}_i - \mathbf{y}_j\|_2
+\end{equation}
+
+where $\mathbf{y}_i \in \mathbb{R}^3$ is the position of the $i$-th grasp contact point and $n$ is the total number of grasps considered. Normalizing
+by $s$ ensures that the metric is scale-invariant, so that diversity values remain comparable across workpieces of differing sizes. This measure
+complements the geodesic measure by reflecting absolute spatial separation rather than surface-constrained distance.
+
+\subsubsection{Two-Finger Gripper and Contour Representation}
+\label{subsubsec:two_finger_theory}
+
+The two-finger gripper applies gripping forces through two opposing jaw surfaces whose contour geometry determines how well the gripper conforms to
+the workpiece. Designing the jaw contour requires a representation that is compact enough to serve as a low-dimensional decision space for
+optimization, yet expressive enough to capture smooth, physically realizable shapes. Spline parameterization is a well-established approach for this
+purpose.
+
+\paragraph{B-Splines.}
+A B-spline curve of degree $p$ is defined by a set of $n+1$ control points $\{\mathbf{P}_0, \mathbf{P}_1, \ldots, \mathbf{P}_n\}$ and a non-decreasing
+knot vector $\mathbf{t} = \{t_0, t_1, \ldots, t_{n+p+1}\}$ \cite{Eilers1996Flexible}. The curve is expressed as:
+
+\begin{equation}
+    \mathbf{C}(u) = \sum_{i=0}^{n} N_{i,p}(u)\, \mathbf{P}_i,
+    \quad u \in [t_p,\, t_{n+1}]
+\end{equation}
+
+where $N_{i,p}(u)$ are the B-spline basis functions of degree $p$, defined recursively by the Cox--de Boor recurrence
+relation\cite{Eilers1996Flexible}. B-spline curves possess the \emph{local support} property: moving a single control point affects the curve only in
+its neighbourhood, making them well suited to constrained shape optimization\cite{Hasan2024B-spline,Eilers1996Flexible}. They also guarantee $C^{p-1}$
+continuity everywhere except at repeated knots, ensuring smooth contour shapes without explicit smoothness constraints in the optimizer.
+
+\paragraph{Spline-Based Shape Parameterization.}
+Spline-based shape parameterization represents a geometric contour through a small set of control points, reducing an otherwise infinite-dimensional
+shape space to a finite-dimensional parameter vector. Boundary control points are typically fixed to satisfy geometric constraints, while interior
+control points are free to vary and serve as the design variables. The number of free control points governs the trade-off between geometric
+expressiveness and search space dimensionality: more control points allow more complex shapes but increase the dimensionality of the optimization
+problem\cite{Hasan2024B-spline,Chapelier2022Spline-based}.

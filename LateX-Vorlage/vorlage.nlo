@@ -1,25 +1,60 @@
-\nomenclatureentry{a$\mathbf{p}$@[{$\mathbf{p}$}]\begingroup Decision variable vector representing the gripper configuration\nomeqref {3.1}|nompageref}{5}
-\nomenclatureentry{a$(x_i, y_i)$@[{$(x_i, y_i)$}]\begingroup Planar position of the $i$-th suction cup\nomeqref {3.1}|nompageref}{5}
-\nomenclatureentry{a$\ell_i$@[{$\ell_i$}]\begingroup Lower bound of the $i$-th decision variable\nomeqref {3.2}|nompageref}{5}
-\nomenclatureentry{a$u_i$@[{$u_i$}]\begingroup Upper bound of the $i$-th decision variable\nomeqref {3.2}|nompageref}{5}
-\nomenclatureentry{a$n$@[{$n$}]\begingroup Number of decision variables\nomeqref {3.2}|nompageref}{5}
-\nomenclatureentry{a$\Lambda$@[{$\Lambda$}]\begingroup Set of reference directions for decomposition-based algorithms\nomeqref {3.3}|nompageref}{6}
-\nomenclatureentry{a$\mathcal{P}^{(0)}$@[{$\mathcal{P}^{(0)}$}]\begingroup Initial population of candidate solutions\nomeqref {3.4}|nompageref}{6}
-\nomenclatureentry{a$N$@[{$N$}]\begingroup Population size\nomeqref {3.4}|nompageref}{6}
-\nomenclatureentry{a$\mathcal{G}_{\text{valid}}$@[{$\mathcal{G}_{\text{valid}}$}]\begingroup Set of valid (collision-free) grasps\nomeqref {3.5}|nompageref}{7}
-\nomenclatureentry{a$K_{\min}$@[{$K_{\min}$}]\begingroup Minimum number of valid grasps required for clustering\nomeqref {3.5}|nompageref}{7}
-\nomenclatureentry{a$A(\mathbf{p})$@[{$A(\mathbf{p})$}]\begingroup Area of the triangle formed by the three suction cups\nomeqref {3.7}|nompageref}{8}
-\nomenclatureentry{a$D(\mathbf{p})$@[{$D(\mathbf{p})$}]\begingroup Diversity metric of the grasp distribution\nomeqref {3.7}|nompageref}{8}
-\nomenclatureentry{a$\mathbf{f}(\mathbf{p})$@[{$\mathbf{f}(\mathbf{p})$}]\begingroup Multi-objective function vector\nomeqref {3.7}|nompageref}{8}
-\nomenclatureentry{a$\mathcal{A}$@[{$\mathcal{A}$}]\begingroup Selected multi-objective evolutionary algorithm\nomeqref {3.8}|nompageref}{8}
-\nomenclatureentry{a$t$@[{$t$}]\begingroup Generation index\nomeqref {3.8}|nompageref}{8}
-\nomenclatureentry{a$x_{\text{tol}}$@[{$x_{\text{tol}}$}]\begingroup Design space convergence tolerance\nomeqref {3.8}|nompageref}{8}
-\nomenclatureentry{a$f_{\text{tol}}$@[{$f_{\text{tol}}$}]\begingroup Objective space convergence tolerance\nomeqref {3.8}|nompageref}{8}
-\nomenclatureentry{a$G_{\max}$@[{$G_{\max}$}]\begingroup Maximum number of generations\nomeqref {3.8}|nompageref}{8}
-\nomenclatureentry{a$E_{\max}$@[{$E_{\max}$}]\begingroup Maximum number of function evaluations\nomeqref {3.8}|nompageref}{8}
-\nomenclatureentry{a$\text{HV}^{(t)}$@[{$\text{HV}^{(t)}$}]\begingroup Hypervolume indicator at generation $t$\nomeqref {3.9}|nompageref}{8}
-\nomenclatureentry{a$\mathbf{r}$@[{$\mathbf{r}$}]\begingroup Reference point for hypervolume computation\nomeqref {3.9}|nompageref}{8}
-\nomenclatureentry{a$\mathcal{F}^{(t)}$@[{$\mathcal{F}^{(t)}$}]\begingroup Objective values of the population at generation $t$\nomeqref {3.9}|nompageref}{8}
-\nomenclatureentry{a$\boldsymbol{\theta}$@[{$\boldsymbol{\theta}$}]\begingroup Algorithm hyperparameters\nomeqref {3.10}|nompageref}{9}
-\nomenclatureentry{a$\mathcal{S}$@[{$\mathcal{S}$}]\begingroup Set of random seeds for meta-optimization\nomeqref {3.10}|nompageref}{9}
-\nomenclatureentry{a$\mathcal{P}^*$@[{$\mathcal{P}^*$}]\begingroup Set of Pareto-optimal solutions\nomeqref {3.11}|nompageref}{9}
+\nomenclatureentry{a$\mathbf{q}$@[{$\mathbf{q}$}]\begingroup Decision vector representing a candidate gripper configuration\nomeqref {3.0}|nompageref}{11}
+\nomenclatureentry{a$\mathcal{Q}$@[{$\mathcal{Q}$}]\begingroup Admissible search space of decision vectors\nomeqref {3.0}|nompageref}{11}
+\nomenclatureentry{a$d$@[{$d$}]\begingroup Number of decision variables\nomeqref {3.0}|nompageref}{11}
+\nomenclatureentry{a$m$@[{$m$}]\begingroup Number of objective functions\nomeqref {3.1}|nompageref}{11}
+\nomenclatureentry{a$n_c$@[{$n_c$}]\begingroup Number of explicit inequality constraints\nomeqref {3.2}|nompageref}{11}
+\nomenclatureentry{a$g_j(\mathbf{q})$@[{$g_j(\mathbf{q})$}]\begingroup $j$-th inequality constraint function\nomeqref {3.2}|nompageref}{11}
+\nomenclatureentry{a$q_i^{\mathrm{L}},\,q_i^{\mathrm{U}}$@[{$q_i^{\mathrm{L}},\,q_i^{\mathrm{U}}$}]\begingroup Lower and upper bounds     of the $i$-th decision variable\nomeqref {3.3}|nompageref}{11}
+\nomenclatureentry{a$\mathbf{q}$@[{$\mathbf{q}$}]\begingroup Reduced decision variable vector defining the suction cup layout\nomeqref {4.1}|nompageref}{16}
+\nomenclatureentry{a$r$@[{$r$}]\begingroup Common radial distance of the suction cups from the gripper center\nomeqref {4.1}|nompageref}{16}
+\nomenclatureentry{a$\alpha_i$@[{$\alpha_i$}]\begingroup Angular position of the $i$-th suction cup on the circle\nomeqref {4.1}|nompageref}{16}
+\nomenclatureentry{a$\mathbf{c}_i$@[{$\mathbf{c}_i$}]\begingroup Cartesian position of the $i$-th suction cup in the gripper frame\nomeqref {4.2}|nompageref}{16}
+\nomenclatureentry{a$z_0$@[{$z_0$}]\begingroup Fixed height coordinate of the suction cups\nomeqref {4.2}|nompageref}{16}
+\nomenclatureentry{a$\mathbf{p}$@[{$\mathbf{p}$}]\begingroup Cartesian suction cup configuration derived from the reduced parameterization\nomeqref {4.3}|nompageref}{16}
+\nomenclatureentry{a$r_{\min}$@[{$r_{\min}$}]\begingroup Lower bound on the common suction cup radius\nomeqref {4.8}|nompageref}{17}
+\nomenclatureentry{a$r_{\max}$@[{$r_{\max}$}]\begingroup Upper bound on the common suction cup radius\nomeqref {4.8}|nompageref}{17}
+\nomenclatureentry{a$\Lambda$@[{$\Lambda$}]\begingroup Set of reference directions for decomposition-based algorithms\nomeqref {4.9}|nompageref}{18}
+\nomenclatureentry{a$n_{\text{obj}}$@[{$n_{\text{obj}}$}]\begingroup Number of objectives\nomeqref {4.9}|nompageref}{18}
+\nomenclatureentry{a$\mathcal{P}^{(0)}$@[{$\mathcal{P}^{(0)}$}]\begingroup Initial population of candidate decision vectors\nomeqref {4.10}|nompageref}{18}
+\nomenclatureentry{a$N$@[{$N$}]\begingroup Population size\nomeqref {4.10}|nompageref}{18}
+\nomenclatureentry{a$T(\mathbf{q})$@[{$T(\mathbf{q})$}]\begingroup Transformation from reduced decision variables to Cartesian suction cup coordinates\nomeqref {4.11}|nompageref}{19}
+\nomenclatureentry{a$\mathcal{U}$@[{$\mathcal{U}$}]\begingroup Set of sampled surface points on the workpiece\nomeqref {4.13}|nompageref}{19}
+\nomenclatureentry{a$\mathbf{u}_i$@[{$\mathbf{u}_i$}]\begingroup Sampled surface point on the workpiece\nomeqref {4.13}|nompageref}{19}
+\nomenclatureentry{a$M$@[{$M$}]\begingroup Number of initially sampled surface points\nomeqref {4.13}|nompageref}{19}
+\nomenclatureentry{a$\mathcal{G}_{\mathrm{cand}}$@[{$\mathcal{G}_{\mathrm{cand}}$}]\begingroup Set of candidate grasps generated from sampled surface points\nomeqref {4.15}|nompageref}{20}
+\nomenclatureentry{a$\mathcal{G}_{\mathrm{valid}}$@[{$\mathcal{G}_{\mathrm{valid}}$}]\begingroup Set of valid collision-free grasps\nomeqref {4.15}|nompageref}{20}
+\nomenclatureentry{a$\mathcal{G}_{\mathrm{clustered}}$@[{$\mathcal{G}_{\mathrm{clustered}}$}]\begingroup Reduced clustered grasp set used for diversity evaluation\nomeqref {4.19}|nompageref}{20}
+\nomenclatureentry{a$d_{\mathrm{pos}}(i,j)$@[{$d_{\mathrm{pos}}(i,j)$}]\begingroup Pairwise translational distance between grasp poses $i$ and $j$\nomeqref {4.19}|nompageref}{20}
+\nomenclatureentry{a$d_{\mathrm{ori}}(i,j)$@[{$d_{\mathrm{ori}}(i,j)$}]\begingroup Pairwise orientation distance between grasp poses $i$ and $j$\nomeqref {4.19}|nompageref}{20}
+\nomenclatureentry{a$\delta_{\mathrm{intra}}$@[{$\delta_{\mathrm{intra}}$}]\begingroup Spatial threshold for selecting additional local representatives\nomeqref {4.19}|nompageref}{20}
+\nomenclatureentry{a$q_{\mathrm{intra}}$@[{$q_{\mathrm{intra}}$}]\begingroup Maximum number of local orientation-diverse representatives\nomeqref {4.19}|nompageref}{20}
+\nomenclatureentry{a$A(\mathbf{p})$@[{$A(\mathbf{p})$}]\begingroup Area of the triangle formed by the three suction cups\nomeqref {4.20}|nompageref}{21}
+\nomenclatureentry{a$s$@[{$s$}]\begingroup Characteristic object scale derived from the mesh bounding box\nomeqref {4.25}|nompageref}{21}
+\nomenclatureentry{a$\mathbf{e}$@[{$\mathbf{e}$}]\begingroup Axis-aligned bounding-box side lengths of the object\nomeqref {4.25}|nompageref}{21}
+\nomenclatureentry{a$\mathbf{y}_i$@[{$\mathbf{y}_i$}]\begingroup Position of grasp $i$ used in diversity evaluation\nomeqref {4.25}|nompageref}{21}
+\nomenclatureentry{a$D(\mathbf{p})$@[{$D(\mathbf{p})$}]\begingroup Diversity metric of the grasp distribution\nomeqref {4.30}|nompageref}{22}
+\nomenclatureentry{a$D_{\mathrm{pos}}(\mathbf{p})$@[{$D_{\mathrm{pos}}(\mathbf{p})$}]\begingroup Spatial component of the diversity metric\nomeqref {4.30}|nompageref}{22}
+\nomenclatureentry{a$D_{\mathrm{rot}}(\mathbf{p})$@[{$D_{\mathrm{rot}}(\mathbf{p})$}]\begingroup Orientation component of the diversity metric\nomeqref {4.30}|nompageref}{22}
+\nomenclatureentry{a$d_{\mathrm{geo}}(\mathbf{R}_a,\mathbf{R}_b)$@[{$d_{\mathrm{geo}}(\mathbf{R}_a,\mathbf{R}_b)$}]\begingroup Geodesic distance between two grasp orientations\nomeqref {4.30}|nompageref}{22}
+\nomenclatureentry{a$\Delta\mathbf{R}$@[{$\Delta\mathbf{R}$}]\begingroup Relative rotation between two grasp orientations\nomeqref {4.30}|nompageref}{22}
+\nomenclatureentry{a$n$@[{$n$}]\begingroup Number of grasps used for diversity evaluation\nomeqref {4.30}|nompageref}{22}
+\nomenclatureentry{a$\mathbf{f}(\mathbf{q})$@[{$\mathbf{f}(\mathbf{q})$}]\begingroup Multi-objective function vector for a candidate decision vector\nomeqref {4.31}|nompageref}{22}
+\nomenclatureentry{a$\mathcal{A}$@[{$\mathcal{A}$}]\begingroup Selected multi-objective evolutionary algorithm\nomeqref {4.32}|nompageref}{23}
+\nomenclatureentry{a$t$@[{$t$}]\begingroup Generation index\nomeqref {4.32}|nompageref}{23}
+\nomenclatureentry{a$x_{\text{tol}}$@[{$x_{\text{tol}}$}]\begingroup Design space convergence tolerance\nomeqref {4.32}|nompageref}{23}
+\nomenclatureentry{a$f_{\text{tol}}$@[{$f_{\text{tol}}$}]\begingroup Objective space convergence tolerance\nomeqref {4.32}|nompageref}{23}
+\nomenclatureentry{a$G_{\max}$@[{$G_{\max}$}]\begingroup Maximum number of generations\nomeqref {4.32}|nompageref}{23}
+\nomenclatureentry{a$E_{\max}$@[{$E_{\max}$}]\begingroup Maximum number of function evaluations\nomeqref {4.32}|nompageref}{23}
+\nomenclatureentry{a$\text{HV}^{(t)}$@[{$\text{HV}^{(t)}$}]\begingroup Hypervolume indicator at generation $t$\nomeqref {4.33}|nompageref}{23}
+\nomenclatureentry{a$\mathbf{r}$@[{$\mathbf{r}$}]\begingroup Reference point for hypervolume computation\nomeqref {4.33}|nompageref}{23}
+\nomenclatureentry{a$\mathcal{F}^{(t)}$@[{$\mathcal{F}^{(t)}$}]\begingroup Objective values of the population at generation $t$\nomeqref {4.33}|nompageref}{23}
+\nomenclatureentry{a$\boldsymbol{\theta}$@[{$\boldsymbol{\theta}$}]\begingroup Algorithm hyperparameters\nomeqref {4.34}|nompageref}{23}
+\nomenclatureentry{a$\mathcal{Z}$@[{$\mathcal{Z}$}]\begingroup Set of random seeds for meta-optimization\nomeqref {4.34}|nompageref}{23}
+\nomenclatureentry{a$\mathcal{P}^*$@[{$\mathcal{P}^*$}]\begingroup Set of Pareto-optimal solutions in the reduced decision space\nomeqref {4.35}|nompageref}{24}
+\nomenclatureentry{a$x_{\text{tol}}$@[{$x_{\text{tol}}$}]\begingroup Design space convergence tolerance\nomeqref {4.35}|nompageref}{24}
+\nomenclatureentry{a$f_{\text{tol}}$@[{$f_{\text{tol}}$}]\begingroup Objective space convergence tolerance\nomeqref {4.35}|nompageref}{24}
+\nomenclatureentry{a$G_{\max}$@[{$G_{\max}$}]\begingroup Maximum number of generations\nomeqref {4.35}|nompageref}{24}
+\nomenclatureentry{a$E_{\max}$@[{$E_{\max}$}]\begingroup Maximum number of function evaluations\nomeqref {4.35}|nompageref}{24}
+\nomenclatureentry{a$\boldsymbol{\theta}$@[{$\boldsymbol{\theta}$}]\begingroup Algorithm hyperparameters\nomeqref {4.36}|nompageref}{25}
+\nomenclatureentry{a$\mathcal{Z}$@[{$\mathcal{Z}$}]\begingroup Set of random seeds for meta-optimization\nomeqref {4.36}|nompageref}{25}
+\nomenclatureentry{a$\mathcal{P}^*$@[{$\mathcal{P}^*$}]\begingroup Set of Pareto-optimal solutions in the reduced decision space\nomeqref {4.37}|nompageref}{25}

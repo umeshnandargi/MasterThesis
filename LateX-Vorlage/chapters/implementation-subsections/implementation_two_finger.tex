@@ -1,0 +1,109 @@
+
+\section{Implementation of Two-Finger Gripper Optimization}
+
+This chapter presents the optimization framework developed for a multi-suction
+cup gripper consisting of three suction cups arranged in a triangular
+configuration. The framework uses the multi-objective optimization library
+\textit{pymoo}~\cite{pymoo}, while the evaluation of candidate gripper layouts
+is delegated to an external service through an API. This separation enables a
+modular architecture in which the optimization logic and the domain-specific
+grasp evaluation remain decoupled.
+
+\subsection{Decision Variables and Bounds for Two-Finger Gripper Problem}
+
+
+\subsection{Optimization Framework for Two-Finger Gripper Optimization}
+
+
+\subsubsection{Supported Algorithms}
+
+
+\subsection{Initialization of Two-Finger Gripper Problem}
+
+
+\subsection{Objective Function Evaluation of Two-Finger Gripper via API}
+
+
+
+\subsubsection{Grasp Evaluation}
+\label{sec:grasp_eval}
+
+\subsubsection{Objective Evaluation}
+
+
+\subsection{Optimization Loop for Two-Finger Gripper}
+
+
+\subsection{Termination Criteria for Two-Finger Gripper Optimization}
+
+The optimization terminates when any of the following conditions is satisfied:
+
+\begin{table}[htbp]
+\centering
+\caption{Termination criteria.}
+\label{tab:termination}
+\begin{tabular}{lll}
+\toprule
+\textbf{Criterion} & \textbf{Symbol} & \textbf{Description} \\
+\midrule
+Design space tolerance     & $x_{\text{tol}}$ & Change in decision variables below threshold \\
+Objective space tolerance  & $f_{\text{tol}}$ & Relative improvement in objectives below threshold \\
+Maximum generations        & $G_{\max}$       & Maximum number of generations reached \\
+Maximum evaluations        & $E_{\max}$       & Maximum number of function evaluations reached \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The tolerances are evaluated over a sliding window of $w$ generations.
+\nomenclature{$x_{\text{tol}}$}{Design space convergence tolerance}
+\nomenclature{$f_{\text{tol}}$}{Objective space convergence tolerance}
+\nomenclature{$G_{\max}$}{Maximum number of generations}
+\nomenclature{$E_{\max}$}{Maximum number of function evaluations}
+
+\subsection{Performance Monitoring for Two-Finger Gripper}
+
+
+\subsection{Optional Hyperparameter Optimization for Two-Finger Gripper Problem}
+
+The framework optionally supports automated tuning of algorithm
+hyperparameters, such as crossover probability and mutation rate, using a
+meta-optimization approach. A \texttt{HyperparameterProblem} is constructed
+around the selected algorithm and evaluated over multiple random seeds. The
+mean hypervolume across runs serves as the meta-objective:
+\begin{equation}
+    \min_{\boldsymbol{\theta}}
+    \left\{
+        -\frac{1}{|\mathcal{Z}|}
+        \sum_{s \in \mathcal{Z}} \text{HV}(\mathcal{F}_s,\mathbf{r})
+    \right\}
+\end{equation}
+\nomenclature{$\boldsymbol{\theta}$}{Algorithm hyperparameters}
+\nomenclature{$\mathcal{Z}$}{Set of random seeds for meta-optimization}
+
+The best hyperparameters are then applied to the main optimization run.
+
+\subsection{Output of Two-Finger Gripper Optimization}
+
+The optimization produces a set of Pareto-optimal solutions:
+\begin{equation}
+    \mathcal{P}^* =
+    \left\{
+        \mathbf{q}
+        \;\middle|\;
+        \nexists\; \mathbf{q}' \in \mathcal{P} :
+        \mathbf{f}(\mathbf{q}') \preceq \mathbf{f}(\mathbf{q})
+    \right\}.
+\end{equation}
+\nomenclature{$\mathcal{P}^*$}{Set of Pareto-optimal solutions in the reduced decision space}
+
+The final output includes:
+\begin{itemize}
+    \item The Pareto-optimal set $\mathcal{P}^*$ in the reduced decision space, with corresponding objective values
+    \item The associated radial gripper parameterizations $\mathbf{q} = [r,\alpha_1,\alpha_2,\alpha_3]$
+    \item Optionally, the derived Cartesian gripper configurations $\mathbf{p} = T(\mathbf{q})$
+    \item The hypervolume progression $\{\text{HV}^{(0)},\text{HV}^{(1)},\dots,\text{HV}^{(T)}\}$
+    \item Total optimization wall-clock time
+\end{itemize}
+
+These solutions represent optimal trade-offs between grasp diversity and
+triangle area, i.e., grasp robustness and stability.

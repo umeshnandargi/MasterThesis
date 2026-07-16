@@ -1,0 +1,240 @@
+\chapter{Methodology}
+\label{chap:methodology}
+
+This chapter describes the research methods, theoretical frameworks, and evaluation techniques employed to address the gripper configuration
+optimization problem. It is organized according to the principal methodological components of the study: problem formulation, candidate evaluation,
+optimization, comparative experimentation, and result analysis. Implementation details and experimental procedures are treated separately in the
+approach chapter.
+
+\section{Research Design}
+
+The thesis adopts a \emph{computational experimental methodology}. The gripper design problem is approached through mathematical modeling,
+simulation-based evaluation, and controlled comparative optimization experiments. This design is appropriate because the objectives governing gripper
+quality cannot be expressed in closed analytical form; they depend on geometric interactions between the gripper and the workpiece that must be
+assessed computationally. The methodology therefore combines multi-objective and single-objective optimization frameworks, black-box evaluation
+procedures, and empirical algorithm comparison to identify high-quality gripper configurations and to characterize algorithm behavior on this class of
+problems.
+
+\section{Problem Formulation}
+\label{sec:methodology_problem_formulation}
+
+\subsection{Multi-Objective Optimization}
+\label{subsec:methodology_moo}
+
+The suction-cup gripper design task is formulated as a multi-objective optimization problem. Let $\mathbf{q} \in \mathcal{Q}$
+\nomenclature{$\mathbf{q}$}{Decision vector representing a candidate gripper configuration} \nomenclature{$\mathcal{Q}$}{Admissible search space of
+decision vectors} denote the decision vector and let $d$
+\nomenclature{$d$}{Number of decision variables} 
+denote the number of decision variables. The problem is formulated as
+\begin{equation}
+    \min_{\mathbf{q} \in \mathcal{Q}}\;
+    \mathbf{f}(\mathbf{q}) = \bigl(f_1(\mathbf{q}),\, f_2(\mathbf{q}),\, \dots,\, f_m(\mathbf{q})\bigr),
+\end{equation}
+where $m$
+\nomenclature{$m$}{Number of objective functions}
+is the number of objectives, subject to inequality constraints
+\begin{equation}
+    g_j(\mathbf{q}) \leq 0, \quad j = 1, \dots, n_c,
+    \nomenclature{$n_c$}{Number of explicit inequality constraints}
+    \nomenclature{$g_j(\mathbf{q})$}{$j$-th inequality constraint function}
+\end{equation}
+and variable bounds
+\begin{equation}
+    q_i^{\mathrm{L}} \leq q_i \leq q_i^{\mathrm{U}}, \quad i = 1, \dots, d.
+    \nomenclature{$q_i^{\mathrm{L}},\,q_i^{\mathrm{U}}$}{Lower and upper bounds of the $i$-th decision variable}
+\end{equation}
+Objectives that are naturally maximized are negated to maintain a consistent minimization framework. A multi-objective formulation is chosen because
+the governing performance criteria are inherently conflicting: maximizing geometric support area and maximizing grasp diversity impose competing
+demands on the suction-cup layout. Rather than collapsing these into a single weighted aggregate, the multi-objective formulation produces a
+Pareto-optimal solution set that makes trade-offs explicit and preserves design alternatives.
+
+\subsection{Single-Objective Optimization}
+\label{subsec:methodology_soo}
+
+The two-finger gripper design task is formulated as a single-objective optimization problem, since the primary design criterion is a scalar maximal
+proximity score. The problem takes the standard form
+\begin{equation}
+    \min_{\mathbf{q} \in \mathcal{Q}}\; f(\mathbf{q}),
+\end{equation}
+subject to the same constraint and bound structure defined above.
+
+\subsection{Decision Variables}
+\label{subsec:methodology_decision_variables}
+
+For the suction-cup gripper, the decision vector
+\begin{equation}
+    \mathbf{q} = [r,\, \alpha_1,\, \alpha_2,\, \alpha_3]
+\end{equation}
+parameterizes the triangular suction-cup layout, where $r$ 
+\nomenclature{$r$}{Common radial distance of the suction cups from the gripper center} 
+is the common radial distance from the gripper center and $\alpha_i$ \nomenclature{$\alpha_i$}{Angular position of the $i$-th suction cup, $i \in
+\{1,2,3\}$} are the angular positions of the three cups. The Cartesian cup positions are recovered via the transformation $\mathbf{p} =
+T(\mathbf{q})$, \nomenclature{$T(\mathbf{q})$}{Transformation mapping the reduced decision vector to Cartesian suction-cup positions}
+\nomenclature{$\mathbf{p}$}{Cartesian position vector of the suction cups} which maps the reduced parameterization to the configuration used during
+evaluation.
+
+For the two-finger gripper, the decision vector
+\begin{equation}
+    \mathbf{q} = [d_{\mathrm{gn}},\, l_{\mathrm{gn}},\, h_{\mathrm{spline},2},\, h_{\mathrm{spline},3},\, h_{\mathrm{spline},4}]
+\end{equation}
+controls the finger geometry, where $d_{\mathrm{gn}}$ \nomenclature{$d_{\mathrm{gn}}$}{Gripper nose depth of the two-finger gripper} and
+$l_{\mathrm{gn}}$ \nomenclature{$l_{\mathrm{gn}}$}{Gripper nose length of the two-finger gripper} define the nose geometry, and
+$h_{\mathrm{spline},i}$ \nomenclature{$h_{\mathrm{spline},i}$}{Vertical position of the $i$-th variable spline control point, $i \in \{2,3,4\}$} for
+$i \in \{2,3,4\}$ are the variable control point heights of the finger contour spline.
+
+\subsection{Objective Functions}
+\label{subsec:methodology_objectives}
+
+For the suction-cup gripper, two objectives are defined. The first is the support triangle area $A(\mathbf{p})$, \nomenclature{$A(\mathbf{p})$}{Area
+of the triangle formed by the three suction-cup positions} which serves as a geometric proxy for grasp stability. The second is a grasp diversity
+metric $D(\mathbf{p})$, \nomenclature{$D(\mathbf{p})$}{Grasp diversity metric for suction-cup configuration $\mathbf{p}$} defined as a weighted
+combination of spatial and orientational diversity:
+\begin{equation}
+    D(\mathbf{p}) = w_{\mathrm{s}}\, D_{\mathrm{s}}(\mathbf{p}) + w_{\mathrm{o}}\, D_{\mathrm{o}}(\mathbf{p}), 
+    \nomenclature{$D_{\mathrm{s}}(\mathbf{p})$}{Spatial diversity component of the grasp set} 
+    \nomenclature{$D_{\mathrm{o}}(\mathbf{p})$}{Orientational diversity component of the grasp set} 
+    \nomenclature{$w_{\mathrm{s}},\,w_{\mathrm{o}}$}{Weighting coefficients for the spatial and orientational diversity components} 
+\end{equation}
+where $D_{\mathrm{s}}$ measures the spatial spread of feasible grasp contact points over the workpiece surface, normalized by a characteristic object
+scale, and $D_{\mathrm{o}}$ measures pairwise rotational differences between grasp orientations. Both components are normalized to $[0,1]$. The
+objective vector is
+\begin{equation}
+    \mathbf{f}(\mathbf{q}) = \bigl[-A(\mathbf{p}),\; -D(\mathbf{p})\bigr], \qquad \mathbf{p} = T(\mathbf{q}).
+\end{equation}
+
+For the two-finger gripper, the objective is the negated maximal proximity score
+\begin{equation}
+    f(\mathbf{q}) = -s_{\max}(\mathbf{q}),
+    \nomenclature{$s_{\max}(\mathbf{q})$}{Maximal collision-free voxel proximity score
+    for two-finger gripper configuration $\mathbf{q}$}
+\end{equation}
+where $s_{\max}$ is the highest proximity score across all collision-free placements of the gripper relative to the workpiece, as produced by the
+voxel-based evaluation described in Section~\ref{subsec:methodology_voxel}. A placement is considered admissible only if the required finger opening
+width $w_{\mathrm{open}}(\mathbf{q})$ \nomenclature{$w_{\mathrm{open}}(\mathbf{q})$}{Required finger opening width at the optimal grasp placement;
+negative values indicate a valid closing motion} is negative, ensuring that only configurations requiring a physical closing motion are evaluated.
+Placements violating this condition are assigned $s_{\max} = 0$.
+
+\section{Evaluation Method}
+\label{sec:methodology_evaluation}
+
+\subsection{Evaluation Architecture}
+\label{sec:methodology_evaluation_architecture}
+
+The evaluation of candidate gripper configurations is decoupled from the optimization
+process through a client--server architecture consisting of three independent pipelines:
+an \emph{Optimization Pipeline} and two \emph{Evaluation Pipelines}. This separation
+constitutes a methodological design choice that enforces a strict black-box interface
+between the optimization strategy and the objective function computation, ensuring that
+the optimization algorithms operate solely on input--output pairs
+$(\mathbf{q},\, \mathbf{f}(\mathbf{q}))$ without access to internal evaluation logic.
+This architecture also makes the framework generalizable: any optimization algorithm
+conforming to the interface can be applied to any evaluation pipeline without
+modification of either component.
+
+\subsubsection{Optimization Pipeline}
+\label{subsec:methodology_opt_pipeline}
+
+The Optimization Pipeline\nomenclature{OP}{Optimization Pipeline; the central
+client-side component responsible for executing optimization algorithms and
+querying evaluation services} serves as the central orchestration component.
+It implements a generalized optimization interface that is agnostic to the specific
+gripper type or evaluation method. At each objective function query, the pipeline
+acts as a client and issues a request carrying the current decision vector
+$\mathbf{q}$ to the appropriate Evaluation Pipeline. The returned objective
+value(s) are then passed to the active optimization algorithm. This design
+enforces a clean separation between the \emph{search strategy} and the
+\emph{objective evaluation}, which is the defining characteristic of black-box
+optimization methodology.
+
+\subsubsection{Suction-Cup Evaluation Pipeline}
+\label{subsec:methodology_sc_pipeline}
+
+The Suction-Cup Evaluation Pipeline\nomenclature{SCEP}{Suction-Cup Evaluation
+Pipeline; the API server responsible for computing suction-cup gripper objectives}
+operates as a server that receives decision vectors of the form
+$\mathbf{q} = [r,\, \alpha_1,\, \alpha_2,\, \alpha_3]$ from the Optimization
+Pipeline client. Upon receipt, it computes the two objective quantities---the
+support triangle area $A(\mathbf{p})$ and the grasp diversity metric
+$D(\mathbf{p})$---and returns them to the client. The API interface ensures
+that the objective computation is encapsulated and that the optimization
+algorithm has no visibility into the geometric calculations performed internally.
+
+\subsubsection{Two-Finger Evaluation Pipeline}
+\label{subsec:methodology_tf_pipeline}
+
+The Two-Finger Evaluation Pipeline\nomenclature{TFEP}{Two-Finger Evaluation
+Pipeline; the API server responsible for computing the maximal proximity score
+for two-finger gripper configurations} operates as a server that receives
+decision vectors of the form
+$\mathbf{q} = [d_{\mathrm{gn}},\, l_{\mathrm{gn}},\,
+h_{\mathrm{spline},2},\, h_{\mathrm{spline},3},\, h_{\mathrm{spline},4}]$
+from the Optimization Pipeline client. Upon receipt, it computes the maximal
+proximity score $s_{\max}(\mathbf{q})$ via the voxel-based evaluation method
+described in Section~\ref{subsec:methodology_voxel}, and returns the scalar
+value to the client.
+
+
+\subsection{Voxel-Based Proximity Scoring for the Two-Finger Gripper}
+\label{subsec:methodology_voxel}
+
+The two-finger gripper is evaluated using a voxel-based proximity scoring method. Both the gripper and the workpiece are represented as discrete
+occupancy grids $G_{\mathrm{occ}}$ \nomenclature{$G_{\mathrm{occ}}$}{Voxelized occupancy grid of the two-finger gripper geometry} and
+$O_{\mathrm{occ}}$, \nomenclature{$O_{\mathrm{occ}}$}{Voxelized occupancy grid of the workpiece geometry} with voxel size
+$v_s$.\nomenclature{$v_s$}{Voxel size used for discretization of gripper and workpiece geometries} The proximity of the finger surfaces to the
+workpiece is modeled by a three-dimensional Gaussian kernel with standard deviations $\sigma_l$, $\sigma_w$, $\sigma_h$ 
+\nomenclature{$\sigma_l,\,\sigma_w,\,\sigma_h$}{Standard deviations of the Gaussian proximity kernel in the length, width, and height directions} 
+in the length, width, and height directions respectively. The proximity score over all admissible relative placements of the gripper and workpiece is
+computed efficiently via the convolution theorem using FFT. Directional cropping of the kernel enforces that each finger contributes proximity only
+from its inward-facing side. Placements with gripper-workpiece collisions are assigned a score of $-\infty$ and are excluded. This method is
+appropriate because it jointly evaluates all candidate placements in a single computation, avoiding the need for explicit grasp candidate enumeration.
+
+\subsection{Grasp Diversity Metric for the Suction-Cup Gripper}
+
+Grasp diversity is quantified through the metric $D(\mathbf{p})$ defined in Section~\ref{subsec:methodology_objectives}. The spatial component
+$D_{\mathrm{s}}$ is based on the pairwise distances between grasp contact points, normalized to a characteristic object scale for cross-workpiece
+comparability. The orientational component $D_{\mathrm{o}}$ is based on pairwise geodesic distances between grasp orientations in rotation space. This
+two-component formulation captures both positional coverage and orientational variation of the grasp set, which together characterize the practical
+flexibility of a gripper configuration.
+
+\section{Optimization Methods}
+\label{sec:methodology_optimization}
+
+\subsection{Evolutionary Multi-Objective Algorithms}
+
+For the both grippers, population-based evolutionary algorithms are employed. These methods are well suited to multi-objective black-box
+problems because they maintain a population of candidate solutions, approximate the full Pareto front in a single run, and require no gradient
+information. The study considers NSGA-II, NSGA-III, MOEA/D, CMOPSO, and SMS-EMOA as representative algorithms covering different Pareto front
+approximation strategies, including dominance-based selection, reference-direction decomposition, and hypervolume-indicator guidance. The choice of
+algorithm is treated as an empirical question rather than an a priori assumption.
+
+\subsection{Bayesian Optimization}
+
+Bayesian optimization is included as a comparative strategy for both gripper types. It is motivated by its sample efficiency in expensive black-box
+settings: a probabilistic surrogate model is maintained over the objective function and an acquisition function is used to guide evaluation toward
+promising regions of the search space. For the suction-cup gripper, multi-objective Bayesian optimization is considered; for the two-finger gripper,
+single-objective Bayesian optimization is used. The method operates on the same problem definition as the evolutionary algorithms, ensuring that
+performance differences are attributable solely to the optimization strategy.
+
+\subsection{Termination and Hyperparameter Treatment}
+
+Optimization runs are terminated based on a combination of a maximum number of function evaluations, a maximum number of generations, and a
+convergence criterion evaluated over a sliding window in objective space. This compound stopping rule prevents premature termination while avoiding
+unnecessary computation after convergence. Algorithm hyperparameters are selected through a structured tuning procedure based on repeated runs
+evaluated by the hypervolume indicator, reducing the risk of performance bias from incidental parameter choices.
+
+\section{Comparative Experimental Method}
+\label{sec:methodology_comparative_experiments}
+
+A controlled comparison protocol is adopted to ensure that observed performance differences are attributable to the optimization methods rather than
+to differences in experimental conditions. All algorithms are evaluated on the same workpiece data, gripper parameterization, objective functions,
+feasibility conditions, evaluation pipeline, and evaluation budget. Each algorithm is executed under multiple independent random seeds to assess not
+only mean performance but also variability and robustness across runs.
+
+\section{Performance Indicators and Result Analysis}
+\label{sec:methodology_analysis}
+
+Algorithm performance is assessed using standard multi-objective and single-objective indicators. For the suction-cup gripper, the primary indicator
+is the \emph{hypervolume indicator}, which measures the volume of objective space dominated by the solution set with respect to a reference point,
+thereby jointly capturing convergence quality and front diversity. For the two-finger gripper, the primary performance indicator is the best achieved
+maximal proximity score $s_{\max}$ and its convergence profile over function evaluations. Robustness is characterized by the distribution of
+$s_{\max}$ across repeated independent runs.

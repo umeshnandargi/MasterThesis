@@ -1,0 +1,241 @@
+\chapter{Methodology}
+\label{chap:methodology}
+
+This chapter describes the methodological decisions, theoretical frameworks, and evaluation strategies underlying the gripper configuration
+optimization study. It covers the problem formulation, the choice of optimization library and algorithms, the evaluation architecture, the workpiece
+selection rationale, and the comparative experimental design. Implementation details and experimental procedures are treated separately in the
+approach chapter.
+
+\section{Research Design}
+\label{sec:research_design}
+
+\subsection{Research Paradigm}
+\label{subsec:research_paradigm}
+
+The thesis adopts a computational experimental methodology. Both gripper configuration problems are approached through mathematical modeling,
+computational-based evaluation, and controlled comparative optimization experiments. This design is appropriate because the objectives governing
+gripper quality cannot be expressed in closed analytical form; they depend on geometric interactions between the gripper and the workpiece that must
+be assessed computationally. The core methodological contribution is not the development of new optimization algorithms, but the rigorous comparative
+evaluation of existing algorithms on well-defined, practically motivated black-box problems.
+
+\subsection{Study Structure}
+\label{subsec:study_structure}
+
+The two gripper types are treated as independent optimization studies. The suction-cup gripper optimization seeks a cup layout that simultaneously
+maximizes grasp stability and grasp set diversity. The two-finger gripper optimization seeks a jaw contour that achieves high contact quality across a
+set of representative workpieces; since the evaluation pipeline computes a separate proximity-based score for each workpiece, each workpiece
+contributes one objective, making this a multi-objective problem whose dimensionality scales with the number of workpieces selected. In both cases,
+the problem structures and objective spaces differ, and the algorithm comparison is therefore conducted separately for each gripper type with results
+not aggregated across them.
+
+\subsection{Experimental Setup}
+\label{subsec:experimental_setup}
+
+For each problem, a fixed set of candidate algorithms is applied to a set of representative workpieces. Each algorithm is executed once per workpiece
+under identical conditions, including a shared evaluation budget and consistent initialization settings\cite{DaSilva2024Multi-objective}. Algorithm
+performance is then analyzed and interpreted across all workpieces and both gripper types, with particular focus on three aspects: convergence
+behaviour over the evaluation budget, Pareto front quality as measured by established performance indicators, and the sensitivity of algorithm
+rankings to workpiece geometry and objective space dimensionality\cite{Audet2018Performance}. This design allows conclusions to be drawn about which
+algorithms are best suited to each problem class and how performance varies with problem instance characteristics\cite{Nikolikj2025Benchmarking}.
+
+\subsection{Scope and Limitations}
+\label{subsec:scope_limitations}
+
+Since no repeated independent runs are performed, the study does not support statistical inference about algorithm performance distributions.
+Conclusions are therefore descriptive and comparative in nature, grounded in the observed results across the workpiece set rather than in
+probabilistic significance testing. Furthermore, the evaluation relies entirely on computational calculation; physical validation of the optimized
+gripper configurations is outside the scope of this work.
+
+\section{Problem Formulation}
+\label{sec:methodology_problem_formulation}
+
+\subsection{Multi-Objective Optimization Framework}
+\label{subsec:methodology_moo}
+
+Both gripper configuration problems are formulated as multi-objective optimization problems. Let $\mathbf{q} \in \mathcal{Q}$
+\nomenclature{$\mathbf{q}$}{Decision vector representing a candidate gripper configuration} \nomenclature{$\mathcal{Q}$}{Admissible search space of
+decision vectors} denote the decision vector and let $d$
+\nomenclature{$d$}{Number of decision variables}
+denote the number of decision variables. The general problem is formulated as
+\begin{equation}
+    \min_{\mathbf{q} \in \mathcal{Q}}\;
+    \mathbf{f}(\mathbf{q})
+    = \bigl(f_1(\mathbf{q}),\, f_2(\mathbf{q}),\, \dots,\, f_m(\mathbf{q})\bigr),
+\end{equation}
+where $m$
+\nomenclature{$m$}{Number of objective functions}
+is the number of objectives, subject to inequality constraints
+\begin{equation}
+    g_j(\mathbf{q}) \leq 0, \quad j = 1, \dots, n_c,
+    \nomenclature{$n_c$}{Number of explicit inequality constraints}
+    \nomenclature{$g_j(\mathbf{q})$}{$j$-th inequality constraint function}
+\end{equation}
+and variable bounds
+\begin{equation}
+    q_i^{\mathrm{L}} \leq q_i \leq q_i^{\mathrm{U}}, \quad i = 1, \dots, d.
+    \nomenclature{$q_i^{\mathrm{L}},\,q_i^{\mathrm{U}}$}{Lower and upper bounds
+    of the $i$-th decision variable}
+\end{equation}
+Objectives that are naturally maximized are negated to maintain a consistent minimization framework throughout. A multi-objective formulation is
+preferred over a weighted scalar aggregate because it produces a Pareto-optimal solution set that makes trade-offs explicit and preserves design
+alternatives without requiring the prior specification of preference weights.
+
+The number of objectives $m$ is directly determined by the number of workpieces used in the evaluation. This design choice has two methodological
+motivations. First, it forces the optimizer to find gripper configurations that perform well across geometrically diverse workpieces simultaneously,
+rather than overfitting to a single object. Second, it allows the study to examine algorithm behaviour as the dimensionality of the objective space
+increases, since adding workpieces directly increases $m$.
+
+\subsection{Parameterization of Gripper Geometry}
+\label{subsec:methodology_decision_variables}
+
+A fundamental methodological decision is how to represent gripper geometry as a finite-dimensional decision vector suitable for black-box optimization
+\cite{Ko2020A} \cite{Todescato}. For both gripper types, the representation must satisfy three competing demands: it must be expressive enough to
+capture meaningful geometric variation, compact enough to keep the search space tractable, and physically interpretable so that every point in the
+search space corresponds to a realizable gripper configuration \cite{Wang2024Fin-Bayes:}.
+
+For the suction-cup gripper, the most general representation would specify the full Cartesian coordinates of each cup independently, yielding a
+six-dimensional search space for three cups in the plane. However, this representation introduces redundancy through rigid-body symmetries and admits
+degenerate configurations such as collinear or overlapping cups. An alternative is to exploit the geometric structure of the problem: the primary
+geometric quantity governing stability is the area of the triangle formed by the three cups, which depends on the radial spread and the relative
+angular spacing of the cups rather than their absolute positions. This motivates a reduced polar parameterization that encodes the common radial
+distance and the three angular positions, resulting in a four-dimensional search space that eliminates translational and overall rotational redundancy
+while retaining the degrees of freedom that directly affect the stability and collision behavior of the layout.
+
+For the two-finger gripper, the finger jaw contour must be represented in a way that allows smooth, physically realizable shapes to be generated from
+a small number of parameters \cite{Wolniakowski2017Task}. A spline parameterization is adopted because it provides a compact, smooth, and easily
+constrained contour representation, with fixed boundary control points enforcing the geometric constraints at the finger tip and base while the
+remaining interior control points form the free decision variables. The number of free control points can therefore be chosen directly to balance
+geometric expressiveness against search space dimensionality.
+
+\subsection{Selection of Objective Functions and Evaluation Metrics}
+\label{subsec:methodology_objectives}
+
+The choice of objective functions determines what constitutes a good gripper configuration and therefore directly shapes the optimization problem
+\cite{Todescato,Wolniakowski2017Task}. For each gripper type, the objectives must reflect physically meaningful performance criteria while remaining
+computable from geometry alone, since no physical simulation or hardware trial is available during optimization.
+
+For the suction-cup gripper, two competing criteria govern layout quality. Grasp stability under external disturbances is classically characterized by
+force-closure metrics or grasp wrench space volume, both of which require contact force modeling and friction assumptions\cite{Weisz2012Pose}. Since
+the optimization operates on geometry alone and no contact force model is available during the search, the area of the support triangle formed by the
+three cup positions is used as the stability objective. A larger triangle area directly increases the moment arm resisting tipping disturbances,
+making it a geometrically motivated and parameter-free indicator of layout quality\cite{madan2022realrobotchallenge2021}. The second criterion is the
+availability of valid grasps on the target workpiece\cite{Bo2023A}. A simple count of collision-free grasp poses does not capture the practical
+utility of the grasp set, since many similar poses offer little additional coverage. Diversity-based metrics, which measure the spread of valid grasps
+in both position and orientation, are better indicators of operational flexibility and have been used in related work on grasp set
+evaluation\cite{Pinskier2024Diversity-Based}. A weighted combination of spatial and orientational diversity is therefore adopted, with both components
+normalized to enable consistent comparison across workpieces of different scales.
+
+For the two-finger gripper, the design objective is to find a jaw contour that achieves close contact with the workpiece across as many placements as
+possible without collision\cite{Ko2020A}. For the two-finger gripper, the design objective is to find a jaw contour that achieves close contact with
+the workpiece across as many placements as possible without collision. The evaluation is performed using a voxel-based convolution scoring function
+developed at Fraunhofer IPA, which evaluates finger-to-workpiece proximity over all candidate placements without requiring explicit grasp candidate
+enumeration, and excludes colliding placements by construction. This function produces a single scalar score per workpiece that directly serves as the
+optimization objective.
+
+\section{Optimization Library Selection}
+\label{sec:methodology_library}
+
+All optimization algorithms are implemented and executed using the \texttt{pymoo} framework. This choice is motivated by several methodological
+considerations. \texttt{pymoo} is one of the most widely used Python frameworks for multi-objective evolutionary optimization and provides a unified
+implementation of a large number of algorithms, which reduces implementation bias and ensures that observed performance differences reflect genuine
+algorithmic properties rather than differences in code quality or implementation choices. It includes standardized performance indicators such as
+hypervolume, IGD, and GD, as well as built-in constraint handling and visualization tools, which improve the reproducibility and comparability of
+results. Furthermore, \texttt{pymoo} is actively maintained, open-source, and thoroughly documented, making it easier for other researchers to
+replicate and extend the experiments conducted in this thesis \cite{pymoo}.
+
+\section{Algorithm Selection}
+\label{sec:methodology_algorithm_selection}
+
+The selection of optimization algorithms from the set available in \texttt{pymoo} was guided by two criteria: suitability for the problem class and
+coverage of fundamentally different optimization paradigms.
+
+Regarding suitability, the gripper configuration problems are continuous, constrained, black-box multi-objective optimization problems. This rules out
+a substantial portion of the algorithms available in \texttt{pymoo}. Many algorithms in the library are designed exclusively for single-objective
+optimization, including genetic algorithms, differential evolution, particle swarm optimization, CMA-ES, evolution strategies, and direct search
+methods, and are therefore not applicable. Several multi-objective algorithms are designed for specialized problem settings outside the scope of this
+thesis. These include algorithms for dynamic optimization, where objectives or constraints change over time, and preference-based algorithms, which
+require user-defined preference information to guide the search toward specific regions of the Pareto front. Since both gripper problems are static
+and the goal is to approximate the full Pareto front without incorporating decision-maker preferences, these specialized methods were
+excluded\cite{pymoo}.
+
+Among the remaining general-purpose multi-objective algorithms, the selected methods were chosen because they represent fundamentally different
+optimization strategies rather than incremental variations of the same concept:
+
+\begin{itemize}
+    \item \textbf{NSGA-II} represents Pareto-dominance-based selection and serves as the standard baseline for multi-objective evolutionary
+    optimization\cite{nsga2}.
+
+    \item \textbf{NSGA-III} extends the dominance-based approach through reference directions, making it better suited to problems with a larger
+    number of objectives, as arises when more workpieces are included\cite{nsga3}.
+
+    \item \textbf{MOEA/D} represents decomposition-based optimization, solving a set of scalar subproblems rather than relying solely on Pareto
+    dominance\cite{moead}.
+
+    \item \textbf{SMS-EMOA} represents indicator-based optimization, directly maximizing the hypervolume indicator and thereby emphasizing Pareto
+    front quality\cite{smsemoa}.
+
+    \item \textbf{CMOPSO} provides a swarm-intelligence-based approach, employing a competitive particle swarm mechanism to balance exploration and
+    convergence\cite{cmopso}.
+\end{itemize}
+
+Together, these five algorithms cover the major paradigms of general-purpose multi-objective optimization, enabling a comparison of fundamentally
+different search strategies on the same gripper configuration problems\cite{Doerr2022A, Trivedi2017A, Shang2020A}.
+
+In addition to the evolutionary algorithms, multi-objective Bayesian optimization is included as a comparative strategy. Bayesian optimization is
+motivated by its sample efficiency in expensive black-box settings: a probabilistic surrogate model is maintained over the objective functions and an
+acquisition function is used to guide evaluations toward promising regions of the search space. Its inclusion allows the study to assess whether
+surrogate-based methods offer advantages over population-based methods under the evaluation budgets considered.
+
+\section{Workpiece Selection}
+\label{sec:methodology_workpiece_selection}
+
+The workpieces were selected to provide geometric diversity rather than to optimize performance for a particular object. Since the objective of this
+thesis is to compare optimization algorithms, it is essential that the benchmark problems exhibit different geometric characteristics and consequently
+different optimization landscapes\cite{Cenikj2022SELECTOR:,Yazdani2020Benchmarking}.
+
+The \textbf{IPAIntermediatePlate} represents a simple industrial workpiece with large planar surfaces and regular geometry, reflecting many components
+commonly encountered in manufacturing and material handling. Such geometry typically provides a relatively large feasible grasping region and a
+smoother objective landscape. In contrast, the \textbf{Stanford Bunny} exhibits a highly irregular three-dimensional shape with varying surface
+curvature and complex local features, resulting in a more challenging optimization problem characterized by narrower feasible regions, stronger
+collision constraints, and a potentially more multimodal objective landscape\cite{Gupta2020Continuous}.
+
+By evaluating all algorithms on both workpieces simultaneously, the study reduces the risk of drawing conclusions that are specific to a single
+geometry and enables a more robust assessment of algorithm performance across problems of varying complexity. The use of multiple workpieces as
+separate objectives also means that the comparison implicitly assesses how well each algorithm handles increasing objective space
+dimensionality\cite{Cenikj2022SELECTOR:}.
+
+\section{Evaluation Architecture}
+\label{sec:methodology_evaluation_architecture}
+
+The evaluation of candidate gripper configurations is decoupled from the optimization process through a client-server architecture. This separation
+constitutes a deliberate methodological design choice that enforces a strict black-box interface between the optimization strategy and the objective
+function computation. The optimization algorithms operate solely on input-output pairs $(\mathbf{q},\, \mathbf{f}(\mathbf{q}))$ without access to
+internal evaluation logic\cite{Bischl2017mlrMBO:}. This architecture also ensures that any optimization algorithm conforming to the interface can be
+applied to either evaluation pipeline without modification of either component, supporting reproducibility and extensibility.
+
+\section{Comparative Experimental Design}
+\label{sec:methodology_comparative_experiments}
+
+A controlled comparison protocol is adopted to ensure that observed performance differences are attributable to the optimization methods rather than
+to differences in experimental conditions. All algorithms are evaluated on the same workpieces, gripper parameterizations, objective functions,
+feasibility conditions, and evaluation budget. Each algorithm is executed under multiple independent random seeds to assess not only mean performance
+but also variability and robustness across runs\cite{Bouthillier2021Accounting}. Algorithm hyperparameters are initialized from the default values
+provided by the \texttt{pymoo} framework \cite{pymoo}. Where the optimization pipeline is configured to do so, a structured hyperparameter tuning
+procedure is executed prior to the main optimization run, replacing the defaults with problem-specific settings and reducing the risk of performance
+bias from incidental parameter choices. \cite{Beiranvand2017Best}.
+
+\section{Performance Indicators}
+\label{sec:methodology_performance_indicators}
+
+Algorithm performance is assessed using standard multi-objective performance indicators. The primary indicator is the \emph{hypervolume indicator},
+which measures the volume of objective space dominated by the solution set with respect to a reference point, thereby jointly capturing convergence
+quality and Pareto front diversity\cite{Audet2018Performance}. Convergence profiles over function evaluations are also recorded to assess the
+efficiency of each algorithm within the given evaluation budget. Robustness is characterized by the distribution of indicator values across repeated
+independent runs\cite{Trautmann2009Statistical}.
+
+
+
+
+
+
+

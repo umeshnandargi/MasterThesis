@@ -1,266 +1,74 @@
 \chapter{Methodology}
-\label{sec:methodology}
 
-\section{Methodology for Multi-Suction Cup Gripper Optimization}
+To address the defined objectives, a multi-objective optimization framework is
+developed. The framework is built upon the \textit{pymoo}
+library~\cite{pymoo}, which provides a modular infrastructure for evolutionary
+multi-objective optimization. A key architectural decision is the decoupling of
+the optimization logic from the objective function evaluation, which is
+delegated to an external evaluation service accessed via an API call.
 
-This section describes the optimization framework developed for a multi-suction
-cup gripper consisting of three suction cups arranged in a triangular
-configuration. The framework leverages the multi-objective optimization library
-\textit{pymoo}~\cite{pymoo} and delegates objective function evaluation to an
-external service via an API call, enabling a modular and decoupled architecture.
+The gripper configurations are parameterized using a set of decision variables
+provided by the user. Each variable is defined by its type (continuous or
+integer) and its associated bounds, enabling the framework to handle
+mixed-variable optimization problems. For the multi-suction cup gripper, the
+positions of the suction cups are defined in the planar space, forming a
+triangular arrangement. The height and orientation of the suction cups are
+assumed to be fixed. Each candidate solution is therefore represented by the
+coordinates of three suction cups. This work assumes that a triangular
+arrangement of suction cups leads to a stable grasp configuration~\cite{madan2022realrobotchallenge2021}. While
+alternative configurations may exist, the triangular layout provides a minimal
+and geometrically robust structure for distributing contact forces across the
+workpiece surface.
 
-\subsection{Parameterization of the Gripper}
+An initial population of candidate configurations is generated using
+mixed-variable sampling and iteratively refined using a user-selected
+multi-objective evolutionary algorithm. The framework supports multiple
+algorithms, including NSGA-II, NSGA-III, MOEA/D, CMOPSO, and SMS-EMOA,
+allowing the user to select the most suitable strategy for the problem at hand.
 
-Each suction cup is defined by its planar position, while the height and
-orientation remain fixed. Thus, the decision variables are:
+For each candidate solution, an API call is issued to an external evaluation
+service, which executes the grasp evaluation subprocess. In this subprocess,
+grasp candidates are generated for each point of the workpiece point cloud. A
+collision detection step ensures that only physically feasible grasps are
+retained by filtering out configurations where the gripper intersects with the
+workpiece.
 
-\begin{equation}
-    \mathbf{p} = [(x_1, y_1),\; (x_2, y_2),\; (x_3, y_3)]
-\end{equation}
-\nomenclature{$\mathbf{p}$}{Decision variable vector representing the gripper configuration}
-\nomenclature{$(x_i, y_i)$}{Planar position of the $i$-th suction cup}
+Due to the potentially large number of valid grasp candidates, a clustering step
+is performed to group similar grasps and reduce redundancy. The number of
+clusters is treated as a hyperparameter. If the number of valid grasps is below
+a defined threshold, clustering is skipped.
 
-Each individual $\mathbf{p}$ forms a triangular base of the gripper.
+Based on the filtered and clustered grasps, objective function values are
+computed by the evaluation service and returned to the optimizer. These include
+the maximization of the area of the triangular arrangement of suction cups,
+which is associated with grasp stability, and the maximization of a diversity
+metric that measures the spatial distribution of valid grasp clusters across the
+workpiece surface. Since \textit{pymoo} operates as a minimization framework,
+maximization objectives are negated prior to evaluation.
 
-\paragraph{Assumption}
-A triangular configuration of suction cups is assumed to yield a stable grasp~\cite{madan2022realrobotchallenge2021}.
-This is motivated by the fact that three spatially distributed contact points
-form a statically stable support, enabling effective load distribution and
-resistance to external disturbances.
+The evaluated objective values are then used by the selected evolutionary
+algorithm to generate a new population of candidate solutions through selection,
+crossover, and mutation operators. This iterative process continues until a
+termination criterion is satisfied. The framework employs a multi-criteria
+termination strategy: the optimization stops when convergence is detected in
+either the decision variable space or the objective space (evaluated over a
+sliding window), or when a maximum number of generations or function evaluations
+is reached.
 
-\subsection{Decision Variables and Bounds}
+Throughout the optimization, the hypervolume indicator is tracked at each
+generation to monitor convergence toward the Pareto front. Optionally, the
+framework supports automated hyperparameter tuning of the selected algorithm
+through a meta-optimization procedure that maximizes the mean hypervolume across
+multiple random seeds.
 
-Each decision variable is defined with a type (continuous or integer) and
-associated bounds:
+The result of the optimization is a set of Pareto-optimal gripper
+configurations that represent trade-offs between competing objectives, along
+with the hypervolume progression and total computation time. This information
+enables the user to select an appropriate configuration based on application
+requirements.
 
-\begin{equation}
-    x_i \in [\ell_i,\; u_i], \quad i = 1, \dots, n
-\end{equation}
-\nomenclature{$\ell_i$}{Lower bound of the $i$-th decision variable}
-\nomenclature{$u_i$}{Upper bound of the $i$-th decision variable}
-\nomenclature{$n$}{Number of decision variables}
-
-The variable definitions are provided by the user as part of the optimization
-request, allowing the framework to handle mixed-variable problems (i.e.,
-combinations of continuous and integer variables).
-
-\subsection{Optimization Framework}
-
-The optimization is formulated as a multi-objective minimization problem and
-solved using the \textit{pymoo} library. The user configures the optimization
-through a request specifying:
-
-\begin{itemize}
-    \item Population size $N$
-    \item Maximum number of generations $G_{\max}$
-    \item Choice of optimization algorithm
-    \item Number of objectives $n_{\text{obj}}$
-    \item Decision variable definitions (type and bounds)
-    \item Evaluation endpoint URL
-\end{itemize}
-
-\subsubsection{Supported Algorithms}
-
-The framework supports the following multi-objective evolutionary algorithms:
-
-\begin{table}[htbp]
-\centering
-\caption{Supported multi-objective optimization algorithms.}
-\label{tab:algorithms}
-\begin{tabular}{ll}
-\toprule
-\textbf{Identifier} & \textbf{Algorithm} \\
-\midrule
-NSGA2   & Non-dominated Sorting Genetic Algorithm II~\cite{nsga2} \\
-NSGA3   & Non-dominated Sorting Genetic Algorithm III~\cite{nsga3} \\
-MOEAD   & Multi-Objective Evolutionary Algorithm based on Decomposition~\cite{moead} \\
-CMOPSO  & Competitive Multi-Objective Particle Swarm Optimization \\
-SMSEMOA & S-Metric Selection Evolutionary Multi-Objective Algorithm~\cite{smsemoa} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-For algorithms requiring reference directions (NSGA-III, MOEA/D), uniform
-reference directions are generated using Das and Dennis's
-method~\cite{das_dennis}:
-
-\begin{equation}
-    \Lambda = \texttt{get\_reference\_directions}(\text{``uniform''},\; n_{\text{obj}},\; n_{\text{partitions}})
-\end{equation}
-\nomenclature{$\Lambda$}{Set of reference directions for decomposition-based algorithms}
-
-For mixed-variable problems, specialized sampling and mating operators are
-employed to handle heterogeneous variable types.
-
-\subsection{Initialization}
-
-An initial population of $N$ candidate solutions is generated via mixed-variable
-sampling:
-
-\begin{equation}
-    \mathcal{P}^{(0)} = \{\mathbf{p}_1, \mathbf{p}_2, \dots, \mathbf{p}_N\}
-\end{equation}
-\nomenclature{$\mathcal{P}^{(0)}$}{Initial population of candidate solutions}
-\nomenclature{$N$}{Population size}
-
-\subsection{Objective Function Evaluation via API}
-
-The evaluation of objective function values is decoupled from the optimization
-loop and delegated to an external evaluation service. For each candidate
-solution $\mathbf{p}$, the optimizer issues an API call to the evaluation
-endpoint, which executes the grasp evaluation subprocess (described in
-Section~\ref{sec:grasp_eval}) and returns the objective values.
-
-\begin{equation}
-    \mathbf{f}(\mathbf{p}) = \texttt{API\_call}(\mathbf{p}) \rightarrow [f_1(\mathbf{p}),\; f_2(\mathbf{p})]
-\end{equation}
-
-This architecture enables:
-\begin{itemize}
-    \item Separation of concerns between optimization logic and domain-specific evaluation
-    \item Scalability through independent deployment of the evaluation service
-    \item Reusability of the optimization framework for different problem domains
-\end{itemize}
-
-\subsubsection{Grasp Evaluation Subprocess}
-\label{sec:grasp_eval}
-
-The evaluation service receives a candidate gripper configuration $\mathbf{p}$
-and performs the following steps:
-
-\begin{enumerate}
-
-\item \textbf{Grasp Generation:}
-For each point in the workpiece point cloud, a candidate suction grasp is
-generated by aligning the tool center point (TCP) of the gripper with the
-surface point.
-
-\item \textbf{Collision Filtering:}
-The gripper is modeled as a rigid 3D body with fixed height, forming a
-triangular prism whose base is defined by $\mathbf{p}$. Each candidate grasp is
-checked for collisions between the gripper body and the workpiece. Colliding
-grasps are discarded.
-
-\item \textbf{Clustering of Valid Grasps:}
-Let $\mathcal{G}_{\text{valid}}$ denote the set of collision-free grasps. If
-$|\mathcal{G}_{\text{valid}}| \geq K_{\min}$, clustering is performed based on
-spatial proximity and orientation similarity to reduce redundancy.
-\nomenclature{$\mathcal{G}_{\text{valid}}$}{Set of valid (collision-free) grasps}
-\nomenclature{$K_{\min}$}{Minimum number of valid grasps required for clustering}
-
-\item \textbf{Objective Computation:}
-The service computes and returns the objective values:
-
-\begin{equation}
-    \mathbf{f}(\mathbf{p}) = [-D(\mathbf{p}),\; -A(\mathbf{p})]
-\end{equation}
-
-where:
-\begin{itemize}
-    \item $A(\mathbf{p})$ is the triangle area (maximized for stability):
-    \begin{equation}
-        A(\mathbf{p}) = \frac{1}{2} \left| (x_2 - x_1)(y_3 - y_1) - (x_3 - x_1)(y_2 - y_1) \right|
-    \end{equation}
-    \item $D(\mathbf{p})$ is the diversity metric (maximized for robustness),
-    computed from the spatial distribution and orientation spread of clustered grasps.
-\end{itemize}
-
-\nomenclature{$A(\mathbf{p})$}{Area of the triangle formed by the three suction cups}
-\nomenclature{$D(\mathbf{p})$}{Diversity metric of the grasp distribution}
-\nomenclature{$\mathbf{f}(\mathbf{p})$}{Multi-objective function vector}
-
-Since \textit{pymoo} minimizes by convention, maximization objectives are
-negated.
-
-\end{enumerate}
-
-\subsection{Optimization Loop}
-
-The evolutionary optimization proceeds as follows:
-
-\begin{equation}
-    \mathcal{P}^{(t+1)} = \mathcal{A}\left(\mathcal{P}^{(t)},\; \mathbf{f}\right), \quad t = 0, 1, \dots
-\end{equation}
-\nomenclature{$\mathcal{A}$}{Selected multi-objective evolutionary algorithm}
-\nomenclature{$t$}{Generation index}
-
-where $\mathcal{A}$ denotes the selected algorithm performing selection,
-crossover, mutation, and survival operations.
-
-\subsection{Termination Criteria}
-
-The optimization terminates when any of the following conditions is satisfied:
-
-\begin{table}[htbp]
-\centering
-\caption{Termination criteria.}
-\label{tab:termination}
-\begin{tabular}{lll}
-\toprule
-\textbf{Criterion} & \textbf{Symbol} & \textbf{Description} \\
-\midrule
-Design space tolerance  & $x_{\text{tol}}$ & Change in decision variables below threshold \\
-Objective space tolerance & $f_{\text{tol}}$ & Relative improvement in objectives below threshold \\
-Maximum generations     & $G_{\max}$       & Maximum number of generations reached \\
-Maximum evaluations     & $E_{\max}$       & Maximum number of function evaluations reached \\
-\bottomrule
-\end{tabular}
-\end{table}
-\nomenclature{$x_{\text{tol}}$}{Design space convergence tolerance}
-\nomenclature{$f_{\text{tol}}$}{Objective space convergence tolerance}
-\nomenclature{$G_{\max}$}{Maximum number of generations}
-\nomenclature{$E_{\max}$}{Maximum number of function evaluations}
-
-Tolerances are evaluated over a sliding window of $w$ generations.
-
-\subsection{Performance Monitoring}
-
-The hypervolume indicator~\cite{hypervolume} is tracked at each generation via a
-callback mechanism:
-
-\begin{equation}
-    \text{HV}^{(t)} = \text{HV}(\mathcal{F}^{(t)},\; \mathbf{r})
-\end{equation}
-\nomenclature{$\text{HV}^{(t)}$}{Hypervolume indicator at generation $t$}
-\nomenclature{$\mathbf{r}$}{Reference point for hypervolume computation}
-\nomenclature{$\mathcal{F}^{(t)}$}{Objective values of the population at generation $t$}
-
-where $\mathbf{r} \in \mathbb{R}^{n_{\text{obj}}}$ is the reference point and
-$\mathcal{F}^{(t)}$ denotes the set of objective vectors at generation $t$. A
-monotonically increasing hypervolume indicates convergence toward the Pareto
-front.
-
-\subsection{Optional Hyperparameter Optimization}
-
-The framework optionally supports automated tuning of algorithm hyperparameters
-(e.g., crossover probability, mutation rates) using a meta-optimization
-approach. A \texttt{HyperparameterProblem} is constructed around the selected
-algorithm and evaluated over multiple random seeds. The mean hypervolume across
-runs serves as the meta-objective:
-
-\begin{equation}
-    \min_{\boldsymbol{\theta}} \left\{ -\frac{1}{|\mathcal{S}|} \sum_{s \in \mathcal{S}} \text{HV}(\mathcal{F}_s,\; \mathbf{r}) \right\}
-\end{equation}
-\nomenclature{$\boldsymbol{\theta}$}{Algorithm hyperparameters}
-\nomenclature{$\mathcal{S}$}{Set of random seeds for meta-optimization}
-
-The best hyperparameters are then applied to the main optimization run.
-
-\subsection{Output}
-
-The optimization produces a set of Pareto-optimal solutions:
-
-\begin{equation}
-    \mathcal{P}^* = \left\{ \mathbf{p} \;\middle|\; \nexists\; \mathbf{p}' \in \mathcal{P} : \mathbf{f}(\mathbf{p}') \preceq \mathbf{f}(\mathbf{p}) \right\}
-\end{equation}
-\nomenclature{$\mathcal{P}^*$}{Set of Pareto-optimal solutions}
-
-The final output includes:
-\begin{itemize}
-    \item The Pareto-optimal set $\mathcal{P}^*$ with corresponding objective values
-    \item The hypervolume progression $\{\text{HV}^{(0)}, \text{HV}^{(1)}, \dots, \text{HV}^{(T)}\}$
-    \item Total optimization wall-clock time
-\end{itemize}
-
-These solutions represent optimal trade-offs between grasp diversity and
-triangle area (stability).
+The same framework is extended to two-finger grippers by adapting the decision
+variables and objective functions to reflect their specific kinematic and
+geometric properties. The modular API-based architecture ensures that only the
+evaluation service needs to be modified, while the optimization pipeline remains
+unchanged.

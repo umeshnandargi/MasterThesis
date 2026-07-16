@@ -1,0 +1,37 @@
+\section{Goal and Tasks of the Thesis}
+\label{sec:goals_tasks}
+
+The primary goal of this thesis is to \textbf{apply and comparatively evaluate optimization algorithms} spanning evolutionary multi-objective methods
+and Bayesian optimization for solving gripper configuration problems formulated as black-box multi-objective optimization
+tasks\cite{Datta2011Optimizing,Belakaria2020Uncertainty-Aware}. The two gripper types, a multi-suction-cup gripper and a two-finger gripper, serve as
+well-defined benchmark problems on which the algorithms are systematically compared with respect to solution quality, convergence behaviour, and
+robustness.
+
+To achieve this goal, the following tasks are defined:
+
+\begin{itemize}
+    \item \textbf{Algorithm application and comparison:} Application and systematic comparison of a selected set of multi-objective optimization
+    algorithms drawn from the available literature \cite{pymoo}, evaluated under controlled experimental conditions using well-defined performance
+    indicators across both gripper types and workpieces\cite{Audet2018Performance}.
+
+    \item \textbf{Workpiece selection and experimental coverage:} Selection of a diverse set of workpieces spanning a range of geometric properties
+    including varying surface curvatures, sizes, and shapes to ensure that algorithm comparisons are not biased towards a specific object geometry.
+    Workpiece diversity is treated as a deliberate experimental design choice to expose differences in algorithm robustness and generalization across
+    objective landscapes of varying complexity.
+
+    \item \textbf{Problem formulation:} Formulation of both gripper configuration problems as multi-objective optimization problems, including the
+    definition of decision variables, objective functions, and constraints. For the suction-cup gripper, the objectives consist of the support
+    triangle area and the grasp diversity evaluated per workpiece. For the two-finger gripper, each workpiece contributes one objective representing
+    the conformance quality of the finger contour to that workpiece geometry.
+
+    \item \textbf{Evaluation pipeline development:} Development of dedicated black-box evaluation pipelines for each gripper type, capable of
+    assessing grasp quality given a gripper configuration and a target workpiece, and of serving as the objective function interface for all
+    optimization algorithms.
+
+    \item \textbf{Optimization framework implementation:} Implementation of a generalized optimization framework capable of handling multi-objective
+    problems of varying dimensionality and interfacing with both evaluation pipelines through a unified black-box interface.
+
+    \item \textbf{Result analysis:} Analysis and interpretation of algorithm performance across both gripper types and all workpieces, with particular
+    focus on convergence behaviour, Pareto front quality, and the sensitivity of algorithm rankings to workpiece geometry and objective space
+    dimensionality.
+\end{itemize}
