@@ -209,50 +209,22 @@ $\mathbf{p} = [\mathbf{c}_1,\mathbf{c}_2,\mathbf{c}_3]$ and computes the
 associated grasp quality measures through the following procedure.
 
 \begin{enumerate}
-    \item \textbf{Candidate Grasp Generation}
+    \item \textbf{Candidate Grasp Generation and Feasibility Filtering}
 
-    A finite set of candidate suction grasps is generated from a uniform
-    sampling of the workpiece surface. Let
-    \begin{equation}
-        \mathcal{U} = \{\mathbf{u}_1,\mathbf{u}_2,\dots,\mathbf{u}_M\}
-    \end{equation}
-    denote the sampled surface points, where $M$ is the number of initial
-    samples. Each sampled point defines one candidate grasp by aligning the
-    tool center point of the gripper with the corresponding surface location
-    and local surface orientation.
+    Suction grasp candidates are generated using a method developed by Fraunhofer IPA, following the automatic suction grasp generation procedure
+    described by ~\cite{Kleeberger}. Points are sampled on the surface of the workpiece, and each sampled point defines a
+    candidate grasp through its position and local surface normal. The local surface normal determines the approach direction of the suction cup.
 
-    In the initial implementation, $M=100$ surface points were sampled.
-    However, this occasionally resulted in too few valid grasps after
-    collision filtering, which led to unstable behavior of the diversity
-    objective. To reduce this effect, the sampling density was increased to
-    $M=1000$. The denser sampling provides a richer set of grasp candidates
-    and substantially decreases the likelihood of degenerate cases with very
-    few valid grasps.
-    \nomenclature{$\mathcal{U}$}{Set of sampled surface points on the workpiece}
-    \nomenclature{$\mathbf{u}_i$}{Sampled surface point on the workpiece}
-    \nomenclature{$M$}{Number of initially sampled surface points}
+    In the original method, each suction grasp candidate is tested for feasible seal formation using a quasi-static spring model of a suction cup, as
+    introduced in ~\cite{Snuggle_Pack}. If the grasp point is considered feasible, the candidate is further tested in simulation for
+    collisions between the gripper and the object.
 
-    \item \textbf{Collision Filtering}
-
-    The gripper is modeled as a rigid 3D body with fixed height, forming a
-    triangular prism whose base is defined by the three Cartesian suction cup
-    positions contained in $\mathbf{p}$.
-
-    Let
-    \begin{equation}
-        \mathcal{G}_{\mathrm{cand}} = \{g_1,g_2,\dots,g_M\}
-    \end{equation}
-    denote the set of candidate grasps generated from the sampled surface
-    points. After collision checking, only collision-free grasps are retained:
-    \begin{equation}
-        \mathcal{G}_{\mathrm{valid}} =
-        \{ g \in \mathcal{G}_{\mathrm{cand}} \mid g \text{ is collision-free} \}.
-    \end{equation}
-
-    This step removes physically infeasible grasps and yields the set of valid
-    grasp candidates used in subsequent evaluation.
-    \nomenclature{$\mathcal{G}_{\mathrm{cand}}$}{Set of candidate grasps generated from sampled surface points}
-    \nomenclature{$\mathcal{G}_{\mathrm{valid}}$}{Set of valid collision-free grasps}
+    In this thesis, the method was extended to a gripper with three suction cups. For each candidate gripper pose, the seal-formation test is performed
+    for all three suction cup contact positions $\mathbf{c}_1$, $\mathbf{c}_2$, and $\mathbf{c}_3$. A candidate is considered feasible only if all three
+    suction cups form a sufficient seal. The candidate is then checked for collisions in simulation, and only collision-free candidates are retained as
+    valid grasps.
+    \nomenclature{$\mathbf{p}$}{Cartesian gripper configuration defined by the three suction cup contact positions}
+    \nomenclature{$\mathbf{c}_i$}{Cartesian contact position of suction cup $i$, with $i \in \{1,2,3\}$}
 
     \item \textbf{Clustering of Grasps}
 

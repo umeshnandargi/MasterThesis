@@ -212,6 +212,12 @@ H.~Trautmann, T.~Wagner, B.~Naujoks, M.~Preuss, and J.~Mehnen, ``Statistical met
 I.~Das and J.~E. Dennis, ``Normal-boundary intersection: A new method for generating the pareto surface in nonlinear multicriteria optimization problems,'' \emph{SIAM Journal on Optimization}, vol.~8, no.~3, pp. 631--657, 1998. [Online]. Available: \url{https://doi.org/10.1137/S1052623496307510}
 \BIBentrySTDinterwordspacing
 
+\bibitem{Kleeberger}
+K.~Kleeberger, J.~Schnitzler, M.~U. Khalid, R.~Bormann, W.~Kraus, and M.~F. Huber, ``Precise object placement with pose distance estimations for different objects and grippers,'' pp. 4639--4646, 2021.
+
+\bibitem{Snuggle_Pack}
+T.~Nickel, R.~Bormann, and K.~O. Arras, ``Snuggle-pack: Speeding up multi-heuristic packing planning of complex objects,'' in \emph{2025 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, 2025, pp. 5706--5713.
+
 \bibitem{hypervolume}
 \BIBentryALTinterwordspacing
 N.~Beume, B.~Naujoks, and M.~Emmerich, ``Sms-emoa: Multiobjective selection based on dominated hypervolume,'' \emph{European Journal of Operational Research}, vol. 181, no.~3, pp. 1653--1669, 2007. [Online]. Available: \url{https://www.sciencedirect.com/science/article/pii/S0377221706005443}

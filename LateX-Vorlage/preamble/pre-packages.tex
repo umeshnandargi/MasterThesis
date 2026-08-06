@@ -267,8 +267,9 @@ backgroundcolor=\color{lightgray},	  % % Hintergrundfarbe der Listings
 %
 %%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/setspace/setspace.sty
 \usepackage{setspace}
-%\doublespace	        % 2-facher Abstand
-%\onehalfspace	  % 1,5-facher Abstand
+\setstretch{1.5}
+% \doublespace	        % 2-facher Abstand
+% \onehalfspace	  % 1,5-facher Abstand
 % hereafter load 'typearea' again
 
 %% Seitenlayout ==========================================================
@@ -291,7 +292,8 @@ backgroundcolor=\color{lightgray},	  % % Hintergrundfarbe der Listings
 \pagestyle{scrheadings} % Seite mit Headern
 %\pagestyle{scrplain} % Seiten ohne Header
 %\pagestyle{empty} % Seiten ohne Header
-
+\clearpairofpagestyles
+\chead{\headmark}
 % loescht voreingestellte Stile
 \clearscrheadings
 \clearscrplain
