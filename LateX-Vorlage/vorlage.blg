@@ -26,37 +26,37 @@ Warning--empty journal in Kleeberger
 Done.
 You've used 65 entries,
             4087 wiz_defined-function locations,
-            1223 strings with 21376 characters,
-and the built_in function-call counts, 50880 in all, are:
-= -- 4094
-> -- 1417
+            1223 strings with 21461 characters,
+and the built_in function-call counts, 50982 in all, are:
+= -- 4097
+> -- 1429
 < -- 431
-+ -- 793
-- -- 269
-* -- 2436
-:= -- 7524
++ -- 799
+- -- 272
+* -- 2442
+:= -- 7533
 add.period$ -- 130
 call.type$ -- 65
 change.case$ -- 65
 chr.to.int$ -- 996
 cite$ -- 71
-duplicate$ -- 3656
-empty$ -- 3781
-format.name$ -- 314
-if$ -- 11900
+duplicate$ -- 3662
+empty$ -- 3787
+format.name$ -- 317
+if$ -- 11924
 int.to.chr$ -- 0
 int.to.str$ -- 65
-missing$ -- 622
+missing$ -- 625
 newline$ -- 226
 num.names$ -- 65
-pop$ -- 1462
+pop$ -- 1471
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 3913
+skip$ -- 3919
 stack$ -- 0
 substring$ -- 2450
-swap$ -- 3037
+swap$ -- 3043
 text.length$ -- 99
 text.prefix$ -- 0
 top$ -- 5

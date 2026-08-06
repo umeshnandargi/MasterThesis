@@ -215,8 +215,8 @@ I.~Das and J.~E. Dennis, ``Normal-boundary intersection: A new method for genera
 \bibitem{Kleeberger}
 K.~Kleeberger, J.~Schnitzler, M.~U. Khalid, R.~Bormann, W.~Kraus, and M.~F. Huber, ``Precise object placement with pose distance estimations for different objects and grippers,'' pp. 4639--4646, 2021.
 
-\bibitem{Snuggle_Pack}
-T.~Nickel, R.~Bormann, and K.~O. Arras, ``Snuggle-pack: Speeding up multi-heuristic packing planning of complex objects,'' in \emph{2025 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, 2025, pp. 5706--5713.
+\bibitem{SC_quasi_static}
+J.~Mahler, M.~Matl, X.~Liu, A.~Li, D.~Gealy, and K.~Goldberg, ``Dex-net 3.0: Computing robust vacuum suction grasp targets in point clouds using a new analytic model and deep learning,'' in \emph{2018 IEEE International Conference on Robotics and Automation (ICRA)}, 2018, pp. 5620--5627.
 
 \bibitem{hypervolume}
 \BIBentryALTinterwordspacing
