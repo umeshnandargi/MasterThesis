@@ -2,3 +2,20 @@ LateX-Vorlage/vorlage.pdf
 LateX-Vorlage/fig/aa-titel/IPA_Logo.jpg
 LateX-Vorlage/fig/aa-titel/IPA_Logo.svg
 .vscode
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.lpr
+*.nlo
+*.nls
+*.out
+*.synctex.gz
+*.toc
