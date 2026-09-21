@@ -42,8 +42,6 @@
 %\usepackage{epstopdf} % If an eps image is detected, epstopdf is automatically called to convert it to pdf format.
 \usepackage[]{amsmath} % Amsmath - Mathematik Basispaket
 \usepackage{ragged2e} % Besserer Flatternsatz (Linksbuendig, statt Blocksatz)
-\usepackage{parskip}
-\usepackage{pgfgantt}
 \usepackage{amsmath}
 \usepackage{amssymb}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -65,33 +63,6 @@
 %% -------------------
 %
 % % - Times, Helvetica, Courier (Word Standard...)
-%\usepackage{mathptmx}
-%\usepackage[scaled=.90]{helvet}
-%\usepackage{courier}
-% % -------------------
-%%
-%% - Palantino , Helvetica, Courier
-%\usepackage{mathpazo}
-%\usepackage[scaled=.95]{helvet}
-%\usepackage{courier}
-%% -------------------
-%
-%% - Bera Schriften
-%\usepackage{bera}
-%% -------------------
-%
-%% - Charter, Bera Sans
-%\usepackage{charter}\linespread{1.05}
-%\renewcommand{\sfdefault}{fvs}
-
-
-% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-% 3. Math Packages
-% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-\usepackage[fixamsmath,disallowspaces]{mathtools} % Erweitert amsmath und behebt einige Bugs
-\usepackage{fixmath}
-\usepackage[all,warning]{onlyamsmath} % Warnt bei Benutzung von Befehlen die mit amsmath inkompatibel sind.
 \usepackage{icomma} % Erlaubt die Benutzung von Kommas im Mathematikmodus
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -181,7 +152,6 @@
 
 \usepackage{booktabs}
 \usepackage{tabularx} % tabularx nach hyperref laden
-\usepackage{multirow}
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % 9. figures and placement
@@ -189,10 +159,7 @@
 
 %% Bilder und Graphiken ==================================================
 
-\usepackage{float}	% Stellt die Option [H] fuer Floats zur Verfgung
 \usepackage{flafter} % Floats immer erst nach der Referenz setzen
-\usepackage{subfig} % Layout wird weiter unten festgelegt !
-\usepackage{wrapfig} % Bilder von Text Umfliessen lassen
 
 \usepackage{placeins} % Alle Floats bis \FloatBarrier ausgeben
 
@@ -221,6 +188,7 @@
 
 %% Listings Paket ------------------------------------------------------
 %%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/listings/listings-1.3.pdf
+\iffalse
 \usepackage{listings}
 
 \lstset{
@@ -247,6 +215,7 @@ backgroundcolor=\color{lightgray},	  % % Hintergrundfarbe der Listings
          %XML
          %HTML
  }
+\fi
 
 %%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/examplep/eurotex_2005_examplep.pdf
 % LaTeX Code und Ergebnis nebeneinander darstellen
@@ -268,6 +237,7 @@ backgroundcolor=\color{lightgray},	  % % Hintergrundfarbe der Listings
 %%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/setspace/setspace.sty
 \usepackage{setspace}
 \setstretch{1.5}
+\setlength{\emergencystretch}{3em}
 % \doublespace	        % 2-facher Abstand
 % \onehalfspace	  % 1,5-facher Abstand
 % hereafter load 'typearea' again
@@ -283,7 +253,7 @@ backgroundcolor=\color{lightgray},	  % % Hintergrundfarbe der Listings
 %%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/koma-script/scrguide.pdf
 \usepackage[%
    automark,	 % automatische Aktualisierung der Kolumnentitel
-   nouppercase,	 % Grossbuchstaben verhindern
+   markcase=ignoreuppercase,	 % Grossbuchstaben verhindern
 ]{scrlayer-scrpage}
 
 \usepackage{scrtime} % Zeit
@@ -293,10 +263,10 @@ backgroundcolor=\color{lightgray},	  % % Hintergrundfarbe der Listings
 %\pagestyle{scrplain} % Seiten ohne Header
 %\pagestyle{empty} % Seiten ohne Header
 \clearpairofpagestyles
+\clearmainofpairofpagestyles
+\clearplainofpairofpagestyles
 \chead{\headmark}
 % loescht voreingestellte Stile
-\clearscrheadings
-\clearscrplain
 %
 % [scrplain]{scrheadings}
 
@@ -320,7 +290,7 @@ backgroundcolor=\color{lightgray},	  % % Hintergrundfarbe der Listings
 \automark[section]{chapter} % Inhalt von [\rightmark]{\leftmark}
 %
 % Linie zwischen Kopf und Textk�rper
-\setheadsepline{.4pt}[\color{black}]
+\KOMAoptions{headsepline=.4pt}
 
 %% Fussnoten =============================================================
 % Keine hochgestellten Ziffern in der Fussnote (KOMA-Script-spezifisch):
@@ -347,38 +317,6 @@ backgroundcolor=\color{lightgray},	  % % Hintergrundfarbe der Listings
 %
 
 %% Captions (Schrift, Aussehen) ==========================================
-
-%%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption.pdf
-\usepackage{caption}
-% Aussehen der Captions
-\captionsetup{
-   margin = 10pt,
-   font = {small,rm},
-   labelfont = {small,bf},
-   format = plain, % oder 'hang'
-   indention = 0em,	 % Einruecken der Beschriftung
-   labelsep = colon, %period, space, quad, newline
-   justification = RaggedRight, % justified, centering
-   singlelinecheck = true, % false (true=bei einer Zeile immer zentrieren)
-   position = bottom %top
-}
-%%% Bugfix Workaround
-\DeclareCaptionOption{parskip}[]{}
-\DeclareCaptionOption{parindent}[]{}
-
-% Aussehen der Captions fuer subfigures (subfig-Paket)
-\captionsetup[subfloat]{%
-   margin = 10pt,
-   font = {small,rm},
-   labelfont = {small,bf},
-   format = plain, % oder 'hang'
-   indention = 0em,	 % Einruecken der Beschriftung
-   labelsep = space, %period, space, quad, newline
-   justification = RaggedRight, % justified, centering
-   singlelinecheck = true, % false (true=bei einer Zeile immer zentrieren)
-   position = bottom, %top
-   labelformat = parens % simple, empty % Wie die Bezeichnung gesetzt wird
- }
 
 %% Inhaltsverzeichnis (Schrift, Aussehen) sowie weitere Verzeichnisse ====
 

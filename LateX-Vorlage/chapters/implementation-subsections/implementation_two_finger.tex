@@ -52,7 +52,7 @@ The decision variables and their bounds are summarized in Table~\ref{tab:two_fin
 \centering
 \caption{Decision variables of the two-finger gripper optimization problem.}
 \label{tab:two_finger_variables}
-\begin{tabular}{llll}
+\begin{tabularx}{\textwidth}{@{}l l l >{\raggedright\arraybackslash}X@{}}
 \toprule
 \textbf{Variable} & \textbf{Configuration parameter} & \textbf{Lower bound} & \textbf{Upper bound}
 \\
@@ -63,7 +63,7 @@ $h_1$             & \texttt{h\_p1\_spline}   & 1 & 15 \\
 $h_2$             & \texttt{h\_p2\_spline}   & 1 & 15 \\
 $h_3$             & \texttt{h\_p3\_spline}   & 1 & 15 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 
@@ -141,11 +141,11 @@ Table~\ref{tab:two_finger_algorithms}.
 \label{tab:two_finger_algorithms}
 
 \small
-\begin{tabular}{
+\begin{tabularx}{\textwidth}{
     @{}
     p{0.20\linewidth}
     p{0.17\linewidth}
-    p{0.53\linewidth}
+    >{\raggedright\arraybackslash}X
     @{}
 }
 \toprule
@@ -176,7 +176,7 @@ Bayesian
 & Ax modular BoTorch model for multi-objective Bayesian optimization%
 ~\cite{olson2025ax,botorch} \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 For evolutionary algorithms requiring reference directions, such as NSGA-III and MOEA/D, uniform
@@ -517,7 +517,7 @@ The termination criteria depend on the selected optimization approach.
 \centering
 \caption{Termination criteria for evolutionary and Bayesian optimization.}
 \label{tab:two_finger_termination}
-\begin{tabular}{llll}
+\begin{tabularx}{\textwidth}{@{}l l l >{\raggedright\arraybackslash}X@{}}
 \toprule
 \textbf{Approach} & \textbf{Criterion} & \textbf{Symbol} & \textbf{Description} \\
 \midrule
@@ -537,7 +537,7 @@ Bayesian & Maximum batches & $B_{\max}$ & Maximum number of candidate batches re
 
 Bayesian & Maximum evaluations & $E_{\max}^{\mathrm{BO}}$ & Bayesian evaluation budget exhausted \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 For evolutionary optimization, the design-space and objective-space tolerances are evaluated over a

@@ -1,99 +1,99 @@
 \babel@toc {english}{}\relax 
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Goal and Tasks of the Thesis}{2}{section.1.2}%
-\contentsline {chapter}{\numberline {2}Literature Review}{4}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Theoretical Background}{4}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Optimization Theory}{4}{subsection.2.1.1}%
-\contentsline {subsubsection}{\nonumberline Black-Box Optimization}{4}{subsubsection*.11}%
-\contentsline {subsubsection}{\nonumberline Multi-Objective Optimization}{4}{subsubsection*.13}%
-\contentsline {subsubsection}{\nonumberline Pareto Optimality}{5}{subsubsection*.15}%
-\contentsline {subsubsection}{\nonumberline Evolutionary Algorithms}{5}{subsubsection*.17}%
-\contentsline {subsubsection}{\nonumberline Bayesian Optimization}{6}{subsubsection*.19}%
-\contentsline {subsubsection}{\nonumberline Hyperparameter Tuning}{6}{subsubsection*.21}%
-\contentsline {subsection}{\numberline {2.1.2}Multi-Objective Evolutionary Algorithms}{7}{subsection.2.1.2}%
-\contentsline {subsubsection}{\nonumberline NSGA-II}{7}{subsubsection*.23}%
-\contentsline {subsubsection}{\nonumberline NSGA-III}{7}{subsubsection*.25}%
-\contentsline {subsubsection}{\nonumberline MOEA/D}{8}{subsubsection*.27}%
-\contentsline {subsubsection}{\nonumberline SMS-EMOA}{8}{subsubsection*.29}%
-\contentsline {subsubsection}{\nonumberline CMOPSO}{8}{subsubsection*.31}%
-\contentsline {subsection}{\numberline {2.1.3}Gripper Theory and Geometric Representation}{9}{subsection.2.1.3}%
-\contentsline {subsubsection}{\nonumberline Grasp Theory}{9}{subsubsection*.33}%
-\contentsline {subsubsection}{\nonumberline Suction Cup Gripper and Grasp Diversity}{9}{subsubsection*.35}%
-\contentsline {paragraph}{\nonumberline Geodesic Distance as a Diversity Measure.}{9}{paragraph*.37}%
-\contentsline {paragraph}{\nonumberline Spatial Diversity via Mean Pairwise Euclidean Distance.}{9}{paragraph*.39}%
-\contentsline {subsubsection}{\nonumberline Two-Finger Gripper and Contour Representation}{10}{subsubsection*.41}%
-\contentsline {paragraph}{\nonumberline B-Splines.}{10}{paragraph*.43}%
-\contentsline {paragraph}{\nonumberline Spline-Based Shape Parameterization.}{11}{paragraph*.45}%
-\contentsline {section}{\numberline {2.2}State of the Art}{11}{section.2.2}%
-\contentsline {chapter}{\numberline {3}Methodology}{12}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Research Design}{12}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Research Paradigm}{12}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Study Structure}{12}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}Experimental Setup}{13}{subsection.3.1.3}%
-\contentsline {subsection}{\numberline {3.1.4}Scope and Limitations}{13}{subsection.3.1.4}%
-\contentsline {section}{\numberline {3.2}Problem Formulation}{14}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Multi-Objective Optimization Framework}{14}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Parameterization of Gripper Geometry}{14}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Selection of Objective Functions and Evaluation Metrics}{15}{subsection.3.2.3}%
-\contentsline {section}{\numberline {3.3}Optimization Library Selection}{16}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Algorithm Selection}{17}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Workpiece Selection}{19}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Evaluation Architecture}{19}{section.3.6}%
-\contentsline {section}{\numberline {3.7}Comparative Experimental Design}{20}{section.3.7}%
-\contentsline {section}{\numberline {3.8}Performance Indicators}{20}{section.3.8}%
-\contentsline {chapter}{\numberline {4}Implementation}{21}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Implementation of Multi-Suction Cup Gripper Optimization}{21}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Reduced Parameterization of Multi-Suction Cup Gripper}{21}{subsection.4.1.1}%
-\contentsline {paragraph}{\nonumberline Assumption}{23}{paragraph*.47}%
-\contentsline {subsection}{\numberline {4.1.2}Decision Variables and Bounds for Multi-Suction Cup Gripper}{23}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Optimization Framework of Multi-Suction Cup Gripper}{24}{subsection.4.1.3}%
-\contentsline {subsubsection}{\nonumberline Supported Optimization Methods}{25}{subsubsection*.49}%
-\contentsline {subsection}{\numberline {4.1.4}Initialization of Multi-Suction Cup Gripper Optimization}{26}{subsection.4.1.4}%
-\contentsline {subsubsection}{\nonumberline Evolutionary Initialization}{26}{subsubsection*.52}%
-\contentsline {subsubsection}{\nonumberline Bayesian Initialization}{26}{subsubsection*.54}%
-\contentsline {subsection}{\numberline {4.1.5}Objective Function Evaluation of Multi-Suction Cup Gripper via API}{27}{subsection.4.1.5}%
-\contentsline {subsubsection}{\nonumberline Grasp Evaluation}{28}{subsubsection*.56}%
-\contentsline {paragraph}{\nonumberline Continuity considerations}{31}{paragraph*.58}%
-\contentsline {subsubsection}{\nonumberline Objective Evaluation}{32}{subsubsection*.60}%
-\contentsline {subsection}{\numberline {4.1.6}Optimization Loop for Multi-Suction Cup Gripper}{33}{subsection.4.1.6}%
-\contentsline {subsubsection}{\nonumberline Evolutionary Optimization Loop}{33}{subsubsection*.62}%
-\contentsline {subsubsection}{\nonumberline Bayesian Optimization Loop}{33}{subsubsection*.64}%
-\contentsline {subsection}{\numberline {4.1.7}Termination Criteria for Multi-Suction Cup Gripper Optimization}{34}{subsection.4.1.7}%
-\contentsline {subsection}{\numberline {4.1.8}Performance Monitoring for Multi-Suction Cup Gripper}{35}{subsection.4.1.8}%
-\contentsline {subsection}{\numberline {4.1.9}Optional Hyperparameter Optimization for Multi-Suction Cup Gripper Problem}{35}{subsection.4.1.9}%
-\contentsline {subsection}{\numberline {4.1.10}Output of Multi-Suction Cup Gripper Optimization}{36}{subsection.4.1.10}%
-\contentsline {section}{\numberline {4.2}Implementation of Two-Finger Gripper Optimization}{36}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Decision Variables and Bounds for Two-Finger Gripper Problem}{37}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Optimization Framework for Two-Finger Gripper Optimization}{38}{subsection.4.2.2}%
-\contentsline {subsubsection}{\nonumberline Supported Optimization Methods for Two-Finger Gripper Optimization}{39}{subsubsection*.68}%
-\contentsline {subsection}{\numberline {4.2.3}Initialization of Two-Finger Gripper Optimization}{40}{subsection.4.2.3}%
-\contentsline {subsubsection}{\nonumberline Evolutionary Initialization}{40}{subsubsection*.71}%
-\contentsline {subsubsection}{\nonumberline Bayesian Initialization}{40}{subsubsection*.73}%
-\contentsline {subsection}{\numberline {4.2.4}Objective Function Evaluation of Two-Finger Gripper via API}{41}{subsection.4.2.4}%
-\contentsline {subsubsection}{\nonumberline Grasp Evaluation}{41}{subsubsection*.75}%
-\contentsline {subsubsection}{\nonumberline Objective Evaluation}{42}{subsubsection*.77}%
-\contentsline {subsection}{\numberline {4.2.5}Optimization Loop for Two-Finger Gripper}{43}{subsection.4.2.5}%
-\contentsline {subsubsection}{\nonumberline Evolutionary Optimization Loop}{44}{subsubsection*.79}%
-\contentsline {subsubsection}{\nonumberline Bayesian Optimization Loop}{45}{subsubsection*.81}%
-\contentsline {subsection}{\numberline {4.2.6}Termination Criteria for Two-Finger Gripper Optimization}{46}{subsection.4.2.6}%
-\contentsline {subsection}{\numberline {4.2.7}Performance Monitoring for Two-Finger Gripper}{46}{subsection.4.2.7}%
-\contentsline {subsection}{\numberline {4.2.8}Optional Hyperparameter Optimization for Two-Finger Gripper Problem}{47}{subsection.4.2.8}%
-\contentsline {subsection}{\numberline {4.2.9}Output of Two-Finger Gripper Optimization}{48}{subsection.4.2.9}%
-\contentsline {chapter}{\numberline {5}Validation}{50}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Validation of Results for Suction-Cup Gripper}{50}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Validation of Results for Two-Finger Gripper}{50}{section.5.2}%
-\contentsline {chapter}{\numberline {6}Evaluation}{51}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Results for Suction-Cup Gripper}{51}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Results for Evolutionary Algorithms}{51}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}Results for Bayesian Algorithms}{51}{subsection.6.1.2}%
-\contentsline {section}{\numberline {6.2}Results for Two-Finger Gripper}{51}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Results for Evolutionary Algorithms}{51}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Results for Bayesian Algorithms}{51}{subsection.6.2.2}%
-\contentsline {chapter}{\numberline {7}Summary}{52}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Conclustion}{52}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Limitations}{52}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Future Work}{52}{section.7.3}%
-\contentsline {chapter}{\numberline {A}Appendix}{53}{appendix.A}%
-\contentsline {chapter}{\nonumberline Bibliography}{54}{chapter*.83}%
+\contentsline {section}{\numberline {1.2}Problem Definition}{3}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Literature Review}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Theoretical Background}{5}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Optimization Theory}{5}{subsection.2.1.1}%
+\contentsline {subsubsection}{\nonumberline Black-Box Optimization}{5}{subsubsection*.11}%
+\contentsline {subsubsection}{\nonumberline Multi-Objective Optimization}{6}{subsubsection*.13}%
+\contentsline {subsubsection}{\nonumberline Pareto Optimality}{6}{subsubsection*.15}%
+\contentsline {subsubsection}{\nonumberline Evolutionary Algorithms}{7}{subsubsection*.17}%
+\contentsline {subsubsection}{\nonumberline Bayesian Optimization}{7}{subsubsection*.19}%
+\contentsline {subsubsection}{\nonumberline Hyperparameter Tuning}{8}{subsubsection*.21}%
+\contentsline {subsection}{\numberline {2.1.2}Multi-Objective Evolutionary Algorithms}{8}{subsection.2.1.2}%
+\contentsline {subsubsection}{\nonumberline NSGA-II}{9}{subsubsection*.23}%
+\contentsline {subsubsection}{\nonumberline NSGA-III}{9}{subsubsection*.25}%
+\contentsline {subsubsection}{\nonumberline MOEA/D}{9}{subsubsection*.27}%
+\contentsline {subsubsection}{\nonumberline SMS-EMOA}{10}{subsubsection*.29}%
+\contentsline {subsubsection}{\nonumberline CMOPSO}{10}{subsubsection*.31}%
+\contentsline {subsection}{\numberline {2.1.3}Gripper Theory and Geometric Representation}{11}{subsection.2.1.3}%
+\contentsline {subsubsection}{\nonumberline Grasp Theory}{11}{subsubsection*.33}%
+\contentsline {subsubsection}{\nonumberline Suction Cup Gripper and Grasp Diversity}{11}{subsubsection*.35}%
+\contentsline {paragraph}{\nonumberline Geodesic Distance as a Diversity Measure.}{11}{paragraph*.37}%
+\contentsline {paragraph}{\nonumberline Spatial Diversity via Mean Pairwise Euclidean Distance.}{12}{paragraph*.39}%
+\contentsline {subsubsection}{\nonumberline Two-Finger Gripper and Contour Representation}{12}{subsubsection*.41}%
+\contentsline {paragraph}{\nonumberline B-Splines.}{13}{paragraph*.43}%
+\contentsline {paragraph}{\nonumberline Spline-Based Shape Parameterization.}{13}{paragraph*.45}%
+\contentsline {section}{\numberline {2.2}State of the Art}{14}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Methodology}{15}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Research Design}{15}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Research Paradigm}{15}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Study Structure}{16}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Experimental Setup}{16}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Scope and Limitations}{16}{subsection.3.1.4}%
+\contentsline {section}{\numberline {3.2}Problem Formulation}{17}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Multi-Objective Optimization Framework}{17}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Parameterization of Gripper Geometry}{18}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Selection of Objective Functions and Evaluation Metrics}{19}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Optimization Library Selection}{20}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Algorithm Selection}{21}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Workpiece Selection}{23}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Evaluation Architecture}{24}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Comparative Experimental Design}{24}{section.3.7}%
+\contentsline {section}{\numberline {3.8}Performance Indicators}{25}{section.3.8}%
+\contentsline {chapter}{\numberline {4}Implementation}{26}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Implementation of Multi-Suction Cup Gripper Optimization}{26}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Reduced Parameterization of Multi-Suction Cup Gripper}{26}{subsection.4.1.1}%
+\contentsline {paragraph}{\nonumberline Assumption}{28}{paragraph*.47}%
+\contentsline {subsection}{\numberline {4.1.2}Decision Variables and Bounds for Multi-Suction Cup Gripper}{28}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Optimization Framework of Multi-Suction Cup Gripper}{29}{subsection.4.1.3}%
+\contentsline {subsubsection}{\nonumberline Supported Optimization Methods}{31}{subsubsection*.49}%
+\contentsline {subsection}{\numberline {4.1.4}Initialization of Multi-Suction Cup Gripper Optimization}{32}{subsection.4.1.4}%
+\contentsline {subsubsection}{\nonumberline Evolutionary Initialization}{32}{subsubsection*.51}%
+\contentsline {subsubsection}{\nonumberline Bayesian Initialization}{32}{subsubsection*.53}%
+\contentsline {subsection}{\numberline {4.1.5}Objective Function Evaluation of Multi-Suction Cup Gripper via API}{33}{subsection.4.1.5}%
+\contentsline {subsubsection}{\nonumberline Grasp Evaluation}{34}{subsubsection*.55}%
+\contentsline {paragraph}{\nonumberline Continuity considerations}{38}{paragraph*.57}%
+\contentsline {subsubsection}{\nonumberline Objective Evaluation}{39}{subsubsection*.59}%
+\contentsline {subsection}{\numberline {4.1.6}Optimization Loop for Multi-Suction Cup Gripper}{40}{subsection.4.1.6}%
+\contentsline {subsubsection}{\nonumberline Evolutionary Optimization Loop}{40}{subsubsection*.61}%
+\contentsline {subsubsection}{\nonumberline Bayesian Optimization Loop}{40}{subsubsection*.63}%
+\contentsline {subsection}{\numberline {4.1.7}Termination Criteria for Multi-Suction Cup Gripper Optimization}{42}{subsection.4.1.7}%
+\contentsline {subsection}{\numberline {4.1.8}Performance Monitoring for Multi-Suction Cup Gripper}{43}{subsection.4.1.8}%
+\contentsline {subsection}{\numberline {4.1.9}Optional Hyperparameter Optimization for Multi-Suction Cup Gripper Problem}{43}{subsection.4.1.9}%
+\contentsline {subsection}{\numberline {4.1.10}Output of Multi-Suction Cup Gripper Optimization}{44}{subsection.4.1.10}%
+\contentsline {section}{\numberline {4.2}Implementation of Two-Finger Gripper Optimization}{44}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Decision Variables and Bounds for Two-Finger Gripper Problem}{45}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Optimization Framework for Two-Finger Gripper Optimization}{46}{subsection.4.2.2}%
+\contentsline {subsubsection}{\nonumberline Supported Optimization Methods for Two-Finger Gripper Optimization}{47}{subsubsection*.65}%
+\contentsline {subsection}{\numberline {4.2.3}Initialization of Two-Finger Gripper Optimization}{49}{subsection.4.2.3}%
+\contentsline {subsubsection}{\nonumberline Evolutionary Initialization}{49}{subsubsection*.67}%
+\contentsline {subsubsection}{\nonumberline Bayesian Initialization}{49}{subsubsection*.69}%
+\contentsline {subsection}{\numberline {4.2.4}Objective Function Evaluation of Two-Finger Gripper via API}{50}{subsection.4.2.4}%
+\contentsline {subsubsection}{\nonumberline Grasp Evaluation}{50}{subsubsection*.71}%
+\contentsline {subsubsection}{\nonumberline Objective Evaluation}{51}{subsubsection*.73}%
+\contentsline {subsection}{\numberline {4.2.5}Optimization Loop for Two-Finger Gripper}{53}{subsection.4.2.5}%
+\contentsline {subsubsection}{\nonumberline Evolutionary Optimization Loop}{53}{subsubsection*.75}%
+\contentsline {subsubsection}{\nonumberline Bayesian Optimization Loop}{54}{subsubsection*.77}%
+\contentsline {subsection}{\numberline {4.2.6}Termination Criteria for Two-Finger Gripper Optimization}{55}{subsection.4.2.6}%
+\contentsline {subsection}{\numberline {4.2.7}Performance Monitoring for Two-Finger Gripper}{56}{subsection.4.2.7}%
+\contentsline {subsection}{\numberline {4.2.8}Optional Hyperparameter Optimization for Two-Finger Gripper Problem}{57}{subsection.4.2.8}%
+\contentsline {subsection}{\numberline {4.2.9}Output of Two-Finger Gripper Optimization}{59}{subsection.4.2.9}%
+\contentsline {chapter}{\numberline {5}Validation}{60}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Validation of Results for Suction-Cup Gripper}{60}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Validation of Results for Two-Finger Gripper}{60}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Evaluation}{61}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Results for Suction-Cup Gripper}{61}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Results for Evolutionary Algorithms}{61}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Results for Bayesian Algorithms}{61}{subsection.6.1.2}%
+\contentsline {section}{\numberline {6.2}Results for Two-Finger Gripper}{61}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Results for Evolutionary Algorithms}{61}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Results for Bayesian Algorithms}{61}{subsection.6.2.2}%
+\contentsline {chapter}{\numberline {7}Summary}{62}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Conclustion}{62}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Limitations}{62}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Future Work}{62}{section.7.3}%
+\contentsline {chapter}{\numberline {A}Appendix}{63}{appendix.A}%
+\contentsline {chapter}{\nonumberline Bibliography}{64}{chapter*.78}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

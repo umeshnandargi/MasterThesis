@@ -155,7 +155,7 @@ The framework supports the following evolutionary and Bayesian multi-objective o
 \centering
 \caption{Supported multi-objective optimization methods.}
 \label{tab:algorithms_sc}
-\begin{tabular}{lll}
+\begin{tabularx}{\textwidth}{@{}l l >{\raggedright\arraybackslash}X@{}}
 \toprule
 \textbf{Family} & \textbf{Identifier} & \textbf{Method} \\
 \midrule
@@ -167,7 +167,7 @@ Evolutionary & SMSEMOA & S-Metric Selection Evolutionary Multi-Objective Algorit
 Bayesian & AX-MBM & Ax modular BoTorch model for multi-objective Bayesian
     optimization~\cite{olson2025ax, botorch} \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 For evolutionary algorithms requiring reference directions, such as NSGA-III and MOEA/D, uniform
@@ -608,7 +608,7 @@ The termination criteria depend on the selected optimization approach.
 \centering
 \caption{Termination criteria for evolutionary and Bayesian optimization.}
 \label{tab:termination_sc}
-\begin{tabular}{llll}
+\begin{tabularx}{\textwidth}{@{}l l l >{\raggedright\arraybackslash}X@{}}
 \toprule
 \textbf{Approach} & \textbf{Criterion} & \textbf{Symbol} & \textbf{Description} \\
 \midrule
@@ -628,7 +628,7 @@ Bayesian & Maximum batches & $B_{\max}$ & Maximum number of candidate-generation
 
 Bayesian & Maximum evaluations & $E_{\max}^{\mathrm{BO}}$ & Bayesian evaluation budget exhausted \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 For evolutionary optimization, the design-space and objective-space tolerances are evaluated over a

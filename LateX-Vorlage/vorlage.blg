@@ -26,45 +26,45 @@ Warning--empty journal in botorch
 Warning--empty journal in Kleeberger
 
 Done.
-You've used 69 entries,
+You've used 73 entries,
             4087 wiz_defined-function locations,
-            1243 strings with 22544 characters,
-and the built_in function-call counts, 53924 in all, are:
-= -- 4287
-> -- 1569
-< -- 441
-+ -- 871
-- -- 304
-* -- 2590
-:= -- 7953
-add.period$ -- 138
-call.type$ -- 69
-change.case$ -- 69
-chr.to.int$ -- 1023
-cite$ -- 77
-duplicate$ -- 3872
-empty$ -- 4023
-format.name$ -- 352
-if$ -- 12600
+            1265 strings with 23364 characters,
+and the built_in function-call counts, 57493 in all, are:
+= -- 4575
+> -- 1668
+< -- 477
++ -- 927
+- -- 321
+* -- 2761
+:= -- 8469
+add.period$ -- 146
+call.type$ -- 73
+change.case$ -- 73
+chr.to.int$ -- 1107
+cite$ -- 81
+duplicate$ -- 4119
+empty$ -- 4280
+format.name$ -- 372
+if$ -- 13443
 int.to.chr$ -- 0
-int.to.str$ -- 69
-missing$ -- 678
-newline$ -- 244
-num.names$ -- 69
-pop$ -- 1626
+int.to.str$ -- 73
+missing$ -- 719
+newline$ -- 256
+num.names$ -- 73
+pop$ -- 1716
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 4129
+skip$ -- 4404
 stack$ -- 0
-substring$ -- 2517
-swap$ -- 3199
-text.length$ -- 100
+substring$ -- 2715
+swap$ -- 3418
+text.length$ -- 108
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 69
+type$ -- 73
 warning$ -- 8
-while$ -- 214
-width$ -- 71
-write$ -- 685
+while$ -- 230
+width$ -- 75
+write$ -- 725
 (There were 8 warnings)

@@ -1,8 +1,17 @@
-\section{Goal and Tasks of the Thesis}
+\section{Problem Definition}
 \label{sec:goals_tasks}
+Designing grippers for a given set of workpieces is still largely a manual, experience-driven task, in which geometric parameters such as suction-cup
+placement or finger contours are chosen iteratively and validated in simulation or on hardware\cite{Liu2022Simulation}. Because grasp quality can only
+be assessed through a simulation or geometric evaluation routine, no analytical gradients or closed-form objective expressions are available, and each
+evaluation is comparatively expensive\cite{Santoni2023Comparison}. Moreover, a single gripper usually has to handle several workpieces at once, so the
+design criteria are inherently conflicting and cannot be reduced to a single scalar quality measure without losing information about the available
+trade-offs. These properties of expensive, derivative-free, multi-objective evaluations place gripper design squarely in the domain of black-box
+multi-objective optimization\cite{Mueller2017SOCEMO}. Which class of optimization algorithm is best suited for such problems, however, remains an open
+question, as performance is known to depend strongly on the number of objectives, the shape of the objective landscape, and the available evaluation
+budget\cite{Santoni2023Comparison, Raponi2023Optimizing}.
 
-The primary goal of this thesis is to \textbf{apply and comparatively evaluate optimization algorithms} spanning evolutionary multi-objective methods
-and Bayesian optimization for solving gripper configuration problems formulated as black-box multi-objective optimization
+The primary goal of this thesis is to apply and comparatively evaluate optimization algorithms spanning evolutionary multi-objective methods and
+Bayesian optimization for solving gripper configuration problems formulated as black-box multi-objective optimization
 tasks\cite{Datta2011Optimizing,Belakaria2020Uncertainty-Aware}. The two gripper types, a multi-suction-cup gripper and a two-finger gripper, serve as
 well-defined benchmark problems on which the algorithms are systematically compared with respect to solution quality, convergence behaviour, and
 robustness.

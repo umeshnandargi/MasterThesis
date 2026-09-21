@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.6.14)  13 SEP 2026 19:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.6.14)  21 SEP 2026 13:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -45,41 +45,6 @@ Package scrbook Info: You've used standard option `11pt'.
 (scrbook)             If you'd like to set the option with \KOMAoptions,
 (scrbook)             you'd have to use `fontsize=11pt' there
 (scrbook)             instead of `11pt', too.
-
-
-Class scrbook Warning: You've used deprecated option `bigheadings'.
-(scrbook)              Usage of this option indicates an old document
-(scrbook)              and changes compatibility level using
-(scrbook)              `headings=big,version=first,
-(scrbook)              enabledeprecatedfontcommands' that may result
-(scrbook)              in further warnings.
-(scrbook)              If you don't want this, you should simply
-(scrbook)              replace option `bigheadings' by `headings=big'.
-
-Class scrbook Info: Switching compatibility level to `first'.
-
-Class scrbook Warning: Switching back to an old KOMA-Script release does
-(scrbook)              not mean, that KOMA-Script is fully compatible with
-(scrbook)              the old release. If you need full compatibility
-(scrbook)              to an old KOMA-Script release, you should use that
-(scrbook)              old KOMA-Script release. However, in that case you
-(scrbook)              could also need old releases of other packages and
-(scrbook)              even of the LaTeX kernel.
-(scrbook)              You should also note, that the KOMA-Script developers
-(scrbook)              refuse support for documents using `version=first'.
-(scrbook)              We recommend to eliminate all deprecated options
-(scrbook)              and commands. We also recommend to not use option
-(scrbook)              `version', i.e., with other values than `last'.
-
-
-Class scrbook Warning: deprecated option `enabledeprecatedfontcommands'.
-(scrbook)              Note, that this option was already depreacted when
-(scrbook)              it has been defined. Support for old font commands
-(scrbook)              has been removed from KOMA-Script more than one
-(scrbook)              decade ago. It is not recommended to use them any
-(scrbook)              longer. Therefore usage of this class option also
-(scrbook)              is not recommended.
-
 Class scrbook Info: You've used standard option `oneside'.
 (scrbook)           This is correct!
 (scrbook)           Internally I'm using `twoside=false'.
@@ -92,211 +57,7 @@ Class scrbook Info: You've used standard option `openright'.
 (scrbook)           If you'd like to set the option with \KOMAoptions,
 (scrbook)           you'd have to use `open=right' there
 (scrbook)           instead of `openright', too.
-
-Class scrbook Warning: You've used deprecated option `nochapterprefix'.
-(scrbook)              Usage of this option indicates an old document
-(scrbook)              and changes compatibility level using
-(scrbook)              `chapterprefix=false,version=first,
-(scrbook)              enabledeprecatedfontcommands' that may result
-(scrbook)              in further warnings.
-(scrbook)              If you don't want this, you should simply
-(scrbook)              replace option `nochapterprefix' by `chapterprefix=false'.
-
-Class scrbook Info: Switching compatibility level to `first'.
-
-Class scrbook Warning: Switching back to an old KOMA-Script release does
-(scrbook)              not mean, that KOMA-Script is fully compatible with
-(scrbook)              the old release. If you need full compatibility
-(scrbook)              to an old KOMA-Script release, you should use that
-(scrbook)              old KOMA-Script release. However, in that case you
-(scrbook)              could also need old releases of other packages and
-(scrbook)              even of the LaTeX kernel.
-(scrbook)              You should also note, that the KOMA-Script developers
-(scrbook)              refuse support for documents using `version=first'.
-(scrbook)              We recommend to eliminate all deprecated options
-(scrbook)              and commands. We also recommend to not use option
-(scrbook)              `version', i.e., with other values than `last'.
-
-
-Class scrbook Warning: deprecated option `enabledeprecatedfontcommands'.
-(scrbook)              Note, that this option was already depreacted when
-(scrbook)              it has been defined. Support for old font commands
-(scrbook)              has been removed from KOMA-Script more than one
-(scrbook)              decade ago. It is not recommended to use them any
-(scrbook)              longer. Therefore usage of this class option also
-(scrbook)              is not recommended.
-
-
-Class scrbook Warning: You've used deprecated option `bibtotoc'.
-(scrbook)              Usage of this option indicates an old document
-(scrbook)              and changes compatibility level using
-(scrbook)              `bibliography=totoc,version=first,
-(scrbook)              enabledeprecatedfontcommands' that may result
-(scrbook)              in further warnings.
-(scrbook)              If you don't want this, you should simply
-(scrbook)              replace option `bibtotoc' by `bibliography=totoc'.
-
-Class scrbook Info: Switching compatibility level to `first'.
-
-Class scrbook Warning: Switching back to an old KOMA-Script release does
-(scrbook)              not mean, that KOMA-Script is fully compatible with
-(scrbook)              the old release. If you need full compatibility
-(scrbook)              to an old KOMA-Script release, you should use that
-(scrbook)              old KOMA-Script release. However, in that case you
-(scrbook)              could also need old releases of other packages and
-(scrbook)              even of the LaTeX kernel.
-(scrbook)              You should also note, that the KOMA-Script developers
-(scrbook)              refuse support for documents using `version=first'.
-(scrbook)              We recommend to eliminate all deprecated options
-(scrbook)              and commands. We also recommend to not use option
-(scrbook)              `version', i.e., with other values than `last'.
-
-
-Class scrbook Warning: deprecated option `enabledeprecatedfontcommands'.
-(scrbook)              Note, that this option was already depreacted when
-(scrbook)              it has been defined. Support for old font commands
-(scrbook)              has been removed from KOMA-Script more than one
-(scrbook)              decade ago. It is not recommended to use them any
-(scrbook)              longer. Therefore usage of this class option also
-(scrbook)              is not recommended.
-
-
-Class scrbook Warning: You've used deprecated option `tocindent'.
-(scrbook)              Usage of this option indicates an old document
-(scrbook)              and changes compatibility level using
-(scrbook)              `toc=graduated,version=first,
-(scrbook)              enabledeprecatedfontcommands' that may result
-(scrbook)              in further warnings.
-(scrbook)              If you don't want this, you should simply
-(scrbook)              replace option `tocindent' by `toc=graduated'.
-
-Class scrbook Info: Switching compatibility level to `first'.
-
-Class scrbook Warning: Switching back to an old KOMA-Script release does
-(scrbook)              not mean, that KOMA-Script is fully compatible with
-(scrbook)              the old release. If you need full compatibility
-(scrbook)              to an old KOMA-Script release, you should use that
-(scrbook)              old KOMA-Script release. However, in that case you
-(scrbook)              could also need old releases of other packages and
-(scrbook)              even of the LaTeX kernel.
-(scrbook)              You should also note, that the KOMA-Script developers
-(scrbook)              refuse support for documents using `version=first'.
-(scrbook)              We recommend to eliminate all deprecated options
-(scrbook)              and commands. We also recommend to not use option
-(scrbook)              `version', i.e., with other values than `last'.
-
-
-Class scrbook Warning: deprecated option `enabledeprecatedfontcommands'.
-(scrbook)              Note, that this option was already depreacted when
-(scrbook)              it has been defined. Support for old font commands
-(scrbook)              has been removed from KOMA-Script more than one
-(scrbook)              decade ago. It is not recommended to use them any
-(scrbook)              longer. Therefore usage of this class option also
-(scrbook)              is not recommended.
-
-
-Class scrbook Warning: You've used deprecated option `listsindent'.
-(scrbook)              Usage of this option indicates an old document
-(scrbook)              and changes compatibility level using
-(scrbook)              `listof=graduated,version=first,
-(scrbook)              enabledeprecatedfontcommands' that may result
-(scrbook)              in further warnings.
-(scrbook)              If you don't want this, you should simply
-(scrbook)              replace option `listsindent' by `listof=graduated'.
-
-Class scrbook Info: Switching compatibility level to `first'.
-
-Class scrbook Warning: Switching back to an old KOMA-Script release does
-(scrbook)              not mean, that KOMA-Script is fully compatible with
-(scrbook)              the old release. If you need full compatibility
-(scrbook)              to an old KOMA-Script release, you should use that
-(scrbook)              old KOMA-Script release. However, in that case you
-(scrbook)              could also need old releases of other packages and
-(scrbook)              even of the LaTeX kernel.
-(scrbook)              You should also note, that the KOMA-Script developers
-(scrbook)              refuse support for documents using `version=first'.
-(scrbook)              We recommend to eliminate all deprecated options
-(scrbook)              and commands. We also recommend to not use option
-(scrbook)              `version', i.e., with other values than `last'.
-
-
-Class scrbook Warning: deprecated option `enabledeprecatedfontcommands'.
-(scrbook)              Note, that this option was already depreacted when
-(scrbook)              it has been defined. Support for old font commands
-(scrbook)              has been removed from KOMA-Script more than one
-(scrbook)              decade ago. It is not recommended to use them any
-(scrbook)              longer. Therefore usage of this class option also
-(scrbook)              is not recommended.
-
-
-Class scrbook Warning: You've used deprecated option `pointlessnumbers'.
-(scrbook)              Usage of this option indicates an old document
-(scrbook)              and changes compatibility level using
-(scrbook)              `numbers=noenddot,version=first,
-(scrbook)              enabledeprecatedfontcommands' that may result
-(scrbook)              in further warnings.
-(scrbook)              If you don't want this, you should simply
-(scrbook)              replace option `pointlessnumbers' by `numbers=noenddot'.
-
-Class scrbook Info: Switching compatibility level to `first'.
-
-Class scrbook Warning: Switching back to an old KOMA-Script release does
-(scrbook)              not mean, that KOMA-Script is fully compatible with
-(scrbook)              the old release. If you need full compatibility
-(scrbook)              to an old KOMA-Script release, you should use that
-(scrbook)              old KOMA-Script release. However, in that case you
-(scrbook)              could also need old releases of other packages and
-(scrbook)              even of the LaTeX kernel.
-(scrbook)              You should also note, that the KOMA-Script developers
-(scrbook)              refuse support for documents using `version=first'.
-(scrbook)              We recommend to eliminate all deprecated options
-(scrbook)              and commands. We also recommend to not use option
-(scrbook)              `version', i.e., with other values than `last'.
-
-
-Class scrbook Warning: deprecated option `enabledeprecatedfontcommands'.
-(scrbook)              Note, that this option was already depreacted when
-(scrbook)              it has been defined. Support for old font commands
-(scrbook)              has been removed from KOMA-Script more than one
-(scrbook)              decade ago. It is not recommended to use them any
-(scrbook)              longer. Therefore usage of this class option also
-(scrbook)              is not recommended.
-
-
-Class scrbook Warning: You've used deprecated option `cleardoubleempty'.
-(scrbook)              Usage of this option indicates an old document
-(scrbook)              and changes compatibility level using
-(scrbook)              `cleardoublepage=empty,version=first,
-(scrbook)              enabledeprecatedfontcommands' that may result
-(scrbook)              in further warnings.
-(scrbook)              If you don't want this, you should simply
-(scrbook)              replace option `cleardoubleempty' by `cleardoublepage=empty'.
-
-Class scrbook Info: Switching compatibility level to `first'.
-
-Class scrbook Warning: Switching back to an old KOMA-Script release does
-(scrbook)              not mean, that KOMA-Script is fully compatible with
-(scrbook)              the old release. If you need full compatibility
-(scrbook)              to an old KOMA-Script release, you should use that
-(scrbook)              old KOMA-Script release. However, in that case you
-(scrbook)              could also need old releases of other packages and
-(scrbook)              even of the LaTeX kernel.
-(scrbook)              You should also note, that the KOMA-Script developers
-(scrbook)              refuse support for documents using `version=first'.
-(scrbook)              We recommend to eliminate all deprecated options
-(scrbook)              and commands. We also recommend to not use option
-(scrbook)              `version', i.e., with other values than `last'.
-
-
-Class scrbook Warning: deprecated option `enabledeprecatedfontcommands'.
-(scrbook)              Note, that this option was already depreacted when
-(scrbook)              it has been defined. Support for old font commands
-(scrbook)              has been removed from KOMA-Script more than one
-(scrbook)              decade ago. It is not recommended to use them any
-(scrbook)              longer. Therefore usage of this class option also
-(scrbook)              is not recommended.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/fleqn.clo
+ (/usr/share/texlive/texmf-dist/tex/latex/base/fleqn.clo
 File: fleqn.clo 2016/12/29 v1.2b Standard LaTeX option (flush left equations)
 \mathindent=\skip49
 Applying: [2015/01/01] Make \[ robust on input line 50.
@@ -306,42 +67,8 @@ Applying: [2015/01/01] Make \] robust on input line 74.
 LaTeX Info: Redefining \] on input line 75.
 Already applied: [0000/00/00] Make \] robust on input line 83.
 )
-
-Class scrbook Warning: You've used deprecated option `halfparskip'.
-(scrbook)              Usage of this option indicates an old document
-(scrbook)              and changes compatibility level using
-(scrbook)              `parskip=half,version=first,
-(scrbook)              enabledeprecatedfontcommands' that may result
-(scrbook)              in further warnings.
-(scrbook)              If you don't want this, you should simply
-(scrbook)              replace option `halfparskip' by `parskip=half'.
-
-Class scrbook Info: Switching compatibility level to `first'.
-
-Class scrbook Warning: Switching back to an old KOMA-Script release does
-(scrbook)              not mean, that KOMA-Script is fully compatible with
-(scrbook)              the old release. If you need full compatibility
-(scrbook)              to an old KOMA-Script release, you should use that
-(scrbook)              old KOMA-Script release. However, in that case you
-(scrbook)              could also need old releases of other packages and
-(scrbook)              even of the LaTeX kernel.
-(scrbook)              You should also note, that the KOMA-Script developers
-(scrbook)              refuse support for documents using `version=first'.
-(scrbook)              We recommend to eliminate all deprecated options
-(scrbook)              and commands. We also recommend to not use option
-(scrbook)              `version', i.e., with other values than `last'.
-
-
-Class scrbook Warning: deprecated option `enabledeprecatedfontcommands'.
-(scrbook)              Note, that this option was already depreacted when
-(scrbook)              it has been defined. Support for old font commands
-(scrbook)              has been removed from KOMA-Script more than one
-(scrbook)              decade ago. It is not recommended to use them any
-(scrbook)              longer. Therefore usage of this class option also
-(scrbook)              is not recommended.
-
 Class scrbook Info: File `scrsize11pt.clo' used to setup font sizes on input line 2691.
-(/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrsize11pt.clo
+ (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrsize11pt.clo
 File: scrsize11pt.clo 2023/07/07 v3.41 KOMA-Script font size class option (11pt)
 ) (/usr/share/texlive/texmf-dist/tex/latex/koma-script/typearea.sty
 Package: typearea 2023/07/07 v3.41 KOMA-Script package (type area)
@@ -359,80 +86,21 @@ Package typearea Info: You've used standard option `oneside'.
 (typearea)             If you'd like to set the option with \KOMAoptions,
 (typearea)             you'd have to use `twoside=false' there
 (typearea)             instead of `oneside', too.
-
-
-Package typearea Warning: You've used deprecated option `BCOR5mm'.
-(typearea)                Usage of this option indicates an old document
-(typearea)                and changes compatibility level using
-(typearea)                `BCOR=5mm,version=first,
-(typearea)                enabledeprecatedfontcommands' that may result
-(typearea)                in further warnings.
-(typearea)                If you don't want this, you should simply
-(typearea)                replace option `BCOR5mm' by `BCOR=5mm'.
-
-Package typearea Info: Switching compatibility level to `first'.
-
-Package typearea Warning: Switching back to an old KOMA-Script release does
-(typearea)                not mean, that KOMA-Script is fully compatible with
-(typearea)                the old release. If you need full compatibility
-(typearea)                to an old KOMA-Script release, you should use that
-(typearea)                old KOMA-Script release. However, in that case you
-(typearea)                could also need old releases of other packages and
-(typearea)                even of the LaTeX kernel.
-(typearea)                You should also note, that the KOMA-Script developers
-(typearea)                refuse support for documents using `version=first'.
-(typearea)                We recommend to eliminate all deprecated options
-(typearea)                and commands. We also recommend to not use option
-(typearea)                `version', i.e., with other values than `last'.
-
-
-Package typearea Warning: You've used deprecated option `DIV14'.
-(typearea)                Usage of this option indicates an old document
-(typearea)                and changes compatibility level using
-(typearea)                `DIV=14,version=first,
-(typearea)                enabledeprecatedfontcommands' that may result
-(typearea)                in further warnings.
-(typearea)                If you don't want this, you should simply
-(typearea)                replace option `DIV14' by `DIV=14'.
-
-Package typearea Info: Switching compatibility level to `first'.
-
-Package typearea Warning: Switching back to an old KOMA-Script release does
-(typearea)                not mean, that KOMA-Script is fully compatible with
-(typearea)                the old release. If you need full compatibility
-(typearea)                to an old KOMA-Script release, you should use that
-(typearea)                old KOMA-Script release. However, in that case you
-(typearea)                could also need old releases of other packages and
-(typearea)                even of the LaTeX kernel.
-(typearea)                You should also note, that the KOMA-Script developers
-(typearea)                refuse support for documents using `version=first'.
-(typearea)                We recommend to eliminate all deprecated options
-(typearea)                and commands. We also recommend to not use option
-(typearea)                `version', i.e., with other values than `last'.
-
 \ta@hblk=\skip51
 \ta@vblk=\skip52
 \ta@temp=\skip53
 \footheight=\skip54
-
-Package typearea Warning: Bad type area settings!
-(typearea)                The detected line width is about 17%
-(typearea)                larger than the heuristically estimated maximum
-(typearea)                limit of typographical good line width.
-(typearea)                You should e.g. decrease DIV, increase fontsize
-(typearea)                or change papersize.
-
 Package typearea Info: These are the values describing the layout:
-(typearea)             DIV  = 14
+(typearea)             DIV  = 12
 (typearea)             BCOR = 14.22636pt
 (typearea)             \paperwidth      = 597.50793pt
-(typearea)              \textwidth      = 458.29268pt
-(typearea)              DIV departure   = -17%
-(typearea)              \evensidemargin = 4.45082pt
-(typearea)              \oddsidemargin  = 4.45082pt
+(typearea)              \textwidth      = 437.46118pt
+(typearea)              DIV departure   = -11%
+(typearea)              \evensidemargin = 14.86656pt
+(typearea)              \oddsidemargin  = 14.86656pt
 (typearea)             \paperheight     = 845.04694pt
-(typearea)              \textheight     = 636.60028pt
-(typearea)              \topmargin      = -11.9095pt
+(typearea)              \textheight     = 609.40027pt
+(typearea)              \topmargin      = -1.84941pt
 (typearea)              \headheight     = 14.96008pt
 (typearea)              \headsep        = 20.40001pt
 (typearea)              \topskip        = 11.0pt
@@ -491,8 +159,6 @@ Package tocbasic Info: omitting babel extension for `lot'
 (tocbasic)             for `lot' on input line 7259.
 \scr@dte@table@maxnumwidth=\skip65
 \c@table=\count196
-Class scrbook Info: Using old \@makefntext due to compatibility level
-(scrbook)           less than 3.22 on input line 7417.
 Class scrbook Info: Redefining `\numberline' on input line 7430.
 \bibindent=\dimen140
 ) (./preamble/pre-work.tex) (./preamble/pre-packages.tex (/usr/share/texlive/texmf-dist/tex/latex/inputenx/inputenx.sty
@@ -680,258 +346,6 @@ Package: ragged2e 2023/06/22 v3.6 ragged2e Package
 \RaggedLeftParindent=\skip86
 \RaggedRightParindent=\skip87
 \JustifyingParindent=\skip88
-)
-
-Class scrbook Warning: Usage of package `parskip' together
-(scrbook)              with a KOMA-Script class is not recommended.
-(scrbook)              I'd suggest to use option
-(scrbook)              `parskip' with one of it's several values.
-(scrbook)              Nevertheless, using requested
-(scrbook)              package `parskip' on input line 46.
-
-(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
-Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
- (/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
- (/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
-Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
-) (/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
-Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-)) (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count281
-)
-Couldn't patch \@startsection
-) (/usr/share/texlive/texmf-dist/tex/latex/pgfgantt/pgfgantt.sty
-Package: pgfgantt 2018/01/10 v5.0 Draw Gantt diagrams with TikZ
- (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks27
-\pgfutil@tempdima=\dimen157
-\pgfutil@tempdimb=\dimen158
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box57
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)
-Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
-))
-Package: pgf 2023-01-15 v3.1.10 (3.1.10)
- (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
-Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
- (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks28
-\pgfkeys@temptoks=\toks29
- (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
-\pgfkeys@tmptoks=\toks30
-))
-\pgf@x=\dimen159
-\pgf@y=\dimen160
-\pgf@xa=\dimen161
-\pgf@ya=\dimen162
-\pgf@xb=\dimen163
-\pgf@yb=\dimen164
-\pgf@xc=\dimen165
-\pgf@yc=\dimen166
-\pgf@xd=\dimen167
-\pgf@yd=\dimen168
-\w@pgf@writea=\write3
-\r@pgf@reada=\read3
-\c@pgf@counta=\count282
-\c@pgf@countb=\count283
-\c@pgf@countc=\count284
-\c@pgf@countd=\count285
-\t@pgf@toka=\toks31
-\t@pgf@tokb=\toks32
-\t@pgf@tokc=\toks33
-\pgf@sys@id@count=\count286
- (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
-File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
-)
-Driver file for pgf: pgfsys-pdftex.def
- (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
-File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
- (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
-File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
-))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
-File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count287
-\pgfsyssoftpath@bigbuffer@items=\count288
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
-File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
-Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
- (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen169
-\pgfmath@count=\count289
-\pgfmath@box=\box58
-\pgfmath@toks=\toks34
-\pgfmath@stack@operand=\toks35
-\pgfmath@stack@operation=\toks36
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count290
-)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
-File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@picminx=\dimen170
-\pgf@picmaxx=\dimen171
-\pgf@picminy=\dimen172
-\pgf@picmaxy=\dimen173
-\pgf@pathminx=\dimen174
-\pgf@pathmaxx=\dimen175
-\pgf@pathminy=\dimen176
-\pgf@pathmaxy=\dimen177
-\pgf@xx=\dimen178
-\pgf@xy=\dimen179
-\pgf@yx=\dimen180
-\pgf@yy=\dimen181
-\pgf@zx=\dimen182
-\pgf@zy=\dimen183
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
-File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@path@lastx=\dimen184
-\pgf@path@lasty=\dimen185
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
-File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@shorten@end@additional=\dimen186
-\pgf@shorten@start@additional=\dimen187
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
-File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfpic=\box59
-\pgf@hbox=\box60
-\pgf@layerbox@main=\box61
-\pgf@picture@serial@count=\count291
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
-File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgflinewidth=\dimen188
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
-File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@pt@x=\dimen189
-\pgf@pt@y=\dimen190
-\pgf@pt@temp=\dimen191
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
-File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
-File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
-File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
-File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowsep=\dimen192
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
-File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@max=\dimen193
-\pgf@sys@shading@range@num=\count292
-\pgf@shadingcount=\count293
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
-File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfexternal@startupbox=\box62
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
-File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
-File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
-File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
-File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
-File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfnodeparttextbox=\box63
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
-File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
-Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
-\pgf@nodesepstart=\dimen194
-\pgf@nodesepend=\dimen195
-) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
-Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
-)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
-Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
-\pgffor@iter=\dimen196
-\pgffor@skip=\dimen197
-\pgffor@stack=\toks37
-\pgffor@toks=\toks38
-)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-Package: tikz 2023-01-15 v3.1.10 (3.1.10)
- (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
-File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count294
-\pgfplotmarksize=\dimen198
-)
-\tikz@lastx=\dimen199
-\tikz@lasty=\dimen256
-\tikz@lastxsaved=\dimen257
-\tikz@lastysaved=\dimen258
-\tikz@lastmovetox=\dimen259
-\tikz@lastmovetoy=\dimen260
-\tikzleveldistance=\dimen261
-\tikzsiblingdistance=\dimen262
-\tikz@figbox=\box64
-\tikz@figbox@bg=\box65
-\tikz@tempbox=\box66
-\tikz@tempbox@bg=\box67
-\tikztreelevel=\count295
-\tikznumberofchildren=\count296
-\tikznumberofcurrentchild=\count297
-\tikz@fig@count=\count298
- (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
-File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count299
-\pgfmatrixcurrentcolumn=\count300
-\pgf@matrix@numberofcolumns=\count301
-)
-\tikz@expandcount=\count302
- (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
-File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
-File: tikzlibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
- (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
-File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\arrowsize=\dimen263
-)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarybackgrounds.code.tex
-File: tikzlibrarybackgrounds.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@layerbox@background=\box68
-\pgf@layerboxsaved@background=\box69
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
-File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypatterns.code.tex
-File: tikzlibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
- (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.code.tex
-File: pgflibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
-File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
-File: tikzlibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
- (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.code.tex
-File: pgflibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfcalendar.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfcalendar.code.tex
-File: pgfcalendar.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfcalendarcurrentjulian=\count303
-\pgf@cal@easter@Y=\count304
-\pgf@cal@easter@G=\count305
-\pgf@cal@easter@C=\count306
-\pgf@cal@easter@X=\count307
-\pgf@cal@easter@Z=\count308
-\pgf@cal@easter@D=\count309
-\pgf@cal@easter@E=\count310
-\pgf@cal@easter@N=\count311
-\pgf@cal@easter@M=\count312
-\pgf@cal@easter@julianday=\count313
-))
-\gtt@currentline=\count314
-\gtt@lasttitleline=\count315
-\gtt@currgrid=\count316
-\gtt@chartwidth=\count317
-\gtt@lasttitleslot=\count318
-\gtt@elementid=\count319
-\gtt@today@slot=\count320
-\gtt@startjulian=\count321
-\gtt@endjulian=\count322
-\gtt@chartid=\count323
-\gtt@vrule@slot=\count324
-\gtt@calendar@slots=\count325
-\gtt@calendar@weeknumber=\count326
-\gtt@calendar@startofweek=\count327
-\gtt@left@slot=\count328
-\gtt@right@slot=\count329
 ) (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
@@ -979,66 +393,6 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
-) (/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty
-Package: mathtools 2022/06/29 v1.29 mathematical typesetting tools
- (/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty
-Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
-)
-\g_MT_multlinerow_int=\count330
-\l_MT_multwidth_dim=\dimen264
-\origjot=\skip89
-\l_MT_shortvdotswithinadjustabove_dim=\dimen265
-\l_MT_shortvdotswithinadjustbelow_dim=\dimen266
-\l_MT_above_intertext_sep=\dimen267
-\l_MT_below_intertext_sep=\dimen268
-\l_MT_above_shortintertext_sep=\dimen269
-\l_MT_below_shortintertext_sep=\dimen270
-\xmathstrut@box=\box70
-\xmathstrut@dim=\dimen271
-) (/usr/share/texlive/texmf-dist/tex/latex/fixmath/fixmath.sty
-Package: fixmath 2022/10/06 v0.9.1 (WaS)
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 27.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 28.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 30.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 31.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 33.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 35.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 36.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 37.
-LaTeX Font Info:    Redeclaring math symbol \alpha on input line 38.
-LaTeX Font Info:    Redeclaring math symbol \beta on input line 39.
-LaTeX Font Info:    Redeclaring math symbol \gamma on input line 40.
-LaTeX Font Info:    Redeclaring math symbol \delta on input line 41.
-LaTeX Font Info:    Redeclaring math symbol \epsilon on input line 42.
-LaTeX Font Info:    Redeclaring math symbol \zeta on input line 43.
-LaTeX Font Info:    Redeclaring math symbol \eta on input line 44.
-LaTeX Font Info:    Redeclaring math symbol \theta on input line 45.
-LaTeX Font Info:    Redeclaring math symbol \iota on input line 46.
-LaTeX Font Info:    Redeclaring math symbol \kappa on input line 47.
-LaTeX Font Info:    Redeclaring math symbol \lambda on input line 48.
-LaTeX Font Info:    Redeclaring math symbol \mu on input line 49.
-LaTeX Font Info:    Redeclaring math symbol \nu on input line 50.
-LaTeX Font Info:    Redeclaring math symbol \xi on input line 51.
-LaTeX Font Info:    Redeclaring math symbol \pi on input line 52.
-LaTeX Font Info:    Redeclaring math symbol \rho on input line 53.
-LaTeX Font Info:    Redeclaring math symbol \sigma on input line 54.
-LaTeX Font Info:    Redeclaring math symbol \tau on input line 55.
-LaTeX Font Info:    Redeclaring math symbol \upsilon on input line 56.
-LaTeX Font Info:    Redeclaring math symbol \phi on input line 57.
-LaTeX Font Info:    Redeclaring math symbol \chi on input line 58.
-LaTeX Font Info:    Redeclaring math symbol \psi on input line 59.
-LaTeX Font Info:    Redeclaring math symbol \omega on input line 60.
-LaTeX Font Info:    Redeclaring math symbol \varepsilon on input line 61.
-LaTeX Font Info:    Redeclaring math symbol \vartheta on input line 62.
-LaTeX Font Info:    Redeclaring math symbol \varpi on input line 63.
-LaTeX Font Info:    Redeclaring math symbol \varphi on input line 64.
-LaTeX Font Info:    Redeclaring math symbol \varrho on input line 65.
-LaTeX Font Info:    Redeclaring math symbol \varsigma on input line 66.
-) (/usr/share/texlive/texmf-dist/tex/latex/onlyamsmath/onlyamsmath.sty
-Package: onlyamsmath 2016/12/18 v0.20 Destroy the standard math environments
 ) (/usr/share/texlive/texmf-dist/tex/latex/was/icomma.sty
 Package: icomma 2002/03/10 v2.0 (WaS)
 ) (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
@@ -1046,14 +400,14 @@ Package: icomma 2002/03/10 v2.0 (WaS)
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 ) (/usr/share/texlive/texmf-dist/tex/latex/footmisc/footmisc.sty
 Package: footmisc 2023/07/05 v6.0f a miscellany of footnote facilities
-\FN@temptoken=\toks39
-\footnotemargin=\dimen272
-\@outputbox@depth=\dimen273
+\FN@temptoken=\toks27
+\footnotemargin=\dimen157
+\@outputbox@depth=\dimen158
  (/usr/share/texlive/texmf-dist/tex/latex/bigfoot/perpage.sty
 Package: perpage 2014/10/25 2.0 Reset/sort counters per page
-\c@abspage=\count331
+\c@abspage=\count281
 )
-\c@pp@a@footnote=\count332
+\c@pp@a@footnote=\count282
 Package footmisc Info: Declaring symbol style bringhurst on input line 696.
 Package footmisc Info: Declaring symbol style chicago on input line 704.
 Package footmisc Info: Declaring symbol style wiley on input line 713.
@@ -1062,47 +416,51 @@ Package footmisc Info: Declaring symbol style lamport* on input line 744.
 Package footmisc Info: Declaring symbol style lamport*-robust on input line 765.
 ) (/usr/share/texlive/texmf-dist/tex/latex/tools/varioref.sty
 Package: varioref 2022/01/09 v1.6f package for extended references (FMi)
-\c@vrcnt=\count333
+\c@vrcnt=\count283
 ) (/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
-\labelindent=\skip90
-\enit@outerparindent=\dimen274
-\enit@toks=\toks40
-\enit@inbox=\box71
-\enit@count@id=\count334
-\enitdp@description=\count335
+\labelindent=\skip89
+\enit@outerparindent=\dimen159
+\enit@toks=\toks28
+\enit@inbox=\box57
+\enit@count@id=\count284
+\enitdp@description=\count285
 ) (/usr/share/texlive/texmf-dist/tex/latex/nomencl/nomencl.sty
 Package: nomencl 2021/11/10 v5.6 Nomenclature package
  (/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
  (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks41
-\XKV@tempa@toks=\toks42
+\XKV@toks=\toks29
+\XKV@tempa@toks=\toks30
 )
-\XKV@depth=\count336
+\XKV@depth=\count286
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 )) (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 )
 Package tocbasic Info: setting babel extension for `nlo' on input line 187.
 Package tocbasic Info: setting babel extension for `nls' on input line 188.
-\nomlabelwidth=\dimen275
-\nom@tempdim=\dimen276
-\nomitemsep=\skip91
+\nomlabelwidth=\dimen160
+\nom@tempdim=\dimen161
+\nomitemsep=\skip90
 )
-\@nomenclaturefile=\write4
-\openout4 = `vorlage.nlo'.
+\@nomenclaturefile=\write3
+\openout3 = `vorlage.nlo'.
 
-Package nomencl Info: Writing nomenclature file vorlage.nlo on input line 113.
+Package nomencl Info: Writing nomenclature file vorlage.nlo on input line 84.
  (/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.sty
 Package: csquotes 2022-09-14 v5.2n context-sensitive quotations (JAW)
-\csq@reset=\count337
-\csq@gtype=\count338
-\csq@glevel=\count339
-\csq@qlevel=\count340
-\csq@maxlvl=\count341
-\csq@tshold=\count342
-\csq@ltx@everypar=\toks43
+ (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count287
+)
+\csq@reset=\count288
+\csq@gtype=\count289
+\csq@glevel=\count290
+\csq@qlevel=\count291
+\csq@maxlvl=\count292
+\csq@tshold=\count293
+\csq@ltx@everypar=\toks31
  (/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.def
 File: csquotes.def 2022-09-14 v5.2n csquotes generic definitions (JAW)
 )
@@ -1121,30 +479,34 @@ Package csquotes Info: Redefining alias 'french' -> 'french/guillemets'.
 Package: pdfpages 2024/01/21 v0.5y Insert pages of external PDF documents (AM)
  (/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
-\ESO@tempdima=\dimen277
-\ESO@tempdimb=\dimen278
+\ESO@tempdima=\dimen162
+\ESO@tempdimb=\dimen163
 )
-\AM@pagewidth=\dimen279
-\AM@pageheight=\dimen280
-\AM@fboxrule=\dimen281
+\AM@pagewidth=\dimen164
+\AM@pageheight=\dimen165
+\AM@fboxrule=\dimen166
  (/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pppdftex.def
 File: pppdftex.def 2024/01/21 v0.5y Pdfpages driver for pdfTeX (AM)
 )
-\pdfpages@includegraphics@status=\count343
-\AM@pagebox=\box72
-\AM@global@opts=\toks44
-\AM@pagecnt=\count344
-\AM@toc@title=\toks45
-\AM@lof@heading=\toks46
-\c@AM@survey=\count345
-\AM@templatesizebox=\box73
+\pdfpages@includegraphics@status=\count294
+\AM@pagebox=\box58
+\AM@global@opts=\toks32
+\AM@pagecnt=\count295
+\AM@toc@title=\toks33
+\AM@lof@heading=\toks34
+\c@AM@survey=\count296
+\AM@templatesizebox=\box59
 ) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2024-01-20 v7.01h Hypertext links for LaTeX
- (/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+ (/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+) (/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 ) (/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
- (/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+ (/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+) (/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
  (/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
@@ -1162,12 +524,14 @@ Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+ (/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count297
 )
-\c@section@level=\count346
-)
-\@linkdim=\dimen282
-\Hy@linkcounter=\count347
-\Hy@pagecounter=\count348
+\@linkdim=\dimen167
+\Hy@linkcounter=\count298
+\Hy@pagecounter=\count299
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2024-01-20 v7.01h Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
@@ -1175,7 +539,7 @@ Now handling font encoding PD1 ...
 ) (/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count349
+\Hy@SavedSpaceFactor=\count300
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2024-01-20 v7.01h Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
@@ -1189,17 +553,17 @@ Package hyperref Info: Plain pages OFF on input line 4194.
 Package hyperref Info: Backreferencing OFF on input line 4199.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4446.
-\c@Hy@tempcnt=\count350
+\c@Hy@tempcnt=\count301
 LaTeX Info: Redefining \url on input line 4784.
-\XeTeXLinkMargin=\dimen283
+\XeTeXLinkMargin=\dimen168
  (/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count351
-\Field@Width=\dimen284
-\Fld@charsize=\dimen285
+\Fld@menulength=\count302
+\Field@Width=\dimen169
+\Fld@charsize=\dimen170
 Package hyperref Info: Hyper figures OFF on input line 6063.
 Package hyperref Info: Link nesting OFF on input line 6068.
 Package hyperref Info: Hyper index ON on input line 6071.
@@ -1211,9 +575,9 @@ Package hyperref Info: PDF/A mode OFF on input line 6093.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count352
-\c@Item=\count353
-\c@Hfootnote=\count354
+\Hy@abspage=\count303
+\c@Item=\count304
+\c@Hfootnote=\count305
 )
 Package hyperref Info: Driver: hpdftex.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
@@ -1222,8 +586,8 @@ File: hpdftex.def 2024-01-20 v7.01h Hyperref driver for pdfTeX
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
 with kernel methods
 )
-\Fld@listcount=\count355
-\c@bookmark@seq@number=\count356
+\Fld@listcount=\count306
+\c@bookmark@seq@number=\count307
  (/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
  (/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
@@ -1231,146 +595,58 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
-\Hy@SectionHShift=\skip92
+\Hy@SectionHShift=\skip91
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 176.
-Package hyperref Info: Option `raiselinks' set `true' on input line 176.
-Package hyperref Info: Option `breaklinks' set `true' on input line 176.
-Package hyperref Info: Option `verbose' set `true' on input line 176.
-Package hyperref Info: Option `linktocpage' set `true' on input line 176.
-Package hyperref Info: Option `bookmarksopen' set `true' on input line 176.
-Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 176.
-Package hyperref Info: Option `plainpages' set `false' on input line 176.
-Package hyperref Info: Option `pageanchor' set `true' on input line 176.
+Package hyperref Info: Option `colorlinks' set `true' on input line 147.
+Package hyperref Info: Option `raiselinks' set `true' on input line 147.
+Package hyperref Info: Option `breaklinks' set `true' on input line 147.
+Package hyperref Info: Option `verbose' set `true' on input line 147.
+Package hyperref Info: Option `linktocpage' set `true' on input line 147.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 147.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 147.
+Package hyperref Info: Option `plainpages' set `false' on input line 147.
+Package hyperref Info: Option `pageanchor' set `true' on input line 147.
  (/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen286
-\lightrulewidth=\dimen287
-\cmidrulewidth=\dimen288
-\belowrulesep=\dimen289
-\belowbottomsep=\dimen290
-\aboverulesep=\dimen291
-\abovetopsep=\dimen292
-\cmidrulesep=\dimen293
-\cmidrulekern=\dimen294
-\defaultaddspace=\dimen295
-\@cmidla=\count357
-\@cmidlb=\count358
-\@aboverulesep=\dimen296
-\@belowrulesep=\dimen297
-\@thisruleclass=\count359
-\@lastruleclass=\count360
-\@thisrulewidth=\dimen298
+\heavyrulewidth=\dimen171
+\lightrulewidth=\dimen172
+\cmidrulewidth=\dimen173
+\belowrulesep=\dimen174
+\belowbottomsep=\dimen175
+\aboverulesep=\dimen176
+\abovetopsep=\dimen177
+\cmidrulesep=\dimen178
+\cmidrulekern=\dimen179
+\defaultaddspace=\dimen180
+\@cmidla=\count308
+\@cmidlb=\count309
+\@aboverulesep=\dimen181
+\@belowrulesep=\dimen182
+\@thisruleclass=\count310
+\@lastruleclass=\count311
+\@thisrulewidth=\dimen183
 ) (/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
 Package: tabularx 2023/07/08 v2.11c `tabularx' package (DPC)
-\TX@col@width=\dimen299
-\TX@old@table=\dimen300
-\TX@old@col=\dimen301
-\TX@target=\dimen302
-\TX@delta=\dimen303
-\TX@cols=\count361
-\TX@ftn=\toks47
-) (/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
-Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
-\multirow@colwidth=\skip93
-\multirow@cntb=\count362
-\multirow@dima=\skip94
-\bigstrutjot=\dimen304
-) (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count363
-\float@exts=\toks48
-\float@box=\box74
-\@float@everytoks=\toks49
-\@floatcapt=\box75
+\TX@col@width=\dimen184
+\TX@old@table=\dimen185
+\TX@old@col=\dimen186
+\TX@target=\dimen187
+\TX@delta=\dimen188
+\TX@cols=\count312
+\TX@ftn=\toks35
 ) (/usr/share/texlive/texmf-dist/tex/latex/base/flafter.sty
 Package: flafter 2021/07/31 v1.4e Standard LaTeX floats after reference (FMi)
 Applying: [2015/01/01] float order in 2-column on input line 49.
 Already applied: [0000/00/00] float order in 2-column on input line 151.
-) (/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty
-Package: subfig 2005/06/28 ver: 1.3 subfig package
- (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2023/08/05 v3.6o Customizing captions (AR)
- (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen305
-\captionmargin=\dimen306
-\caption@leftmargin=\dimen307
-\caption@rightmargin=\dimen308
-\caption@width=\dimen309
-\caption@indent=\dimen310
-\caption@parindent=\dimen311
-\caption@hangindent=\dimen312
-Package caption Info: KOMA-Script document class detected.
- (/usr/share/texlive/texmf-dist/tex/latex/caption/caption-koma.sto
-File: caption-koma.sto 2023/09/08 v2.0e Adaption of the caption package to the KOMA-Script document classes (AR)
-))
-\c@caption@flags=\count364
-\c@continuedfloat=\count365
-Package caption Info: float package is loaded.
-Package caption Info: hyperref package is loaded.
-Package caption Info: KOMA-Script scrextend package detected.
-\caption@addmargin@hsize=\dimen313
-\caption@addmargin@linewidth=\dimen314
-)
-\c@KVtest=\count366
-\sf@farskip=\skip95
-\sf@captopadj=\dimen315
-\sf@capskip=\skip96
-\sf@nearskip=\skip97
-\c@subfigure=\count367
-\c@subfigure@save=\count368
-\c@lofdepth=\count369
-\c@subtable=\count370
-\c@subtable@save=\count371
-\c@lotdepth=\count372
-\sf@top=\skip98
-\sf@bottom=\skip99
-) (/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
-\wrapoverhang=\dimen316
-\WF@size=\dimen317
-\c@WF@wrappedlines=\count373
-\WF@box=\box76
-\WF@everypar=\toks50
-Package: wrapfig 2003/01/31  v 3.6
 ) (/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
 ) (/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
-) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count374
-\lst@gtempboxa=\box77
-\lst@token=\toks51
-\lst@length=\count375
-\lst@currlwidth=\dimen318
-\lst@column=\count376
-\lst@pos=\count377
-\lst@lostspace=\dimen319
-\lst@width=\dimen320
-\lst@newlines=\count378
-\lst@lineno=\count379
-\lst@maxwidth=\dimen321
-
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
-\c@lstnumber=\count380
-\lst@skipnumbers=\count381
-\lst@framebox=\box78
-) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2023/02/27 1.9 listings configuration
-))
-Package: listings 2023/02/27 1.9 (Carsten Heinz)
- (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2023/02/27 1.9 listings language file
-) (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang2.sty
-File: lstlang2.sty 2023/02/27 1.9 listings language file
-) (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang3.sty
-File: lstlang3.sty 2023/02/27 1.9 listings language file
 ) (/usr/share/texlive/texmf-dist/tex/latex/siunits/SIunits.sty
 Package: SIunits 2007/12/02 v1.36 Support for the International System of units (MH)
 
 
-\@qskwidth=\skip100
+\@qskwidth=\skip92
 LaTeX Font Info:    Redeclaring font encoding TS1 on input line 46.
 \symgreek=\mathgroup6
 (/usr/share/texlive/texmf-dist/tex/latex/siunits/SIunits.cfg)
@@ -1378,53 +654,38 @@ Option `squaren' provided!
 ) (/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
 )
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 278.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 248.
  (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-
-Package typearea Warning: Bad type area settings!
-(typearea)                The detected line width is about 17%
-(typearea)                larger than the heuristically estimated maximum
-(typearea)                limit of typographical good line width.
-(typearea)                You should e.g. decrease DIV, increase fontsize
-(typearea)                or change papersize.
-
 Package typearea Info: These are the values describing the layout:
-(typearea)             DIV  = 14
+(typearea)             DIV  = 12
 (typearea)             BCOR = 14.22636pt
 (typearea)             \paperwidth      = 597.50793pt
-(typearea)              \textwidth      = 458.29268pt
-(typearea)              DIV departure   = -17%
-(typearea)              \evensidemargin = 4.45082pt
-(typearea)              \oddsidemargin  = 4.45082pt
+(typearea)              \textwidth      = 437.46118pt
+(typearea)              DIV departure   = -11%
+(typearea)              \evensidemargin = 14.86656pt
+(typearea)              \oddsidemargin  = 14.86656pt
 (typearea)             \paperheight     = 845.04694pt
-(typearea)              \textheight     = 623.00027pt
-(typearea)              \topmargin      = -11.9095pt
+(typearea)              \textheight     = 582.20026pt
+(typearea)              \topmargin      = -1.84941pt
 (typearea)              \headheight     = 22.44012pt
 (typearea)              \headsep        = 30.6pt
 (typearea)              \topskip        = 11.0pt
 (typearea)              \footskip       = 71.40001pt
 (typearea)              \baselineskip   = 20.40001pt
-(typearea)              on input line 278.
-(/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrlayer-scrpage.sty
+(typearea)              on input line 248.
+ (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrlayer-scrpage.sty
 Package: scrlayer-scrpage 2023/07/07 v3.41 KOMA-Script package (end user interface for scrlayer)
  (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrlayer.sty
 Package: scrlayer 2023/07/07 v3.41 KOMA-Script package (defining layers and page styles)
 Package scrlayer Info: patching LaTeX kernel macro \pagestyle on input line 2183.
 )
-
-Package scrlayer-scrpage Warning: You've used deprecated option `nouppercase'.
-(scrlayer-scrpage)                Usage of this option is deprecated.
-(scrlayer-scrpage)                You should simply replace `nouppercase'
-(scrlayer-scrpage)                by `markcase=ignoreuppercase'.
-
 Package scrbase Info: Unknown processing state.
 (scrbase)             Processing option `markcase=ignoreuppercase'
-(scrbase)             of member `.scrlayer-scrpage.sty'
-(scrbase)             of family `KOMA'
-(scrbase)             doesn't set a valid state.
-(scrbase)             This will be interpreted
+(scrbase)             of member `.scrlayer-scrpage.sty' of family
+(scrbase)             `KOMA' doesn't set
+(scrbase)             a valid state. This will be interpreted
 (scrbase)             as \FamilyKeyStateProcessed on input line 649.
 Package scrlayer-scrpage Info: Makeing stand-alone element `pagehead' from
 (scrlayer-scrpage)             alias to `pageheadfoot' on input line 1106.
@@ -1436,43 +697,20 @@ Package scrlayer-scrpage Info: Makeing stand-alone element `pagehead' from
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrtime.sty
 Package: scrtime 2023/07/07 v3.41 KOMA-Script package (time of LaTeX run)
 )
-
-Package scrlayer-scrpage Warning: replacing deprecated \clearscrheading by
-(scrlayer-scrpage)                \clearmainofpairofpagestyles on input line 298.
-
-
-Package scrlayer-scrpage Warning: replacing deprecated \clearscrplain by
-(scrlayer-scrpage)                \clearplainofpairofpagestyles on input line 299.
-
 1: section
 1: chapter
 1: chapter
 1: section
-
-Package scrlayer-scrpage Warning: Command deprecated!
-(scrlayer-scrpage)                Usage of `\setheadtopline', `\setheadsepline',
-(scrlayer-scrpage)                `\setfootsepline', and `\setfootbotline'
-(scrlayer-scrpage)                became deprecated with scrlayer-scrpage.
-(scrlayer-scrpage)                You should use KOMA-Script options
-(scrlayer-scrpage)                `headsepline', `headtopline', `footsepline',
-(scrlayer-scrpage)                or `footbotline' with values
-(scrlayer-scrpage)                `<line thickness>:<line length>' to setup
-(scrlayer-scrpage)                the line length and thickness, and
-(scrlayer-scrpage)                `\setkomafont' or `\addtokomafont' to
-(scrlayer-scrpage)                setup the colour on input line 323.
-
-Class scrbook Info: Using old \@makefntext due to compatibility level
-(scrbook)           less than 3.22 on input line 327.
 Package scrkbase Info: You've told me to redefine the font selection of the
 (scrkbase)             element `sectioning' that is an alias of element
-(scrkbase)             `disposition' on input line 339.
+(scrkbase)             `disposition' on input line 309.
 ) (./preamble/pre-newcommands.tex) (./preamble/pre-tablecommands.tex) (./preamble/pre-hyphenation.tex)
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
  (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count382
-\l__pdf_internal_box=\box79
+\l__color_backend_stack_int=\count313
+\l__pdf_internal_box=\box60
 ) (./vorlage.aux (./chapters/ch-aa-titel.aux) (./chapters/ch-aa-vorspiel.aux) (./chapters/ch-aa-zusfasg.aux) (./chapters/ch-hauptteil.aux) (./chapters/ch-zz-anhang.aux))
 \openout1 = `vorlage.aux'.
 
@@ -1506,17 +744,17 @@ Package scrbase Info: activating english \bibname on input line 32.
 Package scrbase Info: activating english \indexname on input line 32.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count383
-\scratchdimen=\dimen322
-\scratchbox=\box80
-\nofMPsegments=\count384
-\nofMParguments=\count385
-\everyMPshowfont=\toks52
-\MPscratchCnt=\count386
-\MPscratchDim=\dimen323
-\MPnumerator=\count387
-\makeMPintoPDFobject=\count388
-\everyMPtoPDFconversion=\toks53
+\scratchcounter=\count314
+\scratchdimen=\dimen189
+\scratchbox=\box61
+\nofMPsegments=\count315
+\nofMParguments=\count316
+\everyMPshowfont=\toks36
+\MPscratchCnt=\count317
+\MPscratchDim=\dimen190
+\MPnumerator=\count318
+\makeMPintoPDFobject=\count319
+\everyMPtoPDFconversion=\toks37
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -1533,8 +771,8 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
 Package hyperref Info: Link coloring ON on input line 32.
  (./vorlage.out) (./vorlage.out)
-\@outlinefile=\write5
-\openout5 = `vorlage.out'.
+\@outlinefile=\write4
+\openout4 = `vorlage.out'.
 
 Package hyperref Info: Anchor `Doc-Start' on input line 32.
 Class scrbook Info: loading recommended package `bookmark'.
@@ -1549,15 +787,8 @@ Class scrbook Info: loading recommended package `bookmark'.
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
  (/usr/share/texlive/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
 File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO)
-\BKM@id=\count389
+\BKM@id=\count320
 ))
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: subfig package v1.3 is loaded.
-Package caption Info: listings package is loaded.
-Package caption Info: wrapfig package is loaded.
-Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count390
-
 Option `squaren' provided! 
  Command \squaren defined by SIunits package!
 
@@ -1569,12 +800,12 @@ LaTeX Font Info:    Trying to load font information for T1+lmss on input line 7.
  (/usr/share/texmf/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-<fig/aa-titel/HE_Logo_4c.pdf, id=7, 126.13202pt x 31.17377pt>
+<fig/aa-titel/HE_Logo_4c.pdf, id=4, 126.13202pt x 31.17377pt>
 File: fig/aa-titel/HE_Logo_4c.pdf Graphic file (type pdf)
 <use fig/aa-titel/HE_Logo_4c.pdf>
 Package pdftex.def Info: fig/aa-titel/HE_Logo_4c.pdf  used on input line 9.
 (pdftex.def)             Requested size: 142.26378pt x 35.16219pt.
-<fig/aa-titel/IPA_Logo.jpg, id=8, 602.25pt x 301.125pt>
+<fig/aa-titel/IPA_Logo.jpg, id=5, 602.25pt x 301.125pt>
 File: fig/aa-titel/IPA_Logo.jpg Graphic file (type jpg)
 <use fig/aa-titel/IPA_Logo.jpg>
 Package pdftex.def Info: fig/aa-titel/IPA_Logo.jpg  used on input line 11.
@@ -1595,58 +826,47 @@ Package hyperref Info: Anchor `page.i' on input line 45.
 
  (./chapters/ch-aa-vorspiel.tex
 Package hyperref Info: Anchor `chapter*.1' on input line 2.
-
-Underfull \hbox (badness 10000) in paragraph at lines 4--6
-
- []
-
-
-Overfull \hbox (1.94121pt too wide) in paragraph at lines 4--6
-\T1/lmr/m/n/10.95 Die Ar-beit wurde bisher in gle-icher oder ähn-licher Form keiner an-deren Prü-fungs-be-hörde vorgelegt
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 4--6
-
- []
-
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 11.
-(/usr/share/texmf/tex/latex/lm/ot1lmr.fd
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 6.
+ (/usr/share/texmf/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 13.
+ (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 11.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 13.
  (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 11.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 13.
  (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 11.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 13.
  (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 11.
+(Font)              <10> on input line 13.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 11.
+(Font)              <7> on input line 13.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 11.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 11.
+(Font)              <5> on input line 13.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 13.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 11.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 13.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 11.
+(Font)              <10.95> on input line 13.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 11.
+(Font)              <8> on input line 13.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 11.
-Package hyperref Info: Anchor `page.ii' on input line 11.
+(Font)              <6> on input line 13.
+Package hyperref Info: Anchor `page.ii' on input line 13.
  [2
 
 
@@ -1654,20 +874,20 @@ Package hyperref Info: Anchor `page.ii' on input line 11.
 
 
 ]
-Package hyperref Info: Anchor `chapter*.2' on input line 14.
-Package hyperref Info: Anchor `page.iii' on input line 19.
+Package hyperref Info: Anchor `chapter*.2' on input line 16.
+Package hyperref Info: Anchor `page.iii' on input line 21.
  [3
 
 
 ]
-Package hyperref Info: Anchor `chapter*.3' on input line 22.
-Package hyperref Info: Anchor `page.iv' on input line 36.
+Package hyperref Info: Anchor `chapter*.3' on input line 24.
+Package hyperref Info: Anchor `page.iv' on input line 39.
  [4
 
 
 ]
-Package hyperref Info: Anchor `chapter*.4' on input line 38.
-Package hyperref Info: Anchor `page.v' on input line 42.
+Package hyperref Info: Anchor `chapter*.4' on input line 41.
+Package hyperref Info: Anchor `page.v' on input line 45.
  [5
 
 
@@ -1720,10 +940,7 @@ Package hyperref Info: Reference (link) `subsection.4.1.3' on input line 50.
 Package hyperref Info: Reference (link) `subsection.4.1.4' on input line 52.
 Package hyperref Info: Reference (link) `subsection.4.1.5' on input line 55.
 Package hyperref Info: Reference (link) `subsection.4.1.6' on input line 59.
-Package hyperref Info: Reference (link) `subsection.4.1.7' on input line 62.
-Package hyperref Info: Reference (link) `subsection.4.1.8' on input line 63.
-Package hyperref Info: Reference (link) `subsection.4.1.9' on input line 64.
-Package hyperref Info: Anchor `page.vii' on input line 65.
+Package hyperref Info: Anchor `page.vii' on input line 62.
  [7
 
 
@@ -1761,10 +978,10 @@ Package `hyperref' Info: End of reference (link) `subsection.4.1.2', line 49.
 Package `hyperref' Info: End of reference (link) `subsection.4.1.3', line 50.
 Package `hyperref' Info: End of reference (link) `subsection.4.1.4', line 52.
 Package `hyperref' Info: End of reference (link) `subsection.4.1.5', line 55.
-Package `hyperref' Info: End of reference (link) `subsection.4.1.6', line 59.
-Package `hyperref' Info: End of reference (link) `subsection.4.1.7', line 62.
-Package `hyperref' Info: End of reference (link) `subsection.4.1.8', line 63.
 ]
+Package hyperref Info: Reference (link) `subsection.4.1.7' on input line 62.
+Package hyperref Info: Reference (link) `subsection.4.1.8' on input line 63.
+Package hyperref Info: Reference (link) `subsection.4.1.9' on input line 64.
 Package hyperref Info: Reference (link) `subsection.4.1.10' on input line 65.
 Package hyperref Info: Reference (link) `section.4.2' on input line 66.
 Package hyperref Info: Reference (link) `subsection.4.2.1' on input line 67.
@@ -1791,13 +1008,16 @@ Package hyperref Info: Reference (link) `section.7.1' on input line 94.
 Package hyperref Info: Reference (link) `section.7.2' on input line 95.
 Package hyperref Info: Reference (link) `section.7.3' on input line 96.
 Package hyperref Info: Reference (link) `appendix.A' on input line 97.
-Package hyperref Info: Reference (link) `chapter*.83' on input line 98.
+Package hyperref Info: Reference (link) `chapter*.78' on input line 98.
 )
-\tf@toc=\write6
-\openout6 = `vorlage.toc'.
+\tf@toc=\write5
+\openout5 = `vorlage.toc'.
 
 Package hyperref Info: Anchor `page.viii' on input line 44.
  [8
+Package `hyperref' Info: End of reference (link) `subsection.4.1.6', line 59.
+Package `hyperref' Info: End of reference (link) `subsection.4.1.7', line 62.
+Package `hyperref' Info: End of reference (link) `subsection.4.1.8', line 63.
 Package `hyperref' Info: End of reference (link) `subsection.4.1.9', line 64.
 Package `hyperref' Info: End of reference (link) `subsection.4.1.10', line 65.
 Package `hyperref' Info: End of reference (link) `section.4.2', line 66.
@@ -1825,12 +1045,12 @@ Package `hyperref' Info: End of reference (link) `section.7.1', line 94.
 Package `hyperref' Info: End of reference (link) `section.7.2', line 95.
 Package `hyperref' Info: End of reference (link) `section.7.3', line 96.
 Package `hyperref' Info: End of reference (link) `appendix.A', line 97.
-Package `hyperref' Info: End of reference (link) `chapter*.83', line 98.
+Package `hyperref' Info: End of reference (link) `chapter*.78', line 98.
 ]
 Package hyperref Info: Anchor `chapter*.7' on input line 44.
  (./vorlage.lof)
-\tf@lof=\write7
-\openout7 = `vorlage.lof'.
+\tf@lof=\write6
+\openout6 = `vorlage.lof'.
 
 Package hyperref Info: Anchor `page.ix' on input line 45.
  [9
@@ -1839,34 +1059,36 @@ Package hyperref Info: Anchor `page.ix' on input line 45.
 ]
 Package hyperref Info: Anchor `chapter*.8' on input line 45.
  (./vorlage.lot
-Package hyperref Info: Reference (link) `table.caption.50' on input line 6.
-Package hyperref Info: Reference (link) `table.caption.65' on input line 7.
-Package hyperref Info: Reference (link) `table.caption.66' on input line 8.
-Package hyperref Info: Reference (link) `table.caption.69' on input line 9.
-Package hyperref Info: Reference (link) `table.caption.82' on input line 10.
+Package hyperref Info: Reference (link) `table.4.1' on input line 6.
+Package hyperref Info: Reference (link) `table.4.2' on input line 7.
+Package hyperref Info: Reference (link) `table.4.3' on input line 8.
+Package hyperref Info: Reference (link) `table.4.4' on input line 9.
+Package hyperref Info: Reference (link) `table.4.5' on input line 10.
 )
-\tf@lot=\write8
-\openout8 = `vorlage.lot'.
+\tf@lot=\write7
+\openout7 = `vorlage.lot'.
 
  (./vorlage.nls
 Package hyperref Info: Anchor `page.x' on input line 2.
  [10
 
 
-Package `hyperref' Info: End of reference (link) `table.caption.50', line 6.
-Package `hyperref' Info: End of reference (link) `table.caption.65', line 7.
-Package `hyperref' Info: End of reference (link) `table.caption.66', line 8.
-Package `hyperref' Info: End of reference (link) `table.caption.69', line 9.
-Package `hyperref' Info: End of reference (link) `table.caption.82', line 10.
+Package `hyperref' Info: End of reference (link) `table.4.1', line 6.
+Package `hyperref' Info: End of reference (link) `table.4.2', line 7.
+Package `hyperref' Info: End of reference (link) `table.4.3', line 8.
+Package `hyperref' Info: End of reference (link) `table.4.4', line 9.
+Package `hyperref' Info: End of reference (link) `table.4.5', line 10.
 ]
 Package hyperref Info: Anchor `chapter*.9' on input line 2.
-Package hyperref Info: Anchor `page.xi' on input line 22.
+Package hyperref Info: Anchor `page.xi' on input line 18.
  [11
 
 
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}])
-Package hyperref Info: Anchor `page.xii' on input line 50.
- [12]
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}]
+Package hyperref Info: Anchor `page.xii' on input line 34.
+ [12])
+Package hyperref Info: Anchor `page.xiii' on input line 50.
+ [13]
 \openout2 = `chapters/ch-hauptteil.aux'.
 
  (./chapters/ch-hauptteil.tex (./chapters/ch-introduction.tex
@@ -1879,21 +1101,6 @@ Package hyperref Info: bookmark on input line 1:
 (hyperref)             reference {chapter.1}
 (hyperref)             toclevel {0}
 (hyperref)             type {toc}.
-
-Class scrbook Warning: \float@addtolists detected!
-(scrbook)              Implementation of \float@addtolist became
-(scrbook)              deprecated in KOMA-Script v3.01 2008/11/14 and
-(scrbook)              has been replaced by several more flexible
-(scrbook)              features of package `tocbasic`.
-(scrbook)              Since Version 3.12 support for deprecated
-(scrbook)              \float@addtolist interface has been
-(scrbook)              restricted to only some of the KOMA-Script
-(scrbook)              features and been removed from others.
-(scrbook)              Loading of package `scrhack' may help to
-(scrbook)              avoid this warning, if you are using a
-(scrbook)              a package that still implements the
-(scrbook)              deprecated \float@addtolist interface.
-
 (./chapters/intro-subsections/motivation.tex
 Package hyperref Info: Anchor `section.1.1' on input line 1.
 Package hyperref Info: bookmark on input line 1:
@@ -1908,8 +1115,7 @@ Package hyperref Info: Reference (cite) `cite.Kang2019Design' on input line 6.
 Package hyperref Info: Reference (cite) `cite.Courchesne2023A' on input line 8.
 Package hyperref Info: Reference (cite) `cite.Liu2024Topology' on input line 11.
 Package hyperref Info: Reference (cite) `cite.Doerterler2021Analyzing' on input line 19.
-Package hyperref Info: Reference (cite) `cite.Guo2022Evolutionary' on input line 25.
-Package hyperref Info: Anchor `page.1' on input line 26.
+Package hyperref Info: Anchor `page.1' on input line 20.
  [1
 
 
@@ -1920,10 +1126,10 @@ Package `hyperref' Info: End of reference (cite) `cite.Dinakaran2022A', line 5.
 Package `hyperref' Info: End of reference (cite) `cite.Kang2019Design', line 6.
 Package `hyperref' Info: End of reference (cite) `cite.Courchesne2023A', line 8.
 Package `hyperref' Info: End of reference (cite) `cite.Liu2024Topology', line 11.
-Package `hyperref' Info: End of reference (cite) `cite.Doerterler2021Analyzing', line 19.
 ]
+Package hyperref Info: Reference (cite) `cite.Guo2022Evolutionary' on input line 25.
 Package hyperref Info: Reference (cite) `cite.Liu2024Topology' on input line 33.
-) (./chapters/intro-subsections/goal_and_tasks.tex
+) (./chapters/intro-subsections/problem_definition.tex
 Package hyperref Info: Anchor `section.1.2' on input line 1.
 Package hyperref Info: bookmark on input line 1:
 (hyperref)             thecounter {1.2}
@@ -1931,26 +1137,35 @@ Package hyperref Info: bookmark on input line 1:
 (hyperref)             reference {section.1.2}
 (hyperref)             toclevel {1}
 (hyperref)             type {toc}.
-Package hyperref Info: Reference (cite) `cite.Datta2011Optimizing' on input line 6.
-Package hyperref Info: Reference (cite) `cite.Belakaria2020Uncertainty-Aware' on input line 6.
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 13.
- (/usr/share/texmf/tex/latex/lm/ts1lmr.fd
-File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-Package hyperref Info: Reference (cite) `cite.pymoo' on input line 14.
-Package hyperref Info: Reference (cite) `cite.Audet2018Performance' on input line 15.
-Package hyperref Info: Anchor `page.2' on input line 16.
+Package hyperref Info: Reference (cite) `cite.Liu2022Simulation' on input line 5.
+Package hyperref Info: Reference (cite) `cite.Santoni2023Comparison' on input line 7.
+Package hyperref Info: Reference (cite) `cite.Mueller2017SOCEMO' on input line 11.
+Package hyperref Info: Reference (cite) `cite.Santoni2023Comparison' on input line 13.
+Package hyperref Info: Reference (cite) `cite.Raponi2023Optimizing' on input line 13.
+Package hyperref Info: Anchor `page.2' on input line 14.
  [2
+Package `hyperref' Info: End of reference (cite) `cite.Doerterler2021Analyzing', line 19.
 Package `hyperref' Info: End of reference (cite) `cite.Guo2022Evolutionary', line 25.
 Package `hyperref' Info: End of reference (cite) `cite.Liu2024Topology', line 33.
-Package `hyperref' Info: End of reference (cite) `cite.Datta2011Optimizing', line 6.
-Package `hyperref' Info: End of reference (cite) `cite.Belakaria2020Uncertainty-Aware', line 6.
-])) (./chapters/ch-literature_review.tex
-Package hyperref Info: Anchor `page.3' on input line 1.
- [3
-Package `hyperref' Info: End of reference (cite) `cite.pymoo', line 14.
-Package `hyperref' Info: End of reference (cite) `cite.Audet2018Performance', line 15.
 ]
+Package hyperref Info: Reference (cite) `cite.Datta2011Optimizing' on input line 17.
+Package hyperref Info: Reference (cite) `cite.Belakaria2020Uncertainty-Aware' on input line 17.
+Package hyperref Info: Reference (cite) `cite.pymoo' on input line 25.
+Package hyperref Info: Reference (cite) `cite.Audet2018Performance' on input line 27.
+Package hyperref Info: Anchor `page.3' on input line 34.
+ [3
+Package `hyperref' Info: End of reference (cite) `cite.Liu2022Simulation', line 5.
+Package `hyperref' Info: End of reference (cite) `cite.Santoni2023Comparison', line 7.
+Package `hyperref' Info: End of reference (cite) `cite.Mueller2017SOCEMO', line 11.
+Package `hyperref' Info: End of reference (cite) `cite.Santoni2023Comparison', line 13.
+Package `hyperref' Info: End of reference (cite) `cite.Raponi2023Optimizing', line 13.
+Package `hyperref' Info: End of reference (cite) `cite.Datta2011Optimizing', line 17.
+Package `hyperref' Info: End of reference (cite) `cite.Belakaria2020Uncertainty-Aware', line 17.
+Package `hyperref' Info: End of reference (cite) `cite.pymoo', line 25.
+Package `hyperref' Info: End of reference (cite) `cite.Audet2018Performance', line 27.
+])) (./chapters/ch-literature_review.tex
+Package hyperref Info: Anchor `page.4' on input line 1.
+ [4]
 Package hyperref Info: Anchor `chapter.2' on input line 1.
 
 chapter 2.
@@ -1994,15 +1209,14 @@ Package hyperref Info: bookmark on input line 19:
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
 Package hyperref Info: Reference (cite) `cite.Deb2011Multi-objective' on input line 23.
-Package hyperref Info: Anchor `equation.2.1.1' on input line 25.
-Package hyperref Info: Anchor `page.4' on input line 28.
- [4
+Package hyperref Info: Anchor `page.5' on input line 24.
+ [5
 
 
 Package `hyperref' Info: End of reference (cite) `cite.Audet2017Derivative-Free', line 11.
 Package `hyperref' Info: End of reference (cite) `cite.Jones2022Constrained', line 14.
-Package `hyperref' Info: End of reference (cite) `cite.Deb2011Multi-objective', line 23.
 ]
+Package hyperref Info: Anchor `equation.2.1.1' on input line 25.
 Package hyperref Info: Reference (cite) `cite.Deb2011Multi-objective' on input line 33.
 Package hyperref Info: Reference (cite) `cite.Gunantara2018A' on input line 33.
 Package hyperref Info: Anchor `subsubsection*.15' on input line 35.
@@ -2016,6 +1230,13 @@ Package hyperref Info: bookmark on input line 35:
 Package hyperref Info: Anchor `equation.2.1.2' on input line 41.
 Package hyperref Info: Reference (cite) `cite.Audet2018Performance' on input line 52.
 Package hyperref Info: Reference (cite) `cite.Shang2021A' on input line 52.
+Package hyperref Info: Anchor `page.6' on input line 53.
+ [6
+Package `hyperref' Info: End of reference (cite) `cite.Deb2011Multi-objective', line 23.
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}
+Package `hyperref' Info: End of reference (cite) `cite.Deb2011Multi-objective', line 33.
+Package `hyperref' Info: End of reference (cite) `cite.Gunantara2018A', line 33.
+]
 Package hyperref Info: Anchor `subsubsection*.17' on input line 54.
 Package hyperref Info: Anchor `section*.16' on input line 54.
 Package hyperref Info: bookmark on input line 54:
@@ -2025,13 +1246,6 @@ Package hyperref Info: bookmark on input line 54:
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
 Package hyperref Info: Reference (cite) `cite.Abulail2025Enhanced' on input line 61.
-Package hyperref Info: Anchor `page.5' on input line 62.
- [5{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}
-Package `hyperref' Info: End of reference (cite) `cite.Deb2011Multi-objective', line 33.
-Package `hyperref' Info: End of reference (cite) `cite.Gunantara2018A', line 33.
-Package `hyperref' Info: End of reference (cite) `cite.Audet2018Performance', line 52.
-Package `hyperref' Info: End of reference (cite) `cite.Shang2021A', line 52.
-]
 Package hyperref Info: Reference (cite) `cite.Ishibuchi2017Performance' on input line 66.
 Package hyperref Info: Reference (cite) `cite.Li2015An' on input line 66.
 Package hyperref Info: Anchor `subsubsection*.19' on input line 68.
@@ -2047,6 +1261,15 @@ Package hyperref Info: Reference (cite) `cite.Frazier2018A' on input line 74.
 Package hyperref Info: Reference (cite) `cite.Candelieri2021A' on input line 74.
 Package hyperref Info: Reference (cite) `cite.Wang2022Recent' on input line 75.
 Package hyperref Info: Reference (cite) `cite.olson2025ax' on input line 75.
+Package hyperref Info: Anchor `page.7' on input line 77.
+ [7
+Package `hyperref' Info: End of reference (cite) `cite.Audet2018Performance', line 52.
+Package `hyperref' Info: End of reference (cite) `cite.Shang2021A', line 52.
+Package `hyperref' Info: End of reference (cite) `cite.Abulail2025Enhanced', line 61.
+Package `hyperref' Info: End of reference (cite) `cite.Ishibuchi2017Performance', line 66.
+Package `hyperref' Info: End of reference (cite) `cite.Li2015An', line 66.
+Package `hyperref' Info: End of reference (cite) `cite.Frazier2018A', line 72.
+]
 Package hyperref Info: Anchor `subsubsection*.21' on input line 77.
 Package hyperref Info: Anchor `section*.20' on input line 77.
 Package hyperref Info: bookmark on input line 77:
@@ -2063,20 +1286,6 @@ File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 Package hyperref Info: Reference (cite) `cite.pymoo' on input line 87.
 Package hyperref Info: Reference (cite) `cite.Probst2018Tunability:' on input line 89.
-Package hyperref Info: Anchor `page.6' on input line 90.
- [6
-Package `hyperref' Info: End of reference (cite) `cite.Abulail2025Enhanced', line 61.
-Package `hyperref' Info: End of reference (cite) `cite.Ishibuchi2017Performance', line 66.
-Package `hyperref' Info: End of reference (cite) `cite.Li2015An', line 66.
-Package `hyperref' Info: End of reference (cite) `cite.Frazier2018A', line 72.
-Package `hyperref' Info: End of reference (cite) `cite.Frazier2018A', line 74.
-Package `hyperref' Info: End of reference (cite) `cite.Candelieri2021A', line 74.
-Package `hyperref' Info: End of reference (cite) `cite.Wang2022Recent', line 75.
-Package `hyperref' Info: End of reference (cite) `cite.olson2025ax', line 75.
-Package `hyperref' Info: End of reference (cite) `cite.Sivaprasad2019Optimizer', line 83.
-Package `hyperref' Info: End of reference (cite) `cite.Ishibuchi2022Difficulties', line 83.
-Package `hyperref' Info: End of reference (cite) `cite.pymoo', line 87.
-]
 Package hyperref Info: Anchor `subsection.2.1.2' on input line 92.
 Package hyperref Info: bookmark on input line 92:
 (hyperref)             thecounter {2.1.2}
@@ -2094,6 +1303,18 @@ Package hyperref Info: bookmark on input line 99:
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
 Package hyperref Info: Reference (cite) `cite.nsga2' on input line 108.
+Package hyperref Info: Anchor `page.8' on input line 109.
+ [8
+Package `hyperref' Info: End of reference (cite) `cite.Frazier2018A', line 74.
+Package `hyperref' Info: End of reference (cite) `cite.Candelieri2021A', line 74.
+Package `hyperref' Info: End of reference (cite) `cite.Wang2022Recent', line 75.
+Package `hyperref' Info: End of reference (cite) `cite.olson2025ax', line 75.
+Package `hyperref' Info: End of reference (cite) `cite.Sivaprasad2019Optimizer', line 83.
+Package `hyperref' Info: End of reference (cite) `cite.Ishibuchi2022Difficulties', line 83.
+Package `hyperref' Info: End of reference (cite) `cite.pymoo', line 87.
+Package `hyperref' Info: End of reference (cite) `cite.Probst2018Tunability:', line 89.
+Package `hyperref' Info: End of reference (link) `subsubsection*.17', line 96.
+]
 Package hyperref Info: Anchor `subsubsection*.25' on input line 110.
 Package hyperref Info: Anchor `section*.24' on input line 110.
 Package hyperref Info: bookmark on input line 110:
@@ -2103,12 +1324,6 @@ Package hyperref Info: bookmark on input line 110:
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
 Package hyperref Info: Reference (cite) `cite.nsga3' on input line 117.
-Package hyperref Info: Anchor `page.7' on input line 119.
- [7
-Package `hyperref' Info: End of reference (cite) `cite.Probst2018Tunability:', line 89.
-Package `hyperref' Info: End of reference (link) `subsubsection*.17', line 96.
-Package `hyperref' Info: End of reference (cite) `cite.nsga2', line 108.
-]
 Package hyperref Info: Anchor `subsubsection*.27' on input line 119.
 Package hyperref Info: Anchor `section*.26' on input line 119.
 Package hyperref Info: bookmark on input line 119:
@@ -2118,6 +1333,11 @@ Package hyperref Info: bookmark on input line 119:
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
 Package hyperref Info: Reference (cite) `cite.pymoo' on input line 126.
+Package hyperref Info: Anchor `page.9' on input line 127.
+ [9
+Package `hyperref' Info: End of reference (cite) `cite.nsga2', line 108.
+Package `hyperref' Info: End of reference (cite) `cite.nsga3', line 117.
+]
 Package hyperref Info: Anchor `subsubsection*.29' on input line 128.
 Package hyperref Info: Anchor `section*.28' on input line 128.
 Package hyperref Info: bookmark on input line 128:
@@ -2136,9 +1356,8 @@ Package hyperref Info: bookmark on input line 137:
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
 Package hyperref Info: Reference (cite) `cite.cmopso' on input line 145.
-Package hyperref Info: Anchor `page.8' on input line 146.
- [8
-Package `hyperref' Info: End of reference (cite) `cite.nsga3', line 117.
+Package hyperref Info: Anchor `page.10' on input line 146.
+ [10
 Package `hyperref' Info: End of reference (cite) `cite.pymoo', line 126.
 Package `hyperref' Info: End of reference (cite) `cite.smsemoa', line 135.
 ]
@@ -2184,14 +1403,14 @@ Package hyperref Info: bookmark on input line 172:
 (hyperref)             reference {paragraph*.39}
 (hyperref)             toclevel {4}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `equation.2.1.3' on input line 176.
-Package hyperref Info: Anchor `page.9' on input line 176.
- [9
+Package hyperref Info: Anchor `page.11' on input line 175.
+ [11
 Package `hyperref' Info: End of reference (cite) `cite.cmopso', line 145.
 Package `hyperref' Info: End of reference (cite) `cite.Prattichizzo2014Robot', line 155.
 Package `hyperref' Info: End of reference (cite) `cite.Nguyen1986Constructing', line 157.
 Package `hyperref' Info: End of reference (cite) `cite.Peyre2010Geodesic', line 169.
 ]
+Package hyperref Info: Anchor `equation.2.1.3' on input line 176.
 Package hyperref Info: Anchor `equation.2.1.4' on input line 182.
 Package hyperref Info: Anchor `subsubsection*.41' on input line 195.
 Package hyperref Info: Anchor `section*.40' on input line 195.
@@ -2201,6 +1420,8 @@ Package hyperref Info: bookmark on input line 195:
 (hyperref)             reference {subsubsection*.41}
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
+Package hyperref Info: Anchor `page.12' on input line 203.
+ [12]
 Package hyperref Info: Anchor `paragraph*.43' on input line 203.
 Package hyperref Info: Anchor `section*.42' on input line 204.
 Package hyperref Info: bookmark on input line 204:
@@ -2214,10 +1435,6 @@ Package hyperref Info: Anchor `equation.2.1.5' on input line 207.
 Package hyperref Info: Reference (cite) `cite.Eilers1996Flexible' on input line 213.
 Package hyperref Info: Reference (cite) `cite.Hasan2024B-spline' on input line 214.
 Package hyperref Info: Reference (cite) `cite.Eilers1996Flexible' on input line 214.
-Package hyperref Info: Anchor `page.10' on input line 216.
- [10
-Package `hyperref' Info: End of reference (cite) `cite.Eilers1996Flexible', line 205.
-]
 Package hyperref Info: Anchor `paragraph*.45' on input line 217.
 Package hyperref Info: Anchor `section*.44' on input line 218.
 Package hyperref Info: bookmark on input line 218:
@@ -2242,14 +1459,17 @@ Package hyperref Info: Reference (cite) `cite.Lee2024Grasp' on input line 7.
 Package hyperref Info: Reference (cite) `cite.Sun2022LARG:' on input line 9.
 Package hyperref Info: Reference (cite) `cite.Dong2018Geometric' on input line 9.
 Package hyperref Info: Reference (cite) `cite.Xie2024Design' on input line 9.
-)) (./chapters/ch-method-temp.tex
-Package hyperref Info: Anchor `page.11' on input line 1.
- [11
+Package hyperref Info: Anchor `page.13' on input line 11.
+ [13
+Package `hyperref' Info: End of reference (cite) `cite.Eilers1996Flexible', line 205.
 Package `hyperref' Info: End of reference (cite) `cite.Eilers1996Flexible', line 213.
 Package `hyperref' Info: End of reference (cite) `cite.Hasan2024B-spline', line 214.
 Package `hyperref' Info: End of reference (cite) `cite.Eilers1996Flexible', line 214.
 Package `hyperref' Info: End of reference (cite) `cite.Hasan2024B-spline', line 222.
 Package `hyperref' Info: End of reference (cite) `cite.Chapelier2022Spline-based', line 222.
+])) (./chapters/ch-method-temp.tex
+Package hyperref Info: Anchor `page.14' on input line 1.
+ [14
 Package `hyperref' Info: End of reference (cite) `cite.Schillinger2023Model-Free', line 7.
 Package `hyperref' Info: End of reference (cite) `cite.Geng2025Experimental', line 7.
 Package `hyperref' Info: End of reference (cite) `cite.Lee2024Grasp', line 7.
@@ -2287,8 +1507,8 @@ Package hyperref Info: bookmark on input line 21:
 (hyperref)             reference {subsection.3.1.2}
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `page.12' on input line 30.
-[12
+Package hyperref Info: Anchor `page.15' on input line 30.
+[15
 
 
 ]
@@ -2309,6 +1529,12 @@ Package hyperref Info: bookmark on input line 41:
 (hyperref)             reference {subsection.3.1.4}
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
+Package hyperref Info: Anchor `page.16' on input line 48.
+ [16
+Package `hyperref' Info: End of reference (cite) `cite.DaSilva2024Multi-objective', line 35.
+Package `hyperref' Info: End of reference (cite) `cite.Audet2018Performance', line 38.
+Package `hyperref' Info: End of reference (cite) `cite.Nikolikj2025Benchmarking', line 39.
+]
 Package hyperref Info: Anchor `section.3.2' on input line 49.
 Package hyperref Info: bookmark on input line 49:
 (hyperref)             thecounter {3.2}
@@ -2324,14 +1550,10 @@ Package hyperref Info: bookmark on input line 52:
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
 Package hyperref Info: Anchor `equation.3.2.1' on input line 60.
-Package hyperref Info: Anchor `page.13' on input line 60.
- [13
-Package `hyperref' Info: End of reference (cite) `cite.DaSilva2024Multi-objective', line 35.
-Package `hyperref' Info: End of reference (cite) `cite.Audet2018Performance', line 38.
-Package `hyperref' Info: End of reference (cite) `cite.Nikolikj2025Benchmarking', line 39.
-]
 Package hyperref Info: Anchor `equation.3.2.2' on input line 68.
 Package hyperref Info: Anchor `equation.3.2.3' on input line 74.
+Package hyperref Info: Anchor `page.17' on input line 87.
+ [17]
 Package hyperref Info: Anchor `subsection.3.2.2' on input line 88.
 Package hyperref Info: bookmark on input line 88:
 (hyperref)             thecounter {3.2.2}
@@ -2342,17 +1564,14 @@ Package hyperref Info: bookmark on input line 88:
 Package hyperref Info: Reference (cite) `cite.Ko2020A' on input line 92.
 Package hyperref Info: Reference (cite) `cite.Todescato' on input line 92.
 Package hyperref Info: Reference (cite) `cite.Wang2024Fin-Bayes:' on input line 94.
-
-Overfull \hbox (6.92719pt too wide) in paragraph at lines 91--95
-\T1/lmr/m/n/10.95 A fun-da-men-tal method-olog-i-cal de-ci-sion is how to rep-re-sent grip-per ge-om-e-try as a finite-dimensional
- []
-
-Package hyperref Info: Anchor `page.14' on input line 95.
-[14
+Package hyperref Info: Reference (cite) `cite.Wolniakowski2017Task' on input line 105.
+Package hyperref Info: Anchor `page.18' on input line 109.
+ [18
 Package `hyperref' Info: End of reference (cite) `cite.Ko2020A', line 92.
 Package `hyperref' Info: End of reference (cite) `cite.Todescato', line 92.
+Package `hyperref' Info: End of reference (cite) `cite.Wang2024Fin-Bayes:', line 94.
+Package `hyperref' Info: End of reference (cite) `cite.Wolniakowski2017Task', line 105.
 ]
-Package hyperref Info: Reference (cite) `cite.Wolniakowski2017Task' on input line 105.
 Package hyperref Info: Anchor `subsection.3.2.3' on input line 110.
 Package hyperref Info: bookmark on input line 110:
 (hyperref)             thecounter {3.2.3}
@@ -2366,15 +1585,17 @@ Package hyperref Info: Reference (cite) `cite.Weisz2012Pose' on input line 118.
 Package hyperref Info: Reference (cite) `cite.madan2022realrobotchallenge2021' on input line 121.
 Package hyperref Info: Reference (cite) `cite.Bo2023A' on input line 122.
 Package hyperref Info: Reference (cite) `cite.Pinskier2024Diversity-Based' on input line 125.
-Package hyperref Info: Anchor `page.15' on input line 127.
- [15
-Package `hyperref' Info: End of reference (cite) `cite.Wang2024Fin-Bayes:', line 94.
-Package `hyperref' Info: End of reference (cite) `cite.Wolniakowski2017Task', line 105.
-Package `hyperref' Info: End of reference (cite) `cite.Todescato', line 114.
-Package `hyperref' Info: End of reference (cite) `cite.Wolniakowski2017Task', line 114.
-]
 Package hyperref Info: Reference (cite) `cite.Ko2020A' on input line 129.
 Package hyperref Info: Reference (cite) `cite.snuggle_pack' on input line 131.
+Package hyperref Info: Anchor `page.19' on input line 133.
+ [19
+Package `hyperref' Info: End of reference (cite) `cite.Todescato', line 114.
+Package `hyperref' Info: End of reference (cite) `cite.Wolniakowski2017Task', line 114.
+Package `hyperref' Info: End of reference (cite) `cite.Weisz2012Pose', line 118.
+Package `hyperref' Info: End of reference (cite) `cite.madan2022realrobotchallenge2021', line 121.
+Package `hyperref' Info: End of reference (cite) `cite.Bo2023A', line 122.
+Package `hyperref' Info: End of reference (cite) `cite.Pinskier2024Diversity-Based', line 125.
+]
 Package hyperref Info: Anchor `section.3.3' on input line 134.
 Package hyperref Info: bookmark on input line 134:
 (hyperref)             thecounter {3.3}
@@ -2383,16 +1604,13 @@ Package hyperref Info: bookmark on input line 134:
 (hyperref)             toclevel {1}
 (hyperref)             type {toc}.
 Package hyperref Info: Reference (cite) `cite.pymoo' on input line 144.
-Package hyperref Info: Anchor `page.16' on input line 145.
- [16
-Package `hyperref' Info: End of reference (cite) `cite.Weisz2012Pose', line 118.
-Package `hyperref' Info: End of reference (cite) `cite.madan2022realrobotchallenge2021', line 121.
-Package `hyperref' Info: End of reference (cite) `cite.Bo2023A', line 122.
-Package `hyperref' Info: End of reference (cite) `cite.Pinskier2024Diversity-Based', line 125.
+Package hyperref Info: Reference (cite) `cite.olson2025ax' on input line 152.
+Package hyperref Info: Anchor `page.20' on input line 153.
+ [20
 Package `hyperref' Info: End of reference (cite) `cite.Ko2020A', line 129.
 Package `hyperref' Info: End of reference (cite) `cite.snuggle_pack', line 131.
+Package `hyperref' Info: End of reference (cite) `cite.pymoo', line 144.
 ]
-Package hyperref Info: Reference (cite) `cite.olson2025ax' on input line 152.
 Package hyperref Info: Reference (cite) `cite.olson2025ax' on input line 156.
 Package hyperref Info: Reference (cite) `cite.botorch' on input line 156.
 Package hyperref Info: Anchor `section.3.4' on input line 160.
@@ -2403,9 +1621,8 @@ Package hyperref Info: bookmark on input line 160:
 (hyperref)             toclevel {1}
 (hyperref)             type {toc}.
 Package hyperref Info: Reference (cite) `cite.pymoo' on input line 173.
-Package hyperref Info: Anchor `page.17' on input line 174.
- [17
-Package `hyperref' Info: End of reference (cite) `cite.pymoo', line 144.
+Package hyperref Info: Anchor `page.21' on input line 174.
+ [21
 Package `hyperref' Info: End of reference (cite) `cite.olson2025ax', line 152.
 Package `hyperref' Info: End of reference (cite) `cite.olson2025ax', line 156.
 Package `hyperref' Info: End of reference (cite) `cite.botorch', line 156.
@@ -2418,8 +1635,8 @@ Package hyperref Info: Reference (cite) `cite.cmopso' on input line 192.
 Package hyperref Info: Reference (cite) `cite.Doerr2022A' on input line 196.
 Package hyperref Info: Reference (cite) `cite.Trivedi2017A' on input line 196.
 Package hyperref Info: Reference (cite) `cite.Shang2020A' on input line 196.
-Package hyperref Info: Anchor `page.18' on input line 202.
- [18
+Package hyperref Info: Anchor `page.22' on input line 202.
+ [22
 Package `hyperref' Info: End of reference (cite) `cite.pymoo', line 173.
 Package `hyperref' Info: End of reference (cite) `cite.nsga2', line 180.
 Package `hyperref' Info: End of reference (cite) `cite.nsga3', line 183.
@@ -2449,13 +1666,12 @@ Package hyperref Info: bookmark on input line 221:
 (hyperref)             toclevel {1}
 (hyperref)             type {toc}.
 Package hyperref Info: Reference (cite) `cite.Bischl2017mlrMBO:' on input line 227.
-Package hyperref Info: Anchor `page.19' on input line 230.
- [19
+Package hyperref Info: Anchor `page.23' on input line 229.
+ [23
 Package `hyperref' Info: End of reference (cite) `cite.Cenikj2022SELECTOR:', line 208.
 Package `hyperref' Info: End of reference (cite) `cite.Yazdani2020Benchmarking', line 208.
 Package `hyperref' Info: End of reference (cite) `cite.Gupta2020Continuous', line 214.
 Package `hyperref' Info: End of reference (cite) `cite.Cenikj2022SELECTOR:', line 219.
-Package `hyperref' Info: End of reference (cite) `cite.Bischl2017mlrMBO:', line 227.
 ]
 Package hyperref Info: Anchor `section.3.7' on input line 230.
 Package hyperref Info: bookmark on input line 230:
@@ -2476,12 +1692,15 @@ Package hyperref Info: bookmark on input line 241:
 (hyperref)             type {toc}.
 Package hyperref Info: Reference (cite) `cite.Audet2018Performance' on input line 246.
 Package hyperref Info: Reference (cite) `cite.Trautmann2009Statistical' on input line 248.
-) (./chapters/ch-implementation.tex
-Package hyperref Info: Anchor `page.20' on input line 1.
- [20
+Package hyperref Info: Anchor `page.24' on input line 249.
+ [24
+Package `hyperref' Info: End of reference (cite) `cite.Bischl2017mlrMBO:', line 227.
 Package `hyperref' Info: End of reference (cite) `cite.Bouthillier2021Accounting', line 236.
 Package `hyperref' Info: End of reference (cite) `cite.pymoo', line 237.
 Package `hyperref' Info: End of reference (cite) `cite.Beiranvand2017Best', line 239.
+]) (./chapters/ch-implementation.tex
+Package hyperref Info: Anchor `page.25' on input line 1.
+ [25
 Package `hyperref' Info: End of reference (cite) `cite.Audet2018Performance', line 246.
 Package `hyperref' Info: End of reference (cite) `cite.Trautmann2009Statistical', line 248.
 ]
@@ -2512,21 +1731,21 @@ Package hyperref Info: bookmark on input line 18:
 (hyperref)             reference {subsection.4.1.1}
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `equation.4.1.1' on input line 29.
-Package hyperref Info: Anchor `page.21' on input line 31.
- [21
+Package hyperref Info: Anchor `page.26' on input line 25.
+ [26
 
 
 Package `hyperref' Info: End of reference (cite) `cite.pymoo', line 7.
 Package `hyperref' Info: End of reference (cite) `cite.olson2025ax', line 9.
 Package `hyperref' Info: End of reference (cite) `cite.botorch', line 9.
 ]
+Package hyperref Info: Anchor `equation.4.1.1' on input line 29.
 Package hyperref Info: Anchor `equation.4.1.2' on input line 39.
 Package hyperref Info: Anchor `equation.4.1.3' on input line 52.
 Package hyperref Info: Anchor `equation.4.1.4' on input line 62.
+Package hyperref Info: Anchor `page.27' on input line 64.
+ [27]
 Package hyperref Info: Anchor `equation.4.1.5' on input line 66.
-Package hyperref Info: Anchor `page.22' on input line 71.
- [22]
 Package hyperref Info: Anchor `paragraph*.47' on input line 72.
 Package hyperref Info: Anchor `section*.46' on input line 73.
 Package hyperref Info: bookmark on input line 73:
@@ -2536,11 +1755,6 @@ Package hyperref Info: bookmark on input line 73:
 (hyperref)             toclevel {4}
 (hyperref)             type {toc}.
 Package hyperref Info: Reference (cite) `cite.madan2022realrobotchallenge2021' on input line 74.
-
-Overfull \hbox (6.6248pt too wide) in paragraph at lines 73--77
- []\T1/lmss/m/n/10.95 Assumption[] \T1/lmr/m/n/10.95 A tri-an-gu-lar con-fig-u-ra-tion of three suc-tion cups is as-sumed to yield a sta-ble grasp [[]].
- []
-
 Package hyperref Info: Anchor `subsection.4.1.2' on input line 78.
 Package hyperref Info: bookmark on input line 78:
 (hyperref)             thecounter {4.1.2}
@@ -2551,8 +1765,8 @@ Package hyperref Info: bookmark on input line 78:
 Package hyperref Info: Anchor `equation.4.1.6' on input line 81.
 Package hyperref Info: Anchor `equation.4.1.7' on input line 86.
 Package hyperref Info: Anchor `equation.4.1.8' on input line 90.
-Package hyperref Info: Anchor `page.23' on input line 108.
-[23
+Package hyperref Info: Anchor `page.28' on input line 92.
+ [28
 Package `hyperref' Info: End of reference (cite) `cite.madan2022realrobotchallenge2021', line 74.
 ]
 Package hyperref Info: Anchor `subsection.4.1.3' on input line 109.
@@ -2562,9 +1776,9 @@ Package hyperref Info: bookmark on input line 109:
 (hyperref)             reference {subsection.4.1.3}
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
+Package hyperref Info: Anchor `page.29' on input line 120.
+ [29]
 Package hyperref Info: Anchor `equation.4.1.9' on input line 142.
-Package hyperref Info: Anchor `page.24' on input line 142.
- [24]
 Package hyperref Info: Anchor `subsubsection*.49' on input line 150.
 Package hyperref Info: Anchor `section*.48' on input line 150.
 Package hyperref Info: bookmark on input line 150:
@@ -2573,37 +1787,35 @@ Package hyperref Info: bookmark on input line 150:
 (hyperref)             reference {subsubsection*.49}
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `table.caption.50' on input line 154.
 Package hyperref Info: bookmark on input line 156:
 (hyperref)             thecounter {4.1}
-(hyperref)             text {\protect \numberline {\caption@listformat {\caption@p {table}}{\caption@the {table}}}{\ignorespaces Supported multi-objective optimization methods.}}
-(hyperref)             reference {table.caption.50}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsname }{\ignorespaces Supported multi-objective optimization methods.}}
+(hyperref)             reference {table.4.1}
 (hyperref)             toclevel {1}
 (hyperref)             type {lot}.
-Package hyperref Info: Reference (cite) `cite.nsga2' on input line 162.
-Package hyperref Info: Reference (cite) `cite.nsga3' on input line 163.
-Package hyperref Info: Reference (cite) `cite.moead' on input line 164.
-Package hyperref Info: Reference (cite) `cite.smsemoa' on input line 166.
-Package hyperref Info: Reference (cite) `cite.olson2025ax' on input line 168.
-Package hyperref Info: Reference (cite) `cite.botorch' on input line 168.
-
-Overfull \hbox (70.03008pt too wide) in paragraph at lines 158--171
- [][] 
- []
-
+Package hyperref Info: Anchor `table.4.1' on input line 156.
+Package hyperref Info: Anchor `table.4.1' on input line 156.
+Package hyperref Info: Reference (cite) `cite.nsga2' on input line 170.
+Package hyperref Info: Reference (cite) `cite.nsga3' on input line 170.
+Package hyperref Info: Reference (cite) `cite.moead' on input line 170.
+Package hyperref Info: Reference (cite) `cite.smsemoa' on input line 170.
+Package hyperref Info: Reference (cite) `cite.olson2025ax' on input line 170.
+Package hyperref Info: Reference (cite) `cite.botorch' on input line 170.
+Package hyperref Info: Anchor `page.30' on input line 171.
+ [30]
 Package hyperref Info: Reference (cite) `cite.das_dennis' on input line 174.
 Package hyperref Info: Anchor `equation.4.1.10' on input line 175.
 Package hyperref Info: Anchor `Item.1' on input line 186.
 Package hyperref Info: Anchor `Item.2' on input line 187.
 Package hyperref Info: Anchor `Item.3' on input line 188.
-Package hyperref Info: Anchor `page.25' on input line 189.
-[25
-Package `hyperref' Info: End of reference (cite) `cite.nsga2', line 162.
-Package `hyperref' Info: End of reference (cite) `cite.nsga3', line 163.
-Package `hyperref' Info: End of reference (cite) `cite.moead', line 164.
-Package `hyperref' Info: End of reference (cite) `cite.smsemoa', line 166.
-Package `hyperref' Info: End of reference (cite) `cite.olson2025ax', line 168.
-Package `hyperref' Info: End of reference (cite) `cite.botorch', line 168.
+Package hyperref Info: Anchor `page.31' on input line 199.
+ [31
+Package `hyperref' Info: End of reference (cite) `cite.nsga2', line 170.
+Package `hyperref' Info: End of reference (cite) `cite.nsga3', line 170.
+Package `hyperref' Info: End of reference (cite) `cite.moead', line 170.
+Package `hyperref' Info: End of reference (cite) `cite.smsemoa', line 170.
+Package `hyperref' Info: End of reference (cite) `cite.olson2025ax', line 170.
+Package `hyperref' Info: End of reference (cite) `cite.botorch', line 170.
 Package `hyperref' Info: End of reference (cite) `cite.das_dennis', line 174.
 ]
 Package hyperref Info: Anchor `subsection.4.1.4' on input line 200.
@@ -2613,26 +1825,26 @@ Package hyperref Info: bookmark on input line 200:
 (hyperref)             reference {subsection.4.1.4}
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `subsubsection*.52' on input line 204.
-Package hyperref Info: Anchor `section*.51' on input line 204.
+Package hyperref Info: Anchor `subsubsection*.51' on input line 204.
+Package hyperref Info: Anchor `section*.50' on input line 204.
 Package hyperref Info: bookmark on input line 204:
 (hyperref)             thecounter {4.1.4.0}
 (hyperref)             text {\protect \nonumberline \@currenttocentry }
-(hyperref)             reference {subsubsection*.52}
+(hyperref)             reference {subsubsection*.51}
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
 Package hyperref Info: Anchor `equation.4.1.11' on input line 208.
-Package hyperref Info: Anchor `subsubsection*.54' on input line 219.
-Package hyperref Info: Anchor `section*.53' on input line 219.
+Package hyperref Info: Anchor `subsubsection*.53' on input line 219.
+Package hyperref Info: Anchor `section*.52' on input line 219.
 Package hyperref Info: bookmark on input line 219:
 (hyperref)             thecounter {4.1.4.0}
 (hyperref)             text {\protect \nonumberline \@currenttocentry }
-(hyperref)             reference {subsubsection*.54}
+(hyperref)             reference {subsubsection*.53}
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
 Package hyperref Info: Anchor `equation.4.1.12' on input line 223.
-Package hyperref Info: Anchor `page.26' on input line 238.
- [26]
+Package hyperref Info: Anchor `page.32' on input line 233.
+ [32]
 Package hyperref Info: Anchor `subsection.4.1.5' on input line 239.
 Package hyperref Info: bookmark on input line 239:
 (hyperref)             thecounter {4.1.5}
@@ -2642,72 +1854,71 @@ Package hyperref Info: bookmark on input line 239:
 (hyperref)             type {toc}.
 Package hyperref Info: Anchor `equation.4.1.13' on input line 248.
 Package hyperref Info: Anchor `equation.4.1.14' on input line 263.
-Package hyperref Info: Anchor `subsubsection*.56' on input line 275.
-Package hyperref Info: Anchor `section*.55' on input line 275.
+Package hyperref Info: Anchor `page.33' on input line 270.
+ [33]
+Package hyperref Info: Anchor `subsubsection*.55' on input line 275.
+Package hyperref Info: Anchor `section*.54' on input line 275.
 Package hyperref Info: bookmark on input line 275:
 (hyperref)             thecounter {4.1.5.0}
 (hyperref)             text {\protect \nonumberline \@currenttocentry }
-(hyperref)             reference {subsubsection*.56}
+(hyperref)             reference {subsubsection*.55}
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `page.27' on input line 283.
- [27]
 Package hyperref Info: Anchor `Item.4' on input line 283.
 Package hyperref Info: Reference (cite) `cite.Kleeberger' on input line 286.
 Package hyperref Info: Reference (cite) `cite.SC_quasi_static' on input line 292.
 Package hyperref Info: Anchor `Item.5' on input line 305.
-
-Overfull \hbox (19.75177pt too wide) in paragraph at lines 307--311
-\T1/lmr/m/n/10.95 tion. When the num-ber of valid grasps $\OML/lmm/m/it/10.95 m \OT1/lmr/m/n/10.95 = \OMS/lmsy/m/n/10.95 jG[]j$ \T1/lmr/m/n/10.95 ex-ceeds a thresh-old $[]$,
- []
-
-Package hyperref Info: Anchor `equation.4.1.15' on input line 313.
-Package hyperref Info: Anchor `equation.4.1.16' on input line 320.
-Package hyperref Info: Anchor `page.28' on input line 322.
-[28
+Package hyperref Info: Anchor `page.34' on input line 307.
+ [34
 Package `hyperref' Info: End of reference (cite) `cite.Kleeberger', line 286.
 Package `hyperref' Info: End of reference (cite) `cite.SC_quasi_static', line 292.
 ]
+Package hyperref Info: Anchor `equation.4.1.15' on input line 313.
+Package hyperref Info: Anchor `equation.4.1.16' on input line 320.
 Package hyperref Info: Anchor `equation.4.1.17' on input line 324.
 Package hyperref Info: Anchor `equation.4.1.18' on input line 342.
+Package hyperref Info: Anchor `page.35' on input line 344.
+ [35]
 Package hyperref Info: Anchor `Item.6' on input line 353.
 Package hyperref Info: Anchor `equation.4.1.19' on input line 358.
 Package hyperref Info: Anchor `Item.7' on input line 371.
-Package hyperref Info: Anchor `page.29' on input line 373.
- [29]
 Package hyperref Info: Anchor `equation.4.1.20' on input line 377.
 Package hyperref Info: Anchor `equation.4.1.21' on input line 381.
 Package hyperref Info: Anchor `equation.4.1.22' on input line 386.
+Package hyperref Info: Anchor `page.36' on input line 388.
+ [36]
 Package hyperref Info: Anchor `equation.4.1.23' on input line 390.
 Package hyperref Info: Anchor `equation.4.1.24' on input line 396.
 Package hyperref Info: Anchor `equation.4.1.25' on input line 406.
 Package hyperref Info: Anchor `equation.4.1.26' on input line 417.
-Package hyperref Info: Anchor `page.30' on input line 417.
- [30]
 Package hyperref Info: Anchor `equation.4.1.27' on input line 421.
+Package hyperref Info: Anchor `page.37' on input line 431.
+ [37]
 Package hyperref Info: Anchor `equation.4.1.28' on input line 432.
 Package hyperref Info: Anchor `equation.4.1.29' on input line 442.
-Package hyperref Info: Anchor `paragraph*.58' on input line 457.
-Package hyperref Info: Anchor `section*.57' on input line 458.
+Package hyperref Info: Anchor `paragraph*.57' on input line 457.
+Package hyperref Info: Anchor `section*.56' on input line 458.
 Package hyperref Info: bookmark on input line 458:
 (hyperref)             thecounter {4.1.5.0.0}
 (hyperref)             text {\protect \nonumberline \@currenttocentry }
-(hyperref)             reference {paragraph*.58}
+(hyperref)             reference {paragraph*.57}
 (hyperref)             toclevel {4}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `page.31' on input line 475.
- [31]
-Package hyperref Info: Anchor `subsubsection*.60' on input line 477.
-Package hyperref Info: Anchor `section*.59' on input line 477.
+Package hyperref Info: Anchor `page.38' on input line 475.
+ [38]
+Package hyperref Info: Anchor `subsubsection*.59' on input line 477.
+Package hyperref Info: Anchor `section*.58' on input line 477.
 Package hyperref Info: bookmark on input line 477:
 (hyperref)             thecounter {4.1.5.0}
 (hyperref)             text {\protect \nonumberline \@currenttocentry }
-(hyperref)             reference {subsubsection*.60}
+(hyperref)             reference {subsubsection*.59}
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
 Package hyperref Info: Anchor `equation.4.1.30' on input line 480.
 Package hyperref Info: Anchor `equation.4.1.31' on input line 497.
 Package hyperref Info: Anchor `equation.4.1.32' on input line 507.
+Package hyperref Info: Anchor `page.39' on input line 519.
+ [39]
 Package hyperref Info: Anchor `subsection.4.1.6' on input line 519.
 Package hyperref Info: bookmark on input line 519:
 (hyperref)             thecounter {4.1.6}
@@ -2715,29 +1926,27 @@ Package hyperref Info: bookmark on input line 519:
 (hyperref)             reference {subsection.4.1.6}
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `page.32' on input line 524.
- [32]
-Package hyperref Info: Anchor `subsubsection*.62' on input line 524.
-Package hyperref Info: Anchor `section*.61' on input line 524.
+Package hyperref Info: Anchor `subsubsection*.61' on input line 524.
+Package hyperref Info: Anchor `section*.60' on input line 524.
 Package hyperref Info: bookmark on input line 524:
 (hyperref)             thecounter {4.1.6.0}
 (hyperref)             text {\protect \nonumberline \@currenttocentry }
-(hyperref)             reference {subsubsection*.62}
+(hyperref)             reference {subsubsection*.61}
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
 Package hyperref Info: Anchor `equation.4.1.33' on input line 527.
-Package hyperref Info: Anchor `subsubsection*.64' on input line 547.
-Package hyperref Info: Anchor `section*.63' on input line 547.
+Package hyperref Info: Anchor `subsubsection*.63' on input line 547.
+Package hyperref Info: Anchor `section*.62' on input line 547.
 Package hyperref Info: bookmark on input line 547:
 (hyperref)             thecounter {4.1.6.0}
 (hyperref)             text {\protect \nonumberline \@currenttocentry }
-(hyperref)             reference {subsubsection*.64}
+(hyperref)             reference {subsubsection*.63}
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
 Package hyperref Info: Anchor `equation.4.1.34' on input line 553.
+Package hyperref Info: Anchor `page.40' on input line 557.
+ [40]
 Package hyperref Info: Anchor `equation.4.1.35' on input line 568.
-Package hyperref Info: Anchor `page.33' on input line 578.
- [33]
 Package hyperref Info: Anchor `equation.4.1.36' on input line 585.
 Package hyperref Info: Anchor `subsection.4.1.7' on input line 603.
 Package hyperref Info: bookmark on input line 603:
@@ -2746,21 +1955,17 @@ Package hyperref Info: bookmark on input line 603:
 (hyperref)             reference {subsection.4.1.7}
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `table.caption.65' on input line 607.
 Package hyperref Info: bookmark on input line 609:
 (hyperref)             thecounter {4.2}
-(hyperref)             text {\protect \numberline {\caption@listformat {\caption@p {table}}{\caption@the {table}}}{\ignorespaces Termination criteria for evolutionary and Bayesian optimization.}}
-(hyperref)             reference {table.caption.65}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsname }{\ignorespaces Termination criteria for evolutionary and Bayesian optimization.}}
+(hyperref)             reference {table.4.2}
 (hyperref)             toclevel {1}
 (hyperref)             type {lot}.
-
-Overfull \hbox (97.66513pt too wide) in paragraph at lines 611--632
- [][] 
- []
-
+Package hyperref Info: Anchor `table.4.2' on input line 609.
+Package hyperref Info: Anchor `table.4.2' on input line 609.
+Package hyperref Info: Anchor `page.41' on input line 632.
+ [41]
 Package hyperref Info: Anchor `equation.4.1.37' on input line 643.
-Package hyperref Info: Anchor `page.34' on input line 645.
-[34]
 Package hyperref Info: Anchor `subsection.4.1.8' on input line 649.
 Package hyperref Info: bookmark on input line 649:
 (hyperref)             thecounter {4.1.8}
@@ -2770,6 +1975,8 @@ Package hyperref Info: bookmark on input line 649:
 (hyperref)             type {toc}.
 Package hyperref Info: Reference (cite) `cite.hypervolume' on input line 651.
 Package hyperref Info: Anchor `equation.4.1.38' on input line 652.
+Package hyperref Info: Anchor `page.42' on input line 654.
+ [42]
 Package hyperref Info: Anchor `subsection.4.1.9' on input line 663.
 Package hyperref Info: bookmark on input line 663:
 (hyperref)             thecounter {4.1.9}
@@ -2786,8 +1993,8 @@ Package hyperref Info: bookmark on input line 681:
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
 Package hyperref Info: Anchor `equation.4.1.40' on input line 684.
-Package hyperref Info: Anchor `page.35' on input line 692.
- [35
+Package hyperref Info: Anchor `page.43' on input line 692.
+ [43
 Package `hyperref' Info: End of reference (cite) `cite.hypervolume', line 651.
 ]) (./chapters/implementation-subsections/implementation_two_finger.tex
 Package hyperref Info: Anchor `section.4.2' on input line 1.
@@ -2801,12 +2008,11 @@ Package hyperref Info: Reference (cite) `cite.pymoo' on input line 7.
 Package hyperref Info: Reference (cite) `cite.olson2025ax' on input line 9.
 Package hyperref Info: Reference (cite) `cite.botorch' on input line 9.
 Package hyperref Info: Reference (cite) `cite.snuggle_pack' on input line 13.
-Package hyperref Info: Anchor `page.36' on input line 20.
- [36
+Package hyperref Info: Anchor `page.44' on input line 16.
+ [44
 Package `hyperref' Info: End of reference (cite) `cite.pymoo', line 7.
 Package `hyperref' Info: End of reference (cite) `cite.olson2025ax', line 9.
 Package `hyperref' Info: End of reference (cite) `cite.botorch', line 9.
-Package `hyperref' Info: End of reference (cite) `cite.snuggle_pack', line 13.
 ]
 Package hyperref Info: Anchor `subsection.4.2.1' on input line 21.
 Package hyperref Info: bookmark on input line 21:
@@ -2817,18 +2023,20 @@ Package hyperref Info: bookmark on input line 21:
 (hyperref)             type {toc}.
 Package hyperref Info: Anchor `equation.4.2.41' on input line 25.
 Package hyperref Info: Anchor `equation.4.2.42' on input line 37.
-Package hyperref Info: Reference (link) `table.caption.66' on input line 49.
-Package hyperref Info: Anchor `table.caption.66' on input line 51.
+Package hyperref Info: Reference (link) `table.4.3' on input line 49.
 Package hyperref Info: bookmark on input line 53:
 (hyperref)             thecounter {4.3}
-(hyperref)             text {\protect \numberline {\caption@listformat {\caption@p {table}}{\caption@the {table}}}{\ignorespaces Decision variables of the two-finger gripper optimization problem.}}
-(hyperref)             reference {table.caption.66}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsname }{\ignorespaces Decision variables of the two-finger gripper optimization problem.}}
+(hyperref)             reference {table.4.3}
 (hyperref)             toclevel {1}
 (hyperref)             type {lot}.
+Package hyperref Info: Anchor `table.4.3' on input line 53.
+Package hyperref Info: Anchor `table.4.3' on input line 53.
 Package hyperref Info: Anchor `equation.4.2.43' on input line 76.
-Package hyperref Info: Anchor `page.37' on input line 93.
- [37
-Package `hyperref' Info: End of reference (link) `table.caption.66', line 49.
+Package hyperref Info: Anchor `page.45' on input line 84.
+ [45
+Package `hyperref' Info: End of reference (cite) `cite.snuggle_pack', line 13.
+Package `hyperref' Info: End of reference (link) `table.4.3', line 49.
 ]
 Package hyperref Info: Anchor `subsection.4.2.2' on input line 93.
 Package hyperref Info: bookmark on input line 93:
@@ -2837,47 +2045,42 @@ Package hyperref Info: bookmark on input line 93:
 (hyperref)             reference {subsection.4.2.2}
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
+Package hyperref Info: Anchor `page.46' on input line 113.
+ [46]
 Package hyperref Info: Anchor `equation.4.2.44' on input line 125.
-Package hyperref Info: Anchor `page.38' on input line 133.
- [38]
-Package hyperref Info: Anchor `subsubsection*.68' on input line 134.
-Package hyperref Info: Anchor `section*.67' on input line 134.
+Package hyperref Info: Anchor `subsubsection*.65' on input line 134.
+Package hyperref Info: Anchor `section*.64' on input line 134.
 Package hyperref Info: bookmark on input line 134:
 (hyperref)             thecounter {4.2.2.0}
 (hyperref)             text {\protect \nonumberline \@currenttocentry }
-(hyperref)             reference {subsubsection*.68}
+(hyperref)             reference {subsubsection*.65}
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
-Package hyperref Info: Reference (link) `table.caption.69' on input line 137.
-Package hyperref Info: Anchor `table.caption.69' on input line 138.
+Package hyperref Info: Reference (link) `table.4.4' on input line 137.
 Package hyperref Info: bookmark on input line 140:
 (hyperref)             thecounter {4.4}
-(hyperref)             text {\protect \numberline {\caption@listformat {\caption@p {table}}{\caption@the {table}}}{\ignorespaces Supported multi-objective optimization methods for the two-finger gripper.}}
-(hyperref)             reference {table.caption.69}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsname }{\ignorespaces Supported multi-objective optimization methods for the two-finger gripper.}}
+(hyperref)             reference {table.4.4}
 (hyperref)             toclevel {1}
 (hyperref)             type {lot}.
-Package hyperref Info: Reference (cite) `cite.nsga2' on input line 156.
-Package hyperref Info: Reference (cite) `cite.nsga3' on input line 160.
-Package hyperref Info: Reference (cite) `cite.moead' on input line 164.
-Package hyperref Info: Reference (cite) `cite.smsemoa' on input line 172.
-Package hyperref Info: Reference (cite) `cite.olson2025ax' on input line 177.
-Package hyperref Info: Reference (cite) `cite.botorch' on input line 177.
+Package hyperref Info: Anchor `table.4.4' on input line 140.
+Package hyperref Info: Anchor `table.4.4' on input line 140.
+Package hyperref Info: Reference (cite) `cite.nsga2' on input line 179.
+Package hyperref Info: Reference (cite) `cite.nsga3' on input line 179.
+Package hyperref Info: Reference (cite) `cite.moead' on input line 179.
+Package hyperref Info: Reference (cite) `cite.smsemoa' on input line 179.
+Package hyperref Info: Reference (cite) `cite.olson2025ax' on input line 179.
+Package hyperref Info: Reference (cite) `cite.botorch' on input line 179.
 Package hyperref Info: Reference (cite) `cite.das_dennis' on input line 183.
 Package hyperref Info: Anchor `equation.4.2.45' on input line 184.
+Package hyperref Info: Anchor `page.47' on input line 195.
+ [47
+Package `hyperref' Info: End of reference (link) `table.4.4', line 137.
+Package `hyperref' Info: End of reference (cite) `cite.das_dennis', line 183.
+]
 Package hyperref Info: Anchor `Item.8' on input line 197.
 Package hyperref Info: Anchor `Item.9' on input line 198.
 Package hyperref Info: Anchor `Item.10' on input line 199.
-Package hyperref Info: Anchor `page.39' on input line 207.
- [39
-Package `hyperref' Info: End of reference (link) `table.caption.69', line 137.
-Package `hyperref' Info: End of reference (cite) `cite.nsga2', line 156.
-Package `hyperref' Info: End of reference (cite) `cite.nsga3', line 160.
-Package `hyperref' Info: End of reference (cite) `cite.moead', line 164.
-Package `hyperref' Info: End of reference (cite) `cite.smsemoa', line 172.
-Package `hyperref' Info: End of reference (cite) `cite.olson2025ax', line 177.
-Package `hyperref' Info: End of reference (cite) `cite.botorch', line 177.
-Package `hyperref' Info: End of reference (cite) `cite.das_dennis', line 183.
-]
 Package hyperref Info: Anchor `subsection.4.2.3' on input line 213.
 Package hyperref Info: bookmark on input line 213:
 (hyperref)             thecounter {4.2.3}
@@ -2885,27 +2088,36 @@ Package hyperref Info: bookmark on input line 213:
 (hyperref)             reference {subsection.4.2.3}
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `subsubsection*.71' on input line 218.
-Package hyperref Info: Anchor `section*.70' on input line 218.
+Package hyperref Info: Anchor `page.48' on input line 218.
+ [48
+Package `hyperref' Info: End of reference (cite) `cite.nsga2', line 179.
+Package `hyperref' Info: End of reference (cite) `cite.nsga3', line 179.
+Package `hyperref' Info: End of reference (cite) `cite.moead', line 179.
+Package `hyperref' Info: End of reference (cite) `cite.smsemoa', line 179.
+Package `hyperref' Info: End of reference (cite) `cite.olson2025ax', line 179.
+Package `hyperref' Info: End of reference (cite) `cite.botorch', line 179.
+]
+Package hyperref Info: Anchor `subsubsection*.67' on input line 218.
+Package hyperref Info: Anchor `section*.66' on input line 218.
 Package hyperref Info: bookmark on input line 218:
 (hyperref)             thecounter {4.2.3.0}
 (hyperref)             text {\protect \nonumberline \@currenttocentry }
-(hyperref)             reference {subsubsection*.71}
+(hyperref)             reference {subsubsection*.67}
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
 Package hyperref Info: Anchor `equation.4.2.46' on input line 221.
-Package hyperref Info: Anchor `subsubsection*.73' on input line 240.
-Package hyperref Info: Anchor `section*.72' on input line 240.
+Package hyperref Info: Anchor `subsubsection*.69' on input line 240.
+Package hyperref Info: Anchor `section*.68' on input line 240.
 Package hyperref Info: bookmark on input line 240:
 (hyperref)             thecounter {4.2.3.0}
 (hyperref)             text {\protect \nonumberline \@currenttocentry }
-(hyperref)             reference {subsubsection*.73}
+(hyperref)             reference {subsubsection*.69}
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
 Package hyperref Info: Anchor `equation.4.2.47' on input line 244.
 Package hyperref Info: Anchor `equation.4.2.48' on input line 255.
-Package hyperref Info: Anchor `page.40' on input line 264.
- [40]
+Package hyperref Info: Anchor `page.49' on input line 273.
+ [49]
 Package hyperref Info: Anchor `subsection.4.2.4' on input line 278.
 Package hyperref Info: bookmark on input line 278:
 (hyperref)             thecounter {4.2.4}
@@ -2915,38 +2127,39 @@ Package hyperref Info: bookmark on input line 278:
 (hyperref)             type {toc}.
 Package hyperref Info: Anchor `equation.4.2.49' on input line 283.
 Package hyperref Info: Reference (cite) `cite.cadquery2026' on input line 296.
-Package hyperref Info: Anchor `subsubsection*.75' on input line 299.
-Package hyperref Info: Anchor `section*.74' on input line 299.
+Package hyperref Info: Anchor `subsubsection*.71' on input line 299.
+Package hyperref Info: Anchor `section*.70' on input line 299.
 Package hyperref Info: bookmark on input line 299:
 (hyperref)             thecounter {4.2.4.0}
 (hyperref)             text {\protect \nonumberline \@currenttocentry }
-(hyperref)             reference {subsubsection*.75}
+(hyperref)             reference {subsubsection*.71}
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
 Package hyperref Info: Reference (cite) `cite.snuggle_pack' on input line 306.
-Package hyperref Info: Anchor `page.41' on input line 309.
- [41
+Package hyperref Info: Anchor `page.50' on input line 309.
+ [50
 Package `hyperref' Info: End of reference (cite) `cite.cadquery2026', line 296.
+Package `hyperref' Info: End of reference (cite) `cite.snuggle_pack', line 306.
 ]
 Package hyperref Info: Anchor `equation.4.2.50' on input line 312.
-Package hyperref Info: Anchor `subsubsection*.77' on input line 337.
-Package hyperref Info: Anchor `section*.76' on input line 337.
+Package hyperref Info: Anchor `subsubsection*.73' on input line 337.
+Package hyperref Info: Anchor `section*.72' on input line 337.
 Package hyperref Info: bookmark on input line 337:
 (hyperref)             thecounter {4.2.4.0}
 (hyperref)             text {\protect \nonumberline \@currenttocentry }
-(hyperref)             reference {subsubsection*.77}
+(hyperref)             reference {subsubsection*.73}
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
 Package hyperref Info: Anchor `equation.4.2.51' on input line 343.
 Package hyperref Info: Anchor `equation.4.2.52' on input line 350.
+Package hyperref Info: Anchor `page.51' on input line 363.
+ [51]
 Package hyperref Info: Anchor `equation.4.2.53' on input line 366.
-Package hyperref Info: Anchor `page.42' on input line 377.
- [42
-Package `hyperref' Info: End of reference (cite) `cite.snuggle_pack', line 306.
-]
 Package hyperref Info: Anchor `equation.4.2.54' on input line 383.
 Package hyperref Info: Anchor `equation.4.2.55' on input line 396.
 Package hyperref Info: Anchor `equation.4.2.56' on input line 400.
+Package hyperref Info: Anchor `page.52' on input line 407.
+ [52]
 Package hyperref Info: Anchor `subsection.4.2.5' on input line 407.
 Package hyperref Info: bookmark on input line 407:
 (hyperref)             thecounter {4.2.5}
@@ -2954,8 +2167,6 @@ Package hyperref Info: bookmark on input line 407:
 (hyperref)             reference {subsection.4.2.5}
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `page.43' on input line 416.
- [43]
 Package hyperref Info: Anchor `Item.11' on input line 416.
 Package hyperref Info: Anchor `Item.12' on input line 417.
 Package hyperref Info: Anchor `Item.13' on input line 418.
@@ -2963,27 +2174,29 @@ Package hyperref Info: Anchor `Item.14' on input line 419.
 Package hyperref Info: Anchor `Item.15' on input line 420.
 Package hyperref Info: Anchor `Item.16' on input line 421.
 Package hyperref Info: Anchor `Item.17' on input line 422.
-Package hyperref Info: Anchor `subsubsection*.79' on input line 425.
-Package hyperref Info: Anchor `section*.78' on input line 425.
+Package hyperref Info: Anchor `subsubsection*.75' on input line 425.
+Package hyperref Info: Anchor `section*.74' on input line 425.
 Package hyperref Info: bookmark on input line 425:
 (hyperref)             thecounter {4.2.5.0}
 (hyperref)             text {\protect \nonumberline \@currenttocentry }
-(hyperref)             reference {subsubsection*.79}
+(hyperref)             reference {subsubsection*.75}
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
 Package hyperref Info: Anchor `equation.4.2.57' on input line 432.
-Package hyperref Info: Anchor `subsubsection*.81' on input line 451.
-Package hyperref Info: Anchor `section*.80' on input line 451.
+Package hyperref Info: Anchor `page.53' on input line 440.
+ [53]
+Package hyperref Info: Anchor `subsubsection*.77' on input line 451.
+Package hyperref Info: Anchor `section*.76' on input line 451.
 Package hyperref Info: bookmark on input line 451:
 (hyperref)             thecounter {4.2.5.0}
 (hyperref)             text {\protect \nonumberline \@currenttocentry }
-(hyperref)             reference {subsubsection*.81}
+(hyperref)             reference {subsubsection*.77}
 (hyperref)             toclevel {3}
 (hyperref)             type {toc}.
 Package hyperref Info: Anchor `equation.4.2.58' on input line 455.
-Package hyperref Info: Anchor `page.44' on input line 459.
- [44]
 Package hyperref Info: Anchor `equation.4.2.59' on input line 475.
+Package hyperref Info: Anchor `page.54' on input line 485.
+ [54]
 Package hyperref Info: Anchor `equation.4.2.60' on input line 491.
 Package hyperref Info: Anchor `subsection.4.2.6' on input line 511.
 Package hyperref Info: bookmark on input line 511:
@@ -2992,20 +2205,14 @@ Package hyperref Info: bookmark on input line 511:
 (hyperref)             reference {subsection.4.2.6}
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
-Package hyperref Info: Anchor `table.caption.82' on input line 516.
 Package hyperref Info: bookmark on input line 518:
 (hyperref)             thecounter {4.5}
-(hyperref)             text {\protect \numberline {\caption@listformat {\caption@p {table}}{\caption@the {table}}}{\ignorespaces Termination criteria for evolutionary and Bayesian optimization.}}
-(hyperref)             reference {table.caption.82}
+(hyperref)             text {\protect \numberline {\csname the\@captype \endcsname }{\ignorespaces Termination criteria for evolutionary and Bayesian optimization.}}
+(hyperref)             reference {table.4.5}
 (hyperref)             toclevel {1}
 (hyperref)             type {lot}.
-
-Overfull \hbox (44.55824pt too wide) in paragraph at lines 520--541
- [][] 
- []
-
-Package hyperref Info: Anchor `page.45' on input line 541.
-[45]
+Package hyperref Info: Anchor `table.4.5' on input line 518.
+Package hyperref Info: Anchor `table.4.5' on input line 518.
 Package hyperref Info: Anchor `equation.4.2.61' on input line 552.
 Package hyperref Info: Anchor `subsection.4.2.7' on input line 558.
 Package hyperref Info: bookmark on input line 558:
@@ -3016,10 +2223,12 @@ Package hyperref Info: bookmark on input line 558:
 (hyperref)             type {toc}.
 Package hyperref Info: Reference (cite) `cite.hypervolume' on input line 561.
 Package hyperref Info: Anchor `equation.4.2.62' on input line 564.
+Package hyperref Info: Anchor `page.55' on input line 564.
+ [55]
 Package hyperref Info: Anchor `equation.4.2.63' on input line 573.
 Package hyperref Info: Anchor `equation.4.2.64' on input line 586.
-Package hyperref Info: Anchor `page.46' on input line 586.
- [46
+Package hyperref Info: Anchor `page.56' on input line 594.
+ [56
 Package `hyperref' Info: End of reference (cite) `cite.hypervolume', line 561.
 ]
 Package hyperref Info: Anchor `equation.4.2.65' on input line 609.
@@ -3031,13 +2240,8 @@ Package hyperref Info: bookmark on input line 622:
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
 Package hyperref Info: Anchor `equation.4.2.66' on input line 630.
-
-Overfull \hbox (6.35107pt too wide) in paragraph at lines 625--630
-\T1/lmr/m/n/10.95 rithm hy-per-pa-ram-e-ters, such as crossover prob-a-bil-ity and mu-ta-tion rate, us-ing a meta-optimization
- []
-
-Package hyperref Info: Anchor `page.47' on input line 637.
-[47]
+Package hyperref Info: Anchor `page.57' on input line 637.
+ [57]
 Package hyperref Info: Anchor `subsection.4.2.9' on input line 664.
 Package hyperref Info: bookmark on input line 664:
 (hyperref)             thecounter {4.2.9}
@@ -3046,13 +2250,13 @@ Package hyperref Info: bookmark on input line 664:
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
 Package hyperref Info: Anchor `equation.4.2.67' on input line 669.
+Package hyperref Info: Anchor `page.58' on input line 678.
+ [58]
 Package hyperref Info: Anchor `equation.4.2.68' on input line 680.
-Package hyperref Info: Anchor `page.48' on input line 684.
- [48]
 Package hyperref Info: Anchor `equation.4.2.69' on input line 686.
 )) (./chapters/ch-validation.tex
-Package hyperref Info: Anchor `page.49' on input line 1.
- [49]
+Package hyperref Info: Anchor `page.59' on input line 1.
+ [59]
 Package hyperref Info: Anchor `chapter.5' on input line 1.
 
 chapter 5.
@@ -3077,8 +2281,8 @@ Package hyperref Info: bookmark on input line 6:
 (hyperref)             toclevel {1}
 (hyperref)             type {toc}.
 ) (./chapters/ch-evaluation.tex
-Package hyperref Info: Anchor `page.50' on input line 1.
- [50
+Package hyperref Info: Anchor `page.60' on input line 1.
+ [60
 
 
 ]
@@ -3134,8 +2338,8 @@ Package hyperref Info: bookmark on input line 10:
 (hyperref)             toclevel {2}
 (hyperref)             type {toc}.
 ) (./chapters/ch-summary.tex
-Package hyperref Info: Anchor `page.51' on input line 1.
- [51
+Package hyperref Info: Anchor `page.61' on input line 1.
+ [61
 
 
 ]
@@ -3170,8 +2374,8 @@ Package hyperref Info: bookmark on input line 9:
 (hyperref)             toclevel {1}
 (hyperref)             type {toc}.
 ))
-Package hyperref Info: Anchor `page.52' on input line 54.
- [52
+Package hyperref Info: Anchor `page.62' on input line 54.
+ [62
 
 
 ]
@@ -3188,8 +2392,8 @@ Package hyperref Info: bookmark on input line 1:
 (hyperref)             toclevel {0}
 (hyperref)             type {toc}.
 )
-Package hyperref Info: Anchor `page.53' on input line 58.
- [53
+Package hyperref Info: Anchor `page.63' on input line 58.
+ [63
 
 
 
@@ -3197,11 +2401,11 @@ Package hyperref Info: Anchor `page.53' on input line 58.
 
 ] (./vorlage.bbl
 chapter without number
-Package hyperref Info: Anchor `chapter*.83' on input line 2.
+Package hyperref Info: Anchor `chapter*.78' on input line 2.
 Package hyperref Info: bookmark on input line 2:
 (hyperref)             thecounter {A}
 (hyperref)             text {\protect \nonumberline \@currenttocentry }
-(hyperref)             reference {chapter*.83}
+(hyperref)             reference {chapter*.78}
 (hyperref)             toclevel {0}
 (hyperref)             type {toc}.
 Package hyperref Info: Anchor `cite.Todescato' on input line 23.
@@ -3211,106 +2415,106 @@ Package hyperref Info: Anchor `cite.Courchesne2023A' on input line 32.
 Package hyperref Info: Anchor `cite.Liu2024Topology' on input line 35.
 Package hyperref Info: Anchor `cite.Doerterler2021Analyzing' on input line 38.
 Package hyperref Info: Anchor `cite.Guo2022Evolutionary' on input line 41.
-Package hyperref Info: Anchor `cite.Datta2011Optimizing' on input line 44.
-Package hyperref Info: Anchor `page.54' on input line 46.
-[54
+Package hyperref Info: Anchor `page.64' on input line 43.
+[64
 
 
 
 
 ]
-Package hyperref Info: Anchor `cite.Belakaria2020Uncertainty-Aware' on input line 47.
-Package hyperref Info: Anchor `cite.pymoo' on input line 50.
-Package hyperref Info: Anchor `cite.Audet2018Performance' on input line 53.
-Package hyperref Info: Anchor `cite.Audet2017Derivative-Free' on input line 56.
-Package hyperref Info: Anchor `cite.Jones2022Constrained' on input line 59.
-Package hyperref Info: Anchor `cite.Deb2011Multi-objective' on input line 62.
-Package hyperref Info: Anchor `cite.Gunantara2018A' on input line 65.
-Package hyperref Info: Anchor `cite.Shang2021A' on input line 68.
-Package hyperref Info: Anchor `cite.Abulail2025Enhanced' on input line 71.
-Package hyperref Info: Anchor `cite.Ishibuchi2017Performance' on input line 74.
-Package hyperref Info: Anchor `cite.Li2015An' on input line 77.
-Package hyperref Info: Anchor `cite.Frazier2018A' on input line 80.
-Package hyperref Info: Anchor `cite.Candelieri2021A' on input line 83.
-Package hyperref Info: Anchor `page.55' on input line 85.
- [55]
-Package hyperref Info: Anchor `cite.Wang2022Recent' on input line 86.
-Package hyperref Info: Anchor `cite.olson2025ax' on input line 89.
-Package hyperref Info: Anchor `cite.Sivaprasad2019Optimizer' on input line 94.
-Package hyperref Info: Anchor `cite.Ishibuchi2022Difficulties' on input line 97.
-Package hyperref Info: Anchor `cite.Probst2018Tunability:' on input line 100.
-Package hyperref Info: Anchor `cite.nsga2' on input line 103.
-Package hyperref Info: Anchor `cite.nsga3' on input line 106.
-Package hyperref Info: Anchor `cite.smsemoa' on input line 109.
-Package hyperref Info: Anchor `cite.cmopso' on input line 112.
-Package hyperref Info: Anchor `page.56' on input line 116.
- [56
-Package `hyperref' Info: End of reference (link) `table.caption.69', line 137.
+Package hyperref Info: Anchor `cite.Liu2022Simulation' on input line 44.
+Package hyperref Info: Anchor `cite.Santoni2023Comparison' on input line 47.
+Package hyperref Info: Anchor `cite.Mueller2017SOCEMO' on input line 50.
+Package hyperref Info: Anchor `cite.Raponi2023Optimizing' on input line 53.
+Package hyperref Info: Anchor `cite.Datta2011Optimizing' on input line 56.
+Package hyperref Info: Anchor `cite.Belakaria2020Uncertainty-Aware' on input line 59.
+Package hyperref Info: Anchor `cite.pymoo' on input line 62.
+Package hyperref Info: Anchor `cite.Audet2018Performance' on input line 65.
+Package hyperref Info: Anchor `page.65' on input line 68.
+ [65]
+Package hyperref Info: Anchor `cite.Audet2017Derivative-Free' on input line 68.
+Package hyperref Info: Anchor `cite.Jones2022Constrained' on input line 71.
+Package hyperref Info: Anchor `cite.Deb2011Multi-objective' on input line 74.
+Package hyperref Info: Anchor `cite.Gunantara2018A' on input line 77.
+Package hyperref Info: Anchor `cite.Shang2021A' on input line 80.
+Package hyperref Info: Anchor `cite.Abulail2025Enhanced' on input line 83.
+Package hyperref Info: Anchor `cite.Ishibuchi2017Performance' on input line 86.
+Package hyperref Info: Anchor `cite.Li2015An' on input line 89.
+Package hyperref Info: Anchor `cite.Frazier2018A' on input line 92.
+Package hyperref Info: Anchor `cite.Candelieri2021A' on input line 95.
+Package hyperref Info: Anchor `cite.Wang2022Recent' on input line 98.
+Package hyperref Info: Anchor `page.66' on input line 100.
+ [66]
+Package hyperref Info: Anchor `cite.olson2025ax' on input line 101.
+Package hyperref Info: Anchor `cite.Sivaprasad2019Optimizer' on input line 106.
+Package hyperref Info: Anchor `cite.Ishibuchi2022Difficulties' on input line 109.
+Package hyperref Info: Anchor `cite.Probst2018Tunability:' on input line 112.
+Package hyperref Info: Anchor `cite.nsga2' on input line 115.
+Package hyperref Info: Anchor `cite.nsga3' on input line 118.
+Package hyperref Info: Anchor `cite.smsemoa' on input line 121.
+Package hyperref Info: Anchor `cite.cmopso' on input line 124.
+Package hyperref Info: Anchor `page.67' on input line 128.
+ [67
+Package `hyperref' Info: End of reference (link) `table.4.4', line 137.
 ]
-Package hyperref Info: Anchor `cite.Prattichizzo2014Robot' on input line 117.
-Package hyperref Info: Anchor `cite.Nguyen1986Constructing' on input line 120.
-Package hyperref Info: Anchor `cite.Peyre2010Geodesic' on input line 123.
-Package hyperref Info: Anchor `cite.Eilers1996Flexible' on input line 126.
-Package hyperref Info: Anchor `cite.Hasan2024B-spline' on input line 129.
-Package hyperref Info: Anchor `cite.Chapelier2022Spline-based' on input line 132.
-Package hyperref Info: Anchor `cite.Schillinger2023Model-Free' on input line 135.
-Package hyperref Info: Anchor `cite.Geng2025Experimental' on input line 138.
-Package hyperref Info: Anchor `cite.Lee2024Grasp' on input line 141.
-Package hyperref Info: Anchor `cite.Sun2022LARG:' on input line 144.
-Package hyperref Info: Anchor `cite.Dong2018Geometric' on input line 147.
-Package hyperref Info: Anchor `page.57' on input line 149.
- [57
-Package `hyperref' Info: End of reference (link) `table.caption.69', line 137.
+Package hyperref Info: Anchor `cite.Prattichizzo2014Robot' on input line 129.
+Package hyperref Info: Anchor `cite.Nguyen1986Constructing' on input line 132.
+Package hyperref Info: Anchor `cite.Peyre2010Geodesic' on input line 135.
+Package hyperref Info: Anchor `cite.Eilers1996Flexible' on input line 138.
+Package hyperref Info: Anchor `cite.Hasan2024B-spline' on input line 141.
+Package hyperref Info: Anchor `cite.Chapelier2022Spline-based' on input line 144.
+Package hyperref Info: Anchor `cite.Schillinger2023Model-Free' on input line 147.
+Package hyperref Info: Anchor `cite.Geng2025Experimental' on input line 150.
+Package hyperref Info: Anchor `cite.Lee2024Grasp' on input line 153.
+Package hyperref Info: Anchor `page.68' on input line 155.
+ [68
+Package `hyperref' Info: End of reference (link) `table.4.4', line 137.
 ]
-Package hyperref Info: Anchor `cite.Xie2024Design' on input line 150.
-Package hyperref Info: Anchor `cite.DaSilva2024Multi-objective' on input line 153.
-Package hyperref Info: Anchor `cite.Nikolikj2025Benchmarking' on input line 156.
-Package hyperref Info: Anchor `cite.Ko2020A' on input line 159.
-Package hyperref Info: Anchor `cite.Wang2024Fin-Bayes:' on input line 162.
-Package hyperref Info: Anchor `cite.Wolniakowski2017Task' on input line 165.
-Package hyperref Info: Anchor `cite.Weisz2012Pose' on input line 168.
-Package hyperref Info: Anchor `cite.madan2022realrobotchallenge2021' on input line 171.
-Package hyperref Info: Anchor `cite.Bo2023A' on input line 176.
-Package hyperref Info: Anchor `page.58' on input line 179.
- [58
-Package `hyperref' Info: End of reference (link) `table.caption.69', line 137.
+Package hyperref Info: Anchor `cite.Sun2022LARG:' on input line 156.
+Package hyperref Info: Anchor `cite.Dong2018Geometric' on input line 159.
+Package hyperref Info: Anchor `cite.Xie2024Design' on input line 162.
+Package hyperref Info: Anchor `cite.DaSilva2024Multi-objective' on input line 165.
+Package hyperref Info: Anchor `cite.Nikolikj2025Benchmarking' on input line 168.
+Package hyperref Info: Anchor `cite.Ko2020A' on input line 171.
+Package hyperref Info: Anchor `cite.Wang2024Fin-Bayes:' on input line 174.
+Package hyperref Info: Anchor `cite.Wolniakowski2017Task' on input line 177.
+Package hyperref Info: Anchor `page.69' on input line 179.
+ [69]
+Package hyperref Info: Anchor `cite.Weisz2012Pose' on input line 180.
+Package hyperref Info: Anchor `cite.madan2022realrobotchallenge2021' on input line 183.
+Package hyperref Info: Anchor `cite.Bo2023A' on input line 188.
+Package hyperref Info: Anchor `cite.Pinskier2024Diversity-Based' on input line 191.
+Package hyperref Info: Anchor `cite.snuggle_pack' on input line 194.
+Package hyperref Info: Anchor `cite.botorch' on input line 197.
+Package hyperref Info: Anchor `cite.moead' on input line 202.
+Package hyperref Info: Anchor `cite.Doerr2022A' on input line 205.
+Package hyperref Info: Anchor `page.70' on input line 207.
+ [70
+Package `hyperref' Info: End of reference (link) `table.4.4', line 137.
+Package `hyperref' Info: End of reference (link) `table.4.4', line 137.
 ]
-Package hyperref Info: Anchor `cite.Pinskier2024Diversity-Based' on input line 179.
-Package hyperref Info: Anchor `cite.snuggle_pack' on input line 182.
-Package hyperref Info: Anchor `cite.botorch' on input line 185.
-Package hyperref Info: Anchor `cite.moead' on input line 190.
-Package hyperref Info: Anchor `cite.Doerr2022A' on input line 193.
-Package hyperref Info: Anchor `cite.Trivedi2017A' on input line 196.
-Package hyperref Info: Anchor `cite.Shang2020A' on input line 199.
-Package hyperref Info: Anchor `cite.Cenikj2022SELECTOR:' on input line 202.
-Package hyperref Info: Anchor `cite.Yazdani2020Benchmarking' on input line 205.
-Package hyperref Info: Anchor `page.59' on input line 208.
- [59
-Package `hyperref' Info: End of reference (link) `table.caption.69', line 137.
-]
-Package hyperref Info: Anchor `cite.Gupta2020Continuous' on input line 208.
-Package hyperref Info: Anchor `cite.Bischl2017mlrMBO:' on input line 211.
-Package hyperref Info: Anchor `cite.Bouthillier2021Accounting' on input line 214.
-Package hyperref Info: Anchor `cite.Beiranvand2017Best' on input line 217.
-Package hyperref Info: Anchor `cite.Trautmann2009Statistical' on input line 220.
-Package hyperref Info: Anchor `cite.das_dennis' on input line 223.
-Package hyperref Info: Anchor `cite.Kleeberger' on input line 228.
-Package hyperref Info: Anchor `cite.SC_quasi_static' on input line 231.
-Package hyperref Info: Anchor `cite.hypervolume' on input line 234.
-Package hyperref Info: Anchor `page.60' on input line 238.
- [60
-Package `hyperref' Info: End of reference (link) `table.caption.69', line 137.
-]
-Package hyperref Info: Anchor `cite.cadquery2026' on input line 239.
+Package hyperref Info: Anchor `cite.Trivedi2017A' on input line 208.
+Package hyperref Info: Anchor `cite.Shang2020A' on input line 211.
+Package hyperref Info: Anchor `cite.Cenikj2022SELECTOR:' on input line 214.
+Package hyperref Info: Anchor `cite.Yazdani2020Benchmarking' on input line 217.
+Package hyperref Info: Anchor `cite.Gupta2020Continuous' on input line 220.
+Package hyperref Info: Anchor `cite.Bischl2017mlrMBO:' on input line 223.
+Package hyperref Info: Anchor `cite.Bouthillier2021Accounting' on input line 226.
+Package hyperref Info: Anchor `page.71' on input line 229.
+ [71]
+Package hyperref Info: Anchor `cite.Beiranvand2017Best' on input line 229.
+Package hyperref Info: Anchor `cite.Trautmann2009Statistical' on input line 232.
+Package hyperref Info: Anchor `cite.das_dennis' on input line 235.
+Package hyperref Info: Anchor `cite.Kleeberger' on input line 240.
+Package hyperref Info: Anchor `cite.SC_quasi_static' on input line 243.
+Package hyperref Info: Anchor `cite.hypervolume' on input line 246.
+Package hyperref Info: Anchor `cite.cadquery2026' on input line 251.
 )
-
-Package caption Warning: Unused \captionsetup[subfloat] on input line 381.
-See the caption package documentation for explanation.
-
-Package hyperref Info: Anchor `page.61' on input line 68.
-[61
-Package `hyperref' Info: End of reference (link) `table.caption.69', line 137.
-Package `hyperref' Info: End of reference (link) `table.caption.69', line 137.
+Package hyperref Info: Anchor `page.72' on input line 68.
+ [72
+Package `hyperref' Info: End of reference (link) `table.4.4', line 137.
+Package `hyperref' Info: End of reference (link) `table.4.4', line 137.
+Package `hyperref' Info: End of reference (link) `table.4.4', line 137.
 ] (./vorlage.aux (./chapters/ch-aa-titel.aux) (./chapters/ch-aa-vorspiel.aux) (./chapters/ch-aa-zusfasg.aux) (./chapters/ch-hauptteil.aux) (./chapters/ch-zz-anhang.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -3320,18 +2524,18 @@ Package rerunfilecheck Info: File `vorlage.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 36746 strings out of 474222
- 728778 string characters out of 5748733
- 1943975 words of memory out of 5000000
- 57811 multiletter control sequences out of 15000+600000
- 660622 words of font info for 111 fonts, out of 8000000 for 9000
+ 21208 strings out of 474222
+ 394263 string characters out of 5748733
+ 1941975 words of memory out of 5000000
+ 42560 multiletter control sequences out of 15000+600000
+ 660633 words of font info for 111 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 112i,21n,136p,10981b,903s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 112i,21n,110p,10981b,899s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmro10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbo10.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on vorlage.pdf (73 pages, 590607 bytes).
+Output written on vorlage.pdf (85 pages, 595239 bytes).
 PDF statistics:
- 1241 PDF objects out of 1440 (max. 8388607)
- 1103 compressed objects within 12 object streams
- 382 named destinations out of 1000 (max. 500000)
- 527 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1322 PDF objects out of 1440 (max. 8388607)
+ 1148 compressed objects within 12 object streams
+ 398 named destinations out of 1000 (max. 500000)
+ 515 words of extra memory for PDF output out of 10000 (max. 10000000)
 

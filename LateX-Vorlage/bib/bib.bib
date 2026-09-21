@@ -93,7 +93,22 @@ doi = {https://doi.org/10.1016/j.knosys.2022.109173},
 url = {https://www.sciencedirect.com/science/article/pii/S0950705122005810},
 author = {Yulong Ye and Lingjie Li and Qiuzhen Lin and Ka-Chun Wong and Jianqiang Li and Zhong Ming},
 keywords = {Dynamic multi-objective optimization, Naive Bayesian classification, Evolutionary algorithm, Cluster algorithm},
-abstract = {Dynamic multi-objective optimization problems (DMOPs) typically contain multiple conflicting objectives that vary over time, requiring the optimization algorithms to quickly track the changing Pareto-optimal solutions (POS). Recently, prediction-based dynamic multi-objective evolutionary algorithms (DMOEAs) using transfer learning ideas have been considered promising, which could accelerate the search towards the POS by transferring information from previous environments to estimate the location of the POS in the next environment. However, most of the existing methods only transfer the search experiences from one or two previous environments to construct the prediction model for the next moment, which may ignore the effective information in the earlier search process thereby degrading the prediction accuracy in some cases. In this paper, a knowledge-guided Bayesian classification for DMOEA, called KGB-DMOEA, is proposed, which aims to achieve a robust prediction by fully exploiting the information from all historical environments. Particularly, when an environmental change is detected, a knowledge reconstruction–examination strategy is designed to divide all historical optimal solutions into useful and useless ones, which are used as positive and negative samples, respectively, for training the prediction model in subsequent steps. Then, a non-linear probabilistic classifier, i.e., naive Bayesian classifier, is constructed by using the above training samples, which can fully mine the effective knowledge from all historical environments and predict a high-quality initial population for the new environment. Experimental results on multiple DMOPs test suits demonstrate that KGB-DMOEA is superior to several state-of-the-art DMOEAs in solving various DMOPs.}
+abstract = {Dynamic multi-objective optimization problems (DMOPs) typically contain multiple conflicting objectives that
+vary over time, requiring the optimization algorithms to quickly track the changing Pareto-optimal solutions (POS).
+Recently, prediction-based dynamic multi-objective evolutionary algorithms (DMOEAs) using transfer learning ideas have
+been considered promising, which could accelerate the search towards the POS by transferring information from previous
+environments to estimate the location of the POS in the next environment. However, most of the existing methods only
+transfer the search experiences from one or two previous environments to construct the prediction model for the next
+moment, which may ignore the effective information in the earlier search process thereby degrading the prediction
+accuracy in some cases. In this paper, a knowledge-guided Bayesian classification for DMOEA, called KGB-DMOEA, is
+proposed, which aims to achieve a robust prediction by fully exploiting the information from all historical
+environments. Particularly, when an environmental change is detected, a knowledge reconstruction–examination strategy is
+designed to divide all historical optimal solutions into useful and useless ones, which are used as positive and
+negative samples, respectively, for training the prediction model in subsequent steps. Then, a non-linear probabilistic
+classifier, i.e., naive Bayesian classifier, is constructed by using the above training samples, which can fully mine
+the effective knowledge from all historical environments and predict a high-quality initial population for the new
+environment. Experimental results on multiple DMOPs test suits demonstrate that KGB-DMOEA is superior to several
+state-of-the-art DMOEAs in solving various DMOPs.}
 }
 
 @article{hypervolume,
@@ -108,7 +123,13 @@ doi = {https://doi.org/10.1016/j.ejor.2006.08.008},
 url = {https://www.sciencedirect.com/science/article/pii/S0377221706005443},
 author = {Nicola Beume and Boris Naujoks and Michael Emmerich},
 keywords = {Evolutionary computations, Evolutionary multiple objective optimisation, Performance assessment, Hypervolume measure, OR in aerodynamic industries},
-abstract = {The hypervolume measure (or S metric) is a frequently applied quality measure for comparing the results of evolutionary multiobjective optimisation algorithms (EMOA). The new idea is to aim explicitly for the maximisation of the dominated hypervolume within the optimisation process. A steady-state EMOA is proposed that features a selection operator based on the hypervolume measure combined with the concept of non-dominated sorting. The algorithm’s population evolves to a well-distributed set of solutions, thereby focussing on interesting regions of the Pareto front. The performance of the devised S metric selection EMOA (SMS-EMOA) is compared to state-of-the-art methods on two- and three-objective benchmark suites as well as on aeronautical real-world applications.}
+abstract = {The hypervolume measure (or S metric) is a frequently applied quality measure for comparing the results of
+evolutionary multiobjective optimisation algorithms (EMOA). The new idea is to aim explicitly for the maximisation of
+the dominated hypervolume within the optimisation process. A steady-state EMOA is proposed that features a selection
+operator based on the hypervolume measure combined with the concept of non-dominated sorting. The algorithm’s population
+evolves to a well-distributed set of solutions, thereby focussing on interesting regions of the Pareto front. The
+performance of the devised S metric selection EMOA (SMS-EMOA) is compared to state-of-the-art methods on two- and
+three-objective benchmark suites as well as on aeronautical real-world applications.}
 }
 
 
@@ -131,8 +152,43 @@ eprint = {
         https://doi.org/10.1137/S1052623496307510
 }
 ,
-    abstract = { This paper proposes an alternate method for finding several Pareto optimal points for a general nonlinear multicriteria optimization problem. Such points collectively capture the trade-off among the various conflicting objectives. It is proved that this method is independent of the relative scales of the functions and is successful in producing an evenly distributed set of points in the Pareto set given an evenly distributed set of parameters, a property which the popular method of minimizing weighted combinations of objective functions lacks. Further, this method can handle more than two objectives while retaining the computational efficiency of continuation-type algorithms. This is an improvement over continuation techniques for tracing the trade-off curve since continuation strategies cannot easily be extended to handle more than two objectives. }
+    abstract = { This paper proposes an alternate method for finding several Pareto optimal points for a general
+    nonlinear multicriteria optimization problem. Such points collectively capture the trade-off among the various
+    conflicting objectives. It is proved that this method is independent of the relative scales of the functions and is
+    successful in producing an evenly distributed set of points in the Pareto set given an evenly distributed set of
+    parameters, a property which the popular method of minimizing weighted combinations of objective functions lacks.
+    Further, this method can handle more than two objectives while retaining the computational efficiency of
+    continuation-type algorithms. This is an improvement over continuation techniques for tracing the trade-off curve
+    since continuation strategies cannot easily be extended to handle more than two objectives. }
 }
+
+@article{Mueller2017SOCEMO,
+title={SOCEMO: Surrogate Optimization of Computationally Expensive Multiobjective Problems},
+author={Juliane Müller},
+journal={INFORMS J. Comput.},
+year={2017},
+volume={29},
+pages={581-596},
+doi={10.1287/ijoc.2017.0749}
+}
+
+@article{Raponi2023Optimizing,
+title={Optimizing With Low Budgets: A Comparison on the Black-Box Optimization Benchmarking Suite and OpenAI Gym},
+author={E. Raponi and Nathanaël Carraz Rakotonirina and J. Rapin and C. Doerr and O. Teytaud},
+journal={IEEE Transactions on Evolutionary Computation},
+year={2023},
+volume={29},
+pages={91-101},
+doi={10.1109/tevc.2023.3346788}
+}
+
+@article{Santoni2023Comparison,title={Comparison of High-Dimensional Bayesian Optimization Algorithms on
+BBOB},author={M. Santoni and E. Raponi and R. De Leone and C. Doerr},journal={ACM Transactions on Evolutionary
+Learning},year={2023},volume={4},pages={1 - 33},doi={10.1145/3670683}}
+@article{Liu2022Simulation,title={Simulation Data Driven Design Optimization for Reconfigurable Soft Gripper
+System},author={Jun Liu and J. Low and Q. Han and Marisa Lim and Dingjie Lu and C. Yeow and Zhuangjian
+Liu},journal={IEEE Robotics and Automation
+Letters},year={2022},volume={7},pages={5803-5810},doi={10.1109/lra.2022.3155825}}
 
 @misc{madan2022realrobotchallenge2021,
       title={Real Robot Challenge 2021: Cartesian Position Control with Triangle Grasp and Trajectory Interpolation}, 
@@ -247,7 +303,8 @@ doi={10.1109/lra.2024.3440837}
 
 @article{Dinakaran2022A,
 title={A novel multi objective constraints based industrial gripper design with optimized stiffness for object grasping},
-author={V. Dinakaran and Meenakshi Priya Balasubramaniyan and Q. Le and A. Alrubaie and Ameer Al-khaykan and Suresh Muthusamy and H. Panchal and Hussein Mussa Muafa and A. Dixit and C. Prakash},
+author={V. Dinakaran and Meenakshi Priya Balasubramaniyan and Q. Le and A. Alrubaie and Ameer Al-khaykan and Suresh
+Muthusamy and H. Panchal and Hussein Mussa Muafa and A. Dixit and C. Prakash},
 journal={Robotics Auton. Syst.},
 year={2022},
 volume={160},
@@ -307,7 +364,8 @@ doi={10.1109/lra.2020.3005131}
 
 @article{Wolniakowski2017Task,
 title={Task and Context Sensitive Gripper Design Learning Using Dynamic Grasp Simulation},
-author={A. Wolniakowski and K. Miatliuk and Z. Gosiewski and L. Bodenhagen and H. G. Petersen and L. C. M. W. Schwartz and J. A. Jørgensen and Lars-Peter Ellekilde and N. Krüger},
+author={A. Wolniakowski and K. Miatliuk and Z. Gosiewski and L. Bodenhagen and H. G. Petersen and L. C. M. W. Schwartz
+and J. A. Jørgensen and Lars-Peter Ellekilde and N. Krüger},
 journal={Journal of Intelligent and Robotic Systems},
 year={2017},
 volume={87},
