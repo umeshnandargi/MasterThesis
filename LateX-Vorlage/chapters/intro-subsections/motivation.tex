@@ -18,23 +18,6 @@ substantially different convergence behaviour, solution quality, and robustness 
 dimensionality of the search space. Identifying which algorithm class performs best for each gripper problem is therefore a practically relevant and
 scientifically meaningful research question\cite{Doerterler2021Analyzing}.
 
-To provide a rigorous and reproducible basis for this comparison, two gripper configuration problems are formulated as well-defined multi-objective
-optimization tasks. In both cases, a diverse set of workpieces is incorporated directly into the problem formulation by treating each workpiece as a
-separate objective. This design choice ensures that the optimized gripper configurations are not tailored to a single
-geometry, but are instead robust across a range of workpiece shapes. It also increases the dimensionality of the objective space as the number of
-workpieces grows, allowing the benchmarking study to probe algorithm behaviour under varying levels of problem complexity\cite{Guo2022Evolutionary}.
-
-For the \textbf{multi-suction-cup gripper}, the objectives consist of the geometric stability of the suction base together with the grasp diversity
-evaluated independently for each workpiece. These objectives are inherently conflicting: a larger suction base improves stability but increases the
-risk of collisions with the workpiece, reducing the number of feasible grasps.
-
-For the \textbf{two-finger gripper}, each workpiece contributes one objective, representing how well the optimized finger contour conforms to that
-particular workpiece geometry. A finger contour that scores well across all workpieces simultaneously must generalize across diverse geometric
-profiles, making the problem increasingly challenging as more workpieces are added\cite{Liu2024Topology}.
-
-Together, these two problems provide a structured experimental basis for comparing optimization algorithms across varying objective space
-dimensionalities and objective landscape characteristics, within the practically relevant domain of robotic gripper design.
-
 
 % The \textbf{multi-suction-cup gripper} problem is cast as a bi-objective optimization task. The spatial arrangement of suction cups influences two
 % competing performance aspects:
