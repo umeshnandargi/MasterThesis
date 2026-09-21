@@ -1,109 +1,705 @@
-
 \section{Implementation of Two-Finger Gripper Optimization}
+\label{sec:two_finger_gripper_optimization}
 
-This chapter presents the optimization framework developed for a multi-suction
-cup gripper consisting of three suction cups arranged in a triangular
-configuration. The framework uses the multi-objective optimization library
-\textit{pymoo}~\cite{pymoo}, while the evaluation of candidate gripper layouts
-is delegated to an external service through an API. This separation enables a
-modular architecture in which the optimization logic and the domain-specific
-grasp evaluation remain decoupled.
+This chapter presents the optimization framework developed for a two-finger gripper with a
+spline-based gripping contour. The framework supports both evolutionary multi-objective optimization
+and Bayesian multi-objective optimization. The evolutionary algorithms are implemented using the
+\texttt{pymoo} library~\cite{pymoo}, while Bayesian optimization is implemented using the
+\texttt{Ax} platform and its underlying \texttt{BoTorch} modeling
+framework~\cite{olson2025ax,botorch}.
+
+For both approaches, the evaluation of candidate gripper designs is delegated to an external service
+through an API. The evaluation service constructs the gripper geometry, voxelizes the gripper and
+workpieces, and calculates the grasp-quality objectives using a modified version of Snuggle-Pack\cite{snuggle_pack}.
+This separation provides a modular architecture in which the optimization logic and the
+domain-specific grasp evaluation remain decoupled.
+
+The same decision variables, parameter bounds, geometry-generation pipeline, workpieces,
+orientations, and grasp-quality objectives are used for both optimization approaches. This enables
+their performance to be compared under a common evaluation budget and evaluation procedure.
 
 \subsection{Decision Variables and Bounds for Two-Finger Gripper Problem}
+\label{sec:two_finger_decision_variables}
 
+A candidate gripper is represented by the decision vector
+\begin{equation}
+    \mathbf{x}
+    =
+    \begin{bmatrix}
+        d_{\mathrm{gn}} &
+        l_{\mathrm{gn}} &
+        h_1 &
+        h_2 &
+        h_3
+    \end{bmatrix}^{\mathrm{T}},
+\end{equation}
+where the variables are transmitted to the evaluation API in the order
+\begin{equation}
+    \mathbf{x}
+    =
+    [
+        \texttt{depth\_gn},
+        \texttt{length\_gn},
+        \texttt{h\_p1\_spline},
+        \texttt{h\_p2\_spline},
+        \texttt{h\_p3\_spline}
+    ]^{\mathrm{T}}.
+\end{equation}
 
-\subsection{Optimization Framework for Two-Finger Gripper Optimization}
-
-
-\subsubsection{Supported Algorithms}
-
-
-\subsection{Initialization of Two-Finger Gripper Problem}
-
-
-\subsection{Objective Function Evaluation of Two-Finger Gripper via API}
-
-
-
-\subsubsection{Grasp Evaluation}
-\label{sec:grasp_eval}
-
-\subsubsection{Objective Evaluation}
-
-
-\subsection{Optimization Loop for Two-Finger Gripper}
-
-
-\subsection{Termination Criteria for Two-Finger Gripper Optimization}
-
-The optimization terminates when any of the following conditions is satisfied:
+The decision variables and their bounds are summarized in Table~\ref{tab:two_finger_variables}.
 
 \begin{table}[htbp]
 \centering
-\caption{Termination criteria.}
-\label{tab:termination}
-\begin{tabular}{lll}
+\caption{Decision variables of the two-finger gripper optimization problem.}
+\label{tab:two_finger_variables}
+\begin{tabular}{llll}
 \toprule
-\textbf{Criterion} & \textbf{Symbol} & \textbf{Description} \\
+\textbf{Variable} & \textbf{Configuration parameter} & \textbf{Lower bound} & \textbf{Upper bound}
+\\
 \midrule
-Design space tolerance     & $x_{\text{tol}}$ & Change in decision variables below threshold \\
-Objective space tolerance  & $f_{\text{tol}}$ & Relative improvement in objectives below threshold \\
-Maximum generations        & $G_{\max}$       & Maximum number of generations reached \\
-Maximum evaluations        & $E_{\max}$       & Maximum number of function evaluations reached \\
+$d_{\mathrm{gn}}$ & \texttt{depth\_gn}       & 1 & 25 \\
+$l_{\mathrm{gn}}$ & \texttt{length\_gn}      & 1 & 50 \\
+$h_1$             & \texttt{h\_p1\_spline}   & 1 & 15 \\
+$h_2$             & \texttt{h\_p2\_spline}   & 1 & 15 \\
+$h_3$             & \texttt{h\_p3\_spline}   & 1 & 15 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The tolerances are evaluated over a sliding window of $w$ generations.
-\nomenclature{$x_{\text{tol}}$}{Design space convergence tolerance}
-\nomenclature{$f_{\text{tol}}$}{Objective space convergence tolerance}
-\nomenclature{$G_{\max}$}{Maximum number of generations}
-\nomenclature{$E_{\max}$}{Maximum number of function evaluations}
+
+\nomenclature{$\mathbf{x}$}{Decision vector of the two-finger gripper}
+\nomenclature{$d_{\mathrm{gn}}$}{Depth parameter in the common gripper interface}
+\nomenclature{$l_{\mathrm{gn}}$}{Length of the gripping contour}
+\nomenclature{$h_1,h_2,h_3$}{Spline contour heights}
+All five decision variables are treated as continuous variables. Candidate values generated by
+either optimization framework are restricted to the bounded search space
+\begin{equation}
+    \mathcal{X}
+    =
+    [1,25]
+    \times
+    [1,50]
+    \times
+    [1,15]^3.
+\end{equation}
+\nomenclature{$\mathcal{X}$}{Bounded decision space of the two-finger gripper}
+
+For evolutionary optimization, the variables are initially sampled within these bounds and
+subsequently modified by the operators of the selected algorithm. For Bayesian optimization, Ax
+initially evaluates the center of the search space and generates additional initialization
+candidates using Sobol sampling. After sufficient observations have been collected, Ax transitions
+to model-based candidate generation.
+
+\subsection{Optimization Framework for Two-Finger Gripper Optimization}
+\label{sec:two_finger_framework}
+
+The two-finger gripper problem is solved using either an evolutionary multi-objective optimization
+algorithm or Bayesian multi-objective optimization. Both methods use the same bounded decision
+space, objective definitions, and external evaluation service.
+
+The common optimization configuration contains:
+\begin{itemize}
+    \item Number of objectives $n_{\text{obj}}$
+    \item Decision-variable definitions and bounds
+    \item Optimization direction 
+    \item Choice of optimization method
+    \item Evaluation endpoint URL
+\end{itemize}
+
+For evolutionary optimization, the additional configuration parameters include:
+\begin{itemize}
+    \item Population size $N$
+    \item Maximum number of generations $G_{\max}$
+    \item Choice of evolutionary algorithm
+\end{itemize}
+
+For Bayesian optimization, the additional configuration parameters include:
+\begin{itemize}
+    \item Maximum number of candidate-generation batches $B_{\max}$
+    \item Maximum number of candidates requested per batch $b$
+    \item Bayesian generation strategy
+\end{itemize}
+
+In the Bayesian implementation, a batch represents a candidate-generation step rather than an
+evolutionary generation. The maximum requested number of Bayesian evaluations is therefore
+\begin{equation}
+    E_{\max}^{\mathrm{BO}} = B_{\max}b.
+\end{equation}
+The actual number of evaluations may be smaller if the generation strategy returns fewer than $b$
+candidates in a batch. \nomenclature{$B_{\max}$}{Maximum number of Bayesian candidate-generation
+batches}
+\nomenclature{$b$}{Maximum number of Bayesian candidates requested per batch}
+\nomenclature{$E_{\max}^{\mathrm{BO}}$}{Maximum requested number of Bayesian objective evaluations}
+
+\subsubsection{Supported Optimization Methods for Two-Finger Gripper Optimization}
+
+The framework supports the evolutionary and Bayesian multi-objective optimization methods listed in
+Table~\ref{tab:two_finger_algorithms}.
+\begin{table}[htbp]
+\centering
+\caption{Supported multi-objective optimization methods for the two-finger gripper.}
+\label{tab:two_finger_algorithms}
+
+\small
+\begin{tabular}{
+    @{}
+    p{0.20\linewidth}
+    p{0.17\linewidth}
+    p{0.53\linewidth}
+    @{}
+}
+\toprule
+\textbf{Family} & \textbf{Identifier} & \textbf{Method} \\
+\midrule
+Evolutionary
+& NSGA2
+& Non-dominated Sorting Genetic Algorithm II~\cite{nsga2} \\
+
+Evolutionary
+& NSGA3
+& Non-dominated Sorting Genetic Algorithm III~\cite{nsga3} \\
+
+Evolutionary
+& MOEAD
+& Multi-Objective Evolutionary Algorithm based on Decomposition~\cite{moead} \\
+
+Evolutionary
+& CMOPSO
+& Competitive Multi-Objective Particle Swarm Optimization \\
+
+Evolutionary
+& SMSEMOA
+& S-Metric Selection Evolutionary Multi-Objective Algorithm~\cite{smsemoa} \\
+
+Bayesian
+& AX-MBM
+& Ax modular BoTorch model for multi-objective Bayesian optimization%
+~\cite{olson2025ax,botorch} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For evolutionary algorithms requiring reference directions, such as NSGA-III and MOEA/D, uniform
+reference directions are generated using the method of Das and Dennis~\cite{das_dennis}:
+\begin{equation}
+    \Lambda =
+    \texttt{get\_reference\_directions}
+    (\text{``das-dennis''},\;n_{\text{obj}},\;n_{\text{partitions}}).
+\end{equation}
+\nomenclature{$\Lambda$}{Set of reference directions for decomposition-based algorithms}
+\nomenclature{$n_{\text{obj}}$}{Number of objectives}
+
+The Bayesian implementation uses the Ax generation strategy identified at runtime as
+\texttt{Center\allowbreak+\allowbreak Sobol\allowbreak+\allowbreak MBM\allowbreak:\allowbreak fast}.
+This strategy consists of the following stages:
+
+\begin{enumerate}
+    \item Evaluation of the center of the bounded decision space
+    \item Sobol quasi-random sampling for initial space exploration
+    \item Model-based candidate generation using the Ax modular BoTorch model (MBM)
+\end{enumerate}
+
+The Center and Sobol stages do not use a surrogate model or an acquisition function. Once the
+generation strategy transitions to the MBM stage, Ax uses the available observations to fit
+probabilistic surrogate models and optimize an acquisition function for multi-objective candidate
+selection. For continuous multi-objective problems, this commonly involves Gaussian-process
+surrogates and a hypervolume-improvement acquisition function such as \texttt{qLogNEHVI}.
+
+The exact surrogate and acquisition-function classes are selected by Ax and can depend on the
+installed Ax and BoTorch versions, the number of observations, and the experiment configuration.
+Therefore, the active generation stage, surrogate model, and acquisition function should be recorded
+from the runtime configuration for reproducibility.
+
+\subsection{Initialization of Two-Finger Gripper Optimization}
+\label{sec:two_finger_initialization}
+
+The initialization process depends on whether evolutionary or Bayesian optimization is selected.
+
+\subsubsection{Evolutionary Initialization}
+
+The selected evolutionary algorithm initializes a population of $N$ candidate grippers:
+\begin{equation}
+    \mathcal{P}^{(0)}
+    =
+    \left\{
+        \mathbf{x}^{(0)}_1,
+        \mathbf{x}^{(0)}_2,
+        \ldots,
+        \mathbf{x}^{(0)}_N
+    \right\},
+    \qquad
+    \mathbf{x}^{(0)}_i\in\mathcal{X}.
+\end{equation}
+
+Each candidate is sampled within the variable bounds. The complete population is evaluated through
+the external API before the selected evolutionary algorithm performs its first selection and
+variation step.
+\nomenclature{$N$}{Evolutionary population size}
+\nomenclature{$\mathcal{P}^{(0)}$}{Initial evolutionary population}
+
+\subsubsection{Bayesian Initialization}
+
+Bayesian optimization does not maintain an evolutionary population. Instead, it maintains a dataset
+containing the completed gripper evaluations:
+\begin{equation}
+    \mathcal{D}_t
+    =
+    \left\{
+        \left(
+            \mathbf{x}_i,
+            \mathbf{k}(\mathbf{x}_i)
+        \right)
+    \right\}_{i=1}^{t},
+\end{equation}
+where
+\begin{equation}
+    \mathbf{k}(\mathbf{x})
+    =
+    \begin{bmatrix}
+        k_1(\mathbf{x}) &
+        k_2(\mathbf{x}) &
+        \cdots &
+        k_{n_{\text{obj}}}(\mathbf{x})
+    \end{bmatrix}^{\mathrm{T}}
+\end{equation}
+contains the grasp-quality KPIs returned by the evaluation service.
+\nomenclature{$\mathcal{D}_t$}{Dataset of completed Bayesian trials after $t$ evaluations}
+\nomenclature{$\mathbf{k}(\mathbf{x})$}{Natural grasp-quality objective vector}
+
+The Ax generation strategy initially evaluates the center of the bounded search space. Additional
+initialization candidates are generated using Sobol quasi-random sampling. Sobol sampling provides
+broad and approximately space-filling coverage of the five-dimensional search space before a
+surrogate model is introduced.
+
+After the initialization requirements of the generation strategy have been satisfied, Ax transitions
+to the model-based MBM stage. From this point onward, new gripper designs are selected using
+surrogate predictions and predictive uncertainty.
+
+\subsection{Objective Function Evaluation of Two-Finger Gripper via API}
+\label{sec:two_finger_api_evaluation}
+
+For every candidate, the decision variables are sent to the evaluation API as an ordered list. The
+API inserts these values into a complete gripper configuration:
+\begin{equation}
+    \mathbf{x}
+    \longrightarrow
+    \mathbf{c}_{\mathrm{gripper}}(\mathbf{x})
+    \longrightarrow
+    \mathcal{G}(\mathbf{x}),
+\end{equation}
+where $\mathbf{c}_{\mathrm{gripper}}$ denotes the gripper configuration and
+$\mathcal{G}(\mathbf{x})$ the resulting geometry.
+
+The configuration also contains fixed parameters, including the contour type, basic jaw dimensions,
+jaw angle, stroke, and tool-center-point translation. The spline contour is selected by the static
+configuration and is not itself an optimization variable. The completed configuration is used to
+create the jaw geometry using CadQuery~\cite{cadquery2026} which converts it into the mesh
+representation required for evaluation.
+
+\subsubsection{Grasp Evaluation}
+\label{sec:grasp_eval}
+
+The generated gripper is evaluated against each configured workpiece. The gripper and workpiece
+geometries are then voxelized to obtain three-dimensional occupancy grids.
+
+The grasp evaluation uses a modified version of Snuggle-Pack, a three-dimensional packing algorithm
+that combines FFT-based spatial analysis with proximity heuristics~\cite{snuggle_pack}. In the
+original method, correlations between voxel grids are used to identify collision-free object
+placements. Here, the same principle is adapted to evaluate relative gripper--workpiece placements.
+
+Let $s_{\mathcal{G}}$ and $s_{\mathcal{W}}$ denote the occupancy grids of the gripper and workpiece.
+Their spatial correlation produces a collision map:
+\begin{equation}
+    \zeta_{\mathcal{G},\mathcal{W}}(\mathbf{q})
+    =
+    \mathcal{F}^{-1}
+    \left(
+        \overline{\mathcal{F}(s_{\mathcal{G}})}
+        \,\mathcal{F}(s_{\mathcal{W}})
+    \right)(\mathbf{q}),
+\end{equation}
+where $\mathbf{q}$ is a relative displacement and $\mathcal{F}$ denotes the Fourier transform.
+Values greater than zero indicate overlapping voxels, whereas zero values identify collision-free
+relative placements.
+
+The collision map is combined with Gaussian proximity distributions to determine how closely the
+fingers surround the workpiece at feasible placements. These calculations are performed using
+FFT-based convolution and GPU-accelerated PyTorch operations. The resulting grasp quality is
+represented by the KPI \texttt{max\_prox}. If the required opening cannot be achieved within the
+available gripper stroke, the KPI is set to zero.
+
+\nomenclature{$s_{\mathcal{G}}$}{Gripper voxel occupancy grid}
+\nomenclature{$s_{\mathcal{W}}$}{Workpiece voxel occupancy grid}
+\nomenclature{$\zeta_{\mathcal{G},\mathcal{W}}$}{Gripper--workpiece collision map}
+\nomenclature{$\mathbf{q}$}{Relative voxel-grid displacement} \nomenclature{$\mathcal{F}$}{Discrete
+Fourier transform}
+
+\subsubsection{Objective Evaluation}
+\label{sec:two_finger_objective_evaluation}
+
+The evaluation service returns one grasp-quality KPI for each evaluated workpiece--orientation
+combination. Since a larger proximity KPI represents a better grasp result, the natural optimization
+problem is
+\begin{equation}
+    \max_{\mathbf{x}\in\mathcal{X}} k_m(\mathbf{x}),
+    \qquad
+    m=1,\ldots,n_{\text{obj}}.
+\end{equation}
+
+The natural objective vector is therefore
+\begin{equation}
+    \mathbf{k}(\mathbf{x})
+    =
+    \begin{bmatrix}
+        k_1(\mathbf{x}) &
+        k_2(\mathbf{x}) &
+        \cdots &
+        k_{n_{\text{obj}}}(\mathbf{x})
+    \end{bmatrix}^{\mathrm{T}}.
+\end{equation}
+\nomenclature{$k_m(\mathbf{x})$}{Grasp-quality KPI for objective $m$}
+\nomenclature{$\mathbf{k}(\mathbf{x})$}{Natural maximization objective vector}
+
+The objective-direction convention is handled differently by the two optimization frameworks. Since
+\texttt{pymoo} assumes minimization, the evolutionary algorithms negates the objective
+vector
+\begin{equation}
+    \mathbf{f}_{\mathrm{EA}}(\mathbf{x})
+    =
+    -\mathbf{k}(\mathbf{x})
+    =
+    \begin{bmatrix}
+        -k_1(\mathbf{x}) &
+        -k_2(\mathbf{x}) &
+        \cdots &
+        -k_{n_{\text{obj}}}(\mathbf{x})
+    \end{bmatrix}^{\mathrm{T}}.
+\end{equation}
+\nomenclature{$\mathbf{f}_{\mathrm{EA}}(\mathbf{x})$}{Minimization-form objective vector supplied to
+the evolutionary algorithms}
+
+In the Bayesian implementation, the external evaluation service values are left as is, since
+\texttt{Ax} assumes maximization:
+\begin{equation}
+    \mathbf{f}_{\mathrm{BO}}(\mathbf{x})
+    =
+    \mathbf{k}(\mathbf{x}).
+\end{equation}
+\nomenclature{$\mathbf{f}_{\mathrm{BO}}(\mathbf{x})$}{Objective observations supplied to Ax}
+
+The maximization direction is specified in the Ax optimization configuration. Consequently, the
+observed KPI values do not need to be negated before they are attached to the corresponding Ax
+trial. This also preserves the physical meaning of the KPI values when the final Pareto frontier is
+returned.
+
+If $n_W$ workpieces and $n_R$ orientations are evaluated separately, the number of objectives is
+\begin{equation}
+    n_{\text{obj}}=n_W n_R.
+\end{equation}
+For the currently configured single orientation, each workpiece contributes one objective:
+\begin{equation}
+    n_{\text{obj}}=n_W.
+\end{equation}
+
+For performance comparisons, the results from both optimization frameworks are converted to the
+common natural maximization convention $\mathbf{k}(\mathbf{x})$.
+
+\subsection{Optimization Loop for Two-Finger Gripper}
+\label{sec:two_finger_optimization_loop}
+
+The external evaluation pipeline is shared by the evolutionary and Bayesian optimization approaches.
+The methods differ primarily in how they use the completed evaluations to generate subsequent
+candidates.
+
+For every candidate, the common evaluation steps are:
+\begin{enumerate}
+    \item Send the candidate decision vector to the external evaluation API.
+    \item Map the decision variables to the complete gripper configuration.
+    \item Generate the spline-based gripper geometry using CadQuery.
+    \item Voxelize the gripper and configured workpieces.
+    \item Calculate FFT-based collision maps using the modified Snuggle-Pack procedure.
+    \item Calculate one proximity KPI for each workpiece--orientation combination.
+    \item Return the KPI vector to the selected optimization framework.
+\end{enumerate}
+
+\subsubsection{Evolutionary Optimization Loop}
+
+In every evolutionary generation, the selected algorithm generates a population of candidate
+decision vectors. The candidates are evaluated through the common evaluation pipeline, and the
+resulting KPI values are negated before being supplied to \texttt{pymoo}.
+
+The population update can be expressed abstractly as
+\begin{equation}
+    \mathcal{P}^{(g+1)}
+    =
+    \mathcal{A}
+    \left(
+        \mathcal{P}^{(g)},
+        \mathbf{F}_{\mathrm{EA}}^{(g)}
+    \right),
+\end{equation}
+where $\mathcal{A}$ represents the selected evolutionary algorithm and
+$\mathbf{F}_{\mathrm{EA}}^{(g)}$ contains the minimization-form objective vectors evaluated in
+generation $g$. \nomenclature{$\mathcal{A}$}{Selected multi-objective evolutionary algorithm}
+\nomenclature{$g$}{Evolutionary generation index}
+\nomenclature{$\mathbf{F}_{\mathrm{EA}}^{(g)}$}{Evolutionary objective values in generation $g$}
+
+Depending on the selected algorithm, the next population is produced using operations such as
+selection, crossover, mutation, decomposition, particle movement, or survival based on hypervolume
+contribution.
+
+\subsubsection{Bayesian Optimization Loop}
+
+During the model-based stage, Ax and BoTorch use the completed trial dataset $\mathcal{D}_t$ to fit
+probabilistic surrogate models:
+\begin{equation}
+    \widehat{\mathbf{k}}_t
+    =
+    \mathcal{M}(\mathcal{D}_t),
+\end{equation}
+where $\mathcal{M}$ denotes the surrogate-modeling procedure. \nomenclature{$\mathcal{M}$}{Bayesian
+surrogate-modeling procedure} \nomenclature{$\widehat{\mathbf{k}}_t$}{Probabilistic surrogate
+approximation after $t$ evaluations}
+
+The surrogate models approximate the relationship between the gripper parameters and the
+workpiece-specific KPI values. In addition to predicted objective values, they estimate predictive
+uncertainty in regions containing few or no observations.
+
+An acquisition function $\alpha(\mathbf{x}\mid\mathcal{D}_t)$ uses these predictions to balance:
+\begin{itemize}
+    \item Exploitation of gripper designs expected to improve the current Pareto frontier
+    \item Exploration of uncertain regions of the bounded decision space
+\end{itemize}
+
+For a requested batch size $b$, the next candidate batch is generated as
+\begin{equation}
+    \mathcal{X}_{t+1}
+    =
+    \operatorname*{arg\,max}_{
+        \substack{
+            \mathcal{B}\subset\mathcal{X}\\
+            |\mathcal{B}|\leq b
+        }
+    }
+    \alpha(\mathcal{B}\mid\mathcal{D}_t).
+\end{equation}
+\nomenclature{$\mathcal{X}_{t+1}$}{Batch of gripper candidates generated by Bayesian optimization}
+\nomenclature{$\alpha$}{Bayesian acquisition function}
+
+Each generated candidate is evaluated using the external service. The KPI observation is then
+attached to the corresponding Ax trial:
+\begin{equation}
+    \mathcal{D}_{t+1}
+    =
+    \mathcal{D}_t
+    \cup
+    \left\{
+        \left(
+            \mathbf{x}_{t+1},
+            \mathbf{k}(\mathbf{x}_{t+1})
+        \right)
+    \right\}.
+\end{equation}
+
+After new trials have been completed, the surrogate models are updated using the expanded dataset,
+and another candidate batch is generated. This process continues until the Bayesian evaluation
+budget is exhausted.
+
+Although multiple candidates can be requested in one Bayesian batch, the current implementation
+evaluates the candidates one after another through the external API. The implementation therefore
+performs \emph{sequential batch evaluation}, rather than parallel batch evaluation.
+\subsection{Termination Criteria for Two-Finger Gripper Optimization}
+\label{sec:two_finger_termination}
+
+The termination criteria depend on the selected optimization approach.
+
+\begin{table}[htbp]
+\centering
+\caption{Termination criteria for evolutionary and Bayesian optimization.}
+\label{tab:two_finger_termination}
+\begin{tabular}{llll}
+\toprule
+\textbf{Approach} & \textbf{Criterion} & \textbf{Symbol} & \textbf{Description} \\
+\midrule
+Evolutionary & Design-space tolerance & $x_{\text{tol}}$ & Change in decision variables below
+threshold \\
+
+Evolutionary & Objective-space tolerance & $f_{\text{tol}}$ & Relative objective improvement below
+threshold \\
+
+Evolutionary & Maximum generations & $G_{\max}$ & Maximum number of generations reached \\
+
+Evolutionary & Maximum evaluations & $E_{\max}$ & Maximum number of evaluations reached \\
+
+Evolutionary & Hypervolume & $HV_{\max}$ & Hypervolume progression stagnates  \\
+
+Bayesian & Maximum batches & $B_{\max}$ & Maximum number of candidate batches reached \\
+
+Bayesian & Maximum evaluations & $E_{\max}^{\mathrm{BO}}$ & Bayesian evaluation budget exhausted \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For evolutionary optimization, the design-space and objective-space tolerances are evaluated over a
+sliding window of $w$ generations. \nomenclature{$x_{\text{tol}}$}{Design-space convergence
+tolerance} \nomenclature{$f_{\text{tol}}$}{Objective-space convergence tolerance}
+\nomenclature{$G_{\max}$}{Maximum number of evolutionary generations}
+\nomenclature{$E_{\max}$}{Maximum number of evolutionary evaluations}
+\nomenclature{$w$}{Number of generations in the convergence window}
+
+The current Bayesian implementation uses budget-based termination. It performs at most $B_{\max}$
+candidate-generation batches and requests up to $b$ candidates in each batch. Therefore,
+\begin{equation}
+    E_{\max}^{\mathrm{BO}}=B_{\max}b.
+\end{equation}
+
+
 
 \subsection{Performance Monitoring for Two-Finger Gripper}
+\label{sec:two_finger_monitoring}
+
+The hypervolume indicator~\cite{hypervolume} is used to monitor both evolutionary and Bayesian
+optimization. Before calculating hypervolume, all objective vectors are represented using the same
+natural maximization convention:
+\begin{equation}
+    \mathbf{k}(\mathbf{x})
+    =
+    [k_1(\mathbf{x}),\ldots,k_{n_{\text{obj}}}(\mathbf{x})]^{\mathrm{T}}.
+\end{equation}
+
+For evolutionary optimization, a callback records the optimization state after each generation. Let
+$\mathcal{K}_{\mathrm{EA}}^{(g)}$ denote the non-dominated KPI vectors available after generation
+$g$. The corresponding hypervolume is
+\begin{equation}
+    \mathrm{HV}_{\mathrm{EA}}^{(g)}
+    =
+    \mathrm{HV}
+    \left(
+        \mathcal{K}_{\mathrm{EA}}^{(g)},
+        \mathbf{r}
+    \right).
+\end{equation}
+
+For Bayesian optimization, hypervolume can be calculated after every completed trial or after every
+completed candidate batch. Let $\mathcal{K}_{\mathrm{BO}}^{(t)}$ denote the non-dominated KPI
+vectors obtained from the first $t$ completed Bayesian trials. The corresponding hypervolume is
+\begin{equation}
+    \mathrm{HV}_{\mathrm{BO}}^{(t)}
+    =
+    \mathrm{HV}
+    \left(
+        \mathcal{K}_{\mathrm{BO}}^{(t)},
+        \mathbf{r}
+    \right).
+\end{equation}
+\nomenclature{$\mathcal{K}_{\mathrm{EA}}^{(g)}$}{Non-dominated KPI set after evolutionary generation
+$g$} \nomenclature{$\mathcal{K}_{\mathrm{BO}}^{(t)}$}{Non-dominated KPI set after $t$ Bayesian
+evaluations} \nomenclature{$\mathrm{HV}_{\mathrm{EA}}^{(g)}$}{Evolutionary hypervolume after
+generation $g$} \nomenclature{$\mathrm{HV}_{\mathrm{BO}}^{(t)}$}{Bayesian hypervolume after $t$
+completed evaluations} \nomenclature{$\mathbf{r}$}{Fixed hypervolume reference point}
+
+Under the maximization convention, the fixed reference point $\mathbf{r}$ must be worse than the
+objective values of interest. The same reference point and objective scaling must be used for all
+compared methods. An increasing hypervolume generally indicates improvement in convergence toward
+the Pareto front, coverage of the objective space, or both.
+
+Evolutionary generations and Bayesian batches can contain different numbers of candidate
+evaluations. Therefore, the primary comparison is performed using hypervolume as a function of the
+cumulative number of objective evaluations:
+\begin{equation}
+    \mathrm{HV}=\mathrm{HV}(E),
+\end{equation}
+where $E$ is the number of completed external API evaluations.
+\nomenclature{$E$}{Cumulative number of completed external evaluations}
+
+The framework additionally records total wall-clock time because every function evaluation includes
+API communication, CadQuery geometry generation, voxelization, and GPU-based FFT spatial analysis.
+Hypervolume as a function of wall-clock time may therefore also be used to compare practical
+optimization efficiency.
+
 
 
 \subsection{Optional Hyperparameter Optimization for Two-Finger Gripper Problem}
+\label{sec:two_finger_hyperparameter_optimization}
 
-The framework optionally supports automated tuning of algorithm
-hyperparameters, such as crossover probability and mutation rate, using a
-meta-optimization approach. A \texttt{HyperparameterProblem} is constructed
-around the selected algorithm and evaluated over multiple random seeds. The
-mean hypervolume across runs serves as the meta-objective:
+For the evolutionary algorithms, the framework optionally supports automated tuning of algorithm
+hyperparameters, such as crossover probability and mutation rate, using a meta-optimization
+approach. A \texttt{HyperparameterProblem} is constructed around the selected algorithm and
+evaluated over multiple random seeds. The negative mean hypervolume across the runs is used as the
+meta-objective:
 \begin{equation}
     \min_{\boldsymbol{\theta}}
     \left\{
         -\frac{1}{|\mathcal{Z}|}
-        \sum_{s \in \mathcal{Z}} \text{HV}(\mathcal{F}_s,\mathbf{r})
-    \right\}
-\end{equation}
-\nomenclature{$\boldsymbol{\theta}$}{Algorithm hyperparameters}
-\nomenclature{$\mathcal{Z}$}{Set of random seeds for meta-optimization}
-
-The best hyperparameters are then applied to the main optimization run.
-
-\subsection{Output of Two-Finger Gripper Optimization}
-
-The optimization produces a set of Pareto-optimal solutions:
-\begin{equation}
-    \mathcal{P}^* =
-    \left\{
-        \mathbf{q}
-        \;\middle|\;
-        \nexists\; \mathbf{q}' \in \mathcal{P} :
-        \mathbf{f}(\mathbf{q}') \preceq \mathbf{f}(\mathbf{q})
+        \sum_{s\in\mathcal{Z}}
+        \mathrm{HV}(\mathcal{K}_s,\mathbf{r})
     \right\}.
 \end{equation}
-\nomenclature{$\mathcal{P}^*$}{Set of Pareto-optimal solutions in the reduced decision space}
+\nomenclature{$\boldsymbol{\theta}$}{Evolutionary algorithm hyperparameters}
+\nomenclature{$\mathcal{Z}$}{Set of random seeds used for meta-optimization}
+
+The best hyperparameter configuration is subsequently applied to the main evolutionary optimization
+run.
+
+The current Bayesian implementation uses the generation strategy, surrogate configuration, and
+acquisition-function configuration selected by Ax. A separate meta-optimization of Bayesian model
+hyperparameters is therefore not currently performed. The user specifies the candidate batch size
+and optimization budget, while Ax manages the transition from initialization to model-based
+optimization.
+
+For reproducibility, each Bayesian experiment records:
+\begin{itemize}
+    \item Ax and BoTorch software versions
+    \item Random seed, where supported
+    \item Generation strategy
+    \item Number of initialization trials
+    \item Candidate batch size
+    \item Total evaluation budget
+    \item Active surrogate and acquisition-function classes after entering MBM
+\end{itemize}
+
+
+
+
+\subsection{Output of Two-Finger Gripper Optimization}
+\label{sec:two_finger_output}
+
+The optimization produces a set of non-dominated gripper configurations. The Pareto-optimal set is
+defined as
+\begin{equation}
+    \mathcal{P}^{*}
+    =
+    \left\{
+        \mathbf{x}\in\mathcal{P}
+        \;\middle|\;
+        \nexists\,\mathbf{x}'\in\mathcal{P}:
+        \mathbf{x}' \prec \mathbf{x}
+    \right\},
+\end{equation}
+where $\mathbf{x}'\prec\mathbf{x}$ means that
+\begin{equation}
+    f_m(\mathbf{x}')\leq f_m(\mathbf{x})
+    \quad
+    \forall m
+\end{equation}
+and
+\begin{equation}
+    f_j(\mathbf{x}')<f_j(\mathbf{x})
+    \quad
+    \text{for at least one objective }j.
+\end{equation}
 
 The final output includes:
 \begin{itemize}
-    \item The Pareto-optimal set $\mathcal{P}^*$ in the reduced decision space, with corresponding objective values
-    \item The associated radial gripper parameterizations $\mathbf{q} = [r,\alpha_1,\alpha_2,\alpha_3]$
-    \item Optionally, the derived Cartesian gripper configurations $\mathbf{p} = T(\mathbf{q})$
-    \item The hypervolume progression $\{\text{HV}^{(0)},\text{HV}^{(1)},\dots,\text{HV}^{(T)}\}$
+    \item The Pareto-optimal decision vectors
+    $\mathbf{x}=[d_{\mathrm{gn}},l_{\mathrm{gn}},h_1,h_2,h_3]^{\mathrm{T}}$
+    \item The corresponding objective KPI values
+    \item The hypervolume progression
+    $\{\mathrm{HV}^{(0)},\mathrm{HV}^{(1)},\ldots,\mathrm{HV}^{(T)}\}$
     \item Total optimization wall-clock time
 \end{itemize}
 
-These solutions represent optimal trade-offs between grasp diversity and
-triangle area, i.e., grasp robustness and stability.
+The non-dominated solutions represent the best trade-offs between grasp quality for the configured
+workpieces and orientations.
+
+\nomenclature{$\mathcal{P}^{*}$}{Set of Pareto-optimal gripper configurations}

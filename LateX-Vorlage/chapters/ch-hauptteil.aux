@@ -54,6 +54,7 @@
 \citation{Frazier2018A}
 \citation{Candelieri2021A}
 \citation{Wang2022Recent}
+\citation{olson2025ax}
 \citation{Sivaprasad2019Optimizer}
 \citation{Ishibuchi2022Difficulties}
 \citation{pymoo}
@@ -146,15 +147,19 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Selection of Objective Functions and Evaluation Metrics}{15}{subsection.3.2.3}\protected@file@percent }
 \newlabel{subsec:methodology_objectives}{{3.2.3}{15}{Selection of Objective Functions and Evaluation Metrics}{subsection.3.2.3}{}}
 \citation{Ko2020A}
+\citation{snuggle_pack}
 \citation{pymoo}
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}Optimization Library Selection}{16}{section.3.3}\protected@file@percent }
 \newlabel{sec:methodology_library}{{3.3}{16}{Optimization Library Selection}{section.3.3}{}}
+\citation{olson2025ax}
+\citation{olson2025ax}
+\citation{botorch}
 \citation{pymoo}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Algorithm Selection}{17}{section.3.4}\protected@file@percent }
+\newlabel{sec:methodology_algorithm_selection}{{3.4}{17}{Algorithm Selection}{section.3.4}{}}
 \citation{nsga2}
 \citation{nsga3}
 \citation{moead}
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}Algorithm Selection}{17}{section.3.4}\protected@file@percent }
-\newlabel{sec:methodology_algorithm_selection}{{3.4}{17}{Algorithm Selection}{section.3.4}{}}
 \citation{smsemoa}
 \citation{cmopso}
 \citation{Doerr2022A}
@@ -164,21 +169,23 @@
 \citation{Yazdani2020Benchmarking}
 \citation{Gupta2020Continuous}
 \citation{Cenikj2022SELECTOR:}
-\@writefile{toc}{\contentsline {section}{\numberline {3.5}Workpiece Selection}{18}{section.3.5}\protected@file@percent }
-\newlabel{sec:methodology_workpiece_selection}{{3.5}{18}{Workpiece Selection}{section.3.5}{}}
 \citation{Bischl2017mlrMBO:}
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Workpiece Selection}{19}{section.3.5}\protected@file@percent }
+\newlabel{sec:methodology_workpiece_selection}{{3.5}{19}{Workpiece Selection}{section.3.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.6}Evaluation Architecture}{19}{section.3.6}\protected@file@percent }
+\newlabel{sec:methodology_evaluation_architecture}{{3.6}{19}{Evaluation Architecture}{section.3.6}{}}
 \citation{Bouthillier2021Accounting}
 \citation{pymoo}
 \citation{Beiranvand2017Best}
 \citation{Audet2018Performance}
 \citation{Trautmann2009Statistical}
-\@writefile{toc}{\contentsline {section}{\numberline {3.6}Evaluation Architecture}{19}{section.3.6}\protected@file@percent }
-\newlabel{sec:methodology_evaluation_architecture}{{3.6}{19}{Evaluation Architecture}{section.3.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.7}Comparative Experimental Design}{19}{section.3.7}\protected@file@percent }
-\newlabel{sec:methodology_comparative_experiments}{{3.7}{19}{Comparative Experimental Design}{section.3.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.7}Comparative Experimental Design}{20}{section.3.7}\protected@file@percent }
+\newlabel{sec:methodology_comparative_experiments}{{3.7}{20}{Comparative Experimental Design}{section.3.7}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.8}Performance Indicators}{20}{section.3.8}\protected@file@percent }
 \newlabel{sec:methodology_performance_indicators}{{3.8}{20}{Performance Indicators}{section.3.8}{}}
 \citation{pymoo}
+\citation{olson2025ax}
+\citation{botorch}
 \pp@pagectr{footnote}{4}{33}{21}
 \@writefile{toc}{\contentsline {chapter}{\numberline {4}Implementation}{21}{chapter.4}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
@@ -188,84 +195,122 @@
 \@writefile{toc}{\contentsline {section}{\numberline {4.1}Implementation of Multi-Suction Cup Gripper Optimization}{21}{section.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Reduced Parameterization of Multi-Suction Cup Gripper}{21}{subsection.4.1.1}\protected@file@percent }
 \citation{madan2022realrobotchallenge2021}
-\@writefile{toc}{\contentsline {paragraph}{\nonumberline Assumption}{22}{paragraph*.47}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\nonumberline Assumption}{23}{paragraph*.47}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Decision Variables and Bounds for Multi-Suction Cup Gripper}{23}{subsection.4.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.3}Optimization Framework of Multi-Suction Cup Gripper}{23}{subsection.4.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.3}Optimization Framework of Multi-Suction Cup Gripper}{24}{subsection.4.1.3}\protected@file@percent }
 \citation{nsga2}
 \citation{nsga3}
 \citation{moead}
 \citation{smsemoa}
+\citation{olson2025ax}
+\citation{botorch}
 \citation{das_dennis}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Supported Algorithms}{24}{subsubsection*.49}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Supported multi-objective optimization algorithms.}}{24}{table.caption.50}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Supported Optimization Methods}{25}{subsubsection*.49}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Supported multi-objective optimization methods.}}{25}{table.caption.50}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:algorithms}{{4.1}{24}{Supported multi-objective optimization algorithms}{table.caption.50}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.4}Initialization of Multi-Suction Cup Gripper Problem}{24}{subsection.4.1.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.5}Objective Function Evaluation of Multi-Suction Cup Gripper via API}{25}{subsection.4.1.5}\protected@file@percent }
+\newlabel{tab:algorithms_sc}{{4.1}{25}{Supported multi-objective optimization methods}{table.caption.50}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.4}Initialization of Multi-Suction Cup Gripper Optimization}{26}{subsection.4.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Evolutionary Initialization}{26}{subsubsection*.52}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Bayesian Initialization}{26}{subsubsection*.54}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.5}Objective Function Evaluation of Multi-Suction Cup Gripper via API}{27}{subsection.4.1.5}\protected@file@percent }
 \citation{Kleeberger}
 \citation{SC_quasi_static}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Grasp Evaluation}{26}{subsubsection*.52}\protected@file@percent }
-\newlabel{sec:grasp_eval}{{4.1.5}{26}{Grasp Evaluation}{subsubsection*.52}{}}
-\@writefile{toc}{\contentsline {paragraph}{\nonumberline Continuity considerations}{29}{paragraph*.54}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Grasp Evaluation}{28}{subsubsection*.56}\protected@file@percent }
+\newlabel{sec:grasp_eval_sc}{{4.1.5}{28}{Grasp Evaluation}{subsubsection*.56}{}}
+\@writefile{toc}{\contentsline {paragraph}{\nonumberline Continuity considerations}{31}{paragraph*.58}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Objective Evaluation}{32}{subsubsection*.60}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.6}Optimization Loop for Multi-Suction Cup Gripper}{33}{subsection.4.1.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Evolutionary Optimization Loop}{33}{subsubsection*.62}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Bayesian Optimization Loop}{33}{subsubsection*.64}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.7}Termination Criteria for Multi-Suction Cup Gripper Optimization}{34}{subsection.4.1.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Termination criteria for evolutionary and Bayesian optimization.}}{34}{table.caption.65}\protected@file@percent }
+\newlabel{tab:termination_sc}{{4.2}{34}{Termination criteria for evolutionary and Bayesian optimization}{table.caption.65}{}}
 \citation{hypervolume}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Objective Evaluation}{30}{subsubsection*.56}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.6}Optimization Loop for Multi-Suction Cup Gripper}{30}{subsection.4.1.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.7}Termination Criteria for Multi-Suction Cup Gripper Optimization}{30}{subsection.4.1.7}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Termination criteria.}}{31}{table.caption.57}\protected@file@percent }
-\newlabel{tab:termination}{{4.2}{31}{Termination criteria}{table.caption.57}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.8}Performance Monitoring for Multi-Suction Cup Gripper}{31}{subsection.4.1.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.9}Optional Hyperparameter Optimization for Multi-Suction Cup Gripper Problem}{31}{subsection.4.1.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.10}Output of Multi-Suction Cup Gripper Optimization}{31}{subsection.4.1.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.8}Performance Monitoring for Multi-Suction Cup Gripper}{35}{subsection.4.1.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.9}Optional Hyperparameter Optimization for Multi-Suction Cup Gripper Problem}{35}{subsection.4.1.9}\protected@file@percent }
 \citation{pymoo}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Implementation of Two-Finger Gripper Optimization}{32}{section.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Decision Variables and Bounds for Two-Finger Gripper Problem}{33}{subsection.4.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Optimization Framework for Two-Finger Gripper Optimization}{33}{subsection.4.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Supported Algorithms}{33}{subsubsection*.59}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Initialization of Two-Finger Gripper Problem}{33}{subsection.4.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Objective Function Evaluation of Two-Finger Gripper via API}{33}{subsection.4.2.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Grasp Evaluation}{33}{subsubsection*.61}\protected@file@percent }
-\newlabel{sec:grasp_eval}{{4.2.4}{33}{Grasp Evaluation}{subsubsection*.61}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Objective Evaluation}{33}{subsubsection*.63}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.5}Optimization Loop for Two-Finger Gripper}{33}{subsection.4.2.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.6}Termination Criteria for Two-Finger Gripper Optimization}{33}{subsection.4.2.6}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces Termination criteria.}}{33}{table.caption.64}\protected@file@percent }
-\newlabel{tab:termination}{{4.3}{33}{Termination criteria}{table.caption.64}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.7}Performance Monitoring for Two-Finger Gripper}{33}{subsection.4.2.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.8}Optional Hyperparameter Optimization for Two-Finger Gripper Problem}{33}{subsection.4.2.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.9}Output of Two-Finger Gripper Optimization}{34}{subsection.4.2.9}\protected@file@percent }
-\pp@pagectr{footnote}{5}{47}{35}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Validation}{35}{chapter.5}\protected@file@percent }
+\citation{olson2025ax}
+\citation{botorch}
+\citation{snuggle_pack}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.10}Output of Multi-Suction Cup Gripper Optimization}{36}{subsection.4.1.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Implementation of Two-Finger Gripper Optimization}{36}{section.4.2}\protected@file@percent }
+\newlabel{sec:two_finger_gripper_optimization}{{4.2}{36}{Implementation of Two-Finger Gripper Optimization}{section.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Decision Variables and Bounds for Two-Finger Gripper Problem}{37}{subsection.4.2.1}\protected@file@percent }
+\newlabel{sec:two_finger_decision_variables}{{4.2.1}{37}{Decision Variables and Bounds for Two-Finger Gripper Problem}{subsection.4.2.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces Decision variables of the two-finger gripper optimization problem.}}{37}{table.caption.66}\protected@file@percent }
+\newlabel{tab:two_finger_variables}{{4.3}{37}{Decision variables of the two-finger gripper optimization problem}{table.caption.66}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Optimization Framework for Two-Finger Gripper Optimization}{38}{subsection.4.2.2}\protected@file@percent }
+\newlabel{sec:two_finger_framework}{{4.2.2}{38}{Optimization Framework for Two-Finger Gripper Optimization}{subsection.4.2.2}{}}
+\citation{nsga2}
+\citation{nsga3}
+\citation{moead}
+\citation{smsemoa}
+\citation{olson2025ax}
+\citation{botorch}
+\citation{das_dennis}
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Supported Optimization Methods for Two-Finger Gripper Optimization}{39}{subsubsection*.68}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces Supported multi-objective optimization methods for the two-finger gripper.}}{39}{table.caption.69}\protected@file@percent }
+\newlabel{tab:two_finger_algorithms}{{4.4}{39}{Supported multi-objective optimization methods for the two-finger gripper}{table.caption.69}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Initialization of Two-Finger Gripper Optimization}{40}{subsection.4.2.3}\protected@file@percent }
+\newlabel{sec:two_finger_initialization}{{4.2.3}{40}{Initialization of Two-Finger Gripper Optimization}{subsection.4.2.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Evolutionary Initialization}{40}{subsubsection*.71}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Bayesian Initialization}{40}{subsubsection*.73}\protected@file@percent }
+\citation{cadquery2026}
+\citation{snuggle_pack}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Objective Function Evaluation of Two-Finger Gripper via API}{41}{subsection.4.2.4}\protected@file@percent }
+\newlabel{sec:two_finger_api_evaluation}{{4.2.4}{41}{Objective Function Evaluation of Two-Finger Gripper via API}{subsection.4.2.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Grasp Evaluation}{41}{subsubsection*.75}\protected@file@percent }
+\newlabel{sec:grasp_eval}{{4.2.4}{41}{Grasp Evaluation}{subsubsection*.75}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Objective Evaluation}{42}{subsubsection*.77}\protected@file@percent }
+\newlabel{sec:two_finger_objective_evaluation}{{4.2.4}{42}{Objective Evaluation}{subsubsection*.77}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.5}Optimization Loop for Two-Finger Gripper}{43}{subsection.4.2.5}\protected@file@percent }
+\newlabel{sec:two_finger_optimization_loop}{{4.2.5}{43}{Optimization Loop for Two-Finger Gripper}{subsection.4.2.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Evolutionary Optimization Loop}{44}{subsubsection*.79}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\nonumberline Bayesian Optimization Loop}{45}{subsubsection*.81}\protected@file@percent }
+\citation{hypervolume}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.6}Termination Criteria for Two-Finger Gripper Optimization}{46}{subsection.4.2.6}\protected@file@percent }
+\newlabel{sec:two_finger_termination}{{4.2.6}{46}{Termination Criteria for Two-Finger Gripper Optimization}{subsection.4.2.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.5}{\ignorespaces Termination criteria for evolutionary and Bayesian optimization.}}{46}{table.caption.82}\protected@file@percent }
+\newlabel{tab:two_finger_termination}{{4.5}{46}{Termination criteria for evolutionary and Bayesian optimization}{table.caption.82}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.7}Performance Monitoring for Two-Finger Gripper}{46}{subsection.4.2.7}\protected@file@percent }
+\newlabel{sec:two_finger_monitoring}{{4.2.7}{46}{Performance Monitoring for Two-Finger Gripper}{subsection.4.2.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.8}Optional Hyperparameter Optimization for Two-Finger Gripper Problem}{47}{subsection.4.2.8}\protected@file@percent }
+\newlabel{sec:two_finger_hyperparameter_optimization}{{4.2.8}{47}{Optional Hyperparameter Optimization for Two-Finger Gripper Problem}{subsection.4.2.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.9}Output of Two-Finger Gripper Optimization}{48}{subsection.4.2.9}\protected@file@percent }
+\newlabel{sec:two_finger_output}{{4.2.9}{48}{Output of Two-Finger Gripper Optimization}{subsection.4.2.9}{}}
+\pp@pagectr{footnote}{5}{62}{50}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Validation}{50}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lol}{\addvspace {10\p@ }}
-\newlabel{sec:validation}{{5}{35}{Validation}{chapter.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Validation of Results for Suction-Cup Gripper}{35}{section.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Validation of Results for Two-Finger Gripper}{35}{section.5.2}\protected@file@percent }
-\pp@pagectr{footnote}{6}{48}{36}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Evaluation}{36}{chapter.6}\protected@file@percent }
+\newlabel{sec:validation}{{5}{50}{Validation}{chapter.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Validation of Results for Suction-Cup Gripper}{50}{section.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Validation of Results for Two-Finger Gripper}{50}{section.5.2}\protected@file@percent }
+\pp@pagectr{footnote}{6}{63}{51}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Evaluation}{51}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lol}{\addvspace {10\p@ }}
-\newlabel{sec:evaluation}{{6}{36}{Evaluation}{chapter.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Results for Suction-Cup Gripper}{36}{section.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Results for Evolutionary Algorithms}{36}{subsection.6.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}Results for Bayesian Algorithms}{36}{subsection.6.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}Results for Two-Finger Gripper}{36}{section.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Results for Evolutionary Algorithms}{36}{subsection.6.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}Results for Bayesian Algorithms}{36}{subsection.6.2.2}\protected@file@percent }
-\pp@pagectr{footnote}{7}{49}{37}
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}Summary}{37}{chapter.7}\protected@file@percent }
+\newlabel{sec:evaluation}{{6}{51}{Evaluation}{chapter.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Results for Suction-Cup Gripper}{51}{section.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Results for Evolutionary Algorithms}{51}{subsection.6.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}Results for Bayesian Algorithms}{51}{subsection.6.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Results for Two-Finger Gripper}{51}{section.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Results for Evolutionary Algorithms}{51}{subsection.6.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}Results for Bayesian Algorithms}{51}{subsection.6.2.2}\protected@file@percent }
+\pp@pagectr{footnote}{7}{64}{52}
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Summary}{52}{chapter.7}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{lol}{\addvspace {10\p@ }}
-\newlabel{sec:zus}{{7}{37}{Summary}{chapter.7}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7.1}Conclustion}{37}{section.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.2}Limitations}{37}{section.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.3}Future Work}{37}{section.7.3}\protected@file@percent }
+\newlabel{sec:zus}{{7}{52}{Summary}{chapter.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.1}Conclustion}{52}{section.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}Limitations}{52}{section.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.3}Future Work}{52}{section.7.3}\protected@file@percent }
 \@setckpt{chapters/ch-hauptteil}{
-\setcounter{page}{38}
+\setcounter{page}{53}
 \setcounter{equation}{0}
-\setcounter{enumi}{4}
+\setcounter{enumi}{7}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
 \setcounter{enumiv}{0}
@@ -285,7 +330,7 @@
 \setcounter{vrcnt}{0}
 \setcounter{AM@survey}{0}
 \setcounter{section@level}{1}
-\setcounter{Item}{4}
+\setcounter{Item}{17}
 \setcounter{Hfootnote}{0}
 \setcounter{bookmark@seq@number}{0}
 \setcounter{float@type}{8}

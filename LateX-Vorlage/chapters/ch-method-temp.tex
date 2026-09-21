@@ -126,22 +126,36 @@ evaluation\cite{Pinskier2024Diversity-Based}. A weighted combination of spatial 
 normalized to enable consistent comparison across workpieces of different scales.
 
 For the two-finger gripper, the design objective is to find a jaw contour that achieves close contact with the workpiece across as many placements as
-possible without collision\cite{Ko2020A}. For the two-finger gripper, the design objective is to find a jaw contour that achieves close contact with
-the workpiece across as many placements as possible without collision. The evaluation is performed using a voxel-based convolution scoring function
+possible without collision\cite{Ko2020A}. The evaluation is performed using a voxel-based convolution scoring function
 developed at Fraunhofer IPA, which evaluates finger-to-workpiece proximity over all candidate placements without requiring explicit grasp candidate
-enumeration, and excludes colliding placements by construction. This function produces a single scalar score per workpiece that directly serves as the
+enumeration, and excludes colliding placements by construction\cite{snuggle_pack}. This function produces a single scalar score per workpiece that directly serves as the
 optimization objective.
 
 \section{Optimization Library Selection}
 \label{sec:methodology_library}
 
-All optimization algorithms are implemented and executed using the \texttt{pymoo} framework. This choice is motivated by several methodological
-considerations. \texttt{pymoo} is one of the most widely used Python frameworks for multi-objective evolutionary optimization and provides a unified
-implementation of a large number of algorithms, which reduces implementation bias and ensures that observed performance differences reflect genuine
-algorithmic properties rather than differences in code quality or implementation choices. It includes standardized performance indicators such as
-hypervolume, IGD, and GD, as well as built-in constraint handling and visualization tools, which improve the reproducibility and comparability of
-results. Furthermore, \texttt{pymoo} is actively maintained, open-source, and thoroughly documented, making it easier for other researchers to
-replicate and extend the experiments conducted in this thesis \cite{pymoo}.
+The evolutionary multi-objective optimization algorithms are implemented and executed using the \texttt{pymoo} framework. This choice is motivated by
+several methodological considerations. \texttt{pymoo} is a widely used Python framework for multi-objective evolutionary optimization and provides a
+unified implementation of numerous algorithms. This reduces implementation bias and helps ensure that observed performance differences reflect genuine
+algorithmic properties rather than differences in code quality or implementation choices. It also includes standardized performance indicators, such
+as hypervolume, inverted generational distance (IGD), and generational distance (GD), as well as built-in constraint-handling and visualization tools.
+These features improve the reproducibility and comparability of the results. Furthermore, \texttt{pymoo} is actively maintained, open-source, and
+thoroughly documented, making it easier for other researchers to replicate and extend the evolutionary optimization experiments conducted in this
+thesis \cite{pymoo}.
+
+Bayesian multi-objective optimization is implemented using the \texttt{Ax} platform, with its underlying modeling and acquisition-function
+capabilities provided by \texttt{BoTorch}. \texttt{Ax} provides a high-level interface for defining parameter spaces, configuring multiple objectives,
+managing trials, and extracting the resulting Pareto frontier. Its integration with \texttt{BoTorch} enables model-based optimization using
+probabilistic surrogate models, typically Gaussian processes, together with acquisition functions designed for multi-objective optimization. In the
+implementation used in this work, Ax automatically applies an initialization strategy based on the center of the search space and Sobol-generated
+samples before transitioning to model-based Bayesian optimization. This approach provides initial coverage of the search space before the surrogate
+model is used to select subsequent candidates \cite{olson2025ax}.
+
+The use of \texttt{Ax} and \texttt{BoTorch} avoids the need to implement surrogate-model fitting, uncertainty estimation, and acquisition-function
+optimization manually. It therefore reduces implementation bias and provides a robust and reproducible Bayesian optimization workflow. Both libraries
+are open-source, actively maintained, and designed to support extensible experimentation with modern Bayesian optimization methods \cite{olson2025ax, botorch}.
+Consequently, \texttt{pymoo} is used for the evolutionary algorithms, whereas \texttt{Ax} and \texttt{BoTorch} are used for Bayesian multi-objective
+optimization.
 
 \section{Algorithm Selection}
 \label{sec:methodology_algorithm_selection}

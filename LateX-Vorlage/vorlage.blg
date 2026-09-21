@@ -20,49 +20,51 @@ Warning--empty journal in Datta2011Optimizing
 Warning--empty journal in Audet2017Derivative-Free
 Warning--empty journal in Jones2022Constrained
 Warning--empty journal in Deb2011Multi-objective
+Warning--empty journal in olson2025ax
 Warning--empty journal in Sivaprasad2019Optimizer
+Warning--empty journal in botorch
 Warning--empty journal in Kleeberger
 
 Done.
-You've used 65 entries,
+You've used 69 entries,
             4087 wiz_defined-function locations,
-            1223 strings with 21461 characters,
-and the built_in function-call counts, 50982 in all, are:
-= -- 4097
-> -- 1429
-< -- 431
-+ -- 799
-- -- 272
-* -- 2442
-:= -- 7533
-add.period$ -- 130
-call.type$ -- 65
-change.case$ -- 65
-chr.to.int$ -- 996
-cite$ -- 71
-duplicate$ -- 3662
-empty$ -- 3787
-format.name$ -- 317
-if$ -- 11924
+            1243 strings with 22544 characters,
+and the built_in function-call counts, 53924 in all, are:
+= -- 4287
+> -- 1569
+< -- 441
++ -- 871
+- -- 304
+* -- 2590
+:= -- 7953
+add.period$ -- 138
+call.type$ -- 69
+change.case$ -- 69
+chr.to.int$ -- 1023
+cite$ -- 77
+duplicate$ -- 3872
+empty$ -- 4023
+format.name$ -- 352
+if$ -- 12600
 int.to.chr$ -- 0
-int.to.str$ -- 65
-missing$ -- 625
-newline$ -- 226
-num.names$ -- 65
-pop$ -- 1471
+int.to.str$ -- 69
+missing$ -- 678
+newline$ -- 244
+num.names$ -- 69
+pop$ -- 1626
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 3919
+skip$ -- 4129
 stack$ -- 0
-substring$ -- 2450
-swap$ -- 3043
-text.length$ -- 99
+substring$ -- 2517
+swap$ -- 3199
+text.length$ -- 100
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 65
-warning$ -- 6
-while$ -- 207
-width$ -- 67
-write$ -- 646
-(There were 6 warnings)
+type$ -- 69
+warning$ -- 8
+while$ -- 214
+width$ -- 71
+write$ -- 685
+(There were 8 warnings)

@@ -86,6 +86,11 @@ A.~Candelieri, ``A gentle introduction to bayesian optimization,'' \emph{2021 Wi
 \bibitem{Wang2022Recent}
 X.~Wang, Y.~Jin, S.~Schmitt, and M.~Olhofer, ``Recent advances in bayesian optimization,'' \emph{ACM Computing Surveys}, vol.~55, pp. 1 -- 36, 2022.
 
+\bibitem{olson2025ax}
+\BIBentryALTinterwordspacing
+M.~Olson, E.~Santorella, L.~C. Tiao, S.~Cakmak, D.~Eriksson, M.~Garrard, S.~Daulton, M.~Balandat, E.~Bakshy, E.~Kashtelyan, Z.~J. Lin, S.~Ament, B.~Beckerman, E.~Onofrey, P.~Igusti, C.~Lara, B.~Letham, C.~Cardoso, S.~S. Shen, A.~C. Lin, and M.~Grange, ``Ax: A platform for adaptive experimentation,'' 2025. [Online]. Available: \url{https://openreview.net/forum?id=U1f6wHtG1g}
+\BIBentrySTDinterwordspacing
+
 \bibitem{Sivaprasad2019Optimizer}
 P.~T. Sivaprasad, F.~Mai, T.~Vogels, M.~Jaggi, F.~F. I.~R. Institute, and Epfl, ``Optimizer benchmarking needs to account for hyperparameter tuning,'' pp. 9036--9045, 2019.
 
@@ -174,6 +179,14 @@ V.~Bo, E.~Turco, M.~Pozzi, M.~Malvezzi, and D.~Prattichizzo, ``A data-driven top
 \bibitem{Pinskier2024Diversity-Based}
 J.~Pinskier, X.~Wang, L.~Liow, Y.~Xie, P.~Kumar, M.~Langelaar, and D.~Howard, ``Diversity-based topology optimization of soft robotic grippers,'' \emph{Advanced Intelligent Systems}, vol.~6, 2024.
 
+\bibitem{snuggle_pack}
+T.~Nickel, R.~Bormann, and K.~O. Arras, ``Snuggle-pack: Speeding up multi-heuristic packing planning of complex objects,'' in \emph{2025 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, 2025, pp. 5706--5713.
+
+\bibitem{botorch}
+\BIBentryALTinterwordspacing
+M.~Balandat, B.~Karrer, D.~R. Jiang, S.~Daulton, B.~Letham, A.~G. Wilson, and E.~Bakshy, ``Botorch: A framework for efficient monte-carlo bayesian optimization,'' 2020. [Online]. Available: \url{https://arxiv.org/abs/1910.06403}
+\BIBentrySTDinterwordspacing
+
 \bibitem{moead}
 Q.~Zhang and H.~Li, ``{MOEA/D}: A multiobjective evolutionary algorithm based on decomposition,'' \emph{IEEE Transactions on Evolutionary Computation}, vol.~11, no.~6, pp. 712--731, 2007.
 
@@ -221,6 +234,11 @@ J.~Mahler, M.~Matl, X.~Liu, A.~Li, D.~Gealy, and K.~Goldberg, ``Dex-net 3.0: Com
 \bibitem{hypervolume}
 \BIBentryALTinterwordspacing
 N.~Beume, B.~Naujoks, and M.~Emmerich, ``Sms-emoa: Multiobjective selection based on dominated hypervolume,'' \emph{European Journal of Operational Research}, vol. 181, no.~3, pp. 1653--1669, 2007. [Online]. Available: \url{https://www.sciencedirect.com/science/article/pii/S0377221706005443}
+\BIBentrySTDinterwordspacing
+
+\bibitem{cadquery2026}
+\BIBentryALTinterwordspacing
+{CadQuery contributors}, ``Cadquery,'' Jun. 2026. [Online]. Available: \url{https://doi.org/10.5281/zenodo.20777093}
 \BIBentrySTDinterwordspacing
 
 \end{thebibliography}
