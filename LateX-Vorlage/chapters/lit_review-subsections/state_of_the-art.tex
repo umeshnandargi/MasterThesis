@@ -1,61 +1,127 @@
-% \section{State of the Art} \label{sec:state_of_the_art}
-
-% Current research has made substantial progress in robotic grasp planning, adaptive gripper design, and task-specific end-effector optimization. In
-% multi-suction grasping, recent methods focus on grasp pose selection, cup activation strategies, and motion safety, but typically assume a fixed
-% suction layout and do not systematically study how cup arrangement affects the trade-off between stability and grasp availability
-% \cite{Schillinger2023Model-Free, Geng2025Experimental, Lee2024Grasp}. In two-finger grasping, prior work has addressed compliant, soft, and
-% underactuated finger designs, but direct optimization of rigid jaw geometry using workpiece-dependent, collision-aware metrics remains less explored
-% \cite{Sun2022LARG:} \cite{Dong2018Geometric} \cite{Xie2024Design}. Furthermore, none of these works conduct a comparative evaluation of optimization
-% algorithms for the respective problem class.
-
-% This thesis addresses these gaps by treating gripper geometry as the primary optimization variable for both end-effector types, and by embedding the
-% evaluation within a black-box multi-objective framework that enables systematic algorithm benchmarking across a diverse set of workpieces. The
-% contribution lies not only in the problem formulations themselves, but in the rigorous comparison of optimization algorithms applied to them.
-
-
 \section{State of the Art}
 \label{sec:state_of_the_art}
 
-\subsection{Grasp Planning for a Fixed End-Effector}
-Most work on robotic grasping assumes that the gripper is given and searches for a suitable grasp on the workpiece\cite{Zurbruegg2025GraspQP}.
-Analytical methods evaluate candidate contacts through force- and form-closure conditions, while data-driven methods learn a grasp quality predictor
-from example data. In both cases the decision variable is the grasp pose, and the geometry of the gripper is a fixed input. This limits the achievable
-result\cite{Zurbruegg2025GraspQP}. If the suction cup arrangement or the jaw contour does not match the parts that have to be handled, no grasp
-planner can recover the stability or the feasible grasp positions that are lost. The geometry of the gripper is therefore a design variable that is
-rarely used\cite{Todescato}.
+This section compares previous studies according to their optimization target, the gripper properties treated as fixed, and their relevance to
+task-specific gripper configuration. The reviewed literature can be divided into four groups: grasp planning with fixed end-effectors, multi-suction
+grasping, two-finger gripper design, and comparative studies of multi-objective optimization algorithms.
 
-\subsection{Multi-Suction Grasping}
-Work on suction-based handling has focused on operation rather than design. Model-free strategies decide whether a suction contact will hold without
-an explicit analytical seal model \cite{Schillinger2023Model-Free}. Experimental studies measure how surface properties and local curvature affect the
-achievable holding force and the reliability of individual cups \cite{Geng2025Experimental}. Other work selects grasp poses, activates suitable
-subsets of cups, and plans motions that stay within the resulting load limits \cite{Lee2024Grasp}. In all of these contributions the spatial
-arrangement of the cups is taken from an existing array and is not optimized. The arrangement, however, controls an important trade-off. A widely
-distributed layout increases the resistible moment and therefore the stability of the grasp, but it also reduces the number of workpiece regions on
-which all cups can be sealed at the same time, and therefore the grasp availability. None of the cited works formulates this trade-off as a design
-problem.
+\subsection{Grasp Planning with Fixed End Effectors}
 
-\subsection{Two-Finger Grasping and Jaw Geometry}
-For form- and friction-closure grippers, existing work improves grasp robustness mainly through mechanical means. Compliant, soft and underactuated
-finger structures adapt passively to unknown contours and tolerate uncertainty in object pose and shape \cite{Sun2022LARG:, Xie2024Design}. Geometric
-methods reason about contact regions and finger placement derived from the object model \cite{Dong2018Geometric}. Direct optimization of rigid jaw
-geometry for a specific set of parts has received less attention, although custom machined jaws are common in industrial bin picking and assembly. In
-particular, the jaw contour is seldom treated as a continuous design variable that is evaluated against workpiece-dependent and collision-aware
-criteria. It is usually derived from the nominal part outline by simple offsetting rules.
+Most robotic grasping research treats the end-effector geometry as a fixed input and searches for a feasible grasp pose on the workpiece. Zurbr\"ugg
+et al.\ \cite{Zurbruegg2025GraspQP}, for example, optimize grasp selection while assuming that the geometry and contact configuration of the gripper
+have already been defined. Analytical grasp-planning methods evaluate candidate contacts using geometric, force-closure, or form-closure conditions,
+whereas data-driven methods estimate grasp quality from training data. Despite their methodological differences, both approaches primarily vary the
+grasp pose rather than the gripper geometry.
 
-\subsection{Research Gap and Contribution}
-Current research has made substantial progress in robotic grasp planning, adaptive gripper design, and task-specific end-effector optimization. In
-multi-suction grasping, recent methods focus on grasp pose selection, cup activation strategies, and motion safety, but typically assume a fixed
-suction layout and do not systematically study how cup arrangement affects the trade-off between stability and grasp availability
-\cite{Schillinger2023Model-Free, Geng2025Experimental, Lee2024Grasp}. In two-finger grasping, prior work has addressed compliant, soft, and
-underactuated finger designs, but direct optimization of rigid jaw geometry using workpiece-dependent, collision-aware metrics remains less explored
-\cite{Sun2022LARG:, Dong2018Geometric, Xie2024Design}. Furthermore, none of these works conduct a comparative evaluation of optimization algorithms
-for the respective problem class, and their optimization and evaluation components are not separated in a way that would permit one.
+Although Todescato et al.\ \cite{Todescato} establish gripper geometry as an optimization variable, their suction-gripper formulation is limited to a
+single suction cup. The design of a multi-suction-cup layout introduces additional decisions concerning the number and spatial arrangement of the
+cups, as well as a trade-off between grasp availability and the geometric distribution of valid contacts. This layout-optimization problem is
+addressed in this thesis.
 
-This thesis addresses these gaps. First, gripper geometry is treated as the primary optimization variable for both end-effector types,
-and the geometric evaluation is formulated as a black-box multi-objective problem over a diverse set of workpieces. Second, a modular
-optimization--evaluation framework is developed in which the expensive geometric evaluation is exposed behind a common interface and the optimizer is
-interchangeable, so that any algorithm operates on an identical objective definition. This separation is used to benchmark evolutionary and
-Bayesian multi-objective algorithms on both problems under a shared evaluation budget, with standard quality indicators, repeated runs and
-statistical tests. The contribution therefore lies not only in the problem formulations, but in the framework that makes a controlled comparison
-possible and in the comparison itself.
+The studies therefore address complementary but different questions. Grasp planning determines how an existing gripper should interact with a
+workpiece, whereas gripper-configuration optimization determines which geometry should be available before grasp planning is performed. Improving the
+grasp planner cannot fully compensate for a suction layout that cannot establish sufficient seals or for a jaw contour that cannot reach suitable
+contact regions. Consequently, fixed-gripper grasp-planning results do not directly resolve the end-effector design problem considered in this thesis.
 
+\subsection{Comparison of Multi-Suction Grasping Studies}
+
+Existing studies on multi-suction grippers address grasp prediction, experimental stability assessment, and load-aware motion planning, but generally
+assume predefined suction-cup layouts. Schillinger et al.\ \cite{Schillinger2023Model-Free} predict grasp quality from RGB-D images and optimize the
+grasp pose and gripper selection from a predefined set of multi-suction grippers. Their method selects among existing layouts rather than optimizing
+the positions of the individual cups.
+
+Geng et al.\ \cite{Geng2025Experimental} experimentally investigate how suction-cup size, geometric arrangement, centre of gravity offset, and robot
+acceleration influence grasp stability. Although different arrangements are evaluated, these are predefined experimental configurations rather than
+layouts generated through multi-objective optimization.
+
+Lee et al.\ \cite{Lee2024Grasp} model the load distribution among multiple suction cups using a quadratic program. They incorporate the resulting
+grasp-failure constraints into time-optimal trajectory planning to support the fast and reliable manipulation of heavy objects. Their work focuses on
+load prediction and motion planning for an existing gripper configuration, not on optimizing the cup arrangement.
+
+These studies therefore address complementary aspects of multi-suction grasping. Schillinger et al.\ focus on grasp-pose and gripper selection, Geng
+et al.\ examine the effects of gripper configuration and handling conditions experimentally, and Lee et al.\ model load distribution during dynamic
+manipulation. However, none of these studies formulates the positions of the individual suction cups as decision variables in a multi-objective
+layout-optimization problem.
+
+Cup placement involves competing design considerations. Increasing the separation between valid suction contacts can provide larger moment arms and
+potentially improve resistance to external moments. However, a more widely distributed layout may be compatible with fewer workpiece surfaces or
+reduce the number of poses in which several cups can establish valid contacts simultaneously. Geometric distribution alone does not determine grasp
+stability, which also depends on factors such as seal quality, pressure difference, cup capacity, contact normals, friction, compliance, the object's
+centre of mass, and the applied external wrench. This thesis therefore optimizes the multi-suction layout according to multiple objectives
+representing both the availability and the geometric distribution of feasible contacts.
+
+\subsection{Comparison of Two-Finger Gripper Studies}
+
+Research on two-finger gripper design includes the optimization of compliant fingers, underactuated mechanisms, and task-specific jaw geometries. Sun
+et al.\ \cite{Sun2022LARG} use three-dimensional topology optimization to design compliant continuum fingers and a lightweight gripper base. The
+resulting fingers deform passively to adapt to objects with different shapes. Similarly, Xie et al.\ \cite{Xie2024Design} optimize the topology of
+flexible fingers while accounting for contact behaviour and contact-stress constraints. Their objective is to achieve adaptive, damage-free grasping
+of fragile and geometrically variable objects. Both studies focus on structural compliance and deformation, whereas this thesis considers the
+geometric optimization of rigid jaw contours.
+
+Dong et al.\ \cite{Dong2018Geometric} optimize the geometry and transmission system of an underactuated tendon-driven gripper. Their design variables
+include phalange dimensions, palm width, joint-mandrel radii, and tendon-routing parameters. The optimization aims to improve force transmission and
+grasp stability. Although this approach optimizes gripper geometry, it concerns the dimensions and actuation mechanism of an articulated gripper
+rather than the contact contour of a rigid parallel jaw.
+
+This thesis addresses a different design problem by representing the contours of a rigid parallel-jaw gripper through a spline-based parameterization.
+The grasp points on the workpiece are predefined, and each candidate jaw contour is evaluated separately at every grasp point according to its
+conformity with the local workpiece geometry. Consequently, a workpiece with $n$ predefined grasp points produces $n$ conformity objectives and an
+$n$-dimensional objective space.
+
+The optimization therefore does not select grasp points, introduce compliant deformation, or modify an articulated transmission mechanism. Instead, it
+seeks a rigid jaw contour that provides a suitable compromise in conformity across all predefined grasp points. The reviewed studies provide relevant
+approaches to automated gripper design, but they do not formulate rigid spline-based jaw-contour design as a multi-objective optimization problem in
+which each predefined grasp point contributes an individual objective.
+
+\subsection{Comparative Studies of Multi-Objective Optimization Algorithms}
+\label{subsec:comparative_optimization_studies}
+
+Comparative studies show that optimizer performance depends strongly on the problem and experimental setup. Tanabe and Ishibuchi \cite{Tanabe2020An}
+evaluate evolutionary algorithms on a suite of real-world multi-objective problems with varied characteristics, while Tian et al.\
+\cite{Tian2019Automated} propose selecting algorithms based on problem features. Ishibuchi et al.\ \cite{Ishibuchi2022Difficulties} further
+demonstrate that termination conditions, population sizes, performance indicators, and test problems can change algorithm rankings. Audet et al.\
+\cite{Audet2018Performance} emphasize that indicators assess different properties of Pareto-front approximations, such as convergence, distribution,
+and spread.
+
+For expensive optimization, Qin et al.\ \cite{Qin2019Bayesian} compare two combinations of evolutionary and Bayesian optimization on ZDT and DTLZ
+problems and find that Bayesian evolutionary optimization is more efficient under their experimental conditions. Santoni et al.\ \cite{Santoni2023Comparison}
+compare high-dimensional Bayesian optimization methods on single-objective BBOB functions and report that performance varies with dimensionality,
+function landscape, and evaluation budget. These findings are therefore specific to the investigated problems and settings.
+
+Such results cannot be transferred directly to the collision-aware suction-layout and spline-based jaw-contour problems considered in this thesis.
+Therefore, this thesis compares selected multi-objective evolutionary and Bayesian algorithms under common evaluation budgets, initialization
+conditions, repeated runs, and statistical procedures. The aim of this comparison is to identify methods suitable for these specific gripper-design
+problems rather than a universally superior optimizer.
+
+\subsection{Comparative Synthesis and Research Gap}
+\label{subsec:research_gap}
+
+The reviewed literature reveals three related research gaps. First, grasp-planning studies generally optimize grasp poses for predefined end-effectors
+rather than the gripper configuration itself. Second, existing multi-suction studies assume predefined cup layouts, while the reviewed two-finger
+studies focus on compliant structures or underactuated mechanisms rather than rigid spline-based jaw contours. They therefore do not address the
+suction-layout and jaw-contour optimization problems considered in this thesis. Third, existing algorithm comparisons do not determine which
+optimization methods are best suited to these collision-aware geometric design problems.
+
+For the multi-suction gripper, the unresolved problem is to balance the availability of feasible contacts with their geometric distribution by
+optimizing the positions of the individual cups. For the two-finger gripper, it is to design a rigid jaw contour that provides suitable conformity
+across predefined grasp points while satisfying geometric and collision constraints. Both are expensive multi-objective black-box problems, but their
+different representations and evaluation procedures may favour different optimization methods.
+
+Within the literature reviewed for this thesis, no controlled comparison of evolutionary and Bayesian multi-objective algorithms was identified for
+these two gripper-design formulations.
+
+\subsection{Research Positioning and Contribution}
+\label{subsec:research_positioning}
+
+This thesis addresses these gaps by treating gripper geometry as the primary optimization variable. The multi-suction formulation optimizes the
+spatial arrangement of individual suction cups, whereas the two-finger formulation optimizes spline-based contours for rigid parallel jaws. Candidate
+designs are assessed using problem-specific geometric and collision-aware evaluations.
+
+A modular framework separates geometric evaluation from optimization through a common interface. This allows the applicable algorithms to operate on
+the same problem formulation, constraints, and evaluation conditions. Selected evolutionary and Bayesian multi-objective algorithms are compared under
+defined evaluation budgets using repeated independent runs, convergence histories, multi-objective performance indicators, and statistical tests.
+Evaluation counts and optimizer overhead are reported separately where computational cost is relevant.
+
+The contribution of this thesis is therefore a problem-specific comparison rather than a claim of universal algorithm superiority. The results provide
+evidence for selecting optimization methods for the suction-layout and rigid-jaw-contour formulations considered here.

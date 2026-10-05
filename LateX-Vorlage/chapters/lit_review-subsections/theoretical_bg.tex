@@ -10,8 +10,8 @@
 
 An industrial robot is a programmable, multipurpose manipulator designed to move material, parts, tools or specialised devices through programmed
 motions in order to perform a variety of tasks\cite{Lee2022Vocabulary}. A typical robotic system consists of a kinematic chain of rigid links
-connected by actuated joints, a set of sensors, a controller and an end effector mounted at the flange of the last link. The configuration of the
-manipulator is described by its joint variables, while the position and orientation of the end effector are described in a Cartesian task
+connected by actuated joints, a set of sensors, a controller and an end-effector mounted at the flange of the last link. The configuration of the
+manipulator is described by its joint variables, while the position and orientation of the end-effector are described in a Cartesian task
 space\cite{Malik2022A}. The mapping between these two spaces is established through forward and inverse kinematics, which form the basis for
 trajectory planning and motion control\cite{Singh2022Kinematics}.
 
@@ -21,23 +21,23 @@ task-specific peripheral components\cite{Wiese2022Flexible,Bilancia2023An}. Amon
 element, since it forms the physical interface between the robot and the workpiece and therefore determines whether a given handling task can be
 executed reliably at all\cite{Wiese2022Flexible}.
 
-\subsubsection{Handling of Objects using Grippers}
-\label{subsubsec:handling_with_grippers}
+% \subsubsection{Handling of Objects using Grippers}
+% \label{subsubsec:handling_with_grippers}
 
-Object handling denotes the sequence of establishing, maintaining and releasing a mechanical connection between an end effector and a workpiece. The
-component responsible for this connection is the gripper, which can be classified by the physical principle used to transmit
-forces\cite{Zhou2021Bio-Inspired}. Impactive grippers, such as parallel-jaw and multi-finger designs, grasp objects through direct mechanical contact,
-relying on contact forces and friction to maintain the grasp\cite{Zhou2021Bio-Inspired}. Astrictive grippers, most prominently vacuum-based suction
-systems, rely on a pressure difference acting on a sealed contact area. Further principles include magnetic and electroadhesive as well as contigutive
-approaches based on adhesion\cite{Zhou2021Bio-Inspired}.
+% Object handling denotes the sequence of establishing, maintaining and releasing a mechanical connection between an end-effector and a workpiece. The
+% component responsible for this connection is the gripper, which can be classified by the physical principle used to transmit
+% forces\cite{Zhou2021Bio-Inspired}. Impactive grippers, such as parallel-jaw and multi-finger designs, grasp objects through direct mechanical contact,
+% relying on contact forces and friction to maintain the grasp\cite{Zhou2021Bio-Inspired}. Astrictive grippers, most prominently vacuum-based suction
+% systems, rely on a pressure difference acting on a sealed contact area. Further principles include magnetic and electroadhesive as well as contigutive
+% approaches based on adhesion\cite{Zhou2021Bio-Inspired}.
 
-The selection and design of a gripper is governed by the properties of the workpiece and the process. Relevant criteria include the mass and the
-inertia of the object, the accessible contact surfaces, surface roughness and porosity, geometric tolerances, the required positioning accuracy, cycle
-time, etc. \cite{Ivanov2024New, Morecki1999Manipulator}. Since these criteria interact, gripper design is inherently a trade-off
-problem\cite{Cramer2022Development}. A gripper that is optimally adapted to a single workpiece is often unsuitable for others, whereas a gripper
-intended for a family of workpieces must compromise between competing geometric requirements\cite{Lundstrom1974Industrial,Hota2024Automated}. This
-tension between specialisation and generalisation is the central motivation for treating gripper configuration as a multi-objective optimization
-problem\cite{Mnyussiwalla2022Evaluation}.
+% The selection and design of a gripper is governed by the properties of the workpiece and the process. Relevant criteria include the mass and the
+% inertia of the object, the accessible contact surfaces, surface roughness and porosity, geometric tolerances, the required positioning accuracy, cycle
+% time, etc. \cite{Ivanov2024New, Morecki1999Manipulator}. Since these criteria interact, gripper design is inherently a trade-off
+% problem\cite{Cramer2022Development}. A gripper that is optimally adapted to a single workpiece is often unsuitable for others, whereas a gripper
+% intended for a family of workpieces must compromise between competing geometric requirements\cite{Lundstrom1974Industrial,Hota2024Automated}. This
+% tension between specialisation and generalisation is the central motivation for treating gripper configuration as a multi-objective optimisation
+% problem\cite{Mnyussiwalla2022Evaluation}.
 
 \subsubsection{Bin Picking Problem}
 \label{subsubsec:bin_picking}
@@ -96,10 +96,12 @@ the central design variable, and it must be chosen such that valid sealing conta
 The \emph{diversity} of a grasp set can be quantified by combining two complementary measures of spatial spread.
 
 \paragraph{Geodesic Distance as a Diversity Measure.}
-The geodesic distance between two points on a surface is the length of the shortest path between them that lies entirely on the surface. As a
-diversity measure, geodesic distance captures surface-level spread that Euclidean distance in ambient space does not reflect for curved geometries. A
-larger mean geodesic distance between grasp contact points indicates broader sampling of the workpiece surface, which is desirable for robustness to
-workpiece pose variation\cite{Peyre2010Geodesic}.
+Orientational diversity is measured by calculating the pairwise geodesic distances between grasp orientations represented by rotation matrices. The
+geodesic distance describes the minimum angular rotation required to transform one orientation into another, accounting for the geometry of the
+rotation space. The mean of these pairwise angular distances is normalized by the maximum possible angular distance of $180^\circ$, resulting in a
+diversity score between zero and one. A score close to zero indicates that the grasp orientations are similar, whereas larger values indicate greater
+average angular separation and thus higher orientational diversity. This measure enables the assessment of how broadly candidate grasps cover
+different orientations, supporting the selection of diverse grasp configurations\cite{Kleeberger, Xu2022Planar}.
 
 \paragraph{Spatial Diversity via Mean Pairwise Euclidean Distance.}
 The spatial spread of a set of grasps can be quantified using the mean pairwise Euclidean distance between grasp positions in three-dimensional space.
@@ -125,6 +127,25 @@ where \(\mathbf{y}_i \in \mathbb{R}^3\) denotes the position of the \(i\)-th gra
 considered. Normalization by \(s\) makes the metric scale-invariant, allowing diversity values to be compared across workpieces of different sizes.
 This measure complements the geodesic measure by capturing absolute spatial separation rather than surface-constrained distance.
 
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]
+        {fig/th_bg/Geodesic_vs_Euclidean_distance.png}
+    \captionof{figure}{Geodesic versus Euclidean distance between grasp locations
+    on an object surface.\cite{hou2022dimensionality}}
+    \label{fig:geodesic}
+\end{figure}
+
+As illustrated in Figure~\ref{fig:geodesic}, the Euclidean distance between
+surface points \(A\) and \(B\) is the straight-line distance through the
+ambient space, whereas the geodesic distance follows the shortest path
+constrained to the object surface. Consequently, the geodesic distance better
+represents the separation of grasp locations along curved workpiece
+geometries.
+
+
+
 \subsubsection{Multi Finger Grippers}
 \label{subsubsec:multi_finger_grippers}
 
@@ -146,22 +167,49 @@ optimization\cite{Gebauer2024Uncertainty-integrating}.
 
 The two-finger gripper applies gripping forces through two opposing jaw surfaces whose contour geometry determines how well the gripper conforms to
 the workpiece. Designing the jaw contour requires a representation that is compact enough to serve as a low-dimensional decision space for
-optimization, yet expressive enough to capture smooth, physically realizable shapes\cite{Liu2024Topology}. Spline parameterization one of the
+optimization, yet expressive enough to capture smooth, physically realizable shapes\cite{Liu2024Topology}. Spline parameterization is one of the
 approaches for this purpose.
 
-\paragraph{B-Splines.}
-A B-spline curve of degree $p$ is defined by a set of $n+1$ control points $\{\mathbf{P}_0, \mathbf{P}_1, \ldots, \mathbf{P}_n\}$ and a non-decreasing
-knot vector $\mathbf{t} = \{t_0, t_1, \ldots, t_{n+p+1}\}$\cite{Hasan2024B-spline}. The curve is expressed as
+% \paragraph{B-Splines.}
+% A B-spline curve of degree $p$ is defined by a set of $n+1$ control points $\{\mathbf{P}_0, \mathbf{P}_1, \ldots, \mathbf{P}_n\}$ and a non-decreasing
+% knot vector $\mathbf{t} = \{t_0, t_1, \ldots, t_{n+p+1}\}$\cite{Hasan2024B-spline}. The curve is expressed as
 
-\begin{equation}
-    \mathbf{C}(u) = \sum_{i=0}^{n} N_{i,p}(u)\, \mathbf{P}_i,
-    \quad u \in [t_p,\, t_{n+1}]
-\end{equation}
+% \begin{equation}
+%     \mathbf{C}(u) = \sum_{i=0}^{n} N_{i,p}(u)\, \mathbf{P}_i,
+%     \quad u \in [t_p,\, t_{n+1}]
+% \end{equation}
 
-where $N_{i,p}(u)$ are the B-spline basis functions of degree $p$, defined recursively by the Cox--de Boor recurrence relation\cite{Beccari2019A,
-Lyche2018Foundations}. B-spline curves possess the \emph{local support} property, so that moving a single control point affects the curve only in its
-neighbourhood, making them well suited to constrained shape optimization. They also guarantee $C^{p-1}$ continuity everywhere except at repeated
-knots, ensuring smooth contour shapes without explicit smoothness constraints in the optimizer\cite{Beccari2019A, Lyche2018Foundations}.
+% where $N_{i,p}(u)$ are the B-spline basis functions of degree $p$, defined recursively by the Cox--de Boor recurrence relation\cite{Beccari2019A,
+% Lyche2018Foundations}. B-spline curves possess the \emph{local support} property, so that moving a single control point affects the curve only in its
+% neighbourhood, making them well suited to constrained shape optimization. They also guarantee $C^{p-1}$ continuity everywhere except at repeated
+% knots, ensuring smooth contour shapes without explicit smoothness constraints in the optimizer\cite{Beccari2019A, Lyche2018Foundations}.
+
+% \paragraph{Spline-Based Shape Parameterization.}
+% Spline-based shape parameterization represents a geometric contour through a small set of control points, reducing an otherwise infinite-dimensional
+% shape space to a finite-dimensional parameter vector. Boundary control points are typically fixed to satisfy geometric constraints, while interior
+% control points are free to vary and serve as the design variables. The number of free control points governs the trade-off between geometric
+% expressiveness and search space dimensionality, since more control points allow more complex shapes but increase the dimensionality of the
+% optimization problem\cite{Hasan2024B-spline,Chapelier2022Spline-based}.
+
+% \begin{figure}[htbp]
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{fig/th_bg/bspline.png}
+%     \captionof{figure}{B-spline parameterization}
+%     \label{fig:bspline}
+% \end{figure}
+
+% Figure~\ref{fig:bspline} illustrates a B-spline curve defined by six control
+% points, \(A\) through \(F\). The curve interpolates the boundary points \(A\)
+% and \(F\), while the interior control points influence its local shape without
+% necessarily lying on the curve, enabling smooth and compact shape
+% parameterization.
+
+
+\paragraph{Cubic Spline Interpolation.}
+A cubic interpolating spline is a piecewise polynomial curve constructed to pass through a given set of data points
+$\{\mathbf{P}_1,\mathbf{P}_2,\ldots,\mathbf{P}_m\}$. Each segment is represented by a polynomial of degree at most three, with adjacent segments
+joined such that the curve and its first and second derivatives are continuous. The resulting curve is therefore smooth while interpolating all
+prescribed points exactly. To obtain a unique spline, appropriate boundary conditions must be specified at the endpoints.
 
 \paragraph{Spline-Based Shape Parameterization.}
 Spline-based shape parameterization represents a geometric contour through a small set of control points, reducing an otherwise infinite-dimensional
@@ -169,6 +217,18 @@ shape space to a finite-dimensional parameter vector. Boundary control points ar
 control points are free to vary and serve as the design variables. The number of free control points governs the trade-off between geometric
 expressiveness and search space dimensionality, since more control points allow more complex shapes but increase the dimensionality of the
 optimization problem\cite{Hasan2024B-spline,Chapelier2022Spline-based}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/th_bg/cubic_spline.png}
+    \caption{Cubic spline interpolation through prescribed data points.}
+    \label{fig:cubic_spline}
+\end{figure}
+
+Figure~\ref{fig:cubic_spline} illustrates a cubic interpolating spline passing through its prescribed data points. In contrast to a B-spline
+control-point representation, the interpolation points lie directly on the resulting curve. Consequently, the three variable interior points provide
+intuitive geometric parameters for modifying the gripper contour, while the fixed endpoints preserve its prescribed spatial extent.
+
 
 %-------------------------------------------------------------------
 \subsection{Optimization Theory}
@@ -220,6 +280,19 @@ A solution is called \emph{Pareto optimal} if no other feasible solution dominat
 is the \emph{Pareto set}, and its image in the objective space is the \emph{Pareto front}. In practice, algorithms compute an approximation of the
 Pareto front, and the quality of this approximation is assessed using performance indicators such as the hypervolume
 indicator\cite{Audet2018Performance,Shang2021A}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{fig/th_bg/pareto_front.png}
+    \captionof{figure}{Example of a Pareto Front.\cite{Tarunika2026}}
+    \label{fig:pareto_front}
+\end{figure}
+
+Figure ~\ref{fig:pareto_front} illustrates the concept of dominated and non-dominated solutions in a multi-objective optimization (MOP) problem with
+two objectives. The objective is to minimize both objective functions. The connected curve represents the Pareto front (PF), which includes all
+Pareto-optimal solutions. Solution $X_2$ has higher values for both $f_1$ and $f_2$ when compared to solutions $X_1$ and $Y$. Thus, solutions $X_1$
+and $Y$ dominate solution $X_2$. However, since neither $X_1$ nor $Y$ dominates the other, they are considered non-dominated solutions\cite{Tarunika2026}.
+
 
 \subsubsection{Many-Objective Optimization}
 \label{subsubsec:many_objective_optimization}
@@ -277,10 +350,24 @@ A Gaussian process defines a distribution over functions and is fully specified 
 $k(\mathbf{x}, \mathbf{x}')$, written as $f(\mathbf{x}) \sim \mathcal{GP}\bigl(m(\mathbf{x}),\, k(\mathbf{x}, \mathbf{x}')\bigr)$. Conditioning the
 prior on the observed data set $\mathcal{D} = \{(\mathbf{x}_i, y_i)\}_{i=1}^{n}$ yields a posterior that is again Gaussian, with closed-form
 predictive mean $\mu(\mathbf{x})$ and predictive variance $\sigma^2(\mathbf{x})$ at any query point\cite{Pawar2021Optimizing}. The kernel encodes the
-assumed smoothness and length scale of the underlying function, with the Matérn and squared exponential kernels being the most common choices, and its
+assumed smoothness and length scale of the underlying function, with the Mat\'ern and squared exponential kernels being the most common choices, and its
 hyperparameters are estimated by maximizing the marginal likelihood\cite{Pawar2021Optimizing}. An additional noise term accounts for stochastic or
 numerically imprecise evaluations\cite{Binois2021A}. The main limitations of GP surrogates are the cubic scaling of exact inference with the number of
 observations and a loss of predictive quality in high-dimensional decision spaces\cite{Frazier2018A}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/th_bg/SurrogateModel.png}
+    \caption{Surrogate Model \cite{olson2025ax}.}
+    \label{fig:surrogate_model}
+\end{figure}
+
+In figure~\ref{fig:surrogate_model} a surrogate model is fit to five noisy observations using a GP to predict the objective, depicted by the solid line,
+and uncertainty estimates, illustrated by the width of the shaded bands. This objective is predicted for the entire range of possible parameter
+values, corresponding to the full x-axis. Importantly, the model is able to predict the outcome and quantify the uncertainty of configurations that
+have not yet been tested. Intuitively, the uncertainty bands are tight in regions that are well-explored and become wider as we move away from them.
+
+
 
 \paragraph{Acquisition Functions.}
 The acquisition function converts the posterior of the surrogate into a scalar utility that quantifies how promising a candidate point is. Expected
@@ -291,10 +378,21 @@ improvement (EI) measures the expected amount by which a candidate improves on t
     \mathbb{E}\bigl[\max\bigl(f_{\min} - f(\mathbf{x}),\, 0\bigr)\bigr]
 \end{equation}
 
-and admits a closed-form expression for a Gaussian posterior\cite{Binois2021A, olson2025ax}. The upper confidence bound (UCB) criterion combines mean
-and uncertainty linearly through a weighting parameter that controls the exploration behaviour explicitly, while probability of improvement and
-entropy search based criteria provide further alternatives\cite{DeAth2019Greed}. Since the acquisition function is inexpensive to evaluate and
-analytically differentiable, its maximization is performed by an inner optimizer rather than by querying the expensive objective.
+and admits a closed-form expression for a Gaussian posterior\cite{Binois2021A, olson2025ax}. 
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/th_bg/acquisition_fn.png}
+    \caption{Acquisition Function \cite{olson2025ax}.}
+    \label{fig:acquisition_fn}
+\end{figure}
+
+A visualization of the expected improvement based on the surrogate model predictions is shown in Figure~\ref{fig:acquisition_fn}, where the next
+suggestion is where the expected improvement is at its maximum. Once a new highest EI is selected and evaluated, the surrogate model is retrained and a new suggestion
+is made. This process continues iteratively until a stopping condition, set by the user, is reached \cite{olson2025ax}.
+
+Since the acquisition function is inexpensive to evaluate and analytically differentiable, its maximization is performed by an inner optimizer rather
+than by querying the expensive objective.
 
 \paragraph{Multi-Objective Bayesian Optimization.}
 Extending BO to several objectives requires a utility notion for sets instead of single points. One family of methods fits an independent surrogate
@@ -329,25 +427,36 @@ Pareto compliant, meaning that a strictly dominating set never receives a worse 
 front\cite{Guerreiro2020}. Its drawbacks are the growth of its computational cost with the number of objectives and its sensitivity to the choice of
 the reference point\cite{Guerreiro2020, Audet2018Performance}.
 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{fig/th_bg/hypervolume_2d.png}
+    \caption{Hypervolume indicator \cite{Guerreiro2020}.}
+    \label{fig:hypervolume_2d}
+\end{figure}
+
+Figure~\ref{fig:hypervolume_2d} shows a two-dimensional example of the hypervolume (an area) and a fixed reference point r.
+
+
+
 The \emph{inverted generational distance} (IGD) measures the mean distance from each point of a reference set to the closest point of the
-approximation set and therefore requires a reference front, which is normally unavailable for real-world black-box problems\cite{Cai2020A}.In this
+approximation set and therefore requires a reference front, which is normally unavailable for real-world black-box problems\cite{Cai2020A}. In this
 thesis the hypervolume serves as the primary indicator, supplemented by convergence histories over the number of function evaluations so that anytime
 behaviour is captured in addition to final solution quality.
 
-\subsubsection{Stochasticity, Seeding and Statistical Comparison}
-\label{subsubsec:stochasticity_and_statistics}
+% \subsubsection{Stochasticity, Seeding and Statistical Comparison}
+% \label{subsubsec:stochasticity_and_statistics}
 
-Evolutionary algorithms and Bayesian optimization are both stochastic procedures\cite{L'opez-Ib'anez2021Reproducibility, Wang2020IOHanalyzer}. Initial
-populations, variation operators and initial designs of experiments depend on pseudo-random numbers, so a single run of an algorithm on a given
-problem yields only one realisation of a random variable. Conclusions drawn from single runs are consequently not reproducible and may reflect chance
-rather than algorithm quality\cite{Vermetten2022Analyzing}.
+% Evolutionary algorithms and Bayesian optimization are both stochastic procedures\cite{L'opez-Ib'anez2021Reproducibility, Wang2020IOHanalyzer}. Initial
+% populations, variation operators and initial designs of experiments depend on pseudo-random numbers, so a single run of an algorithm on a given
+% problem yields only one realisation of a random variable. Conclusions drawn from single runs are consequently not reproducible and may reflect chance
+% rather than algorithm quality\cite{Vermetten2022Analyzing}.
 
-Two measures address this issue. First, every run is initialised with an explicitly recorded random seed, which makes individual experiments
-reproducible and allows algorithms to be compared on identical initial conditions\cite{L'opez-Ib'anez2021Reproducibility}. Second, each algorithm and
-problem combination is executed for a number of independent repetitions, and the resulting indicator values are reported through descriptive
-statistics such as median and interquartile range rather than a single best observed value\cite{L'opez-Ib'anez2021Reproducibility}. Since indicator
-distributions are typically neither normal nor homoscedastic, non-parametric procedures are preferred for the statistical
-assessment\cite{Latorre2020A}.
+% Two measures address this issue. First, every run is initialised with an explicitly recorded random seed, which makes individual experiments
+% reproducible and allows algorithms to be compared on identical initial conditions\cite{L'opez-Ib'anez2021Reproducibility}. Second, each algorithm and
+% problem combination is executed for a number of independent repetitions, and the resulting indicator values are reported through descriptive
+% statistics such as median and interquartile range rather than a single best observed value\cite{L' Lopez-Ib'anez2021Reproducibility}. Since indicator
+% distributions are typically neither normal nor homoscedastic, non-parametric procedures are preferred for the statistical
+% assessment\cite{Latorre2020A}.
 
 %-------------------------------------------------------------------
 \subsection{Multi-Objective Evolutionary Algorithms}
