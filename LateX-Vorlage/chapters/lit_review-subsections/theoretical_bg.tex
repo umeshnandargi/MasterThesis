@@ -75,13 +75,25 @@ Suction cup grippers belong to the astrictive gripper class and generate holding
 the cup and the ambient atmosphere. In the idealised case the holding force is
 
 \begin{equation}
-    F_{\mathrm{hold}} = \frac{\Delta p \cdot A}{S}
+    \begin{gathered}
+        F_{\mathrm{hold}} = \frac{\Delta p \cdot A_{\mathrm{seal}}}{S}, \\[4pt]
+        \Delta p \in \left(0,\, p_{\mathrm{atm}}\right] \subset \mathbb{R}_{>0},\quad
+        A_{\mathrm{seal}} \in \mathbb{R}_{>0},\quad
+        S \in \left[1,\, \infty\right) \subset \mathbb{R},\quad
+        F_{\mathrm{hold}} \in \mathbb{R}_{>0}
+    \end{gathered}
 \end{equation}
 
-where $\Delta p$ is the pressure difference, $A$ is the effective sealed area and $S$ is a safety factor accounting for acceleration, orientation and
-friction conditions\cite{Zhou2021Bio-Inspired,Gabriel2020Modeling}. The decisive requirement is therefore an airtight seal between the cup lip and the
-workpiece surface, which restricts applicable surfaces to regions that are sufficiently smooth, non-porous and locally flat or only moderately curved
-relative to the compliance of the cup.
+where $\Delta p$ is the pressure difference between the evacuated cup volume and the
+ambient atmosphere, bounded above by the atmospheric pressure $p_{\mathrm{atm}}$ since
+a perfect vacuum cannot be exceeded, $A_{\mathrm{seal}}$ is the effective sealed area
+enclosed by the cup lip, and $S \geq 1$ is a safety factor accounting for acceleration,
+orientation and friction conditions\cite{Zhou2021Bio-Inspired,Gabriel2020Modeling}.
+The holding force is strictly positive for any non-vanishing pressure difference acting
+on a non-degenerate sealed area. The decisive requirement is therefore an airtight seal
+between the cup lip and the workpiece surface, which restricts applicable surfaces to
+regions that are sufficiently smooth, non-porous and locally flat or only moderately
+curved relative to the compliance of the cup.
 
 Practical implementations frequently use several cups arranged on a common mounting plate. Distributing the load over multiple cups increases the
 total holding force, provides redundancy if individual cups fail to seal, and, most importantly for handling, generates a resistance to tilting
@@ -101,7 +113,27 @@ geodesic distance describes the minimum angular rotation required to transform o
 rotation space. The mean of these pairwise angular distances is normalized by the maximum possible angular distance of $180^\circ$, resulting in a
 diversity score between zero and one. A score close to zero indicates that the grasp orientations are similar, whereas larger values indicate greater
 average angular separation and thus higher orientational diversity. This measure enables the assessment of how broadly candidate grasps cover
-different orientations, supporting the selection of diverse grasp configurations\cite{Kleeberger, Xu2022Planar}.
+different orientations, supporting the selection of diverse grasp configurations.
+\begin{equation}
+    \begin{gathered}
+        D_{\mathrm{rot}}\bigl(\{\mathbf{R}_i\}_{i=1}^{n}\bigr)
+        =
+        \frac{1}{180^\circ}\,
+        \frac{1}{n(n-1)}
+        \sum_{\substack{i,j=1 \\ i \neq j}}^{n}
+        d_{\mathrm{geo}}(\mathbf{R}_i, \mathbf{R}_j), \\[4pt]
+        \mathbf{R}_i \in SO(3),\quad
+        d_{\mathrm{geo}} : SO(3) \times SO(3) \rightarrow [0^\circ,\, 180^\circ],\quad
+        D_{\mathrm{rot}} \in [0,\,1]
+    \end{gathered}
+\end{equation}
+
+where $\mathbf{R}_i$ is the rotation matrix of the $i$-th grasp orientation and
+$d_{\mathrm{geo}}$ the geodesic distance on $SO(3)$, i.e. the minimum angular rotation
+required to transform one orientation into the other. Normalization by the maximum
+possible angular distance of $180^\circ$ yields a score bounded by $[0,1]$, where values close
+to zero indicate near-identical orientations and larger values indicate greater average
+angular separation\cite{Huynh2009, anowar2021conceptual}.
 
 \paragraph{Spatial Diversity via Mean Pairwise Euclidean Distance.}
 The spatial spread of a set of grasps can be quantified using the mean pairwise Euclidean distance between grasp positions in three-dimensional space.
@@ -110,41 +142,36 @@ Euclidean norm of the axis-aligned bounding-box side lengths:
 %
 \begin{equation}
     s = \lVert \mathbf{e} \rVert_2,
+    \qquad
+    \mathbf{e} \in \mathbb{R}^{3}_{>0},\quad
+    s \in \mathbb{R}_{>0}
 \end{equation}
 %
-where \(\mathbf{e} \in \mathbb{R}^3\) contains the side lengths of the bounding box. The normalized spatial diversity is then defined as
+where \(\mathbf{e}\) contains the side lengths of the bounding box. The normalized spatial diversity is then defined as
 %
 \begin{equation}
-    D_{\mathrm{pos}}(\{\mathbf{y}_i\}_{i=1}^{n})
-    =
-    \frac{1}{s}
-    \frac{1}{n(n-1)}
-    \sum_{\substack{i,j=1 \\ i \neq j}}^{n}
-    \lVert \mathbf{y}_i - \mathbf{y}_j \rVert_2,
+    \begin{gathered}
+        D_{\mathrm{pos}}\bigl(\{\mathbf{y}_i\}_{i=1}^{n}\bigr)
+        =
+        \frac{1}{s}\,
+        \frac{1}{n(n-1)}
+        \sum_{\substack{i,j=1 \\ i \neq j}}^{n}
+        \lVert \mathbf{y}_i - \mathbf{y}_j \rVert_2, \\[4pt]
+        \mathbf{y}_i \in \mathbb{R}^{3},\quad
+        i,j \in \{1,\ldots,n\},\quad
+        n \in \mathbb{N},\; n \geq 2,\quad
+        s \in \mathbb{R}_{>0},\quad
+        D_{\mathrm{pos}} \in [0,\,1]
+    \end{gathered}
 \end{equation}
 %
-where \(\mathbf{y}_i \in \mathbb{R}^3\) denotes the position of the \(i\)-th grasp contact point, and \(n \geq 2\) is the total number of grasps
-considered. Normalization by \(s\) makes the metric scale-invariant, allowing diversity values to be compared across workpieces of different sizes.
-This measure complements the geodesic measure by capturing absolute spatial separation rather than surface-constrained distance.
-
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.8\textwidth]
-        {fig/th_bg/Geodesic_vs_Euclidean_distance.png}
-    \captionof{figure}{Geodesic versus Euclidean distance between grasp locations
-    on an object surface.\cite{hou2022dimensionality}}
-    \label{fig:geodesic}
-\end{figure}
-
-As illustrated in Figure~\ref{fig:geodesic}, the Euclidean distance between
-surface points \(A\) and \(B\) is the straight-line distance through the
-ambient space, whereas the geodesic distance follows the shortest path
-constrained to the object surface. Consequently, the geodesic distance better
-represents the separation of grasp locations along curved workpiece
-geometries.
-
-
+where $\mathbf{y}_i \in \mathbb{R}^3$ denotes the position of the $i$-th grasp contact point and $n \geq 2$ is the number of grasps considered.
+Normalization by $s$ makes the metric scale-invariant, allowing diversity values to be compared across workpieces of different sizes. Because every
+pairwise distance is bounded by the bounding-box diagonal, $\lVert \mathbf{y}_i - \mathbf{y}_j \rVert_2 \leq s$, the arithmetic mean of these
+distances is likewise bounded by $s$ and therefore $D_{\mathrm{pos}} \in [0, 1]$. The lower limit is attained if and only if all grasp positions
+coincide, while the upper limit requires every pair of grasps to lie at diagonal distance and is thus only reachable for $n = 2$ at opposite corners
+of the bounding box. For $n \geq 3$ the attainable values are strictly smaller, so even well-distributed grasp sets are not expected to approach
+unity. This measure complements the geodesic measure by capturing absolute spatial separation rather than surface-constrained distance.
 
 \subsubsection{Multi Finger Grippers}
 \label{subsubsec:multi_finger_grippers}
@@ -253,8 +280,16 @@ Multi-objective optimization (MOO) refers to the simultaneous optimization of tw
 space\cite{Deb2011Multi-objective}. Formally, a multi-objective minimization problem is defined as
 
 \begin{equation}
-    \min_{\mathbf{x} \in \mathcal{X}} \mathbf{f}(\mathbf{x}) =
-    \bigl(f_1(\mathbf{x}),\, f_2(\mathbf{x}),\, \ldots,\, f_k(\mathbf{x})\bigr)
+    \begin{gathered}
+        \min_{\mathbf{x} \in \mathcal{X}} \mathbf{f}(\mathbf{x}) =
+        \bigl(f_1(\mathbf{x}),\, f_2(\mathbf{x}),\, \ldots,\, f_k(\mathbf{x})\bigr), \\[4pt]
+        \mathbf{x} \in \mathcal{X} \subseteq \mathbb{R}^{d},\quad
+        d \in \mathbb{N},\quad
+        f_i : \mathcal{X} \rightarrow \mathbb{R},\quad
+        i \in \{1,\ldots,k\},\quad
+        k \in \mathbb{N},\; k \geq 2,\quad
+        \mathbf{f}(\mathbf{x}) \in \mathbb{R}^{k}
+    \end{gathered}
 \end{equation}
 
 where $\mathbf{x}$ is the decision variable vector, $\mathcal{X}$ is the feasible decision space, and $k \geq 2$ is the number of objectives. When
@@ -269,11 +304,13 @@ The concept of Pareto optimality provides the theoretical foundation for compari
 $\mathbf{x}^{(a)}$ is said to \emph{dominate} $\mathbf{x}^{(b)}$, written $\mathbf{x}^{(a)} \prec \mathbf{x}^{(b)}$, if and only if
 
 \begin{equation}
-    f_i(\mathbf{x}^{(a)}) \leq f_i(\mathbf{x}^{(b)}) \quad \forall\, i \in
-    \{1,\ldots,k\}
-    \quad \text{and} \quad
-    f_j(\mathbf{x}^{(a)}) < f_j(\mathbf{x}^{(b)}) \quad \text{for at least
-    one } j
+    \begin{gathered}
+        f_i(\mathbf{x}^{(a)}) \leq f_i(\mathbf{x}^{(b)}) \quad \forall\, i \in \{1,\ldots,k\}
+        \quad \text{and} \quad
+        f_j(\mathbf{x}^{(a)}) < f_j(\mathbf{x}^{(b)}) \quad \text{for at least one } j \in \{1,\ldots,k\}, \\[4pt]
+        \mathbf{x}^{(a)},\, \mathbf{x}^{(b)} \in \mathcal{X},\quad
+        k \in \mathbb{N},\; k \geq 2
+    \end{gathered}
 \end{equation}
 
 A solution is called \emph{Pareto optimal} if no other feasible solution dominates it. The set of all Pareto-optimal solutions in the decision space
@@ -329,6 +366,19 @@ typically crossover, which recombines pairs of existing solutions, and mutation,
 retains the most promising individuals for the next generation based on their objective values. This loop continues until a termination criterion is
 met, such as a maximum number of function evaluations or convergence of the population\cite{Abulail2025Enhanced}.
 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/th_bg/Evolutionary_flowchart.png}
+    \caption{The evolutionary cycle, basic working scheme of all EAs \cite{Evolutionary_Algos}.}
+    \label{fig:evolutionary_flowchart}
+\end{figure}
+
+Figure~\ref{fig:evolutionary_flowchart} shows the basic working scheme shared by all EAs. After
+initialization and evaluation of the initial population, the algorithm iteratively
+applies mating selection, recombination (crossover), mutation, evaluation of the
+offspring, and environmental selection (replacement), until a termination criterion
+is satisfied
+
 EAs are well suited to black-box multi-objective optimization because they require no gradient information, naturally maintain a diverse population of
 trade-off solutions, and are robust to noisy or discontinuous objective landscapes. Multi-objective evolutionary algorithms (MOEAs) extend the basic
 EA framework with selection mechanisms based on Pareto dominance or decomposition, enabling them to approximate the Pareto front in a single
@@ -346,10 +396,16 @@ surrogate concentrates the sampling effort on informative regions, BO typically 
 which makes it attractive whenever the evaluation budget is the limiting factor.
 
 \paragraph{Gaussian Process Surrogates.}
-A Gaussian process defines a distribution over functions and is fully specified by a mean function $m(\mathbf{x})$ and a covariance or kernel function
-$k(\mathbf{x}, \mathbf{x}')$, written as $f(\mathbf{x}) \sim \mathcal{GP}\bigl(m(\mathbf{x}),\, k(\mathbf{x}, \mathbf{x}')\bigr)$. Conditioning the
-prior on the observed data set $\mathcal{D} = \{(\mathbf{x}_i, y_i)\}_{i=1}^{n}$ yields a posterior that is again Gaussian, with closed-form
-predictive mean $\mu(\mathbf{x})$ and predictive variance $\sigma^2(\mathbf{x})$ at any query point\cite{Pawar2021Optimizing}. The kernel encodes the
+A Gaussian process defines a distribution over functions and is fully specified by a mean
+function $m(\mathbf{x})$ and a positive semi-definite covariance or kernel function
+$\kappa(\mathbf{x}, \mathbf{x}')$, written as
+$f(\mathbf{x}) \sim \mathcal{GP}\bigl(m(\mathbf{x}),\, \kappa(\mathbf{x}, \mathbf{x}')\bigr)$.
+Conditioning the prior on the observed data set
+$\mathcal{D} = \{(\mathbf{x}_i, y_i)\}_{i=1}^{n_{\mathrm{obs}}}$, where $y_i \in \mathbb{R}$
+is the response measured at $\mathbf{x}_i$ and $n_{\mathrm{obs}}$ the number of
+evaluations performed so far, yields a posterior that is again Gaussian, with closed-form
+predictive mean $\mu(\mathbf{x})$ and non-negative predictive variance
+$\sigma^2(\mathbf{x})$ at any query point\cite{Pawar2021Optimizing}. The kernel encodes the
 assumed smoothness and length scale of the underlying function, with the Mat\'ern and squared exponential kernels being the most common choices, and its
 hyperparameters are estimated by maximizing the marginal likelihood\cite{Pawar2021Optimizing}. An additional noise term accounts for stochastic or
 numerically imprecise evaluations\cite{Binois2021A}. The main limitations of GP surrogates are the cubic scaling of exact inference with the number of
@@ -374,11 +430,20 @@ The acquisition function converts the posterior of the surrogate into a scalar u
 improvement (EI) measures the expected amount by which a candidate improves on the best observed value,
 
 \begin{equation}
-    \alpha_{\mathrm{EI}}(\mathbf{x}) =
-    \mathbb{E}\bigl[\max\bigl(f_{\min} - f(\mathbf{x}),\, 0\bigr)\bigr]
+    \begin{gathered}
+        \alpha_{\mathrm{EI}}(\mathbf{x}) =
+        \mathbb{E}\bigl[\max\bigl(f_{\min} - f(\mathbf{x}),\, 0\bigr)\bigr], \\[4pt]
+        \mathbf{x} \in \mathcal{X} \subseteq \mathbb{R}^{d},\quad
+        f_{\min} = \min_{i \in \{1,\ldots,n_{\mathrm{obs}}\}} y_i \in \mathbb{R},\quad
+        \alpha_{\mathrm{EI}} : \mathcal{X} \rightarrow \mathbb{R}_{\geq 0}
+    \end{gathered}
 \end{equation}
 
-and admits a closed-form expression for a Gaussian posterior\cite{Binois2021A, olson2025ax}. 
+where $\mathbb{E}[\cdot]$ denotes the expectation taken with respect to the posterior of
+the surrogate at $\mathbf{x}$ and $f_{\min}$ is the best objective value observed so far.
+Truncating the improvement at zero renders the acquisition non-negative, so that
+candidates which are not expected to improve on the incumbent receive zero utility. The
+expression admits a closed form for a Gaussian posterior\cite{Binois2021A, olson2025ax}.
 
 \begin{figure}[htbp]
     \centering
@@ -415,17 +480,28 @@ The \emph{hypervolume} indicator (HV) measures the volume of the objective space
 point $\mathbf{r}$,
 
 \begin{equation}
-    \mathrm{HV}(A, \mathbf{r}) =
-    \lambda \Bigl(
-        \bigcup_{\mathbf{a} \in A}
-        \bigl[\mathbf{f}(\mathbf{a}),\, \mathbf{r}\bigr]
-    \Bigr)
+    \begin{gathered}
+        \mathrm{HV}(A, \mathbf{r}) =
+        \lambda \Bigl(
+            \bigcup_{\mathbf{a} \in A}
+            \bigl[\mathbf{f}(\mathbf{a}),\, \mathbf{r}\bigr]
+        \Bigr), \\[4pt]
+        A \subset \mathcal{X},\; |A| < \infty,\quad
+        \mathbf{r} \in \mathbb{R}^{k} \ \text{with} \ f_i(\mathbf{a}) \leq r_i \ \forall\, \mathbf{a} \in A,\, i \in \{1,\ldots,k\}, \\[4pt]
+        \lambda : \mathcal{B}(\mathbb{R}^{k}) \rightarrow \mathbb{R}_{\geq 0} \ \text{(Lebesgue measure)},\quad
+        \mathrm{HV} \in \mathbb{R}_{\geq 0}
+    \end{gathered}
 \end{equation}
 
-where $\lambda$ denotes the Lebesgue measure\cite{Audet2018Performance,Cai2020A}. The hypervolume is the most widely used indicator because it is
-Pareto compliant, meaning that a strictly dominating set never receives a worse value, and because it requires no knowledge of the true Pareto
-front\cite{Guerreiro2020}. Its drawbacks are the growth of its computational cost with the number of objectives and its sensitivity to the choice of
-the reference point\cite{Guerreiro2020, Audet2018Performance}.
+where $\lambda$ denotes the Lebesgue measure on the Borel sets $\mathcal{B}(\mathbb{R}^k)$
+and $A$ is the finite approximation set returned by the
+optimizer\cite{Audet2018Performance,Cai2020A}. The reference point $\mathbf{r}$ must be
+dominated by every member of $A$, that is $f_i(\mathbf{a}) \leq r_i$ for all
+$\mathbf{a} \in A$ and all $i$, so that each box $[\mathbf{f}(\mathbf{a}), \mathbf{r}]$ is
+non-empty and the indicator is well defined and non-negative. The hypervolume is the most
+widely used indicator because it is Pareto compliant, meaning that a strictly dominating
+set never receives a worse value, and because it requires no knowledge of the true Pareto
+front\cite{Guerreiro2020, Audet2018Performance}.
 
 \begin{figure}[htbp]
     \centering
@@ -513,3 +589,69 @@ introduces a competitive mechanism in which particles compete in pairs within th
 the winning particle rather than from a fixed global best. An external archive of non-dominated solutions is maintained to provide guidance and
 preserve diversity across the Pareto front. This competitive selection strategy avoids premature convergence to a single region of the Pareto front
 and has been shown to achieve fast convergence while remaining competitive with dominance-based MOEAs on standard benchmark problems\cite{cmopso}.
+
+
+
+
+%-------------------------------------------------------------------
+\begin{nomenclature}
+% Suction Cup Grippers
+\nomenclature{$F_{\mathrm{hold}}$}{Holding force}
+\nomenclature{$\Delta p$}{Pressure difference}
+\nomenclature{$p_{\mathrm{atm}}$}{Atmospheric pressure}
+\nomenclature{$A_{\mathrm{seal}}$}{Effective sealed area}
+\nomenclature{$S$}{Safety factor}
+
+% Grasp Diversity
+\nomenclature{$s$}{Characteristic object scale (bounding-box diagonal)}
+\nomenclature{$\mathbf{e}$}{Bounding-box side lengths}
+\nomenclature{$e_i$}{$i$-th bounding-box side length}
+\nomenclature{$\mathbf{y}_i$}{Position of the $i$-th grasp contact point}
+\nomenclature{$n$}{Number of grasps in the considered set}
+\nomenclature{$D_{\mathrm{pos}}$}{Normalized spatial diversity}
+\nomenclature{$D_{\mathrm{rot}}$}{Normalized orientational diversity}
+\nomenclature{$\mathbf{R}_i$}{Rotation matrix of the $i$-th grasp orientation}
+\nomenclature{$d_{\mathrm{geo}}$}{Geodesic distance on $SO(3)$}
+\nomenclature{$SO(3)$}{Special orthogonal group of 3D rotations}
+
+% Contour Representation
+\nomenclature{$\mathbf{P}_i$}{Spline interpolation point}
+\nomenclature{$m$}{Number of spline interpolation points}
+
+% Multi-Objective Optimization
+\nomenclature{$\mathbf{x}$}{Decision variable vector}
+\nomenclature{$\mathcal{X}$}{Feasible decision space}
+\nomenclature{$d$}{Number of decision variables}
+\nomenclature{$k$}{Number of objectives}
+\nomenclature{$\mathbf{f}(\mathbf{x})$}{Objective function vector}
+\nomenclature{$f_i(\mathbf{x})$}{Individual objective function}
+
+% Pareto Optimality
+\nomenclature{$\mathbf{x}^{(a)} \prec \mathbf{x}^{(b)}$}{Dominance relation (solution $a$ dominates $b$)}
+
+% Gaussian Process Surrogates
+\nomenclature{$\mathcal{GP}$}{Gaussian process}
+\nomenclature{$m(\mathbf{x})$}{Mean function}
+\nomenclature{$\kappa(\mathbf{x}, \mathbf{x}')$}{Covariance/kernel function}
+\nomenclature{$\mathcal{D}$}{Observed data set}
+\nomenclature{$y_i$}{Observed objective value at $\mathbf{x}_i$}
+\nomenclature{$n_{\mathrm{obs}}$}{Number of observations}
+\nomenclature{$\mu(\mathbf{x})$}{Predictive mean}
+\nomenclature{$\sigma^2(\mathbf{x})$}{Predictive variance}
+
+% Acquisition Functions
+\nomenclature{$\alpha_{\mathrm{EI}}(\mathbf{x})$}{Expected improvement acquisition}
+\nomenclature{$f_{\min}$}{Best observed objective value}
+\nomenclature{$\mathbb{E}[\cdot]$}{Expectation operator}
+
+% Performance Indicators
+\nomenclature{$\mathrm{HV}(A, \mathbf{r})$}{Hypervolume indicator}
+\nomenclature{$A$}{Approximation set}
+\nomenclature{$\mathbf{r}$}{Reference point}
+\nomenclature{$\lambda$}{Lebesgue measure}
+\nomenclature{$\mathcal{B}(\mathbb{R}^k)$}{Borel $\sigma$-algebra on $\mathbb{R}^k$}
+
+% Evolutionary Algorithms
+\nomenclature{$N$}{Population size}
+\nomenclature{$\mathcal{O}(kN^2)$}{Computational complexity}
+\end{nomenclature}

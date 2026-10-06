@@ -1,62 +1,58 @@
 \section{Problem Definition}
 \label{sec:goals_tasks}
-Designing grippers for a given set of workpieces is still largely a manual, experience-driven task, in which geometric parameters such as suction-cup
-placement or finger contours are chosen iteratively and validated in simulation or on hardware\cite{Liu2022Simulation}. Because grasp quality can only
-be assessed through a simulation or geometric evaluation routine, no analytical gradients or closed-form objective expressions are available, and each
-evaluation is comparatively expensive\cite{Santoni2023Comparison}. Moreover, a single gripper usually has to handle several workpieces at once, so the
-design criteria are inherently conflicting and cannot be reduced to a single scalar quality measure without losing information about the available
-trade-offs. These properties of expensive, derivative-free, multi-objective evaluations place gripper design squarely in the domain of black-box
-multi-objective optimization\cite{Mueller2017SOCEMO}. Which class of optimization algorithm is best suited for such problems, however, remains an open
-question, as performance is known to depend strongly on the number of objectives, the shape of the objective landscape, and the available evaluation
-budget\cite{Santoni2023Comparison, Raponi2023Optimizing}.
 
-The primary goal of this thesis is to apply and comparatively evaluate optimization algorithms spanning evolutionary multi-objective methods and
-Bayesian optimization for solving gripper configuration problems formulated as black-box multi-objective optimization
-tasks\cite{Datta2011Optimizing,Belakaria2020Uncertainty-Aware}. The two gripper types, a multi-suction-cup gripper and a two-finger gripper, serve as
-well-defined benchmark problems on which the algorithms are systematically compared with respect to solution quality, convergence behaviour, and
-robustness.
+The design of task-specific robotic grippers remains largely a manual and experience-driven process. Geometric parameters, such as the placement of
+suction cups or the contour of gripper jaws, are commonly selected iteratively and subsequently validated through simulation, geometric evaluation,
+or physical experiments \cite{Liu2022Simulation}. This procedure can become time-consuming when many possible configurations must be considered.
 
-To provide a rigorous and reproducible basis for this comparison, two gripper configuration problems are formulated as well-defined multi-objective
-optimization tasks. In both cases, a diverse set of workpieces is incorporated directly into the problem formulation by treating each workpiece as a
-separate objective. This design choice ensures that the optimized gripper configurations are not tailored to a single
-geometry, but are instead robust across a range of workpiece shapes. It also increases the dimensionality of the objective space as the number of
-workpieces grows, allowing the benchmarking study to probe algorithm behaviour under varying levels of problem complexity\cite{Guo2022Evolutionary}.
+For the gripper-design problems investigated in this thesis, the performance of a candidate configuration is determined by computational evaluation
+routines. These routines do not provide analytical gradients or closed-form expressions that directly relate the design parameters to the resulting
+performance. Furthermore, a gripper design must generally satisfy several criteria simultaneously, for example by performing across multiple
+workpieces, grasp locations, or geometric requirements. Improvements with respect to one criterion may reduce performance with respect to another.
+Representing all criteria by a single aggregated value could hide these trade-offs.
 
-For the \textbf{multi-suction-cup gripper}, the objectives consist of the geometric stability of the suction base together with the grasp diversity
-evaluated independently for each workpiece. These objectives are inherently conflicting: a larger suction base improves stability but increases the
-risk of collisions with the workpiece, reducing the number of feasible grasps.
+These characteristics lead to expensive, derivative-free, multi-objective black-box optimization problems \cite{Mueller2017SOCEMO}. A variety of
+optimization approaches can be applied to such problems, including evolutionary multi-objective algorithms and Bayesian optimization methods.
+However, their performance depends on factors such as the problem representation, number of objectives, objective landscape, and available
+evaluation budget \cite{Santoni2023Comparison,Raponi2023Optimizing}. Consequently, results obtained for generic test problems or other applications
+cannot necessarily be transferred directly to task-specific gripper design.
 
-For the \textbf{two-finger gripper}, a fixed number of grasp points is defined for each workpiece, and the Objectives are computed from the conformance of the
-finger contour to the corresponding workpiece section at each grasp point. A finger contour that scores well at all grasp points simultaneously must
-therefore generalize across diverse geometric profiles, which makes the problem increasingly challenging as the number of grasp points grows.
+The primary goal of this thesis is therefore to apply and comparatively evaluate selected evolutionary and Bayesian multi-objective optimization
+methods for automated gripper configuration. Two application cases are considered: the
+configuration of a multi-suction-cup gripper and the optimization of rigid jaw contours for a two-finger gripper. In the first case, the positions of
+the suction cups are optimized to obtain layouts that perform across a given set of workpieces. In the second case, spline-based jaw contours are
+optimized to provide suitable geometric conformity at predefined grasp points. The two cases provide different geometric representations and
+objective structures through which the behaviour of the selected optimization algorithms can be investigated.
 
-Together, these two problems provide a structured experimental basis for comparing optimization algorithms across varying objective space
-dimensionalities and objective landscape characteristics, within the practically relevant domain of robotic gripper design.
+The objective is not to identify a universally superior optimization algorithm. Instead, the thesis examines how the selected methods perform on the
+two specific gripper-design problems under comparable experimental conditions. The comparison considers the quality of the obtained
+multi-objective solutions, their development over the available evaluation budget, and the consistency of the results across repeated runs.
 
 To achieve this goal, the following tasks are defined:
 
 \begin{itemize}
 
-    \item \textbf{Problem formulation:} Formulation of both gripper configuration problems as multi-objective optimization problems, including the
-    definition of decision variables, objective functions, and constraints.
+    \item \textbf{Problem formulation:}
+    Formulate the multi-suction and two-finger gripper configuration problems as multi-objective black-box optimization tasks by specifying their
+    decision variables, objectives, and applicable constraints.
+
+    \item \textbf{Framework integration:}
+    Establish a common optimization interface through which the selected algorithms can access both gripper-evaluation pipelines under consistent
+    conditions.
+
+    \item \textbf{Evaluation preparation:}
+    Integrate and adapt the problem-specific evaluation procedures required to assess candidate suction-cup layouts and rigid jaw contours.
+
+    \item \textbf{Experimental design:}
+    Define representative workpieces, predefined evaluation configurations, evaluation budgets, initialization conditions, repeated runs, and
+    performance indicators for a controlled and reproducible comparison.
+
+    \item \textbf{Algorithm application and comparison:}
+    Apply selected evolutionary and Bayesian multi-objective optimization methods to both gripper-design problems and compare their performance using
+    suitable multi-objective indicators.
+
+    \item \textbf{Result analysis:}
+    Analyze the obtained results with respect to solution quality, convergence behaviour, robustness across repeated runs, and sensitivity to the
+    characteristics of the investigated gripper-design problems.
     
-    \item \textbf{Optimization framework implementation:} Implementation of a generalized optimization framework capable of handling multi-objective
-    problems of varying dimensionality and interfacing with both evaluation pipelines through a unified black-box interface.
-
-    \item \textbf{Evaluation pipeline development:} Development of dedicated black-box evaluation pipelines for each gripper type, capable of
-    assessing grasp quality given a gripper configuration and a target workpiece, and of serving as the objective function interface for all
-    optimization algorithms.
-    
-    \item \textbf{Workpiece selection and experimental coverage:} Selection of a diverse set of workpieces spanning a range of geometric properties
-    including varying surface curvatures, sizes, and shapes to ensure that algorithm comparisons are not biased towards a specific object geometry.
-    Workpiece diversity is treated as a deliberate experimental design choice to expose differences in algorithm robustness and generalization across
-    objective landscapes of varying complexity.
-
-    \item \textbf{Algorithm application and comparison:} Application and systematic comparison of a selected set of multi-objective optimization
-    algorithms drawn from the available literature \cite{pymoo, olson2025ax, botorch}, evaluated under controlled experimental conditions using
-    well-defined performance indicators across both gripper types and workpieces\cite{Audet2018Performance}.
-
-    \item \textbf{Result analysis:} Analysis and interpretation of algorithm performance across both gripper types and all workpieces, with particular
-    focus on convergence behaviour, Pareto front quality, and the sensitivity of algorithm rankings to workpiece geometry and objective space
-    dimensionality.
 \end{itemize}

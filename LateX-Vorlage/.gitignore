@@ -1,0 +1,26 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.nlo
+*.nls
+*.ilg
+*.out
+*.dvi
+*.ps
+*.fls
+*.fdb_latexmk
+
+
+# Backup files
+*.bak
+*.undo
+*~
+
+# IDE/Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
