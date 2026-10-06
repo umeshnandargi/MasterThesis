@@ -29,7 +29,7 @@ $\alpha_1,\alpha_2,\alpha_3$:
 \begin{equation}
     \mathbf{q} = [r,\alpha_1,\alpha_2,\alpha_3]
 \end{equation}
-\nomenclature{$\mathbf{q}$}{Reduced decision variable vector defining the suction cup layout}
+\nomenclature{$\mathbf{q}$}{Reduced decision variable vector defining the suction cup layout (see also $\mathbf{x}$ for generic decision variables)}
 \nomenclature{$r$}{Common radial distance of the suction cups from the gripper center}
 \nomenclature{$\alpha_i$}{Angular position of the $i$-th suction cup on the circle}
 
@@ -52,8 +52,7 @@ The resulting Cartesian gripper configuration is written as
 \begin{equation}
     \mathbf{p} = [\mathbf{c}_1,\mathbf{c}_2,\mathbf{c}_3].
 \end{equation}
-\nomenclature{$\mathbf{p}$}{Cartesian suction cup configuration derived from the reduced
-parameterization}
+\nomenclature{$\mathbf{p}$}{Cartesian suction cup configuration derived from the reduced parameterization (see also $\mathbf{x}$ for generic decision variables)}
 
 Thus, the optimization is carried out in the reduced 4-dimensional parameter space $\mathbf{q}$,
 while the grasp evaluation operates on the derived Cartesian coordinates $\mathbf{p}$.
@@ -90,8 +89,8 @@ and the common radius is bounded by
 \begin{equation}
     r \in [r_{\min},r_{\max}].
 \end{equation}
-\nomenclature{$r_{\min}$}{Lower bound on the common suction cup radius}
-\nomenclature{$r_{\max}$}{Upper bound on the common suction cup radius}
+\nomenclature{$r_{\min}$}{Lower bound on the common suction cup radius (see also $\mathcal{X}$ for decision space bounds)}
+\nomenclature{$r_{\max}$}{Upper bound on the common suction cup radius (see also $\mathcal{X}$ for decision space bounds)}
 
 The upper bound $r_{\max}$ is determined from the bounding box of the largest workpiece considered
 during optimization, ensuring that the gripper footprint remains compatible with the object
@@ -143,9 +142,9 @@ maximum requested number of Bayesian evaluations is therefore
     E_{\max}^{\mathrm{BO}} = B_{\max}b.
 \end{equation}
 The actual number may be smaller if Ax returns fewer than $b$ candidates in a particular batch.
-\nomenclature{$B_{\max}$}{Maximum number of Bayesian optimization batches}
-\nomenclature{$b$}{Maximum number of Bayesian candidates requested per batch}
-\nomenclature{$E_{\max}^{\mathrm{BO}}$}{Maximum requested number of Bayesian objective evaluations}
+\nomenclature{$B_{\max}$}{Maximum number of Bayesian optimization batches (see also $B_{\max}$ in two-finger optimization)}
+\nomenclature{$b$}{Maximum number of Bayesian candidates requested per batch (see also $b$ in two-finger optimization)}
+\nomenclature{$E_{\max}^{\mathrm{BO}}$}{Maximum requested number of Bayesian objective evaluations (see also $E_{\max}^{\mathrm{BO}}$ in two-finger optimization)}
 
 \subsubsection{Supported Optimization Methods}
 
@@ -177,8 +176,8 @@ reference directions are generated using the method of Das and Dennis~\cite{das_
     \texttt{get\_reference\_directions}
     (\text{``das-dennis''},\; n_{\text{obj}},\; n_{\text{partitions}}).
 \end{equation}
-\nomenclature{$\Lambda$}{Set of reference directions for decomposition-based algorithms}
-\nomenclature{$n_{\text{obj}}$}{Number of objectives}
+\nomenclature{$\Lambda$}{Set of reference directions for decomposition-based algorithms (see also $\Lambda$ in two-finger optimization)}
+\nomenclature{$n_{\text{obj}}$}{Number of objectives (see also $n_{\text{obj}}$ in two-finger optimization)}
 
 The Bayesian implementation uses the default Ax generation strategy identified at runtime as
 \texttt{Center+Sobol+MBM:fast}. This strategy consists of three stages:
@@ -210,8 +209,8 @@ sampling the reduced decision variables within their bounds:
     =
     \{\mathbf{q}_1,\mathbf{q}_2,\dots,\mathbf{q}_N\}.
 \end{equation}
-\nomenclature{$\mathcal{P}^{(0)}$}{Initial population of candidate decision vectors}
-\nomenclature{$N$}{Population size}
+\nomenclature{$\mathcal{P}^{(0)}$}{Initial population of candidate decision vectors (see also $\mathcal{P}^{(0)}$ in two-finger optimization)}
+\nomenclature{$N$}{Population size (see also $N$ in two-finger optimization)}
 
 Each candidate decision vector $\mathbf{q}_k$ is transformed into its corresponding Cartesian
 gripper configuration $\mathbf{p}_k$ before objective evaluation.
@@ -227,8 +226,7 @@ completed trials:
     \right\}_{k=1}^{t},
 \end{equation}
 where $\mathbf{q}_k$ is an evaluated gripper parameterization and $\mathbf{g}(\mathbf{q}_k)$ is its
-observed objective vector. \nomenclature{$\mathcal{D}_t$}{Dataset of completed Bayesian optimization
-trials after $t$ evaluations}
+observed objective vector. \nomenclature{$\mathcal{D}_t$}{Dataset of completed Bayesian optimization trials after $t$ evaluations (see also $\mathcal{D}_t$ in two-finger optimization)}
 
 The Ax generation strategy first evaluates the center of the search space and then generates an
 initial set of candidates using Sobol quasi-random sampling. Sobol sampling provides broad coverage
@@ -254,8 +252,7 @@ This process can be written as
     [f_1(\mathbf{p}),\; f_2(\mathbf{p})].
 \end{equation}
 where $T(\cdot)$ denotes the transformation from the reduced parameterization to Cartesian suction
-cup coordinates. \nomenclature{$T(\mathbf{q})$}{Transformation from reduced decision variables to
-Cartesian suction cup coordinates}
+cup coordinates. \nomenclature{$T(\mathbf{q})$}{Transformation from reduced decision variables to Cartesian suction cup coordinates}
 
 In the implementation, this transformation is carried out programmatically in the evaluation
 pipeline before grasp generation and objective computation. For a candidate radius and list of
@@ -299,8 +296,8 @@ the following procedure.
     all three suction cups form a sufficient seal. The candidate is then checked for collisions in
     simulation, and only collision-free candidates are retained as valid grasps.
     \nomenclature{$\mathbf{p}$}{Cartesian gripper configuration defined by the three suction cup
-    contact positions} \nomenclature{$\mathbf{c}_i$}{Cartesian contact position of suction cup $i$,
-    with $i \in \{1,2,3\}$}
+    contact positions (see also $\mathbf{p}$ for Cartesian suction cup configuration)}
+    \nomenclature{$\mathbf{c}_i$}{Cartesian contact position of suction cup $i$, with $i \in \{1,2,3\}$ (see also $\mathbf{c}_i$ for suction cup positions)}
 
     \item \textbf{Clustering of Grasps}
 
@@ -343,12 +340,13 @@ the following procedure.
         \mathcal{G}_{\mathrm{clustered}} \subseteq \mathcal{G}_{\mathrm{valid}}
     \end{equation}
     is then used for diversity evaluation. \nomenclature{$\mathcal{G}_{\mathrm{clustered}}$}{Reduced
-    clustered grasp set used for diversity evaluation}
+    clustered grasp set used for diversity evaluation (see also diversity metrics in theoretical background)}
     \nomenclature{$d_{\mathrm{pos}}(i,j)$}{Pairwise translational distance between grasp poses $i$
-    and $j$} \nomenclature{$d_{\mathrm{ori}}(i,j)$}{Pairwise orientation distance between grasp
-    poses $i$ and $j$} \nomenclature{$\delta_{\mathrm{intra}}$}{Spatial threshold for selecting
-    additional local representatives} \nomenclature{$q_{\mathrm{intra}}$}{Maximum number of local
-    orientation-diverse representatives}
+    and $j$ (see also $D_{\mathrm{pos}}$ for spatial diversity)} \nomenclature{$d_{\mathrm{ori}}(i,j)$}{Pairwise orientation distance between grasp
+    poses $i$ and $j$ (see also $D_{\mathrm{rot}}$ for orientation diversity)} \nomenclature{$\delta_{\mathrm{intra}}$}{Spatial threshold for selecting
+    additional local representatives (see also clustering procedure)}
+    \nomenclature{$q_{\mathrm{intra}}$}{Maximum number of local
+    orientation-diverse representatives (see also clustering procedure)}
 
     \item \textbf{Triangle Area Calculation}
 
@@ -365,7 +363,7 @@ the following procedure.
 
     This objective favors gripper layouts with a wider support polygon, which is associated with
     improved grasp stability. \nomenclature{$A(\mathbf{p})$}{Area of the triangle formed by the
-    three suction cups}
+    three suction cups (see also triangle area for grasp stability)}
 
 
 \item \textbf{Diversity Metric Calculation}
@@ -397,9 +395,9 @@ as the Euclidean norm of the axis-aligned bounding-box extents:
     s = \|\mathbf{e}\|_2,
 \end{equation}
 where $\mathbf{e} \in \mathbb{R}^3$ contains the bounding-box side lengths.
-\nomenclature{$s$}{Characteristic object scale derived from the mesh bounding box}
-\nomenclature{$\mathbf{e}$}{Axis-aligned bounding-box side lengths of the object}
-\nomenclature{$\mathbf{y}_i$}{Position of grasp $i$ used in diversity evaluation}
+\nomenclature{$s$}{Characteristic object scale derived from the mesh bounding box (see also $s$ in theoretical background)}
+\nomenclature{$\mathbf{e}$}{Axis-aligned bounding-box side lengths of the object (see also $\mathbf{e}$ in theoretical background)}
+\nomenclature{$\mathbf{y}_i$}{Position of grasp $i$ used in diversity evaluation (see also $\mathbf{y}_i$ in theoretical background)}
 
 The spatial component of diversity is computed as the mean pairwise Euclidean distance between grasp
 positions:
@@ -447,12 +445,12 @@ The final diversity score is computed as the equally weighted combination
         0, 1
     \right).
 \end{equation}
-\nomenclature{$D(\mathbf{p})$}{Diversity metric of the grasp distribution}
-\nomenclature{$D_{\mathrm{pos}}(\mathbf{p})$}{Spatial component of the diversity metric}
-\nomenclature{$D_{\mathrm{rot}}(\mathbf{p})$}{Orientation component of the diversity metric}
-\nomenclature{$d_{\mathrm{geo}}(\mathbf{R}_a,\mathbf{R}_b)$}{Geodesic distance between two grasp
-orientations} \nomenclature{$\Delta\mathbf{R}$}{Relative rotation between two grasp orientations}
-\nomenclature{$n$}{Number of grasps used for diversity evaluation}
+\nomenclature{$D(\mathbf{p})$}{Diversity metric of the grasp distribution (see also $D_{\mathrm{pos}}$, $D_{\mathrm{rot}}$ in theoretical background)}
+\nomenclature{$D_{\mathrm{pos}}(\mathbf{p})$}{Spatial component of the diversity metric (see also $D_{\mathrm{pos}}$ in theoretical background)}
+\nomenclature{$D_{\mathrm{rot}}(\mathbf{p})$}{Orientation component of the diversity metric (see also $D_{\mathrm{rot}}$ in theoretical background)}
+\nomenclature{$d_{\mathrm{geo}}(\mathbf{R}_a,\mathbf{R}_b)$}{Geodesic distance between two grasp orientations (see also $d_{\mathrm{geo}}$ in theoretical background)}
+\nomenclature{$\Delta\mathbf{R}$}{Relative rotation between two grasp orientations}
+\nomenclature{$n$}{Number of grasps used for diversity evaluation (see also $n$ in theoretical background)}
 
 \paragraph{Continuity considerations}
 Clustering is only applied when the number of valid grasps exceeds the predefined threshold
@@ -484,8 +482,9 @@ After grasp evaluation, each candidate layout is assigned the natural objective 
     \qquad
     \mathbf{p}=T(\mathbf{q}).
 \end{equation}
-\nomenclature{$\mathbf{g}(\mathbf{q})$}{Natural multi-objective function vector containing triangle
-area and grasp diversity}
+\nomenclature{$\mathbf{g}(\mathbf{q})$}{Natural multi-objective function vector containing triangle area and grasp diversity}
+\nomenclature{$\mathbf{f}_{\mathrm{EA}}(\mathbf{q})$}{Minimization-form objective vector supplied to the evolutionary algorithms (see also $\mathbf{f}_{\mathrm{EA}}$ in two-finger optimization)}
+\nomenclature{$\mathbf{f}_{\mathrm{BO}}(\mathbf{q})$}{Objective observations supplied to Ax (see also $\mathbf{f}_{\mathrm{BO}}$ in two-finger optimization)}
 
 Both components are maximized. A larger triangle area is associated with a wider support polygon and
 improved grasp stability, while a larger diversity score indicates that the valid grasps are more
@@ -500,7 +499,7 @@ vector
     [-A(\mathbf{p}),\;-D(\mathbf{p})].
 \end{equation}
 \nomenclature{$\mathbf{f}_{\mathrm{EA}}(\mathbf{q})$}{Minimization-form objective vector supplied to
-the evolutionary algorithms}
+the evolutionary algorithms (see also $\mathbf{f}_{\mathrm{EA}}$ in two-finger optimization)}
 
 In the Bayesian implementation, the external evaluation service values are left as is, since
 \texttt{Ax} assumes maximization
@@ -509,7 +508,7 @@ In the Bayesian implementation, the external evaluation service values are left 
     =
     [A(\mathbf{p}),\;D(\mathbf{p})].
 \end{equation}
-\nomenclature{$\mathbf{f}_{\mathrm{BO}}(\mathbf{q})$}{Objective observations supplied to Ax}
+\nomenclature{$\mathbf{f}_{\mathrm{BO}}(\mathbf{q})$}{Objective observations supplied to Ax (see also $\mathbf{f}_{\mathrm{BO}}$ in two-finger optimization)}
 
 The optimization direction is specified through the Ax objective expression. Consequently, the
 observations themselves are not negated before being reported to Ax. This preserves the original
@@ -536,8 +535,8 @@ The evolutionary optimization proceeds according to
     t=0,1,\dots,
 \end{equation}
 where $\mathcal{A}$ denotes the selected evolutionary algorithm.
-\nomenclature{$\mathcal{A}$}{Selected multi-objective evolutionary algorithm}
-\nomenclature{$t$}{Evolutionary generation index}
+\nomenclature{$\mathcal{A}$}{Selected multi-objective evolutionary algorithm (see also $\mathcal{A}$ in two-finger optimization)}
+\nomenclature{$t$}{Evolutionary generation index (see also $t$ in two-finger optimization)}
 
 Depending on the selected algorithm, the new population is generated through operations such as
 selection, crossover, mutation, decomposition, particle movement, or survival based on hypervolume
@@ -556,8 +555,8 @@ surrogate models:
     \mathcal{M}(\mathcal{D}_t),
 \end{equation}
 where $\mathcal{M}$ denotes the surrogate-modeling procedure used by Ax and BoTorch.
-\nomenclature{$\mathcal{M}$}{Bayesian surrogate-modeling procedure}
-\nomenclature{$\widehat{\mathbf{g}}_t$}{Probabilistic surrogate approximation after $t$ evaluations}
+\nomenclature{$\mathcal{M}$}{Bayesian surrogate-modeling procedure (see also $\mathcal{M}$ in two-finger optimization)}
+\nomenclature{$\widehat{\mathbf{g}}_t$}{Probabilistic surrogate approximation after $t$ evaluations (see also $\widehat{\mathbf{g}}_t$ in two-finger optimization)}
 
 The surrogate models provide predictions of the objective values together with their uncertainty. An
 acquisition function $\alpha(\mathbf{q}\mid\mathcal{D}_t)$ uses this information to balance the
@@ -577,8 +576,9 @@ For a requested batch size $b$, the next candidate batch is generated as
     \alpha(\mathcal{Q}\mid\mathcal{D}_t),
 \end{equation}
 where $\mathcal{X}$ is the bounded decision space. \nomenclature{$\mathcal{Q}_{t+1}$}{Batch of
-candidates generated by Bayesian optimization} \nomenclature{$\mathcal{X}$}{Bounded decision space}
-\nomenclature{$\alpha$}{Bayesian acquisition function}
+candidates generated by Bayesian optimization (see also $\mathcal{X}_{t+1}$ in two-finger optimization for similar concept)}
+\nomenclature{$\mathcal{X}$}{Bounded decision space (see also $\mathcal{X}$ in two-finger optimization)}
+\nomenclature{$\alpha$}{Bayesian acquisition function (see also $\alpha$ in two-finger optimization)}
 
 Each candidate $\mathbf{q}\in\mathcal{Q}_{t+1}$ is evaluated through the external evaluation
 service. The resulting observation is then supplied to Ax as a completed trial:
@@ -633,9 +633,10 @@ Bayesian & Maximum evaluations & $E_{\max}^{\mathrm{BO}}$ & Bayesian evaluation 
 
 For evolutionary optimization, the design-space and objective-space tolerances are evaluated over a
 sliding window of $w$ generations. \nomenclature{$x_{\text{tol}}$}{Design-space convergence
-tolerance} \nomenclature{$f_{\text{tol}}$}{Objective-space convergence tolerance}
-\nomenclature{$G_{\max}$}{Maximum number of evolutionary generations}
-\nomenclature{$E_{\max}$}{Maximum number of evolutionary objective evaluations}
+tolerance (see also $x_{\text{tol}}$ in two-finger optimization)} \nomenclature{$f_{\text{tol}}$}{Objective-space convergence tolerance
+(see also $f_{\text{tol}}$ in two-finger optimization)}
+\nomenclature{$G_{\max}$}{Maximum number of evolutionary generations (see also $G_{\max}$ in two-finger optimization)}
+\nomenclature{$E_{\max}$}{Maximum number of evolutionary objective evaluations (see also $E_{\max}$ in two-finger optimization)}
 
 In the current Bayesian implementation, termination is budget-based. The optimization performs at
 most $B_{\max}$ candidate-generation batches, with up to $b$ candidates requested per batch.
@@ -652,9 +653,9 @@ The hypervolume indicator~\cite{hypervolume} is tracked at each generation via a
 \begin{equation}
     \text{HV}^{(t)} = \text{HV}(\mathcal{F}^{(t)},\mathbf{r})
 \end{equation}
-\nomenclature{$\text{HV}^{(t)}$}{Hypervolume indicator at generation $t$}
-\nomenclature{$\mathbf{r}$}{Reference point for hypervolume computation}
-\nomenclature{$\mathcal{F}^{(t)}$}{Objective values of the population at generation $t$}
+\nomenclature{$\text{HV}^{(t)}$}{Hypervolume indicator at generation $t$ (see also $\mathrm{HV}_{\mathrm{EA}}^{(g)}$, $\mathrm{HV}_{\mathrm{BO}}^{(t)}$ in two-finger optimization)}
+\nomenclature{$\mathbf{r}$}{Reference point for hypervolume computation (see also $\mathbf{r}$ for reference point in theoretical background)}
+\nomenclature{$\mathcal{F}^{(t)}$}{Objective values of the population at generation $t$ (see also $\mathcal{K}_{\mathrm{EA}}^{(g)}$, $\mathcal{K}_{\mathrm{BO}}^{(t)}$ in two-finger optimization for similar concepts)}
 
 Here, $\mathbf{r} \in \mathbb{R}^{n_{\text{obj}}}$ is the reference point and $\mathcal{F}^{(t)}$
 denotes the set of objective vectors at generation $t$. A monotonically increasing hypervolume
@@ -673,8 +674,8 @@ evaluated over multiple random seeds. The mean hypervolume across runs serves as
         \sum_{s \in \mathcal{Z}} \text{HV}(\mathcal{F}_s,\mathbf{r})
     \right\}
 \end{equation}
-\nomenclature{$\boldsymbol{\theta}$}{Algorithm hyperparameters} \nomenclature{$\mathcal{Z}$}{Set of
-random seeds for meta-optimization}
+\nomenclature{$\boldsymbol{\theta}$}{Algorithm hyperparameters (see also $\boldsymbol{\theta}$ for hyperparameter optimization)}
+\nomenclature{$\mathcal{Z}$}{Set of random seeds for meta-optimization (see also $\mathcal{Z}$ for random seeds)}
 
 The best hyperparameters are then applied to the main optimization run.
 
@@ -690,7 +691,7 @@ The optimization produces a set of Pareto-optimal solutions:
         \mathbf{f}(\mathbf{q}') \preceq \mathbf{f}(\mathbf{q})
     \right\}.
 \end{equation}
-\nomenclature{$\mathcal{P}^*$}{Set of Pareto-optimal solutions in the reduced decision space}
+\nomenclature{$\mathcal{P}^*$}{Set of Pareto-optimal solutions in the reduced decision space (see also $\mathcal{P}^{*}$ for Pareto-optimal solutions)}
 
 The final output includes:
 \begin{itemize}

@@ -67,7 +67,7 @@ $h_3$             & \texttt{h\_p3\_spline}   & 1 & 15 \\
 \end{table}
 
 
-\nomenclature{$\mathbf{x}$}{Decision vector of the two-finger gripper}
+\nomenclature{$\mathbf{x}$}{Decision vector of the two-finger gripper (see also $\mathbf{x}$ for generic decision variables)}
 \nomenclature{$d_{\mathrm{gn}}$}{Depth parameter in the common gripper interface}
 \nomenclature{$l_{\mathrm{gn}}$}{Length of the gripping contour}
 \nomenclature{$h_1,h_2,h_3$}{Spline contour heights}
@@ -82,7 +82,7 @@ either optimization framework are restricted to the bounded search space
     \times
     [1,15]^3.
 \end{equation}
-\nomenclature{$\mathcal{X}$}{Bounded decision space of the two-finger gripper}
+\nomenclature{$\mathcal{X}$}{Bounded decision space of the two-finger gripper (see also $\mathcal{X}$ for generic decision space)}
 
 For evolutionary optimization, the variables are initially sampled within these bounds and
 subsequently modified by the operators of the selected algorithm. For Bayesian optimization, Ax
@@ -126,10 +126,9 @@ evolutionary generation. The maximum requested number of Bayesian evaluations is
     E_{\max}^{\mathrm{BO}} = B_{\max}b.
 \end{equation}
 The actual number of evaluations may be smaller if the generation strategy returns fewer than $b$
-candidates in a batch. \nomenclature{$B_{\max}$}{Maximum number of Bayesian candidate-generation
-batches}
-\nomenclature{$b$}{Maximum number of Bayesian candidates requested per batch}
-\nomenclature{$E_{\max}^{\mathrm{BO}}$}{Maximum requested number of Bayesian objective evaluations}
+candidates in a batch. \nomenclature{$B_{\max}$}{Maximum number of Bayesian candidate-generation batches (see also $B_{\max}$ in multi-suction optimization)}
+\nomenclature{$b$}{Maximum number of Bayesian candidates requested per batch (see also $b$ in multi-suction optimization)}
+\nomenclature{$E_{\max}^{\mathrm{BO}}$}{Maximum requested number of Bayesian objective evaluations (see also $E_{\max}^{\mathrm{BO}}$ in multi-suction optimization)}
 
 \subsubsection{Supported Optimization Methods for Two-Finger Gripper Optimization}
 
@@ -186,8 +185,8 @@ reference directions are generated using the method of Das and Dennis~\cite{das_
     \texttt{get\_reference\_directions}
     (\text{``das-dennis''},\;n_{\text{obj}},\;n_{\text{partitions}}).
 \end{equation}
-\nomenclature{$\Lambda$}{Set of reference directions for decomposition-based algorithms}
-\nomenclature{$n_{\text{obj}}$}{Number of objectives}
+\nomenclature{$\Lambda$}{Set of reference directions for decomposition-based algorithms (see also $\Lambda$ in multi-suction optimization)}
+\nomenclature{$n_{\text{obj}}$}{Number of objectives (see also $n_{\text{obj}}$ in multi-suction optimization)}
 
 The Bayesian implementation uses the Ax generation strategy identified at runtime as
 \texttt{Center\allowbreak+\allowbreak Sobol\allowbreak+\allowbreak MBM\allowbreak:\allowbreak fast}.
@@ -234,8 +233,8 @@ The selected evolutionary algorithm initializes a population of $N$ candidate gr
 Each candidate is sampled within the variable bounds. The complete population is evaluated through
 the external API before the selected evolutionary algorithm performs its first selection and
 variation step.
-\nomenclature{$N$}{Evolutionary population size}
-\nomenclature{$\mathcal{P}^{(0)}$}{Initial evolutionary population}
+\nomenclature{$N$}{Evolutionary population size (see also $N$ in multi-suction optimization)}
+\nomenclature{$\mathcal{P}^{(0)}$}{Initial evolutionary population (see also $\mathcal{P}^{(0)}$ in multi-suction optimization)}
 
 \subsubsection{Bayesian Initialization}
 
@@ -263,8 +262,8 @@ where
     \end{bmatrix}^{\mathrm{T}}
 \end{equation}
 contains the grasp-quality KPIs returned by the evaluation service.
-\nomenclature{$\mathcal{D}_t$}{Dataset of completed Bayesian trials after $t$ evaluations}
-\nomenclature{$\mathbf{k}(\mathbf{x})$}{Natural grasp-quality objective vector}
+\nomenclature{$\mathcal{D}_t$}{Dataset of completed Bayesian trials after $t$ evaluations (see also $\mathcal{D}_t$ in multi-suction optimization)}
+\nomenclature{$\mathbf{k}(\mathbf{x})$}{Natural grasp-quality objective vector (see also $\mathbf{g}(\mathbf{q})$ in multi-suction optimization for similar concept)}
 
 The Ax generation strategy initially evaluates the center of the bounded search space. Additional
 initialization candidates are generated using Sobol quasi-random sampling. Sobol sampling provides
@@ -328,11 +327,11 @@ FFT-based convolution and GPU-accelerated PyTorch operations. The resulting gras
 represented by the KPI \texttt{max\_prox}. If the required opening cannot be achieved within the
 available gripper stroke, the KPI is set to zero.
 
-\nomenclature{$s_{\mathcal{G}}$}{Gripper voxel occupancy grid}
-\nomenclature{$s_{\mathcal{W}}$}{Workpiece voxel occupancy grid}
-\nomenclature{$\zeta_{\mathcal{G},\mathcal{W}}$}{Gripper--workpiece collision map}
-\nomenclature{$\mathbf{q}$}{Relative voxel-grid displacement} \nomenclature{$\mathcal{F}$}{Discrete
-Fourier transform}
+\nomenclature{$s_{\mathcal{G}}$}{Gripper voxel occupancy grid (see also $s$ for characteristic object scale)}
+\nomenclature{$s_{\mathcal{W}}$}{Workpiece voxel occupancy grid (see also $s$ for characteristic object scale)}
+\nomenclature{$\zeta_{\mathcal{G},\mathcal{W}}$}{Gripper--workpiece collision map (see also collision detection procedures)}
+\nomenclature{$\mathbf{q}$}{Relative voxel-grid displacement (see also $\mathbf{q}$ for decision variables in multi-suction optimization)}
+\nomenclature{$\mathcal{F}$}{Discrete Fourier transform (see also Fourier transform for spatial analysis)}
 
 \subsubsection{Objective Evaluation}
 \label{sec:two_finger_objective_evaluation}
@@ -357,8 +356,8 @@ The natural objective vector is therefore
         k_{n_{\text{obj}}}(\mathbf{x})
     \end{bmatrix}^{\mathrm{T}}.
 \end{equation}
-\nomenclature{$k_m(\mathbf{x})$}{Grasp-quality KPI for objective $m$}
-\nomenclature{$\mathbf{k}(\mathbf{x})$}{Natural maximization objective vector}
+\nomenclature{$k_m(\mathbf{x})$}{Grasp-quality KPI for objective $m$ (see also $k_m$ for grasp quality metrics)}
+\nomenclature{$\mathbf{k}(\mathbf{x})$}{Natural maximization objective vector (see also $\mathbf{k}(\mathbf{x})$ for grasp-quality objectives)}
 
 The objective-direction convention is handled differently by the two optimization frameworks. Since
 \texttt{pymoo} assumes minimization, the evolutionary algorithms negates the objective
@@ -375,8 +374,8 @@ vector
         -k_{n_{\text{obj}}}(\mathbf{x})
     \end{bmatrix}^{\mathrm{T}}.
 \end{equation}
-\nomenclature{$\mathbf{f}_{\mathrm{EA}}(\mathbf{x})$}{Minimization-form objective vector supplied to
-the evolutionary algorithms}
+\nomenclature{$\mathbf{f}_{\mathrm{EA}}(\mathbf{x})$}{Minimization-form objective vector supplied to the evolutionary algorithms (see also $\mathbf{f}_{\mathrm{EA}}$ in multi-suction optimization)}
+\nomenclature{$\mathbf{f}_{\mathrm{BO}}(\mathbf{x})$}{Objective observations supplied to Ax (see also $\mathbf{f}_{\mathrm{BO}}$ in multi-suction optimization)}
 
 In the Bayesian implementation, the external evaluation service values are left as is, since
 \texttt{Ax} assumes maximization:
@@ -385,7 +384,7 @@ In the Bayesian implementation, the external evaluation service values are left 
     =
     \mathbf{k}(\mathbf{x}).
 \end{equation}
-\nomenclature{$\mathbf{f}_{\mathrm{BO}}(\mathbf{x})$}{Objective observations supplied to Ax}
+\nomenclature{$\mathbf{f}_{\mathrm{BO}}(\mathbf{x})$}{Objective observations supplied to Ax (see also $\mathbf{f}_{\mathrm{BO}}$ in multi-suction optimization)}
 
 The maximization direction is specified in the Ax optimization configuration. Consequently, the
 observed KPI values do not need to be negated before they are attached to the corresponding Ax
@@ -440,9 +439,9 @@ The population update can be expressed abstractly as
 \end{equation}
 where $\mathcal{A}$ represents the selected evolutionary algorithm and
 $\mathbf{F}_{\mathrm{EA}}^{(g)}$ contains the minimization-form objective vectors evaluated in
-generation $g$. \nomenclature{$\mathcal{A}$}{Selected multi-objective evolutionary algorithm}
-\nomenclature{$g$}{Evolutionary generation index}
-\nomenclature{$\mathbf{F}_{\mathrm{EA}}^{(g)}$}{Evolutionary objective values in generation $g$}
+generation $g$. \nomenclature{$\mathcal{A}$}{Selected multi-objective evolutionary algorithm (see also $\mathcal{A}$ in multi-suction optimization)}
+\nomenclature{$g$}{Evolutionary generation index (see also $t$ in multi-suction optimization)}
+\nomenclature{$\mathbf{F}_{\mathrm{EA}}^{(g)}$}{Evolutionary objective values in generation $g$ (see also $\mathbf{F}_{\mathrm{EA}}^{(g)}$ for evolutionary objective values)}
 
 Depending on the selected algorithm, the next population is produced using operations such as
 selection, crossover, mutation, decomposition, particle movement, or survival based on hypervolume
@@ -457,9 +456,8 @@ probabilistic surrogate models:
     =
     \mathcal{M}(\mathcal{D}_t),
 \end{equation}
-where $\mathcal{M}$ denotes the surrogate-modeling procedure. \nomenclature{$\mathcal{M}$}{Bayesian
-surrogate-modeling procedure} \nomenclature{$\widehat{\mathbf{k}}_t$}{Probabilistic surrogate
-approximation after $t$ evaluations}
+where $\mathcal{M}$ denotes the surrogate-modeling procedure. \nomenclature{$\mathcal{M}$}{Bayesian surrogate-modeling procedure (see also $\mathcal{M}$ in multi-suction optimization)}
+\nomenclature{$\widehat{\mathbf{k}}_t$}{Probabilistic surrogate approximation after $t$ evaluations (see also $\widehat{\mathbf{g}}_t$ in multi-suction optimization)}
 
 The surrogate models approximate the relationship between the gripper parameters and the
 workpiece-specific KPI values. In addition to predicted objective values, they estimate predictive
@@ -483,8 +481,8 @@ For a requested batch size $b$, the next candidate batch is generated as
     }
     \alpha(\mathcal{B}\mid\mathcal{D}_t).
 \end{equation}
-\nomenclature{$\mathcal{X}_{t+1}$}{Batch of gripper candidates generated by Bayesian optimization}
-\nomenclature{$\alpha$}{Bayesian acquisition function}
+\nomenclature{$\mathcal{X}_{t+1}$}{Batch of gripper candidates generated by Bayesian optimization (see also $\mathcal{Q}_{t+1}$ in multi-suction optimization for similar concept)}
+\nomenclature{$\alpha$}{Bayesian acquisition function (see also $\alpha$ in multi-suction optimization)}
 
 Each generated candidate is evaluated using the external service. The KPI observation is then
 attached to the corresponding Ax trial:
@@ -541,11 +539,11 @@ Bayesian & Maximum evaluations & $E_{\max}^{\mathrm{BO}}$ & Bayesian evaluation 
 \end{table}
 
 For evolutionary optimization, the design-space and objective-space tolerances are evaluated over a
-sliding window of $w$ generations. \nomenclature{$x_{\text{tol}}$}{Design-space convergence
-tolerance} \nomenclature{$f_{\text{tol}}$}{Objective-space convergence tolerance}
-\nomenclature{$G_{\max}$}{Maximum number of evolutionary generations}
-\nomenclature{$E_{\max}$}{Maximum number of evolutionary evaluations}
-\nomenclature{$w$}{Number of generations in the convergence window}
+sliding window of $w$ generations. \nomenclature{$x_{\text{tol}}$}{Design-space convergence tolerance (see also $x_{\text{tol}}$ in multi-suction optimization)}
+\nomenclature{$f_{\text{tol}}$}{Objective-space convergence tolerance (see also $f_{\text{tol}}$ in multi-suction optimization)}
+\nomenclature{$G_{\max}$}{Maximum number of evolutionary generations (see also $G_{\max}$ in multi-suction optimization)}
+\nomenclature{$E_{\max}$}{Maximum number of evolutionary evaluations (see also $E_{\max}$ in multi-suction optimization)}
+\nomenclature{$w$}{Number of generations in the convergence window (see also $w$ in multi-suction optimization)}
 
 The current Bayesian implementation uses budget-based termination. It performs at most $B_{\max}$
 candidate-generation batches and requests up to $b$ candidates in each batch. Therefore,
@@ -592,11 +590,11 @@ vectors obtained from the first $t$ completed Bayesian trials. The corresponding
         \mathbf{r}
     \right).
 \end{equation}
-\nomenclature{$\mathcal{K}_{\mathrm{EA}}^{(g)}$}{Non-dominated KPI set after evolutionary generation
-$g$} \nomenclature{$\mathcal{K}_{\mathrm{BO}}^{(t)}$}{Non-dominated KPI set after $t$ Bayesian
-evaluations} \nomenclature{$\mathrm{HV}_{\mathrm{EA}}^{(g)}$}{Evolutionary hypervolume after
-generation $g$} \nomenclature{$\mathrm{HV}_{\mathrm{BO}}^{(t)}$}{Bayesian hypervolume after $t$
-completed evaluations} \nomenclature{$\mathbf{r}$}{Fixed hypervolume reference point}
+\nomenclature{$\mathcal{K}_{\mathrm{EA}}^{(g)}$}{Non-dominated KPI set after evolutionary generation $g$ (see also $\mathcal{F}^{(t)}$ in multi-suction optimization for similar concept)}
+\nomenclature{$\mathcal{K}_{\mathrm{BO}}^{(t)}$}{Non-dominated KPI set after $t$ Bayesian evaluations (see also $\mathcal{F}^{(t)}$ in multi-suction optimization for similar concept)}
+\nomenclature{$\mathrm{HV}_{\mathrm{EA}}^{(g)}$}{Evolutionary hypervolume after generation $g$ (see also $\text{HV}^{(t)}$ in multi-suction optimization)}
+\nomenclature{$\mathrm{HV}_{\mathrm{BO}}^{(t)}$}{Bayesian hypervolume after $t$ completed evaluations (see also $\text{HV}^{(t)}$ in multi-suction optimization)}
+\nomenclature{$\mathbf{r}$}{Fixed hypervolume reference point (see also $\mathbf{r}$ for reference point in theoretical background)}
 
 Under the maximization convention, the fixed reference point $\mathbf{r}$ must be worse than the
 objective values of interest. The same reference point and objective scaling must be used for all
@@ -610,7 +608,7 @@ cumulative number of objective evaluations:
     \mathrm{HV}=\mathrm{HV}(E),
 \end{equation}
 where $E$ is the number of completed external API evaluations.
-\nomenclature{$E$}{Cumulative number of completed external evaluations}
+\nomenclature{$E$}{Cumulative number of completed external evaluations (see also $E_{\max}^{\mathrm{BO}}$ for Bayesian evaluation budget)}
 
 The framework additionally records total wall-clock time because every function evaluation includes
 API communication, CadQuery geometry generation, voxelization, and GPU-based FFT spatial analysis.
@@ -635,8 +633,8 @@ meta-objective:
         \mathrm{HV}(\mathcal{K}_s,\mathbf{r})
     \right\}.
 \end{equation}
-\nomenclature{$\boldsymbol{\theta}$}{Evolutionary algorithm hyperparameters}
-\nomenclature{$\mathcal{Z}$}{Set of random seeds used for meta-optimization}
+\nomenclature{$\boldsymbol{\theta}$}{Evolutionary algorithm hyperparameters (see also $\boldsymbol{\theta}$ for hyperparameter optimization)}
+\nomenclature{$\mathcal{Z}$}{Set of random seeds used for meta-optimization (see also $\mathcal{Z}$ for random seeds)}
 
 The best hyperparameter configuration is subsequently applied to the main evolutionary optimization
 run.
@@ -702,4 +700,4 @@ The final output includes:
 The non-dominated solutions represent the best trade-offs between grasp quality for the configured
 workpieces and orientations.
 
-\nomenclature{$\mathcal{P}^{*}$}{Set of Pareto-optimal gripper configurations}
+\nomenclature{$\mathcal{P}^{*}$}{Set of Pareto-optimal gripper configurations (see also $\mathcal{P}^*$ for Pareto-optimal solutions)}
