@@ -8,18 +8,21 @@
 \subsubsection{Robotics}
 \label{subsubsec:robotics}
 
-An industrial robot is a programmable, multipurpose manipulator designed to move material, parts, tools or specialised devices through programmed
-motions in order to perform a variety of tasks\cite{Lee2022Vocabulary}. A typical robotic system consists of a kinematic chain of rigid links
+An industrial robot is a automatically controlled, reprogrammable multipurpose manipulator(s), programmable in
+three or more axes, which can be either fixed in place or fixed to a mobile platform for use
+in automation applications in an industrial environment\cite{Lee2022Vocabulary}. A typical robotic system consists of a kinematic chain of rigid links
 connected by actuated joints, a set of sensors, a controller and an end-effector mounted at the flange of the last link. The configuration of the
 manipulator is described by its joint variables, while the position and orientation of the end-effector are described in a Cartesian task
 space\cite{Malik2022A}. The mapping between these two spaces is established through forward and inverse kinematics, which form the basis for
 trajectory planning and motion control\cite{Singh2022Kinematics}.
 
-Modern industrial applications place increasing demands on flexibility. Robots are expected to operate in environments with varying product
-portfolios, short product life cycles and small batch sizes, which shifts the engineering effort from robot programming towards the design of
-task-specific peripheral components\cite{Wiese2022Flexible,Bilancia2023An}. Among these components the end effector is the most application-dependent
-element, since it forms the physical interface between the robot and the workpiece and therefore determines whether a given handling task can be
-executed reliably at all\cite{Wiese2022Flexible}.
+Modern manufacturing systems increasingly require flexibility to accommodate
+changing production demands, mass customization, increasing product variants,
+and decreasing batch sizes~\cite{Wiese2022Flexible,Bilancia2023An}. Robot-cell
+reconfiguration and programming nevertheless remain time-consuming and often
+require specialist expertise~\cite{Wiese2022Flexible}. Task-specific assets such
+as grippers, sensors, and actuators provide robot cells with the capabilities
+required for particular manufacturing tasks~\cite{Wiese2022Flexible}.
 
 % \subsubsection{Handling of Objects using Grippers}
 % \label{subsubsec:handling_with_grippers}
@@ -82,7 +85,7 @@ Tool Center Point (TCP) from its initial pose to the corresponding grasp pose.
 \label{subsubsec:suction_cup_grippers}
 
 Suction cup grippers belong to the astrictive gripper class and generate holding force from a pressure difference between the evacuated volume inside
-the cup and the ambient atmosphere. In the idealised case the holding force is
+the cup and the ambient atmosphere. The holding force is defined 
 
 \begin{equation}
     \begin{gathered}
@@ -94,20 +97,16 @@ the cup and the ambient atmosphere. In the idealised case the holding force is
     \end{gathered}
 \end{equation}
 
-where $\Delta p$ is the pressure difference between the evacuated cup volume and the
-ambient atmosphere, bounded above by the atmospheric pressure $p_{\mathrm{atm}}$ since
-a perfect vacuum cannot be exceeded, $A_{\mathrm{seal}}$ is the effective sealed area
-enclosed by the cup lip, and $S \geq 1$ is a safety factor accounting for acceleration,
-orientation and friction conditions\cite{Zhou2021Bio-Inspired,Gabriel2020Modeling}.
-The holding force is strictly positive for any non-vanishing pressure difference acting
-on a non-degenerate sealed area. The decisive requirement is therefore an airtight seal
-between the cup lip and the workpiece surface, which restricts applicable surfaces to
-regions that are sufficiently smooth, non-porous and locally flat or only moderately
-curved relative to the compliance of the cup.
+where $\Delta p$ is the pressure difference between the evacuated cup volume and the ambient atmosphere, bounded above by the atmospheric pressure
+$p_{\mathrm{atm}}$ since a perfect vacuum cannot be exceeded, $A_{\mathrm{seal}}$ is the effective sealed area enclosed by the cup lip, and $S \geq 1$
+is a safety factor accounting for acceleration, orientation and friction conditions\cite{Zhou2021Bio-Inspired,Gabriel2020Modeling}. The holding force
+is strictly positive for any non-vanishing pressure difference acting on a non-degenerate sealed area. The decisive requirement is therefore an
+airtight seal between the cup lip and the workpiece surface, which restricts applicable surfaces to regions that are sufficiently smooth, non-porous
+and locally flat or only moderately curved relative to the compliance of the cup.
 
 Practical implementations frequently use several cups arranged on a common mounting plate. Distributing the load over multiple cups increases the
 total holding force, provides redundancy if individual cups fail to seal, and, most importantly for handling, generates a resistance to tilting
-moments that a single cup cannot provide\cite{Mantriota2006Optimal}. The moment capacity depends on the spatial arrangement of the active cups, which
+moments\cite{Mantriota2006Optimal}. The moment capacity depends on the spatial arrangement of the active cups, which
 is commonly characterised through the area of the polygon or triangle spanned by the sealing contacts\cite{Gabriel2020Modeling}. A large spanned area
 yields a stable grasp, whereas narrowly clustered cups behave similarly to a single contact. The placement of the cups on the mounting plate is thus
 the central design variable, and it must be chosen such that valid sealing contacts are achievable on every workpiece of the considered family.
