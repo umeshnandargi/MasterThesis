@@ -67,16 +67,16 @@ the object\cite{Prattichizzo2014Robot}. The classical criterion for grasp qualit
 forces available at the contact points can produce any net wrench on the object, meaning that arbitrary disturbances can be
 resisted\cite{Nguyen1986Constructing}. Force closure requires a sufficient number of contacts with appropriate friction properties and geometric
 placement.
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{fig/th_bg/grasps.png}
     \caption{Visualisation of a grasp configuration on workpieces.}
     \label{fig:grasp}
 \end{figure}
-
-Figure~\ref{fig:grasp} illustrates a grasp configuration on a workpiece. Each
-point on the workpiece surface incorporates the translation and rotation
-information to transform the gripper Tool Center Point (TCP) from its initial pose to the grasping pose.
+Figure~\ref{fig:grasp} illustrates grasp configurations for two workpieces: the
+Stanford Bunny and the IPA Intermediate Plate. Each point on the workpiece
+surface encodes the translation and rotation required to transform the gripper's
+Tool Center Point (TCP) from its initial pose to the corresponding grasp pose.
 
 \subsubsection{Suction Cup Grippers}
 \label{subsubsec:suction_cup_grippers}
@@ -255,7 +255,7 @@ control points are free to vary and serve as the design variables. The number of
 expressiveness and search space dimensionality, since more control points allow more complex shapes but increase the dimensionality of the
 optimization problem\cite{Hasan2024B-spline,Chapelier2022Spline-based}.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{fig/th_bg/cubic_spline.png}
     \caption{Cubic spline interpolation through prescribed data points.}
@@ -328,10 +328,10 @@ is the \emph{Pareto set}, and its image in the objective space is the \emph{Pare
 Pareto front, and the quality of this approximation is assessed using performance indicators such as the hypervolume
 indicator\cite{Audet2018Performance,Shang2021A}.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{fig/th_bg/pareto_front.png}
-    \captionof{figure}{Example of a Pareto Front.\cite{Tarunika2026}}
+    \caption{Example of a Pareto Front.\cite{Tarunika2026}}
     \label{fig:pareto_front}
 \end{figure}
 
@@ -376,7 +376,7 @@ typically crossover, which recombines pairs of existing solutions, and mutation,
 retains the most promising individuals for the next generation based on their objective values. This loop continues until a termination criterion is
 met, such as a maximum number of function evaluations or convergence of the population\cite{Abulail2025Enhanced}.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{fig/th_bg/Evolutionary_flowchart.png}
     \caption{The evolutionary cycle, basic working scheme of all EAs \cite{Evolutionary_Algos}.}
@@ -421,7 +421,7 @@ hyperparameters are estimated by maximizing the marginal likelihood\cite{Pawar20
 numerically imprecise evaluations\cite{Binois2021A}. The main limitations of GP surrogates are the cubic scaling of exact inference with the number of
 observations and a loss of predictive quality in high-dimensional decision spaces\cite{Frazier2018A}.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{fig/th_bg/SurrogateModel.png}
     \caption{Surrogate Model \cite{olson2025ax}.}
@@ -455,7 +455,7 @@ Truncating the improvement at zero renders the acquisition non-negative, so that
 candidates which are not expected to improve on the incumbent receive zero utility. The
 expression admits a closed form for a Gaussian posterior\cite{Binois2021A, olson2025ax}.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{fig/th_bg/acquisition_fn.png}
     \caption{Acquisition Function \cite{olson2025ax}.}
@@ -513,7 +513,7 @@ widely used indicator because it is Pareto compliant, meaning that a strictly do
 set never receives a worse value, and because it requires no knowledge of the true Pareto
 front\cite{Guerreiro2020, Audet2018Performance}.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{fig/th_bg/hypervolume_2d.png}
     \caption{Hypervolume indicator \cite{Guerreiro2020}.}
