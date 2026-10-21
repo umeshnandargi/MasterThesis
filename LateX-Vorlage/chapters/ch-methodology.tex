@@ -1,0 +1,333 @@
+\chapter{Methodology}
+\label{chap:methodology}
+
+This chapter presents the methodological foundations of the gripper optimization study. It describes the research design, problem formulation,
+geometric parameterizations, objective criteria, selected optimization frameworks and algorithms, workpiece selection, evaluation architecture, and
+performance indicators. Implementation details and the specific experimental procedure are presented separately in the approach chapter.
+
+\section{Research Design}
+\label{sec:research_design}
+
+\subsection{Research Paradigm}
+\label{subsec:research_paradigm}
+
+This thesis adopts a computational experimental methodology. Gripper configurations are represented mathematically, evaluated using computational
+geometry methods, and optimized through controlled black-box optimization experiments. This methodology is appropriate because the quality of a
+gripper configuration depends on geometric interactions between the gripper and the workpiece that cannot be expressed conveniently in closed
+analytical form.
+
+The principal methodological contribution is not the development of a new optimization algorithm. Instead, the thesis provides a controlled comparison
+of established evolutionary and Bayesian optimization methods under common problem representations, objective definitions, constraints, evaluation
+interfaces, and computational budgets.
+
+\subsection{Study Structure}
+\label{subsec:study_structure}
+
+The suction-cup and parallel-jaw grippers are treated as separate optimization studies. Each optimization run considers exactly one workpiece.
+Different workpieces therefore define separate problem instances rather than simultaneous objectives within the same optimization problem.
+
+For the suction-cup gripper, the positions of three suction cups are optimized for the selected workpiece. The optimization considers the spatial and
+orientational coverage of the resulting valid grasps and the area of the triangle formed by the three suction cups.
+
+For the parallel-jaw gripper, a spline-based jaw contour is optimized for a predefined set of grasps on the selected workpiece. The contour is
+evaluated according to how well it conforms to the workpiece geometry associated with the complete predefined grasp set while avoiding geometrically
+infeasible contact conditions.
+
+Because the two gripper studies use different geometric representations and evaluation criteria, their optimization results are analyzed separately
+and are not combined into a common Pareto front.
+
+\subsection{Experimental Setup}
+\label{subsec:experimental_setup}
+
+Each combination of gripper type and workpiece defines a separate optimization instance. The selected algorithms are applied independently to each
+instance under comparable conditions. Multiple independent repetitions allow the variability of the stochastic optimization methods to be examined.
+Within an instance, the algorithms use the same decision-variable bounds, objective definitions, feasibility conditions, and evaluation budget.
+
+\subsection{Scope and Limitations}
+\label{subsec:scope_limitations}
+
+The conclusions of the study are limited to the selected gripper parameterizations, workpieces, objective criteria, and evaluation budgets. Although
+repeated computational runs allow performance variability to be examined, the results do not establish that one algorithm is universally superior
+across all gripper-design problems.
+
+The evaluation is entirely computational. Manufacturing effects, material properties, contact forces, suction behavior, and experimental validation on
+physical grippers are outside the scope of the thesis. Consequently, the optimized configurations are evaluated as geometric designs rather than as
+fully validated physical grippers.
+
+\section{Problem Formulation}
+\label{sec:methodology_problem_formulation}
+
+\subsection{Black-Box Optimization Framework}
+\label{subsec:methodology_moo}
+
+The gripper-design problems are formulated as constrained black-box optimization problems. Let \(\mathbf{q} \in \mathcal{Q}\) denote a candidate
+gripper configuration and let \(d\) denote the number of decision variables. The general vector-valued optimization problem is written as
+
+\begin{equation}
+    \min_{\mathbf{q} \in \mathcal{Q}}
+    \mathbf{f}(\mathbf{q})
+    =
+    \left(
+        f_1(\mathbf{q}),
+        f_2(\mathbf{q}),
+        \dots,
+        f_m(\mathbf{q})
+    \right),
+\end{equation}
+
+subject to the inequality constraints
+
+\begin{equation}
+    g_j(\mathbf{q}) \leq 0,
+    \qquad j = 1,\dots,n_c,
+\end{equation}
+
+and the variable bounds
+
+\begin{equation}
+    q_i^{\mathrm{L}}
+    \leq q_i
+    \leq q_i^{\mathrm{U}},
+    \qquad i = 1,\dots,d.
+\end{equation}
+
+\nomenclature{$\mathbf{q}$}{Decision vector representing a candidate gripper configuration} \nomenclature{$\mathcal{Q}$}{Admissible search space}
+\nomenclature{$d$}{Number of decision variables}
+\nomenclature{$m$}{Number of objective functions}
+\nomenclature{$n_c$}{Number of inequality constraints}
+\nomenclature{$g_j(\mathbf{q})$}{$j$-th inequality constraint} \nomenclature{$q_i^{\mathrm{L}},q_i^{\mathrm{U}}$}{Lower and upper bounds of the $i$-th
+decision variable}
+
+Objectives that are naturally maximized are transformed to maintain a common minimization convention. For problems with conflicting criteria, a
+multi-objective formulation preserves alternative compromise solutions, while weighted scalarization collapses the problem to a single solution
+defined by chosen weights\cite{Zheng2024Proven}.
+
+The number of objectives is determined by the performance criteria of the corresponding gripper problem. It is not determined by the number of
+workpieces included in the overall study. Each workpiece is optimized independently.
+\subsection{Parameterization of Gripper Geometry}
+\label{subsec:methodology_decision_variables}
+
+A central methodological decision is the representation of gripper geometry as a finite-dimensional decision vector. The representation must provide
+sufficient geometric flexibility while remaining compact, interpretable, and suitable for black-box optimization
+\cite{Ko2020A,Todescato,Wang2024Fin-Bayes:}.
+
+\subsubsection{Suction-Cup Gripper Representation}
+
+For the suction-cup gripper, representing the planar Cartesian coordinates of three cups independently would require six decision variables. A reduced
+polar parameterization is therefore selected. The position of cup \(i\) is expressed as
+
+\begin{equation}
+    \mathbf{p}_i
+    =
+    \begin{pmatrix}
+        r\cos\alpha_i \\
+        r\sin\alpha_i
+    \end{pmatrix},
+    \qquad i=1,2,3,
+\end{equation}
+
+which gives the decision vector
+
+\begin{equation}
+    \mathbf{q}_{\mathrm{SC}}
+    =
+    \left(r,\alpha_1,\alpha_2,\alpha_3\right).
+\end{equation}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/methodology/Polar Params.png}
+    \caption{polar parameterization of Suction cup gripper.}
+    \label{fig:polar_sc}
+\end{figure}
+
+Figure~\ref{fig:polar_sc} shows the polar coordinates of a potential suction cup gripper. The common radius \(r\) determines the distance of the cups
+from the gripper origin, while the angles \(\alpha_i\) determine their arrangement. This representation reduces the dimensionality of the search space
+and restricts the cup centers to a common circle. Separation constraints are required to prevent overlapping or degenerate cup arrangements.
+
+\subsubsection{Parallel-Jaw Gripper and Contour Representation}
+\label{subsubsec:two_finger_theory}
+
+The parallel-jaw gripper applies gripping forces through two opposing jaw surfaces. The geometry of these surfaces determines how closely the gripper
+conforms to the workpiece at the predefined grasps. The jaw contour therefore requires a representation that is compact enough for optimization while
+remaining expressive enough to describe smooth and physically realizable shapes \cite{Liu2024Topology}.
+
+A cubic interpolating spline is used to represent the jaw contour. Such a spline is a piecewise polynomial curve of degree at most three that passes
+through a prescribed set of interpolation points. Adjacent polynomial segments are connected so that the curve and its first and second derivatives
+remain continuous. This produces a smooth contour, while appropriate endpoint conditions determine the behavior of the spline boundaries.
+
+Spline parameterization reduces the continuous shape-design problem to a finite-dimensional optimization problem. The endpoint interpolation points
+are fixed to preserve the required spatial extent of the jaw, while three interior interpolation points are variable and define the contour decision
+variables. Increasing the number of variable points would allow more complex contours but would also increase the dimensionality of the optimization
+problem \cite{Hasan2024B-spline,Chapelier2022Spline-based}.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/methodology/cubic_spline.png}
+    \caption{Cubic spline interpolation through prescribed interpolation points.}
+    \label{fig:cubic_spline}
+\end{figure}
+
+Figure~\ref{fig:cubic_spline} illustrates a cubic interpolating spline passing through its prescribed data points. In contrast to a B-spline
+control-point representation, the interpolation points lie directly on the resulting curve. Consequently, the three variable interior points provide
+intuitive geometric parameters for modifying the contour, while the fixed endpoints preserve its prescribed spatial extent.
+
+\subsection{Selection of Objective Functions}
+\label{subsec:methodology_objectives}
+
+The objective functions define the properties used to distinguish effective gripper configurations. They must represent meaningful geometric
+performance criteria while remaining computable through the available evaluation models \cite{Todescato,Wolniakowski2017Task}.
+
+For the suction-cup gripper, the first criterion is the area of the triangle formed by the three cup centers. It is defined as
+
+\begin{equation}
+    A(\mathbf{q}_{\mathrm{SC}})
+    =
+    \frac{1}{2}
+    \left|
+        (\mathbf{p}_2-\mathbf{p}_1)
+        \times
+        (\mathbf{p}_3-\mathbf{p}_1)
+    \right|.
+\end{equation}
+
+The triangle area is used as a geometric measure of the spatial spread of the support layout. A larger area represents a less concentrated arrangement
+of the suction cups and may improve resistance to rotational disturbances. However, it is a geometric proxy rather than a complete physical stability
+measure because suction forces, sealing conditions, surface normals, material properties, and the workpiece center of mass are not explicitly modeled
+\cite{madan2022realrobotchallenge2021}.
+
+The second suction-cup criterion concerns the spatial and orientational coverage of valid grasps on the selected workpiece. A simple count of feasible
+grasps does not distinguish between diverse grasps and many nearly identical grasps. Coverage-based evaluation therefore considers the distribution of
+the available grasps in both position and orientation, providing a measure of the operational flexibility of the cup layout
+\cite{Bo2023A,Pinskier2024Diversity-Based}.
+
+For the parallel-jaw gripper, the objective criterion evaluates the conformity of a candidate spline contour to a predefined set of grasps on one
+workpiece. The contour should provide close geometric correspondence with the workpiece across the complete grasp set rather than being specialized
+for only one grasp. A voxel-based convolution method developed at Fraunhofer IPA is used to assess finger-to-workpiece proximity and contact quality
+while accounting for geometrically infeasible or colliding configurations \cite{Ko2020A,snuggle_pack}.
+
+\section{Optimization Library Selection}
+\label{sec:methodology_library}
+
+The evolutionary optimization algorithms are selected from the \texttt{pymoo} framework. \texttt{pymoo} provides a unified Python interface for
+multi-objective evolutionary optimization, constraint handling, performance evaluation, and visualization. Using algorithms from a common framework
+reduces implementation differences and improves the reproducibility of the comparison. The framework also provides established multi-objective
+performance indicators, including hypervolume and inverted generational distance plus \cite{pymoo}.
+
+Bayesian multi-objective optimization is represented using the \texttt{Ax} platform and its underlying \texttt{BoTorch} functionality. Bayesian
+optimization constructs probabilistic surrogate models of the black-box objective functions and uses an acquisition function to select promising
+candidate evaluations. \texttt{Ax} provides the experiment-management interface, while \texttt{BoTorch} provides the probabilistic modeling and
+acquisition-function capabilities \cite{olson2025ax,botorch}.
+
+The use of established open-source frameworks avoids the need to implement the optimization methods, surrogate models, and acquisition functions from
+scratch. It also supports a more reproducible comparison between evolutionary and Bayesian optimization strategies.
+
+\section{Algorithm Selection}
+\label{sec:methodology_algorithm_selection}
+
+For the experimental comparison, NSGA-II, NSGA-III, MOEA/D, SMS-EMOA, CMOPSO, and multi-objective Bayesian optimization are selected.
+
+The selection was made to compare different approaches to multi-objective search under the same gripper-design problems and evaluation budget.
+Including algorithms with different search principles reduces the extent to which the comparison is limited to variations of a single optimization
+strategy. It also allows the experiments to determine whether the relative performance depends on the selected gripper type or workpiece.
+
+\begin{itemize}
+    \item \textbf{NSGA-II} is selected as the baseline algorithm for the population-based comparison.
+
+    \item \textbf{NSGA-III} is included to compare the NSGA-II baseline with an alternative that organizes the search using predefined reference
+    directions.
+
+    \item \textbf{MOEA/D} is selected to include a decomposition-based approach and to examine how this formulation performs on the objective
+    trade-offs of the gripper-design problems.
+
+    \item \textbf{SMS-EMOA} is included as an indicator-based approach. Its selection also permits investigation of an algorithm whose search is
+    directly associated with hypervolume, one of the performance indicators used in this thesis.
+
+    \item \textbf{CMOPSO} is selected to include a swarm-based search method and thereby extend the population-based comparison beyond evolutionary
+    algorithms.
+
+    \item \textbf{Multi-objective Bayesian optimization} is included as a model-based alternative to the population-based methods. This allows its
+    performance under a limited evaluation budget to be compared with that of the other selected algorithms.
+\end{itemize}
+
+Together, these algorithms form a deliberately varied comparison set containing dominance-based, reference-direction-based, decomposition-based,
+indicator-based, swarm-based, and model-based approaches. The experiments use this selection to determine which approaches provide suitable
+convergence, trade-off representation, and consistency for the suction-cup and parallel-jaw gripper-design problems.
+
+\section{Workpiece Selection}
+\label{sec:methodology_workpiece_selection}
+
+The workpieces are selected to provide geometrically different problem instances rather than to optimize the grippers for one particular object.
+Geometric diversity is important because algorithm performance can depend on the structure of the feasible design space and the resulting optimization
+landscape \cite{Cenikj2022SELECTOR:,Yazdani2020Benchmarking}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{fig/methodology/IPAPlate_grasps.png}
+    \caption{IPA Intermediate Plate workpiece}
+    \label{fig:workpieces_IPAIntermediatePlate}
+\end{figure}
+
+The \textbf{IPAIntermediatePlate} as seen in figure~\ref{fig:workpieces_IPAIntermediatePlate} represents an industrial component with regular geometry and large planar regions. It provides a problem instance
+representative of structured workpieces commonly found in manufacturing and material-handling applications.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{fig/methodology/Bunny_grasps.png}
+    \caption{Stanford Bunny workpiece}
+    \label{fig:workpieces_Bunny}
+\end{figure}
+
+The \textbf{Stanford Bunny} as seen in figure~\ref{fig:workpieces_Bunny} provides a contrasting geometry with curved surfaces, irregular features, and greater local geometric variation. It is
+therefore used to examine algorithm behavior on a less regular workpiece.
+
+Each workpiece defines an independent optimization instance. The workpieces are not combined as objectives in a single optimization run. Their purpose
+is to evaluate whether the relative behavior of the selected optimization methods changes across different workpiece geometries.
+
+\section{Evaluation Architecture}
+\label{sec:methodology_evaluation_architecture}
+
+Candidate gripper configurations are evaluated through a client--server architecture. The optimization process acts as the client and submits a
+decision vector \(\mathbf{q}\) to the evaluation server. The server evaluates the corresponding gripper geometry and returns the objective vector
+\(\mathbf{f}(\mathbf{q})\).
+
+This separation establishes a strict black-box interface. The optimization algorithms operate only on decision vectors and returned objective values
+and do not access the internal geometric evaluation procedure. Consequently, algorithms that support the same interface can
+be exchanged without modifying the geometric evaluation pipelines. The architecture therefore supports modularity, reproducibility, and future
+extension.
+
+\section{Comparative Experimental Design}
+\label{sec:methodology_comparative_experiments}
+
+A controlled comparative design is adopted to ensure that observed differences are attributable primarily to the optimization methods. For a given
+gripper--workpiece instance, all algorithms are evaluated using the same geometric parameterization, objective functions, variable bounds, feasibility
+conditions, and evaluation budget.
+
+Because the selected optimization methods contain stochastic components, independent repetitions are used to examine performance variability and
+robustness \cite{Bouthillier2021Accounting}. Comparisons are performed within the same problem instance. Results from different workpieces or gripper
+types are not combined into one optimization problem or one Pareto front.
+
+\section{Performance Indicators}
+\label{sec:methodology_performance_indicators}
+
+Algorithm performance is evaluated using inverted generational distance plus, the maximum hypervolume attained during a run, and front coverage. These
+indicators provide complementary information about convergence and the representation of objective-space trade-offs.
+
+IGD+ is selected to assess how well an optimization run approximates the best trade-offs identified for a given gripper--workpiece problem. It is
+useful in this thesis because it considers both proximity to the reference front and the representation of different regions of that front. This
+enables the algorithms to be compared based on the overall quality of their approximation sets rather than on individual objective values alone.
+
+Maximum hypervolume is selected as an aggregate measure of approximation-set quality. It provides a single value that reflects both convergence and
+the extent of the represented objective-space trade-offs. Considering the maximum value attained during a run is particularly relevant for the
+investigated black-box optimization problems because it identifies the best approximation quality reached within the available optimization budget,
+even when the quality of the population varies during a run.
+
+Front coverage is selected to determine how broadly an algorithm represents the available trade-off region. This is important for gripper design
+because a set concentrated in only one region of the Pareto front may provide limited design choice, even if it performs well according to an
+aggregate indicator. Broad coverage provides a more varied set of candidate designs from which a design can be selected according to
+application-specific preferences.
+
+The three indicators are complementary. IGD+ measures proximity to and representation of a reference front, maximum hypervolume measures the best
+combined convergence and diversity reached during a run, and front coverage focuses on the extent of the represented trade-off region. Their values
+across independent repetitions are used to characterize both optimization performance and its variability.

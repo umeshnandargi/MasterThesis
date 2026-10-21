@@ -198,73 +198,6 @@ freedom, the ability to realise form closure is shifted from the kinematics to t
 jaw inserts, frequently produced additively, are widely used in industry and why the jaw contour is the natural design variable for
 optimization\cite{Gebauer2024Uncertainty-integrating}.
 
-\subsubsection{Two-Finger Gripper and Contour Representation}
-\label{subsubsec:two_finger_theory}
-
-The two-finger gripper applies gripping forces through two opposing jaw surfaces whose contour geometry determines how well the gripper conforms to
-the workpiece. Designing the jaw contour requires a representation that is compact enough to serve as a low-dimensional decision space for
-optimization, yet expressive enough to capture smooth, physically realizable shapes\cite{Liu2024Topology}. Spline parameterization is one of the
-approaches for this purpose.
-
-% \paragraph{B-Splines.}
-% A B-spline curve of degree $p$ is defined by a set of $n+1$ control points $\{\mathbf{P}_0, \mathbf{P}_1, \ldots, \mathbf{P}_n\}$ and a non-decreasing
-% knot vector $\mathbf{t} = \{t_0, t_1, \ldots, t_{n+p+1}\}$\cite{Hasan2024B-spline}. The curve is expressed as
-
-% \begin{equation}
-%     \mathbf{C}(u) = \sum_{i=0}^{n} N_{i,p}(u)\, \mathbf{P}_i,
-%     \quad u \in [t_p,\, t_{n+1}]
-% \end{equation}
-
-% where $N_{i,p}(u)$ are the B-spline basis functions of degree $p$, defined recursively by the Cox--de Boor recurrence relation\cite{Beccari2019A,
-% Lyche2018Foundations}. B-spline curves possess the \emph{local support} property, so that moving a single control point affects the curve only in its
-% neighbourhood, making them well suited to constrained shape optimization. They also guarantee $C^{p-1}$ continuity everywhere except at repeated
-% knots, ensuring smooth contour shapes without explicit smoothness constraints in the optimizer\cite{Beccari2019A, Lyche2018Foundations}.
-
-% \paragraph{Spline-Based Shape Parameterization.}
-% Spline-based shape parameterization represents a geometric contour through a small set of control points, reducing an otherwise infinite-dimensional
-% shape space to a finite-dimensional parameter vector. Boundary control points are typically fixed to satisfy geometric constraints, while interior
-% control points are free to vary and serve as the design variables. The number of free control points governs the trade-off between geometric
-% expressiveness and search space dimensionality, since more control points allow more complex shapes but increase the dimensionality of the
-% optimization problem\cite{Hasan2024B-spline,Chapelier2022Spline-based}.
-
-% \begin{figure}[htbp]
-%     \centering
-%     \includegraphics[width=0.6\textwidth]{fig/th_bg/bspline.png}
-%     \captionof{figure}{B-spline parameterization}
-%     \label{fig:bspline}
-% \end{figure}
-
-% Figure~\ref{fig:bspline} illustrates a B-spline curve defined by six control
-% points, \(A\) through \(F\). The curve interpolates the boundary points \(A\)
-% and \(F\), while the interior control points influence its local shape without
-% necessarily lying on the curve, enabling smooth and compact shape
-% parameterization.
-
-
-\paragraph{Cubic Spline Interpolation.}
-A cubic interpolating spline is a piecewise polynomial curve constructed to pass through a given set of data points
-$\{\mathbf{P}_1,\mathbf{P}_2,\ldots,\mathbf{P}_m\}$. Each segment is represented by a polynomial of degree at most three, with adjacent segments
-joined such that the curve and its first and second derivatives are continuous. The resulting curve is therefore smooth while interpolating all
-prescribed points exactly. To obtain a unique spline, appropriate boundary conditions must be specified at the endpoints.
-
-\paragraph{Spline-Based Shape Parameterization.}
-Spline-based shape parameterization represents a geometric contour through a small set of control points, reducing an otherwise infinite-dimensional
-shape space to a finite-dimensional parameter vector. Boundary control points are typically fixed to satisfy geometric constraints, while interior
-control points are free to vary and serve as the design variables. The number of free control points governs the trade-off between geometric
-expressiveness and search space dimensionality, since more control points allow more complex shapes but increase the dimensionality of the
-optimization problem\cite{Hasan2024B-spline,Chapelier2022Spline-based}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{fig/th_bg/cubic_spline.png}
-    \caption{Cubic spline interpolation through prescribed data points.}
-    \label{fig:cubic_spline}
-\end{figure}
-
-Figure~\ref{fig:cubic_spline} illustrates a cubic interpolating spline passing through its prescribed data points. In contrast to a B-spline
-control-point representation, the interpolation points lie directly on the resulting curve. Consequently, the three variable interior points provide
-intuitive geometric parameters for modifying the gripper contour, while the fixed endpoints preserve its prescribed spatial extent.
-
 
 %-------------------------------------------------------------------
 \subsection{Optimization Theory}
@@ -523,10 +456,26 @@ Figure~\ref{fig:hypervolume_2d} shows a two-dimensional example of the hypervolu
 
 
 
-The \emph{inverted generational distance} (IGD) measures the mean distance from each point of a reference set to the closest point of the
-approximation set and therefore requires a reference front, which is normally unavailable for real-world black-box problems\cite{Cai2020A}. In this
-thesis the hypervolume serves as the primary indicator, supplemented by convergence histories over the number of function evaluations so that anytime
-behaviour is captured in addition to final solution quality.
+\paragraph{Inverted generational distance.}
+The \emph{inverted generational distance} (IGD) measures the mean distance from each point of a reference set $Z$ to the closest point of the
+approximation set and therefore requires a reference front, which is normally unavailable for real-world black-box problems\cite{Cai2020A}. IGD is
+furthermore not Pareto compliant: a set that dominates another can receive a worse indicator value\cite{Cai2020A}. The modified variant IGD$^+$
+removes this defect by replacing the Euclidean distance with a dominance-aware distance that only penalizes those objective components in which the
+approximation set is actually worse than the reference point\cite{Ishibuchi2015Modified}.
+
+\begin{equation}
+    \mathrm{IGD}^{+}(A, Z) =
+    \frac{1}{|Z|} \sum_{\mathbf{z} \in Z}
+    \min_{\mathbf{a} \in A}
+    \sqrt{ \sum_{i=1}^{k} \bigl( \max\{\, a_i - z_i,\, 0 \,\} \bigr)^{2} },
+    \qquad \mathrm{IGD}^{+} \in \mathbb{R}_{\geq 0},
+\end{equation}
+
+where $A$ is the approximation set under evaluation and  $a_i$ and $z_i$ denote the $i$-th objective of an approximation and a reference point,
+respectively. Lower values indicate better approximation quality, and IGD$^+$ is weakly Pareto compliant\cite{Ishibuchi2015Modified}. Because the true
+Pareto front of the gripper design problem is unknown, the reference set $Z$ is constructed as the non-dominated union of the fronts of all compared
+runs\cite{Cai2020A}. IGD$^+$ is therefore a \emph{relative} measure: it quantifies how well an individual run approximates the best front jointly attainable by the
+whole set of runs, and it is optimistically biased in favour of those runs that contribute many points to $Z$\cite{Cai2020A}.
 
 % \subsubsection{Stochasticity, Seeding and Statistical Comparison}
 % \label{subsubsec:stochasticity_and_statistics}
