@@ -319,7 +319,62 @@ Figure~\ref{fig:evolutionary_flowchart} shows the basic working scheme shared by
 initialization and evaluation of the initial population, the algorithm iteratively
 applies mating selection, recombination (crossover), mutation, evaluation of the
 offspring, and environmental selection (replacement), until a termination criterion
-is satisfied
+is satisfied. The individual steps of this cycle can be described as follows.
+
+\paragraph{Initialization and Evaluation}
+An initial population of candidate solutions is created, usually by random sampling within the
+bounds of the decision space, so that the starting set covers the search space as broadly as
+possible without relying on prior knowledge. Every individual of this initial population is then
+evaluated by the objective function, which assigns each candidate the objective values on which all
+subsequent selection decisions are based. Since no variation operator has been applied yet, this
+population forms the reference state of generation zero.
+
+\paragraph{Mating Selection}
+Mating selection determines which individuals of the current population are allowed to produce
+offspring. Individuals with better objective values are assigned a higher probability of being
+selected, for example by tournament selection, which creates the selection pressure that drives the
+population toward better regions of the search space. The selection is stochastic rather than
+strictly deterministic, so that less competitive individuals retain a chance of reproducing and the
+genetic diversity of the population is preserved.
+
+\paragraph{Recombination (Crossover)}
+Recombination combines the decision variables of two or more selected parents into new offspring, so
+that building blocks which have proven advantageous in different individuals can be merged into a
+single solution. For continuous decision variables this is typically realized by operators such as
+simulated binary crossover, which generates offspring in the vicinity of the parent values. Since
+crossover exploits information that is already contained in the population, it is primarily
+responsible for the exploitative behavior of the algorithm.
+
+\paragraph{Mutation}
+Mutation applies small random fluctuations to individual decision variables of the offspring and
+thereby introduces genetic material that is not present in the parent population. It enables the
+algorithm to escape local optima and counteracts the loss of diversity caused by repeated selection
+and recombination. Mutation probability and mutation strength control the balance between
+exploration and exploitation: large values lead to a more random search, whereas small values keep
+the offspring close to their parents.
+
+\paragraph{Evaluation of the Offspring}
+The newly generated offspring are evaluated by the objective function in the same way as the initial
+population. In the case of expensive black-box objectives, this step dominates the computational
+cost of the entire cycle, whereas the variation and selection operators themselves are
+computationally negligible. The number of objective evaluations is therefore commonly used as the
+budget measure of an evolutionary run.
+
+\paragraph{Environmental Selection (Replacement)}
+Environmental selection forms the population of the next generation from the union of parents and
+offspring, so that the population size remains constant. In the single-objective case this reduces
+to retaining the individuals with the best objective values, while in the multi-objective case the
+decision is based on Pareto dominance together with an additional diversity criterion. Because the
+best individuals found so far can be carried over unchanged, this step is what renders the progress
+of the population across generations monotone.
+
+\paragraph{Termination}
+After environmental selection, a termination criterion is checked. If it is not satisfied, the cycle
+continues with the mating selection of the next generation, otherwise the current population, or the
+non-dominated subset of all evaluated solutions is returned as the result. Typical criteria are a
+maximum number of generations or objective evaluations, a limit on the computation time, or
+stagnation of the objective values or of a quality indicator over a number of consecutive
+generations.
 
 EAs are well suited to black-box multi-objective optimization because they require no gradient information, naturally maintain a diverse population of
 trade-off solutions, and are robust to noisy or discontinuous objective landscapes. Multi-objective evolutionary algorithms (MOEAs) extend the basic
