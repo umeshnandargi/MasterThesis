@@ -1,9 +1,9 @@
 #!/bin/bash
 # Build script for LaTeX document with nomenclature
 
-pdflatex vorlage.tex
+pdflatex -synctex=1 -interaction=nonstopmode vorlage.tex
 makeindex vorlage.nlo -s nomencl.ist -o vorlage.nls
-pdflatex vorlage.tex
-pdflatex vorlage.tex
+pdflatex -synctex=1 -interaction=nonstopmode vorlage.tex
+pdflatex -synctex=1 -interaction=nonstopmode vorlage.tex
 
 echo "Build complete!"

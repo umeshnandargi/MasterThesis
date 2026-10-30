@@ -10,11 +10,11 @@
 
 An industrial robot is a automatically controlled, reprogrammable multipurpose manipulator(s), programmable in
 three or more axes, which can be either fixed in place or fixed to a mobile platform for use
-in automation applications in an industrial environment\cite{Lee2022Vocabulary}. A typical robotic system consists of a kinematic chain of rigid links
+in automation applications in an industrial environment~\cite{Lee2022Vocabulary}. A typical robotic system consists of a kinematic chain of rigid links
 connected by actuated joints, a set of sensors, a controller and an end-effector mounted at the flange of the last link. The configuration of the
 manipulator is described by its joint variables, while the position and orientation of the end-effector are described in a Cartesian task
-space\cite{Malik2022A}. The mapping between these two spaces is established through forward and inverse kinematics, which form the basis for
-trajectory planning and motion control\cite{Singh2022Kinematics}.
+space~\cite{Malik2022A}. The mapping between these two spaces is established through forward and inverse kinematics, which form the basis for
+trajectory planning and motion control~\cite{Singh2022Kinematics}.
 
 Modern manufacturing systems increasingly require flexibility to accommodate
 changing production demands, mass customization, increasing product variants,
@@ -29,33 +29,33 @@ required for particular manufacturing tasks~\cite{Wiese2022Flexible}.
 
 % Object handling denotes the sequence of establishing, maintaining and releasing a mechanical connection between an end-effector and a workpiece. The
 % component responsible for this connection is the gripper, which can be classified by the physical principle used to transmit
-% forces\cite{Zhou2021Bio-Inspired}. Impactive grippers, such as parallel-jaw and multi-finger designs, grasp objects through direct mechanical contact,
-% relying on contact forces and friction to maintain the grasp\cite{Zhou2021Bio-Inspired}. Astrictive grippers, most prominently vacuum-based suction
+% forces~\cite{Zhou2021Bio-Inspired}. Impactive grippers, such as parallel-jaw and multi-finger designs, grasp objects through direct mechanical contact,
+% relying on contact forces and friction to maintain the grasp~\cite{Zhou2021Bio-Inspired}. Astrictive grippers, most prominently vacuum-based suction
 % systems, rely on a pressure difference acting on a sealed contact area. Further principles include magnetic and electroadhesive as well as contigutive
-% approaches based on adhesion\cite{Zhou2021Bio-Inspired}.
+% approaches based on adhesion~\cite{Zhou2021Bio-Inspired}.
 
 % The selection and design of a gripper is governed by the properties of the workpiece and the process. Relevant criteria include the mass and the
 % inertia of the object, the accessible contact surfaces, surface roughness and porosity, geometric tolerances, the required positioning accuracy, cycle
-% time, etc. \cite{Ivanov2024New, Morecki1999Manipulator}. Since these criteria interact, gripper design is inherently a trade-off
-% problem\cite{Cramer2022Development}. A gripper that is optimally adapted to a single workpiece is often unsuitable for others, whereas a gripper
-% intended for a family of workpieces must compromise between competing geometric requirements\cite{Lundstrom1974Industrial,Hota2024Automated}. This
+% time, etc. ~\cite{Ivanov2024New, Morecki1999Manipulator}. Since these criteria interact, gripper design is inherently a trade-off
+% problem~\cite{Cramer2022Development}. A gripper that is optimally adapted to a single workpiece is often unsuitable for others, whereas a gripper
+% intended for a family of workpieces must compromise between competing geometric requirements~\cite{Lundstrom1974Industrial,Hota2024Automated}. This
 % tension between specialisation and generalisation is the central motivation for treating gripper configuration as a multi-objective optimisation
-% problem\cite{Mnyussiwalla2022Evaluation}.
+% problem~\cite{Mnyussiwalla2022Evaluation}.
 
 \subsubsection{Bin Picking Problem}
 \label{subsubsec:bin_picking}
 
 Bin picking describes the task of removing individual workpieces from an unordered accumulation of parts, typically supplied in a container, and
-transferring them to a defined target pose\cite{Khalid2021Automatic,Kyprianou2023Bin-Picking}. The task combines perception, grasp planning,
+transferring them to a defined target pose~\cite{Khalid2021Automatic,Kyprianou2023Bin-Picking}. The task combines perception, grasp planning,
 collision-free motion planning and physical grasp execution. Because the parts are randomly oriented and may be partially occluded or entangled, the
-pose of the next object to be grasped is not known in advance and must be estimated from sensor data at runtime\cite{Zhang2021A,Tipary2021Planning}.
+pose of the next object to be grasped is not known in advance and must be estimated from sensor data at runtime~\cite{Zhang2021A,Tipary2021Planning}.
 
 For gripper design, the decisive consequence of this setting is that a grasp cannot be planned for one privileged object
-pose\cite{Khalid2021Automatic}. The gripper must be able to reach and hold the workpiece across a broad range of orientations and partial
+pose~\cite{Khalid2021Automatic}. The gripper must be able to reach and hold the workpiece across a broad range of orientations and partial
 accessibility conditions, which implies that a useful gripper configuration provides several alternative grasp candidates distributed over the object
-surface rather than one single optimal contact\cite{Khalid2021Automatic,Wan2020Planning}. Additional constraints arise from the confined working space
+surface rather than one single optimal contact~\cite{Khalid2021Automatic,Wan2020Planning}. Additional constraints arise from the confined working space
 inside the bin, where collisions between the gripper body and the bin walls or neighbouring parts restrict the set of feasible approach
-directions\cite{Tipary2021Planning,Spenrath2012Gripping}. These requirements directly motivate the objectives used in this thesis, in particular the
+directions~\cite{Tipary2021Planning,Spenrath2012Gripping}. These requirements directly motivate the objectives used in this thesis, in particular the
 diversity of the available grasps for the suction cup gripper and the geometric conformance of the finger contour for the two-finger gripper.
 
 %-------------------------------------------------------------------
@@ -66,9 +66,9 @@ diversity of the available grasps for the suction cup gripper and the geometric 
 \label{subsubsec:grasp_theory}
 
 A grasp is a configuration of contact points between a gripper and a workpiece such that the gripper can resist external forces and torques applied to
-the object\cite{Prattichizzo2014Robot}. The classical criterion for grasp quality is \emph{force closure}. A grasp is force-closed if the contact
+the object~\cite{Prattichizzo2014Robot}. The classical criterion for grasp quality is \emph{force closure}. A grasp is force-closed if the contact
 forces available at the contact points can produce any net wrench on the object, meaning that arbitrary disturbances can be
-resisted\cite{Nguyen1986Constructing}. Force closure requires a sufficient number of contacts with appropriate friction properties and geometric
+resisted~\cite{Nguyen1986Constructing}. Force closure requires a sufficient number of contacts with appropriate friction properties and geometric
 placement.
 \begin{figure}[H]
     \centering
@@ -99,15 +99,15 @@ the cup and the ambient atmosphere. The holding force is defined
 
 where $\Delta p$ is the pressure difference between the evacuated cup volume and the ambient atmosphere, bounded above by the atmospheric pressure
 $p_{\mathrm{atm}}$ since a perfect vacuum cannot be exceeded, $A_{\mathrm{seal}}$ is the effective sealed area enclosed by the cup lip, and $S \geq 1$
-is a safety factor accounting for acceleration, orientation and friction conditions\cite{Zhou2021Bio-Inspired,Gabriel2020Modeling}. The holding force
+is a safety factor accounting for acceleration, orientation and friction conditions~\cite{Zhou2021Bio-Inspired,Gabriel2020Modeling}. The holding force
 is strictly positive for any non-vanishing pressure difference acting on a non-degenerate sealed area. The decisive requirement is therefore an
 airtight seal between the cup lip and the workpiece surface, which restricts applicable surfaces to regions that are sufficiently smooth, non-porous
 and locally flat or only moderately curved relative to the compliance of the cup.
 
 Practical implementations frequently use several cups arranged on a common mounting plate. Distributing the load over multiple cups increases the
 total holding force, provides redundancy if individual cups fail to seal, and, most importantly for handling, generates a resistance to tilting
-moments\cite{Mantriota2006Optimal}. The moment capacity depends on the spatial arrangement of the active cups, which
-is commonly characterised through the area of the polygon or triangle spanned by the sealing contacts\cite{Gabriel2020Modeling}. A large spanned area
+moments~\cite{Mantriota2006Optimal}. The moment capacity depends on the spatial arrangement of the active cups, which
+is commonly characterised through the area of the polygon or triangle spanned by the sealing contacts~\cite{Gabriel2020Modeling}. A large spanned area
 yields a stable grasp, whereas narrowly clustered cups behave similarly to a single contact. The placement of the cups on the mounting plate is thus
 the central design variable, and it must be chosen such that valid sealing contacts are achievable on every workpiece of the considered family.
 
@@ -142,7 +142,7 @@ $d_{\mathrm{geo}}$ the geodesic distance on $SO(3)$, i.e. the minimum angular ro
 required to transform one orientation into the other. Normalization by the maximum
 possible angular distance of $180^\circ$ yields a score bounded by $[0,1]$, where values close
 to zero indicate near-identical orientations and larger values indicate greater average
-angular separation\cite{Huynh2009, anowar2021conceptual}.
+angular separation~\cite{Huynh2009, anowar2021conceptual}.
 
 \paragraph{Spatial Diversity via Mean Pairwise Euclidean Distance.}
 The spatial spread of a set of grasps can be quantified using the mean pairwise Euclidean distance between grasp positions in three-dimensional space.
@@ -186,17 +186,17 @@ unity. This measure complements the geodesic measure by capturing absolute spati
 \label{subsubsec:multi_finger_grippers}
 
 Multi finger grippers are impactive grippers that transmit forces through direct contact between movable jaws and the workpiece. They are classified
-by the number of fingers, the kinematics of the jaw motion and the number of actuated degrees of freedom\cite{Khalid2025Design}. Two-finger parallel
+by the number of fingers, the kinematics of the jaw motion and the number of actuated degrees of freedom~\cite{Khalid2025Design}. Two-finger parallel
 grippers with a single actuator represent the industrial standard because of their mechanical simplicity, robustness and low control
-effort\cite{Ciocarlie2014The}. Three-finger centric designs provide self-centring behaviour for rotationally symmetric parts, while anthropomorphic
+effort~\cite{Ciocarlie2014The}. Three-finger centric designs provide self-centring behaviour for rotationally symmetric parts, while anthropomorphic
 hands with many degrees of freedom offer high versatility at the cost of complexity.
 
 Two grasp modes are commonly distinguished. Force-closure grasps hold the object through friction at the contact surfaces and therefore depend on the
 applied clamping force and the friction coefficient. Form-closure grasps immobilise the object through the geometry of the contacts alone, so that no
-disturbance can move the object without deformation\cite{Bicchi1995On}. Because a mechanically simple gripper provides few actuated degrees of
+disturbance can move the object without deformation~\cite{Bicchi1995On}. Because a mechanically simple gripper provides few actuated degrees of
 freedom, the ability to realise form closure is shifted from the kinematics to the geometry of the jaws. This is the reason why application-specific
 jaw inserts, frequently produced additively, are widely used in industry and why the jaw contour is the natural design variable for
-optimization\cite{Gebauer2024Uncertainty-integrating}.
+optimization~\cite{Gebauer2024Uncertainty-integrating}.
 
 
 %-------------------------------------------------------------------
@@ -207,10 +207,10 @@ optimization\cite{Gebauer2024Uncertainty-integrating}.
 \label{subsubsec:black_box_optimization}
 
 A black-box optimization problem is one in which the objective function has no known analytical form and no gradient information is available to the
-optimizer\cite{Audet2017Derivative-Free}. The function can only be queried at candidate input points, returning a scalar or vector output. This
+optimizer~\cite{Audet2017Derivative-Free}. The function can only be queried at candidate input points, returning a scalar or vector output. This
 setting arises naturally in engineering design when objectives are evaluated through computationally expensive procedures, making gradient computation
 either impossible or impractical. Because each function evaluation may be costly, black-box optimizers must find high-quality solutions within a
-limited evaluation budget, placing emphasis on sample efficiency\cite{Jones2022Constrained}.
+limited evaluation budget, placing emphasis on sample efficiency~\cite{Jones2022Constrained}.
 The gripper configuration problems addressed in this thesis fall squarely within this category. Objective values are computed through a series of
 geometric and numerical calculations applied to the candidate gripper configuration, and no closed-form expression exists that directly maps the
 decision variables to either the contact quality score or the grasp diversity metric.
@@ -219,7 +219,7 @@ decision variables to either the contact quality score or the grasp diversity me
 \label{subsubsec:multi_objective_optimization}
 
 Multi-objective optimization (MOO) refers to the simultaneous optimization of two or more conflicting objective functions over a shared decision
-space\cite{Deb2011Multi-objective}. Formally, a multi-objective minimization problem is defined as
+space~\cite{Deb2011Multi-objective}. Formally, a multi-objective minimization problem is defined as
 
 \begin{equation}
     \begin{gathered}
@@ -237,7 +237,7 @@ space\cite{Deb2011Multi-objective}. Formally, a multi-objective minimization pro
 where $\mathbf{x}$ is the decision variable vector, $\mathcal{X}$ is the feasible decision space, and $k \geq 2$ is the number of objectives. When
 objectives conflict, no single solution minimizes all objectives simultaneously. Instead, a set of trade-off solutions exists, collectively forming
 the Pareto front. The goal of a multi-objective optimizer is therefore not to find a single best solution but to approximate this trade-off surface as
-accurately and completely as possible\cite{Deb2011Multi-objective,Gunantara2018A}.
+accurately and completely as possible~\cite{Deb2011Multi-objective,Gunantara2018A}.
 
 \subsubsection{Pareto Optimality}
 \label{subsubsec:pareto_optimality}
@@ -258,44 +258,44 @@ $\mathbf{x}^{(a)}$ is said to \emph{dominate} $\mathbf{x}^{(b)}$, written $\math
 A solution is called \emph{Pareto optimal} if no other feasible solution dominates it. The set of all Pareto-optimal solutions in the decision space
 is the \emph{Pareto set}, and its image in the objective space is the \emph{Pareto front}. In practice, algorithms compute an approximation of the
 Pareto front, and the quality of this approximation is assessed using performance indicators such as the hypervolume
-indicator\cite{Audet2018Performance,Shang2021A}.
+indicator~\cite{Audet2018Performance,Shang2021A}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{fig/th_bg/pareto_front.png}
-    \caption{Example of a Pareto Front.\cite{Tarunika2026}}
+    \caption{Example of a Pareto Front.~\cite{Tarunika2026}}
     \label{fig:pareto_front}
 \end{figure}
 
 Figure ~\ref{fig:pareto_front} illustrates the concept of dominated and non-dominated solutions in a multi-objective optimization (MOP) problem with
 two objectives. The objective is to minimize both objective functions. The connected curve represents the Pareto front (PF), which includes all
 Pareto-optimal solutions. Solution $X_2$ has higher values for both $f_1$ and $f_2$ when compared to solutions $X_1$ and $Y$. Thus, solutions $X_1$
-and $Y$ dominate solution $X_2$. However, since neither $X_1$ nor $Y$ dominates the other, they are considered non-dominated solutions\cite{Tarunika2026}.
+and $Y$ dominate solution $X_2$. However, since neither $X_1$ nor $Y$ dominates the other, they are considered non-dominated solutions~\cite{Tarunika2026}.
 
 
 \subsubsection{Many-Objective Optimization}
 \label{subsubsec:many_objective_optimization}
 
-Problems with four or more objectives are commonly referred to as many-objective optimization problems\cite{Li2015Many-Objective}. As the number of
+Problems with four or more objectives are commonly referred to as many-objective optimization problems~\cite{Li2015Many-Objective}. As the number of
 objectives grows, the proportion of mutually non-dominated solutions in a randomly sampled population increases rapidly, an effect known as dominance
 resistance. Pareto dominance then loses its ability to discriminate between candidates, so selection pressure towards the Pareto front deteriorates
-and the search degenerates into an essentially random walk guided mainly by diversity preservation\cite{Li2015Many-Objective,VonLuecken2014A}.
+and the search degenerates into an essentially random walk guided mainly by diversity preservation~\cite{Li2015Many-Objective,VonLuecken2014A}.
 
 The number of solutions required to cover a $k$-dimensional front grows exponentially with $k$, visual inspection of the approximation set becomes
-impractical, and the computation of indicators such as the hypervolume becomes expensive\cite{Guerreiro2020}. Algorithm design responds to these
+impractical, and the computation of indicators such as the hypervolume becomes expensive~\cite{Guerreiro2020}. Algorithm design responds to these
 issues either by replacing dominance with decomposition into scalar subproblems, by introducing reference points or reference directions to structure
-the objective space, or by using an indicator as the selection criterion\cite{Li2015Many-Objective,das_dennis}.
+the objective space, or by using an indicator as the selection criterion~\cite{Li2015Many-Objective,das_dennis}.
 
 \subsubsection{No Free Lunch Theory}
 \label{subsubsec:no_free_lunch}
 
 The No Free Lunch (NFL) theorems for optimization state that, averaged over the set of all possible objective functions, all non-repeating search
-algorithms exhibit identical expected performance\cite{Adam2019No, Wolpert1997No}. Any advantage that an algorithm demonstrates on one class of
+algorithms exhibit identical expected performance~\cite{Adam2019No, Wolpert1997No}. Any advantage that an algorithm demonstrates on one class of
 problems is therefore compensated by a corresponding disadvantage on another class. Corresponding results have been derived for the multi-objective
-case\cite{Wolpert1997No}.
+case~\cite{Wolpert1997No}.
 
 The practical consequence is that there is no universally superior optimization algorithm and that the question of which algorithm to use is only
-meaningful with respect to a specific problem class\cite{Cotta1998A}. This provides the methodological justification for the empirical approach taken
+meaningful with respect to a specific problem class~\cite{Cotta1998A}. This provides the methodological justification for the empirical approach taken
 in this thesis. Rather than seeking a generally best algorithm, the objective is to determine which algorithms perform well on the particular
 structure of gripper configuration problems, and how sensitive this ranking is to workpiece geometry and to the dimensionality of the objective space.
 
@@ -306,12 +306,12 @@ Evolutionary algorithms (EAs) are a family of population-based metaheuristics in
 candidate solutions is maintained across discrete generations. At each generation, new candidate solutions are generated through variation operators,
 typically crossover, which recombines pairs of existing solutions, and mutation, which introduces random perturbations, and a selection mechanism
 retains the most promising individuals for the next generation based on their objective values. This loop continues until a termination criterion is
-met, such as a maximum number of function evaluations or convergence of the population\cite{Abulail2025Enhanced}.
+met, such as a maximum number of function evaluations or convergence of the population~\cite{Abulail2025Enhanced}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{fig/th_bg/Evolutionary_flowchart.png}
-    \caption{The evolutionary cycle, basic working scheme of all EAs \cite{Evolutionary_Algos}.}
+    \caption{The evolutionary cycle, basic working scheme of all EAs ~\cite{Evolutionary_Algos}.}
     \label{fig:evolutionary_flowchart}
 \end{figure}
 
@@ -321,6 +321,7 @@ applies mating selection, recombination (crossover), mutation, evaluation of the
 offspring, and environmental selection (replacement), until a termination criterion
 is satisfied. The individual steps of this cycle can be described as follows.
 
+\todo{Find Citations}
 \paragraph{Initialization and Evaluation}
 An initial population of candidate solutions is created, usually by random sampling within the
 bounds of the decision space, so that the starting set covers the search space as broadly as
@@ -379,16 +380,16 @@ generations.
 EAs are well suited to black-box multi-objective optimization because they require no gradient information, naturally maintain a diverse population of
 trade-off solutions, and are robust to noisy or discontinuous objective landscapes. Multi-objective evolutionary algorithms (MOEAs) extend the basic
 EA framework with selection mechanisms based on Pareto dominance or decomposition, enabling them to approximate the Pareto front in a single
-run\cite{Ishibuchi2017Performance,Li2015An}.
+run~\cite{Ishibuchi2017Performance,Li2015An}.
 
 \subsubsection{Bayesian Optimization}
 \label{subsubsec:bayesian_optimization}
 
 Bayesian optimization (BO) is a sequential model-based strategy for the global optimization of expensive black-box functions. A probabilistic
-surrogate model, most commonly a Gaussian process (GP), is fitted to the observations collected so far\cite{Frazier2018A}. The surrogate provides both
+surrogate model, most commonly a Gaussian process (GP), is fitted to the observations collected so far~\cite{Frazier2018A}. The surrogate provides both
 a mean prediction and an uncertainty estimate at unobserved locations, which together define an \emph{acquisition function} that balances exploration
-of uncertain regions with exploitation of promising ones\cite{Frazier2018A,Candelieri2021A}. The point that maximizes the acquisition function is
-selected as the next evaluation, after which the surrogate is updated and the process repeats\cite{Wang2022Recent}\cite{olson2025ax}. Because the
+of uncertain regions with exploitation of promising ones~\cite{Frazier2018A,Candelieri2021A}. The point that maximizes the acquisition function is
+selected as the next evaluation, after which the surrogate is updated and the process repeats~\cite{Wang2022Recent}~\cite{olson2025ax}. Because the
 surrogate concentrates the sampling effort on informative regions, BO typically requires far fewer function evaluations than population-based methods,
 which makes it attractive whenever the evaluation budget is the limiting factor.
 
@@ -402,16 +403,16 @@ $\mathcal{D} = \{(\mathbf{x}_i, y_i)\}_{i=1}^{n_{\mathrm{obs}}}$, where $y_i \in
 is the response measured at $\mathbf{x}_i$ and $n_{\mathrm{obs}}$ the number of
 evaluations performed so far, yields a posterior that is again Gaussian, with closed-form
 predictive mean $\mu(\mathbf{x})$ and non-negative predictive variance
-$\sigma^2(\mathbf{x})$ at any query point\cite{Pawar2021Optimizing}. The kernel encodes the
+$\sigma^2(\mathbf{x})$ at any query point~\cite{Pawar2021Optimizing}. The kernel encodes the
 assumed smoothness and length scale of the underlying function, with the Mat\'ern and squared exponential kernels being the most common choices, and its
-hyperparameters are estimated by maximizing the marginal likelihood\cite{Pawar2021Optimizing}. An additional noise term accounts for stochastic or
-numerically imprecise evaluations\cite{Binois2021A}. The main limitations of GP surrogates are the cubic scaling of exact inference with the number of
-observations and a loss of predictive quality in high-dimensional decision spaces\cite{Frazier2018A}.
+hyperparameters are estimated by maximizing the marginal likelihood~\cite{Pawar2021Optimizing}. An additional noise term accounts for stochastic or
+numerically imprecise evaluations~\cite{Binois2021A}. The main limitations of GP surrogates are the cubic scaling of exact inference with the number of
+observations and a loss of predictive quality in high-dimensional decision spaces~\cite{Frazier2018A}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{fig/th_bg/SurrogateModel.png}
-    \caption{Surrogate Model \cite{olson2025ax}.}
+    \caption{Surrogate Model ~\cite{olson2025ax}.}
     \label{fig:surrogate_model}
 \end{figure}
 
@@ -440,18 +441,18 @@ where $\mathbb{E}[\cdot]$ denotes the expectation taken with respect to the post
 the surrogate at $\mathbf{x}$ and $f_{\min}$ is the best objective value observed so far.
 Truncating the improvement at zero renders the acquisition non-negative, so that
 candidates which are not expected to improve on the incumbent receive zero utility. The
-expression admits a closed form for a Gaussian posterior\cite{Binois2021A, olson2025ax}.
+expression admits a closed form for a Gaussian posterior~\cite{Binois2021A, olson2025ax}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{fig/th_bg/acquisition_fn.png}
-    \caption{Acquisition Function \cite{olson2025ax}.}
+    \caption{Acquisition Function ~\cite{olson2025ax}.}
     \label{fig:acquisition_fn}
 \end{figure}
 
 A visualization of the expected improvement based on the surrogate model predictions is shown in Figure~\ref{fig:acquisition_fn}, where the next
 suggestion is where the expected improvement is at its maximum. Once a new highest EI is selected and evaluated, the surrogate model is retrained and a new suggestion
-is made. This process continues iteratively until a stopping condition, set by the user, is reached \cite{olson2025ax}.
+is made. This process continues iteratively until a stopping condition, set by the user, is reached ~\cite{olson2025ax}.
 
 Since the acquisition function is inexpensive to evaluate and analytically differentiable, its maximization is performed by an inner optimizer rather
 than by querying the expensive objective.
@@ -459,9 +460,9 @@ than by querying the expensive objective.
 \paragraph{Multi-Objective Bayesian Optimization.}
 Extending BO to several objectives requires a utility notion for sets instead of single points. One family of methods fits an independent surrogate
 per objective and scalarizes the problem with randomly drawn weight vectors, so that the front is sampled gradually over successive
-iterations\cite{Ament2023Unexpected}. A second and now dominant family uses the hypervolume as the underlying utility\cite{Tu2022Joint}. Expected
+iterations~\cite{Ament2023Unexpected}. A second and now dominant family uses the hypervolume as the underlying utility~\cite{Tu2022Joint}. Expected
 hypervolume improvement and its noisy, batch-capable variants select the candidates that are expected to enlarge the dominated hypervolume the most,
-which aligns the acquisition criterion directly with the indicator used for evaluation\cite{Ament2023Unexpected}. Information-theoretic approaches
+which aligns the acquisition criterion directly with the indicator used for evaluation~\cite{Ament2023Unexpected}. Information-theoretic approaches
 instead maximize the information gained about the Pareto front. Multi-objective BO is particularly appealing under tight evaluation budgets, but its
 cost per iteration grows with the number of objectives and observations, which makes the comparison against evolutionary methods on the gripper
 problems a question of the available budget rather than of asymptotic quality alone.
@@ -470,7 +471,7 @@ problems a question of the available budget rather than of asymptotic quality al
 \label{subsubsec:performance_indicators}
 
 Because a multi-objective optimizer returns a set rather than a single point, comparing algorithms requires indicators that map an approximation set
-to a scalar quality value\cite{Guerreiro2020}. Indicators are usually grouped according to whether they assess convergence towards the front, the
+to a scalar quality value~\cite{Guerreiro2020}. Indicators are usually grouped according to whether they assess convergence towards the front, the
 diversity of the solutions along the front, or both properties at once.
 
 The \emph{hypervolume} indicator (HV) measures the volume of the objective space that is dominated by the approximation set and bounded by a reference
@@ -492,18 +493,18 @@ point $\mathbf{r}$,
 
 where $\lambda$ denotes the Lebesgue measure on the Borel sets $\mathcal{B}(\mathbb{R}^k)$
 and $A$ is the finite approximation set returned by the
-optimizer\cite{Audet2018Performance,Cai2020A}. The reference point $\mathbf{r}$ must be
+optimizer~\cite{Audet2018Performance,Cai2020A}. The reference point $\mathbf{r}$ must be
 dominated by every member of $A$, that is $f_i(\mathbf{a}) \leq r_i$ for all
 $\mathbf{a} \in A$ and all $i$, so that each box $[\mathbf{f}(\mathbf{a}), \mathbf{r}]$ is
 non-empty and the indicator is well defined and non-negative. The hypervolume is the most
 widely used indicator because it is Pareto compliant, meaning that a strictly dominating
 set never receives a worse value, and because it requires no knowledge of the true Pareto
-front\cite{Guerreiro2020, Audet2018Performance}.
+front~\cite{Guerreiro2020, Audet2018Performance}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{fig/th_bg/hypervolume_2d.png}
-    \caption{Hypervolume indicator \cite{Guerreiro2020}.}
+    \caption{Hypervolume indicator ~\cite{Guerreiro2020}.}
     \label{fig:hypervolume_2d}
 \end{figure}
 
@@ -513,10 +514,10 @@ Figure~\ref{fig:hypervolume_2d} shows a two-dimensional example of the hypervolu
 
 \paragraph{Inverted generational distance.}
 The \emph{inverted generational distance} (IGD) measures the mean distance from each point of a reference set $Z$ to the closest point of the
-approximation set and therefore requires a reference front, which is normally unavailable for real-world black-box problems\cite{Cai2020A}. IGD is
-furthermore not Pareto compliant: a set that dominates another can receive a worse indicator value\cite{Cai2020A}. The modified variant IGD$^+$
+approximation set and therefore requires a reference front, which is normally unavailable for real-world black-box problems~\cite{Cai2020A}. IGD is
+furthermore not Pareto compliant: a set that dominates another can receive a worse indicator value~\cite{Cai2020A}. The modified variant IGD$^+$
 removes this defect by replacing the Euclidean distance with a dominance-aware distance that only penalizes those objective components in which the
-approximation set is actually worse than the reference point\cite{Ishibuchi2015Modified}.
+approximation set is actually worse than the reference point~\cite{Ishibuchi2015Modified}.
 
 \begin{equation}
     \mathrm{IGD}^{+}(A, Z) =
@@ -527,25 +528,25 @@ approximation set is actually worse than the reference point\cite{Ishibuchi2015M
 \end{equation}
 
 where $A$ is the approximation set under evaluation and  $a_i$ and $z_i$ denote the $i$-th objective of an approximation and a reference point,
-respectively. Lower values indicate better approximation quality, and IGD$^+$ is weakly Pareto compliant\cite{Ishibuchi2015Modified}. Because the true
+respectively. Lower values indicate better approximation quality, and IGD$^+$ is weakly Pareto compliant~\cite{Ishibuchi2015Modified}. Because the true
 Pareto front of the gripper design problem is unknown, the reference set $Z$ is constructed as the non-dominated union of the fronts of all compared
-runs\cite{Cai2020A}. IGD$^+$ is therefore a \emph{relative} measure: it quantifies how well an individual run approximates the best front jointly attainable by the
-whole set of runs, and it is optimistically biased in favour of those runs that contribute many points to $Z$\cite{Cai2020A}.
+runs~\cite{Cai2020A}. IGD$^+$ is therefore a \emph{relative} measure: it quantifies how well an individual run approximates the best front jointly attainable by the
+whole set of runs, and it is optimistically biased in favour of those runs that contribute many points to $Z$~\cite{Cai2020A}.
 
 % \subsubsection{Stochasticity, Seeding and Statistical Comparison}
 % \label{subsubsec:stochasticity_and_statistics}
 
-% Evolutionary algorithms and Bayesian optimization are both stochastic procedures\cite{L'opez-Ib'anez2021Reproducibility, Wang2020IOHanalyzer}. Initial
+% Evolutionary algorithms and Bayesian optimization are both stochastic procedures~\cite{L'opez-Ib'anez2021Reproducibility, Wang2020IOHanalyzer}. Initial
 % populations, variation operators and initial designs of experiments depend on pseudo-random numbers, so a single run of an algorithm on a given
 % problem yields only one realisation of a random variable. Conclusions drawn from single runs are consequently not reproducible and may reflect chance
-% rather than algorithm quality\cite{Vermetten2022Analyzing}.
+% rather than algorithm quality~\cite{Vermetten2022Analyzing}.
 
 % Two measures address this issue. First, every run is initialised with an explicitly recorded random seed, which makes individual experiments
-% reproducible and allows algorithms to be compared on identical initial conditions\cite{L'opez-Ib'anez2021Reproducibility}. Second, each algorithm and
+% reproducible and allows algorithms to be compared on identical initial conditions~\cite{L'opez-Ib'anez2021Reproducibility}. Second, each algorithm and
 % problem combination is executed for a number of independent repetitions, and the resulting indicator values are reported through descriptive
-% statistics such as median and interquartile range rather than a single best observed value\cite{L' Lopez-Ib'anez2021Reproducibility}. Since indicator
+% statistics such as median and interquartile range rather than a single best observed value~\cite{L' Lopez-Ib'anez2021Reproducibility}. Since indicator
 % distributions are typically neither normal nor homoscedastic, non-parametric procedures are preferred for the statistical
-% assessment\cite{Latorre2020A}.
+% assessment~\cite{Latorre2020A}.
 
 %-------------------------------------------------------------------
 \subsection{Multi-Objective Evolutionary Algorithms}
@@ -564,7 +565,7 @@ removed, and the process repeats until every individual has a rank. Second, with
 density estimate that measures how isolated a solution is from its neighbours in the objective space. Solutions with a higher crowding distance are
 preferred, encouraging spread along the Pareto front. NSGA-II uses an elitist strategy in which the combined parent and offspring population of size
 $2N$ is truncated to $N$ using these two criteria. Its computational complexity per generation is $\mathcal{O}(kN^2)$, where $k$ is the number of
-objectives and $N$ is the population size\cite{nsga2}.
+objectives and $N$ is the population size~\cite{nsga2}.
 
 \subsubsection{NSGA-III}
 \label{subsubsec:nsga3}
@@ -573,7 +574,7 @@ NSGA-III extends NSGA-II to problems with three or more objectives (many-objecti
 measure. Instead of crowding distance, NSGA-III uses a set of structured \emph{reference points} distributed uniformly on a normalized hyperplane in
 the objective space. Solutions are associated with their closest reference point, and selection preference is given to solutions that are associated
 with under-represented reference points and lie closest to their reference line. This mechanism explicitly promotes diversity across the objective
-space and has been shown to outperform NSGA-II on problems with three or more objectives\cite{nsga3}.
+space and has been shown to outperform NSGA-II on problems with three or more objectives~\cite{nsga3}.
 
 \subsubsection{MOEA/D}
 \label{subsubsec:moead}
@@ -582,7 +583,7 @@ MOEA/D (Multi-Objective Evolutionary Algorithm based on Decomposition) takes a f
 multi-objective problem is decomposed into $N$ scalar subproblems using a set of evenly distributed weight vectors and an aggregation function such as
 the weighted Chebyshev scalarization. Each subproblem is optimized simultaneously, with solutions sharing information within a defined neighbourhood
 of weight vectors. This neighbourhood-based collaborative search makes MOEA/D computationally efficient and well suited to problems where the Pareto
-front has a regular structure. Its complexity per generation is lower than NSGA-II, as it avoids global non-dominated sorting\cite{moead, pymoo}.
+front has a regular structure. Its complexity per generation is lower than NSGA-II, as it avoids global non-dominated sorting~\cite{moead, pymoo}.
 
 \subsubsection{SMS-EMOA}
 \label{subsubsec:smsemoa}
@@ -591,7 +592,7 @@ The S-Metric Selection Evolutionary Multi-Objective Algorithm (SMS-EMOA) uses th
 operates as a steady-state algorithm, so that at each step a single offspring is generated, added to the population, and the individual that
 contributes the least to the population hypervolume is removed. This ensures that the population always converges toward solutions that maximize the
 dominated hypervolume with respect to a reference point. SMS-EMOA is particularly well suited to problems where solution quality is to be measured by
-the hypervolume indicator, as its selection pressure is directly aligned with that metric\cite{smsemoa}.
+the hypervolume indicator, as its selection pressure is directly aligned with that metric~\cite{smsemoa}.
 
 \subsubsection{CMOPSO}
 \label{subsubsec:cmopso}
@@ -601,7 +602,7 @@ setting. In standard PSO, each particle moves through the decision space guided 
 introduces a competitive mechanism in which particles compete in pairs within the swarm, and the losing particle updates its velocity by learning from
 the winning particle rather than from a fixed global best. An external archive of non-dominated solutions is maintained to provide guidance and
 preserve diversity across the Pareto front. This competitive selection strategy avoids premature convergence to a single region of the Pareto front
-and has been shown to achieve fast convergence while remaining competitive with dominance-based MOEAs on standard benchmark problems\cite{cmopso}.
+and has been shown to achieve fast convergence while remaining competitive with dominance-based MOEAs on standard benchmark problems~\cite{cmopso}.
 
 
 
@@ -616,26 +617,14 @@ and has been shown to achieve fast convergence while remaining competitive with 
 \nomenclature{$S$}{Safety factor}
 
 % Grasp Diversity
-\nomenclature{$s$}{Characteristic object scale (bounding-box diagonal)}
-\nomenclature{$\mathbf{e}$}{Bounding-box side lengths}
-\nomenclature{$e_i$}{$i$-th bounding-box side length}
-\nomenclature{$\mathbf{y}_i$}{Position of the $i$-th grasp contact point}
-\nomenclature{$n$}{Number of grasps in the considered set}
 \nomenclature{$D_{\mathrm{pos}}$}{Normalized spatial diversity}
 \nomenclature{$D_{\mathrm{rot}}$}{Normalized orientational diversity}
-\nomenclature{$\mathbf{R}_i$}{Rotation matrix of the $i$-th grasp orientation}
 \nomenclature{$d_{\mathrm{geo}}$}{Geodesic distance on $SO(3)$}
 \nomenclature{$SO(3)$}{Special orthogonal group of 3D rotations}
-
-% Contour Representation
-\nomenclature{$\mathbf{P}_i$}{Spline interpolation point}
-\nomenclature{$m$}{Number of spline interpolation points}
 
 % Multi-Objective Optimization
 \nomenclature{$\mathbf{x}$}{Decision variable vector}
 \nomenclature{$\mathcal{X}$}{Feasible decision space}
-\nomenclature{$d$}{Number of decision variables}
-\nomenclature{$k$}{Number of objectives}
 \nomenclature{$\mathbf{f}(\mathbf{x})$}{Objective function vector}
 \nomenclature{$f_i(\mathbf{x})$}{Individual objective function}
 
@@ -644,27 +633,16 @@ and has been shown to achieve fast convergence while remaining competitive with 
 
 % Gaussian Process Surrogates
 \nomenclature{$\mathcal{GP}$}{Gaussian process}
-\nomenclature{$m(\mathbf{x})$}{Mean function}
 \nomenclature{$\kappa(\mathbf{x}, \mathbf{x}')$}{Covariance/kernel function}
 \nomenclature{$\mathcal{D}$}{Observed data set}
-\nomenclature{$y_i$}{Observed objective value at $\mathbf{x}_i$}
-\nomenclature{$n_{\mathrm{obs}}$}{Number of observations}
 \nomenclature{$\mu(\mathbf{x})$}{Predictive mean}
 \nomenclature{$\sigma^2(\mathbf{x})$}{Predictive variance}
 
 % Acquisition Functions
 \nomenclature{$\alpha_{\mathrm{EI}}(\mathbf{x})$}{Expected improvement acquisition}
 \nomenclature{$f_{\min}$}{Best observed objective value}
-\nomenclature{$\mathbb{E}[\cdot]$}{Expectation operator}
 
 % Performance Indicators
 \nomenclature{$\mathrm{HV}(A, \mathbf{r})$}{Hypervolume indicator}
-\nomenclature{$A$}{Approximation set}
 \nomenclature{$\mathbf{r}$}{Reference point}
-\nomenclature{$\lambda$}{Lebesgue measure}
-\nomenclature{$\mathcal{B}(\mathbb{R}^k)$}{Borel $\sigma$-algebra on $\mathbb{R}^k$}
-
-% Evolutionary Algorithms
-\nomenclature{$N$}{Population size}
-\nomenclature{$\mathcal{O}(kN^2)$}{Computational complexity}
 \end{nomenclature}

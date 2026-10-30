@@ -344,3 +344,21 @@ backgroundcolor=\color{lightgray},	  % % Hintergrundfarbe der Listings
 
 %\listfiles
 %------------------------------------------------------------------------
+\usepackage{tikz}
+\usepackage{adjustbox}
+\usetikzlibrary{shapes.geometric, arrows.meta, calc}
+
+\tikzset{
+  box/.style   = {draw, rounded corners=2pt, fill=blue!6, align=center,
+                  text width=3.4cm, minimum height=9mm, font=\small},
+  opt/.style   = {box, dashed},
+  term/.style  = {draw, rounded corners=4mm, fill=gray!20, align=center,
+                  text width=2.6cm, minimum height=8mm, font=\small},
+  dec/.style   = {draw, diamond, aspect=2, align=center, fill=orange!15,
+                  inner sep=1pt, font=\small},
+  api/.style   = {draw, rounded corners=2pt, fill=green!10, dashed, align=center,
+                  text width=2.6cm, minimum height=12mm, font=\small},
+  arr/.style   = {-{Stealth[length=2.2mm]}, thick},
+  darr/.style  = {{Stealth[length=2.2mm]}-{Stealth[length=2.2mm]}, thick, dashed},
+  lbl/.style   = {font=\scriptsize, inner sep=1.5pt},
+}
