@@ -148,15 +148,24 @@ Multi-objective optimization (MOO) refers to the simultaneous optimization of tw
 space~\cite{Deb2011Multi-objective}. Formally, a multi-objective minimization problem is defined as
 
 \begin{equation}
+    \label{eq:moop}
     \begin{gathered}
         \min_{\mathbf{x} \in \mathcal{X}} \mathbf{f}(\mathbf{x}) =
-        \bigl(f_1(\mathbf{x}),\, f_2(\mathbf{x}),\, \ldots,\, f_k(\mathbf{x})\bigr), \\[4pt]
-        \mathbf{x} \in \mathcal{X} \subseteq \mathbb{R}^{d},\quad
-        d \in \mathbb{N},\quad
-        f_i : \mathcal{X} \rightarrow \mathbb{R},\quad
-        i \in \{1,\ldots,k\},\quad
-        k \in \mathbb{N},\; k \geq 2,\quad
-        \mathbf{f}(\mathbf{x}) \in \mathbb{R}^{k}
+        \bigl(f_1(\mathbf{x}),\, f_2(\mathbf{x}),\, \ldots,\, f_k(\mathbf{x})\bigr),
+        \\[4pt]
+        \mathcal{X} \subseteq \mathbb{R}^{d},
+        \quad
+        d \in \left\{ n \in \mathbb{Z} \mid n \ge 1 \right\},
+        \quad
+        k \in \left\{ n \in \mathbb{Z} \mid n \ge 2 \right\},
+        \\[4pt]
+        f_i : \mathcal{X} \rightarrow \mathbb{R},
+        \quad
+        \forall\, i \in \{1,\ldots,k\},
+        \qquad
+        \mathbf{f}(\mathbf{x}) \in \mathbb{R}^{k},
+        \quad
+        \forall\, \mathbf{x} \in \mathcal{X}.
     \end{gathered}
 \end{equation}
 
@@ -168,17 +177,21 @@ accurately and completely as possible~\cite{Deb2011Multi-objective,Gunantara2018
 \subsection{Pareto Optimality}
 \label{subsubsec:pareto_optimality}
 
-\todo{Rewrite this according to a research Paper}
 The concept of Pareto optimality provides the theoretical foundation for comparing solutions in a multi-objective setting. A solution
 $\mathbf{x}^{(a)}$ is said to \emph{dominate} $\mathbf{x}^{(b)}$, written $\mathbf{x}^{(a)} \prec \mathbf{x}^{(b)}$, if and only if
 
 \begin{equation}
+    \label{eq:pareto_dominance}
     \begin{gathered}
         f_i(\mathbf{x}^{(a)}) \leq f_i(\mathbf{x}^{(b)}) \quad \forall\, i \in \{1,\ldots,k\}
         \quad \text{and} \quad
-        f_j(\mathbf{x}^{(a)}) < f_j(\mathbf{x}^{(b)}) \quad \text{for at least one } j \in \{1,\ldots,k\}, \\[4pt]
-        \mathbf{x}^{(a)},\, \mathbf{x}^{(b)} \in \mathcal{X},\quad
-        k \in \mathbb{N},\; k \geq 2
+        \exists\, j \in \{1,\ldots,k\} : f_j(\mathbf{x}^{(a)}) < f_j(\mathbf{x}^{(b)}),
+        \\[4pt]
+        \mathbf{x}^{(a)},\, \mathbf{x}^{(b)} \in \mathcal{X},
+        \quad
+        \mathbf{f} = (f_1,\ldots,f_k) : \mathcal{X} \rightarrow \mathbb{R}^{k},
+        \quad
+        k \in \left\{ n \in \mathbb{Z} \mid n \ge 2 \right\}.
     \end{gathered}
 \end{equation}
 
@@ -248,7 +261,7 @@ applies mating selection, recombination (crossover), mutation, evaluation of the
 offspring, and environmental selection (replacement), until a termination criterion
 is satisfied. The individual steps of this cycle can be described as follows.
 
-\paragraph{Initialization and Evaluation}
+\paragraph{Initialization and Evaluation :}
 The algorithm begins by creating a population of candidate solutions.
 Random initialization is a simple and commonly used approach, although
 problem-specific methods can also be employed, for example by including
@@ -259,7 +272,7 @@ using the objective function. The evaluated population provides the starting
 point for the subsequent variation and selection steps.
 ~\cite{Evolutionary_Algos}
 
-\paragraph{Mating Selection}
+\paragraph{Mating Selection :}
 Mating selection chooses individuals from the current population to act
 as parents for offspring generation. Selection introduces a bias toward
 individuals with better fitness. In genetic algorithms, one possible
@@ -272,7 +285,7 @@ through the choice of participants, while the winner is determined by
 their fitness.
 ~\cite{Evolutionary_Algos}
 
-\paragraph{Recombination (Crossover)}
+\paragraph{Recombination (Crossover) :}
 Recombination, also called crossover, generates offspring by combining
 information from two or more parents. It rearranges information already
 present in the population and can combine favorable characteristics from
@@ -284,7 +297,7 @@ exchanged. Recombination is used in several evolutionary algorithm
 families, but it is not a component of evolutionary programming.
 ~\cite{Evolutionary_Algos}
 
-\paragraph{Mutation}
+\paragraph{Mutation :}
 Mutation is a stochastic variation operator that modifies an individual
 and introduces new information into the population. Unlike recombination,
 which rearranges existing information, mutation can explore regions of
@@ -296,7 +309,7 @@ the mutation step size influence the operator and can themselves be
 adapted during the search.
 ~\cite{Evolutionary_Algos}
 
-\paragraph{Evaluation of the Offspring}
+\paragraph{Evaluation of the Offspring :}
 After variation, the offspring are evaluated to determine their fitness
 before replacement or survivor selection is performed. This follows the
 same evaluation principle used for the initial population. In applications
@@ -304,7 +317,7 @@ where fitness evaluation requires a time-consuming numerical model or
 physical experiment, evaluating candidate solutions can be expensive.
 ~\cite{Evolutionary_Algos}
 
-\paragraph{Environmental Selection (Replacement)}
+\paragraph{Environmental Selection (Replacement) :}
 Environmental selection determines which individuals survive into the
 next population. The replacement procedure depends on the algorithm.
 For example, the evolutionary programming scheme may combine parents and offspring before selecting survivors to
@@ -316,7 +329,7 @@ and crowding distance, whereas SMS-EMOA uses marginal hypervolume
 contributions.
 ~\cite{Evolutionary_Algos}
 
-\paragraph{Termination}
+\paragraph{Termination :}
 After environmental selection, a termination criterion is checked. If it is not
 satisfied, the cycle continues with the mating selection of the next generation, otherwise the
 current population, or the non-dominated subset of all evaluated solutions is returned as the
@@ -339,7 +352,7 @@ selected as the next evaluation, after which the surrogate is updated and the pr
 surrogate concentrates the sampling effort on informative regions, BO typically requires far fewer function evaluations than population-based methods,
 which makes it attractive whenever the evaluation budget is the limiting factor~\cite{Wang2022Recent}.
 
-\paragraph{Gaussian Process Surrogates.}
+\subsubsection{Gaussian Process Surrogates.}
 A Gaussian process defines a distribution over functions and is fully specified by a mean
 function $m(\mathbf{x})$ and a positive semi-definite covariance or kernel function
 $\kappa(\mathbf{x}, \mathbf{x}')$, written as
@@ -369,7 +382,7 @@ have not yet been tested. Intuitively, the uncertainty bands are tight in region
 
 
 
-\paragraph{Acquisition Functions.}
+\subsubsection{Acquisition Functions.}
 The acquisition function converts the posterior of the surrogate into a scalar utility that quantifies how promising a candidate point is. Expected
 improvement (EI) measures the expected amount by which a candidate improves on the best observed value,
 
@@ -400,7 +413,7 @@ A visualization of the expected improvement based on the surrogate model predict
 suggestion is where the expected improvement is at its maximum. Once a new highest EI is selected and evaluated, the surrogate model is retrained and a new suggestion
 is made. This process continues iteratively until a stopping condition, set by the user, is reached.~\cite{olson2025ax}
 
-\paragraph{Multi-Objective Bayesian Optimization.}
+\subsubsection{Multi-Objective Bayesian Optimization.}
 Extending BO to several objectives requires a utility notion for sets instead of single points. One family of methods fits an independent surrogate
 per objective and scalarizes the problem with randomly drawn weight vectors, so that the front is sampled gradually over successive
 iterations~\cite{Ament2023Unexpected}. A second and now dominant family uses the hypervolume as the underlying utility~\cite{Tu2022Joint}. Expected
@@ -417,28 +430,47 @@ Because a multi-objective optimizer returns a set rather than a single point, co
 to a scalar quality value~\cite{Guerreiro2020}. Indicators are usually grouped according to whether they assess convergence towards the front, the
 diversity of the solutions along the front, or both properties at once.
 
+\subsubsection{Hypervolume}
 The \emph{hypervolume} indicator (HV) measures the volume of the objective space that is dominated by the approximation set and bounded by a reference
-point $\mathbf{r}$,
+point $\mathbf{z}_{\mathrm{ref}}$,
 
 \begin{equation}
+    \label{eq:hv}
     \begin{gathered}
-        \mathrm{HV}(A, \mathbf{r}) =
+        \mathrm{HV}(A, \mathbf{z}_{\mathrm{ref}}) =
         \lambda \Bigl(
             \bigcup_{\mathbf{a} \in A}
-            \bigl[\mathbf{f}(\mathbf{a}),\, \mathbf{r}\bigr]
-        \Bigr), \\[4pt]
-        A \subset \mathcal{X},\; |A| < \infty,\quad
-        \mathbf{r} \in \mathbb{R}^{k} \ \text{with} \ f_i(\mathbf{a}) \leq r_i \ \forall\, \mathbf{a} \in A,\, i \in \{1,\ldots,k\}, \\[4pt]
-        \lambda : \mathcal{B}(\mathbb{R}^{k}) \rightarrow \mathbb{R}_{\geq 0} \ \text{(Lebesgue measure)},\quad
-        \mathrm{HV} \in \mathbb{R}_{\geq 0}
+            \bigl[\mathbf{f}(\mathbf{a}),\, \mathbf{z}_{\mathrm{ref}}\bigr]
+        \Bigr),
+        \\[4pt]
+        A \subset \mathcal{X},
+        \quad
+        |A| < \infty,
+        \quad
+        \mathbf{f} = (f_1,\ldots,f_k) : \mathcal{X} \rightarrow \mathbb{R}^{k},
+        \quad
+        k \in \left\{ n \in \mathbb{Z} \mid n \ge 1 \right\},
+        \\[4pt]
+        \mathbf{z}_{\mathrm{ref}} = (z_{\mathrm{ref},1},\ldots,z_{\mathrm{ref},k}) \in \mathbb{R}^{k},
+        \quad
+        f_i(\mathbf{a}) \leq z_{\mathrm{ref},i},
+        \quad
+        \forall\, \mathbf{a} \in A,
+        \quad
+        \forall\, i \in \{1,\ldots,k\},
+        \\[4pt]
+        \lambda : \mathcal{B}(\mathbb{R}^{k}) \rightarrow \left\{ t \in \mathbb{R} \mid t \ge 0 \right\} \cup \{\infty\}
+        \ \text{(Lebesgue measure)},
+        \quad
+        \mathrm{HV}(A, \mathbf{z}_{\mathrm{ref}}) \in \left\{ t \in \mathbb{R} \mid t \ge 0 \right\}.
     \end{gathered}
 \end{equation}
 
 where $\lambda$ denotes the Lebesgue measure on the Borel sets $\mathcal{B}(\mathbb{R}^k)$
 and $A$ is the finite approximation set returned by the
-optimizer~\cite{Audet2018Performance,Cai2020A}. The reference point $\mathbf{r}$ must be
-dominated by every member of $A$, that is $f_i(\mathbf{a}) \leq r_i$ for all
-$\mathbf{a} \in A$ and all $i$, so that each box $[\mathbf{f}(\mathbf{a}), \mathbf{r}]$ is
+optimizer~\cite{Audet2018Performance,Cai2020A}. The reference point $\mathbf{z}_{\mathrm{ref}}$ must be
+dominated by every member of $A$, that is $f_i(\mathbf{a}) \leq z_{\mathrm{ref},i}$ for all
+$\mathbf{a} \in A$ and all $i$, so that each box $[\mathbf{f}(\mathbf{a}), \mathbf{z}_{\mathrm{ref}}]$ is
 non-empty and the indicator is well defined and non-negative. The hypervolume is the most
 widely used indicator because it is Pareto compliant, meaning that a strictly dominating
 set never receives a worse value, and because it requires no knowledge of the true Pareto
@@ -451,11 +483,11 @@ front~\cite{Guerreiro2020, Audet2018Performance}.
     \label{fig:hypervolume_2d}
 \end{figure}
 
-Figure~\ref{fig:hypervolume_2d} shows a two-dimensional example of the hypervolume (an area) and a fixed reference point r.
+Figure~\ref{fig:hypervolume_2d} shows a two-dimensional example of the hypervolume (an area) and a fixed reference point $\mathbf{z}_{\mathrm{ref}}$.
 
 
 
-\paragraph{Inverted generational distance.}
+\subsubsection{Inverted generational distance.}
 The \emph{inverted generational distance} (IGD) measures the mean distance from each point of a reference set $Z$ to the closest point of the
 approximation set and therefore requires a reference front, which is normally unavailable for real-world black-box problems~\cite{Cai2020A}. IGD is
 furthermore not Pareto compliant: a set that dominates another can receive a worse indicator value~\cite{Cai2020A}. The modified variant IGD$^+$
@@ -463,11 +495,30 @@ removes this defect by replacing the Euclidean distance with a dominance-aware d
 approximation set is actually worse than the reference point~\cite{Ishibuchi2015Modified}.
 
 \begin{equation}
-    \mathrm{IGD}^{+}(A, Z) =
-    \frac{1}{|Z|} \sum_{\mathbf{z} \in Z}
-    \min_{\mathbf{a} \in A}
-    \sqrt{ \sum_{i=1}^{k} \bigl( \max\{\, a_i - z_i,\, 0 \,\} \bigr)^{2} },
-    \qquad \mathrm{IGD}^{+} \in \mathbb{R}_{\geq 0},
+    \label{eq:igd_plus}
+    \begin{gathered}
+        \mathrm{IGD}^{+}(A, Z) =
+        \frac{1}{|Z|} \sum_{\mathbf{z} \in Z}
+        \min_{\mathbf{a} \in A}
+        \sqrt{ \sum_{i=1}^{k} \bigl( \max\{\, a_i - z_i,\, 0 \,\} \bigr)^{2} },
+        \qquad \mathrm{IGD}^{+}(A, Z) \in \left\{ r \in \mathbb{R} \mid r \ge 0 \right\},
+        \\[4pt]
+        A,\, Z \subset \mathbb{R}^{k},
+        \quad
+        0 < |A| < \infty,
+        \quad
+        0 < |Z| < \infty,
+        \quad
+        k \in \left\{ n \in \mathbb{Z} \mid n \ge 1 \right\},
+        \\[2pt]
+        \mathbf{a} = (a_1,\ldots,a_k),
+        \quad
+        \mathbf{z} = (z_1,\ldots,z_k),
+        \quad
+        \forall\, \mathbf{a} \in A,
+        \quad
+        \forall\, \mathbf{z} \in Z.
+    \end{gathered}
 \end{equation}
 
 where $A$ is the approximation set under evaluation and  $a_i$ and $z_i$ denote the $i$-th objective of an approximation and a reference point,
@@ -547,7 +598,35 @@ the winning particle rather than from a fixed global best. An external archive o
 preserve diversity across the Pareto front. This competitive selection strategy avoids premature convergence to a single region of the Pareto front
 and has been shown to achieve fast convergence while remaining competitive with dominance-based MOEAs on standard benchmark problems.~\cite{cmopso}
 
+\section{Reference-Direction Generation}
+\label{sec:reference_direction_generation}
 
+Reference directions specify target regions in objective space and are used
+by algorithms such as NSGA-III and MOEA/D to distribute their search.
+Two generation methods available in \texttt{pymoo} are Das--Dennis and
+energy-based generation~\cite{pymoo}.
+The Das--Dennis method constructs a regular grid on the unit simplex.
+For $m$ objectives and $p$ partitions, the number of directions $N$ is
+\begin{equation}
+    \label{eq:binom_count}
+    \begin{gathered}
+        N = \binom{p+m-1}{m-1},
+        \\[4pt]
+        p,\, m \in \left\{ n \in \mathbb{Z} \mid n \ge 1 \right\},
+        \quad
+        N \in \left\{ n \in \mathbb{Z} \mid n \ge 1 \right\}.
+    \end{gathered}
+\end{equation}
+This construction is deterministic, but the direction count grows
+combinatorially with the objective count for a fixed partition setting.
+It also restricts the available direction counts to those produced by
+the grid construction.~\cite{pymoo,das_dennis}
+
+Energy-based generation distributes a prescribed number of points on the
+unit simplex by minimizing a repulsive energy function. Unlike Das--Dennis,
+it permits direct specification of the number of directions, making it useful
+when a fixed reference-set size is required in higher-dimensional objective
+spaces.~\cite{pymoo,ref_dirs_energy}
 
 %-------------------------------------------------------------------
 
@@ -585,5 +664,5 @@ and has been shown to achieve fast convergence while remaining competitive with 
 \nomenclature{$f_{\min}$}{Best observed objective value}
 
 % Performance Indicators
-\nomenclature{$\mathrm{HV}(A, \mathbf{r})$}{Hypervolume indicator}
-\nomenclature{$\mathbf{r}$}{Reference point}
+\nomenclature{$\mathrm{HV}(A, \mathbf{z}_{\mathrm{ref}})$}{Hypervolume indicator}
+\nomenclature{$\mathbf{z}_{\mathrm{ref}}$}{Hypervolume reference point}
