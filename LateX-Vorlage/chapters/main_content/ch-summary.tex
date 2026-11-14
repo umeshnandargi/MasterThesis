@@ -1,0 +1,107 @@
+\chapter{Summary}
+\label{sec:summary}
+
+\section{Conclusion}
+
+This thesis investigated multi-objective optimization methods for two
+gripper-design problems: the placement of three suction cups and the design of
+rigid parallel-jaw contours. Both were formulated as black-box problems and
+implemented through a common interface that separates candidate generation from
+problem-specific geometric evaluation.
+
+NSGA-II, NSGA-III, MOEA/D, SMS-EMOA, and CMOPSO were evaluated on four
+workpieces, with each gripper--workpiece combination treated as a separate
+problem instance. Solution quality was assessed using IGD+ and cumulative
+archive hypervolume (HV), and runtime was recorded as an indication of
+computational cost. For the suction-cup problem, SMS-EMOA achieved the lowest
+mean IGD+ on all four workpieces, and NSGA-II was also among the leading
+methods. HV did not identify a clear leader on every workpiece. For the
+parallel-jaw problem, NSGA-II achieved the highest mean HV on all four
+workpieces, while the lowest mean IGD+ depended on the workpiece. MOEA/D
+generally performed less well than the leading methods. SMS-EMOA and NSGA-II are
+therefore promising choices for the investigated formulations and budgets, but no
+universally best algorithm was established.
+
+The Ax/BoTorch Bayesian runs (batch size 10, four workpieces in parallel) were
+stopped after more than 90 hours, at approximately 450 trials per run, and
+produced no final results. A subsequent minimal test on the parallel-jaw gripper
+and the connecting rod (batch size 5, 496 evaluations, one run) reached an HV of
+0.0281. This is about 87\,\% of the best evolutionary result (NSGA-II, 0.0323)
+with about 5\,\% of the evaluations. However, model fitting and candidate
+generation were very time-consuming, and repeating the optimization for several
+runs, further workpieces, and the suction-cup gripper would multiply this cost.
+Bayesian optimization therefore did not produce usable results in this work,
+whereas the population-based methods completed all reported experiments.
+
+\section{Limitations}
+\label{sec:limitations}
+
+The study used five independent runs per algorithm and workpiece for the
+suction-cup problem and three for the parallel-jaw problem, so the statistics are
+descriptive and small differences should be interpreted cautiously. Algorithm
+parameters were not tuned individually, and some HV curves were still rising at
+the end of the evaluation budget.
+
+The true Pareto fronts are unknown. IGD+ was therefore computed against an
+empirical reference front built from the final solutions of the compared runs,
+and it measures performance relative to those runs. It also evaluates the final
+solution sets, whereas the reported HV uses a cumulative archive, so the two
+indicators do not assess exactly the same sets.
+
+Runtimes are indicative only because the runs used GPUs with different computing
+capacities. The seed values and hardware information were not stored in the
+\texttt{results.json} metadata, so the GPU of each run cannot be identified and
+the runs cannot be reproduced exactly from the stored results. The Bayesian
+results are limited to a minimal single-run test ($n=1$) on one
+gripper--workpiece pair, with a smaller batch size (5) than the stopped main
+attempt (10) and about 5\,\% of the evaluation budget of the evolutionary
+algorithms. They were compared only through HV, and their variability and their
+behavior at larger budgets or on other workpieces are unknown. In the main
+attempt, the four parallel processes shared computational resources, and the
+logs did not separate model fitting, candidate generation, and evaluation times.
+The causes of the long runtime therefore remain unresolved, and the outcome
+cannot be generalized to Bayesian optimization as a whole.
+
+The suction-cup parameterization does not explicitly enforce a minimum
+distance between cup centers. Consequently, some candidate layouts may
+contain overlapping cups and may not be physically realizable. The
+radial bounds alone do not prevent overlap because the angular positions
+are optimized independently.
+
+The evaluation is entirely computational. The suction-cup seal model and
+the voxel-based proximity and collision calculations of the parallel-jaw
+evaluator do not establish physical grasp performance, and the optimized
+configurations were not validated on real grippers. Manufacturing effects,
+material behavior, and contact forces were not assessed. Only four
+workpieces and restricted design spaces were investigated.
+
+\section{Future Work}
+
+The Bayesian comparison should be repeated under controlled hardware conditions
+with separate timing of model fitting, candidate generation, and geometric
+evaluation. The minimal test on the connecting rod can serve as a starting point
+and should be extended to several independent runs, the remaining workpieces, and
+the suction-cup gripper. Settings such as objective thresholds and batch size
+should be investigated. Running the processes sequentially and saving
+intermediate results would help locate bottlenecks and preserve partial runs.
+Comparisons should consider solution quality at common evaluation counts as well
+as wall-clock time.
+
+Future experiments should store the metadata needed for reproducibility in the
+result files, including the random seed of every run along with the GPU and CPU model. This would allow runs
+to be repeated and runtimes to be compared across hardware.
+
+Further algorithm studies could use more repetitions, statistical tests, and
+systematic parameter studies. Hybrid and surrogate-assisted methods could reduce
+the number of expensive evaluations. Since the Bayesian run reached a high HV
+after few evaluations, a short Bayesian phase could, for example, initialize an
+evolutionary algorithm.
+
+A non-overlap condition should be added to the suction-cup formulation, requiring
+the distance between every pair of cup centers to be at least the cup diameter,
+and existing layouts should be checked for overlap. The evaluations could also be
+extended with additional design variables and force-based criteria, and the
+voxel-based parallel-jaw calculations should be compared with direct collision
+tests. Finally, physical experiments with selected suction-cup layouts and jaw
+contours in a bin-picking setup could show whether better computational
+objectives lead to reliable grasping.

@@ -11,16 +11,13 @@
     title={Ax: A Platform for Adaptive Experimentation}, author={Miles Olson and Elizabeth Santorella and Louis C. Tiao and Sait Cakmak and David
     Eriksson and Mia Garrard and Sam Daulton and Maximilian Balandat and Eytan Bakshy and Elena Kashtelyan and Zhiyuan Jerry Lin and Sebastian Ament
     and Bernard Beckerman and Eric Onofrey and Paschal Igusti and Cristian Lara and Benjamin Letham and Cesar Cardoso and Shiyun Sunny Shen and Andy
-    Chenyuan Lin and Matthew Grange}, booktitle={AutoML 2025 ABCD Track}, year={2025}, url={https://openreview.net/forum?id=U1f6wHtG1g}
+    Chenyuan Lin and Matthew Grange}, booktitle={AutoML 2025 ABCD Track}, year={2025},
 }
-@misc{botorch,
-      title={BoTorch: A Framework for Efficient Monte-Carlo Bayesian Optimization}, 
-      author={Maximilian Balandat and Brian Karrer and Daniel R. Jiang and Samuel Daulton and Benjamin Letham and Andrew Gordon Wilson and Eytan Bakshy},
-      year={2020},
-      eprint={1910.06403},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/1910.06403}, 
+@inproceedings{botorch,
+    title = {{BoTorch: A Framework for Efficient Monte-Carlo Bayesian Optimization}},
+    author = {Balandat, Maximilian and Karrer, Brian and Jiang, Daniel R. and Daulton, Samuel and Letham, Benjamin and Wilson, Andrew Gordon and Bakshy, Eytan},
+    booktitle = {Advances in Neural Information Processing Systems 33},
+    year = 2020,
 }
 
 @article{nsga2,
@@ -77,7 +74,6 @@ pages = {63-76},
 year = {2018},
 issn = {0020-0255},
 doi = {https://doi.org/10.1016/j.ins.2017.10.037},
-url = {https://www.sciencedirect.com/science/article/pii/S0020025517310344},
 author = {Xingyi Zhang and Xiutao Zheng and Ran Cheng and Jianfeng Qiu and Yaochu Jin},
 keywords = {Multi-objective optimization, Competitive swarm optimizer, Evolutionary algorithm, Particle swarm optimization}
 }
@@ -90,25 +86,8 @@ pages = {109173},
 year = {2022},
 issn = {0950-7051},
 doi = {https://doi.org/10.1016/j.knosys.2022.109173},
-url = {https://www.sciencedirect.com/science/article/pii/S0950705122005810},
 author = {Yulong Ye and Lingjie Li and Qiuzhen Lin and Ka-Chun Wong and Jianqiang Li and Zhong Ming},
 keywords = {Dynamic multi-objective optimization, Naive Bayesian classification, Evolutionary algorithm, Cluster algorithm},
-abstract = {Dynamic multi-objective optimization problems (DMOPs) typically contain multiple conflicting objectives that
-vary over time, requiring the optimization algorithms to quickly track the changing Pareto-optimal solutions (POS).
-Recently, prediction-based dynamic multi-objective evolutionary algorithms (DMOEAs) using transfer learning ideas have
-been considered promising, which could accelerate the search towards the POS by transferring information from previous
-environments to estimate the location of the POS in the next environment. However, most of the existing methods only
-transfer the search experiences from one or two previous environments to construct the prediction model for the next
-moment, which may ignore the effective information in the earlier search process thereby degrading the prediction
-accuracy in some cases. In this paper, a knowledge-guided Bayesian classification for DMOEA, called KGB-DMOEA, is
-proposed, which aims to achieve a robust prediction by fully exploiting the information from all historical
-environments. Particularly, when an environmental change is detected, a knowledge reconstruction–examination strategy is
-designed to divide all historical optimal solutions into useful and useless ones, which are used as positive and
-negative samples, respectively, for training the prediction model in subsequent steps. Then, a non-linear probabilistic
-classifier, i.e., naive Bayesian classifier, is constructed by using the above training samples, which can fully mine
-the effective knowledge from all historical environments and predict a high-quality initial population for the new
-environment. Experimental results on multiple DMOPs test suits demonstrate that KGB-DMOEA is superior to several
-state-of-the-art DMOEAs in solving various DMOPs.}
 }
 
 @article{hypervolume,
@@ -120,16 +99,8 @@ pages = {1653-1669},
 year = {2007},
 issn = {0377-2217},
 doi = {https://doi.org/10.1016/j.ejor.2006.08.008},
-url = {https://www.sciencedirect.com/science/article/pii/S0377221706005443},
 author = {Nicola Beume and Boris Naujoks and Michael Emmerich},
 keywords = {Evolutionary computations, Evolutionary multiple objective optimisation, Performance assessment, Hypervolume measure, OR in aerodynamic industries},
-abstract = {The hypervolume measure (or S metric) is a frequently applied quality measure for comparing the results of
-evolutionary multiobjective optimisation algorithms (EMOA). The new idea is to aim explicitly for the maximisation of
-the dominated hypervolume within the optimisation process. A steady-state EMOA is proposed that features a selection
-operator based on the hypervolume measure combined with the concept of non-dominated sorting. The algorithm’s population
-evolves to a well-distributed set of solutions, thereby focussing on interesting regions of the Pareto front. The
-performance of the devised S metric selection EMOA (SMS-EMOA) is compared to state-of-the-art methods on two- and
-three-objective benchmark suites as well as on aeronautical real-world applications.}
 }
 
 
@@ -142,34 +113,18 @@ number = {3},
 pages = {631-657},
 year = {1998},
 doi = {10.1137/S1052623496307510},
-
-URL = { 
-    
-        https://doi.org/10.1137/S1052623496307510
-},
-eprint = { 
-    
-        https://doi.org/10.1137/S1052623496307510
-}
-,
-    abstract = { This paper proposes an alternate method for finding several Pareto optimal points for a general
-    nonlinear multicriteria optimization problem. Such points collectively capture the trade-off among the various
-    conflicting objectives. It is proved that this method is independent of the relative scales of the functions and is
-    successful in producing an evenly distributed set of points in the Pareto set given an evenly distributed set of
-    parameters, a property which the popular method of minimizing weighted combinations of objective functions lacks.
-    Further, this method can handle more than two objectives while retaining the computational efficiency of
-    continuation-type algorithms. This is an improvement over continuation techniques for tracing the trade-off curve
-    since continuation strategies cannot easily be extended to handle more than two objectives. }
+eprint = { https://doi.org/10.1137/S1052623496307510}
 }
 
 @article{ref_dirs_energy,
-    author={J. {Blank} and K. {Deb} and Y. {Dhebar} and S. {Bandaru} and H. {Seada}},
-    journal={IEEE Transactions on Evolutionary Computation},
-    title={Generating Well-Spaced Points on a Unit Simplex for Evolutionary Many-Objective Optimization},
-    year={In press},
-    volume={},
-    number={},
-    pages={}
+    author  = {Blank, Julian and Deb, Kalyanmoy and Dhebar, Yashesh and Bandaru, Sunith and Seada, Haitham},
+    title   = {Generating Well-Spaced Points on a Unit Simplex for Evolutionary Many-Objective Optimization},
+    journal = {IEEE Transactions on Evolutionary Computation},
+    year    = {2021},
+    volume  = {25},
+    number  = {1},
+    pages   = {48--60},
+    doi     = {10.1109/TEVC.2020.2998501}
 }
 
 @article{Evolutionary_Algos,
@@ -180,7 +135,6 @@ volume = {4},
 number = {3},
 pages = {178-195},
 doi = {https://doi.org/10.1002/widm.1124},
-url = {https://wires.onlinelibrary.wiley.com/doi/abs/10.1002/widm.1124},
 eprint = {https://wires.onlinelibrary.wiley.com/doi/pdf/10.1002/widm.1124},
 year = {2014}
 }
@@ -198,10 +152,12 @@ year = {2014}
 
 @article{gonzalez1985clustering,
   author  = {Gonzalez, Teofilo F.},
-  title   = {Clustering to minimize the maximum intercluster distance},
+  title   = {Clustering to Minimize the Maximum Intercluster Distance},
   journal = {Theoretical Computer Science},
   volume  = {38},
-  year    = {1985}
+  pages   = {293--306},
+  year    = {1985},
+  doi     = {10.1016/0304-3975(85)90224-5}
 }
 
 @article{Huynh2009,
@@ -213,8 +169,25 @@ year = {2014}
   number    = {2},
   pages     = {155--164},
   doi       = {10.1007/s10851-009-0161-2},
-  url       = {https://doi.org/10.1007/s10851-009-0161-2}
 }
+
+@inproceedings{turk1994zippered,
+  author    = {Turk, Greg and Levoy, Marc},
+  title     = {Zippered Polygon Meshes from Range Images},
+  booktitle = {Proceedings of the 21st Annual Conference on Computer Graphics and Interactive Techniques},
+  series    = {SIGGRAPH '94},
+  year      = {1994},
+  pages     = {311--318},
+  publisher = {ACM},
+  address   = {New York, NY, USA},
+  doi       = {10.1145/192161.192241}
+}
+
+ @inproceedings{sangpil2020large,
+    title={A Large-scale Annotated Mechanical Components Benchmark for Classification and Retrieval Tasks with Deep Neural Networks},
+    author={Kim, Sangpil and Chi, Hyung-gun and Hu, Xiao and Huang, Qixing and Ramani, Karthik},
+    booktitle={Proceedings of 16th European Conference on Computer Vision (ECCV)},
+    year={2020},}
 
 @article{Zheng2024Proven,
 title={Proven advantage of multiobjective evolutionary algorithms for problems with different degrees of conflict},
@@ -226,39 +199,61 @@ pages={104573},
 doi={10.1016/j.artint.2026.104573}
 }
 
-@article{Ishibuchi2015Modified,
-title={Modified Distance Calculation in Generational Distance and Inverted Generational Distance},
-author={H. Ishibuchi and Hiroyuki Masuda and Yuki Tanigaki and Y. Nojima},
-year={2015},
-pages={110-125},
-doi={10.1007/978-3-319-15892-1_8}
+@inproceedings{Ishibuchi2015Modified,
+  author    = {Ishibuchi, Hisao and Masuda, Hiroyuki and Tanigaki, Yuki and Nojima, Yusuke},
+  title     = {Modified Distance Calculation in Generational Distance and Inverted Generational Distance},
+  booktitle = {Evolutionary Multi-Criterion Optimization (EMO 2015)},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {9018},
+  pages     = {110--125},
+  publisher = {Springer},
+  year      = {2015},
+  doi       = {10.1007/978-3-319-15892-1_8}
 }
 
-@article{Tian2019Automated,
-title={Automated Selection of Evolutionary Multi-objective Optimization Algorithms},
-author={Ye Tian and Shichen Peng and Tobias Rodemann and Xing-yi Zhang and Yaochu Jin},
-journal={2019 IEEE Symposium Series on Computational Intelligence (SSCI)},
-year={2019},
-pages={3225-3232},
-doi={10.1109/ssci44817.2019.9003018}
-}
+@INPROCEEDINGS{Ishibuchi2016Sensitivity,
+  author={Ishibuchi, Hisao and Masuda, Hiroyuki and Nojima, Yusuke},
+  booktitle={2016 IEEE Congress on Evolutionary Computation (CEC)}, 
+  title={Sensitivity of performance evaluation results by inverted generational distance to reference points}, 
+  year={2016},
+  volume={},
+  number={},
+  pages={1107-1114},
+  doi={10.1109/CEC.2016.7743912}
+  }
 
-@article{Qin2019Bayesian,
-title={Bayesian Approaches to Surrogate-Assisted Evolutionary Multi-objective Optimization: A Comparative Study},
-author={Shufen Qin and Chaoli Sun and Yaochu Jin and Guochen Zhang},
-journal={2019 IEEE Symposium Series on Computational Intelligence (SSCI)},
-year={2019},
-pages={2074-2080},
-doi={10.1109/ssci44817.2019.9002715}
-}
+@INPROCEEDINGS{Tian2019Automated,
+  author={Tian, Ye and Peng, Shichen and Rodemann, Tobias and Zhang, Xingyi and Jin, Yaochu},
+  booktitle={2019 IEEE Symposium Series on Computational Intelligence (SSCI)}, 
+  title={Automated Selection of Evolutionary Multi-objective Optimization Algorithms}, 
+  year={2019},
+  volume={},
+  number={},
+  pages={3225-3232},
+  keywords={Evolutionary computation;Benchmark testing;Feature extraction;Optimization;Prediction algorithms;Convergence;Linear programming},
+  doi={10.1109/SSCI44817.2019.9003018}}
 
-@article{Xu2022Planar,
-title={Planar Manipulation via Learning Regrasping},
-author={Peng Xu and Zhiyuan Chen and Jian-Kun Wang and M. Q. Meng},
-journal={ArXiv},
-year={2022},
-volume={abs/2210.05349},
-doi={10.48550/arxiv.2210.05349}
+
+
+@INPROCEEDINGS{Qin2019Bayesian,
+  author={Qin, Shufen and Sun, Chaoli and Jin, Yaochu and Zhang, Guochen},
+  booktitle={2019 IEEE Symposium Series on Computational Intelligence (SSCI)}, 
+  title={Bayesian Approaches to Surrogate-Assisted Evolutionary Multi-objective Optimization: A Comparative Study}, 
+  year={2019},
+  volume={},
+  number={},
+  pages={2074-2080},
+  keywords={Optimization;Bayes methods;Evolutionary computation;Linear programming;Computational modeling;Gaussian processes;Sociology;evolutionary Bayesian optimization;Bayesian evolutionary optimization;model management;multi-objective optimization},
+  doi={10.1109/SSCI44817.2019.9002715}}
+
+
+@unknown{Xu2022Planar,
+author = {Xu, Peng and Chen, Zhiyuan and Wang, Jiankun and Meng, Max},
+year = {2022},
+month = {10},
+pages = {},
+title = {Planar Manipulation via Learning Regrasping},
+doi = {10.48550/arXiv.2210.05349}
 }
 
 @article{Tarunika2026,
@@ -270,15 +265,14 @@ doi={10.48550/arxiv.2210.05349}
   number  = {1},
   pages   = {4455},
   doi     = {10.1038/s41598-025-34467-5},
-  url     = {https://doi.org/10.1038/s41598-025-34467-5},
   issn    = {2045-2322}
 }
 
 @misc{reichert2024greiferoptimierung,
-    author       = {Reichert Michael},
-    title        = {Automatisierte Greiferoptimierung für Bin-Picking-Anwendungen},
+    author       = {Reichert, Michael},
+    title        = {{Automatisierte Greiferoptimierung f{\"u}r Bin-Picking-Anwendungen}},
     year         = {2024},
-    howpublished = {Forschungsarbeit, M.Sc. Mechatronik, Universität Stuttgart},
+    howpublished = {Forschungsarbeit, M.Sc. Mechatronik, Universit{\"a}t Stuttgart},
     note         = {Submitted December 15, 2024}
 }
 
@@ -286,7 +280,6 @@ doi={10.48550/arxiv.2210.05349}
   author       = {Nojhan},
   title        = {Pareto front},
   year         = {2006},
-  url          = {https://commons.wikimedia.org/w/index.php?curid=770240}
 }
 
 @article{hou2022dimensionality,
@@ -309,12 +302,11 @@ doi={10.3390/app16083775}
 }
 
 @article{Zurbruegg2025GraspQP,
-title={GraspQP: Differentiable Optimization of Force Closure for Diverse and Robust Dexterous Grasping},
-author={René Zurbrügg and Andrei Cramariuc and Marco Hutter},
-journal={ArXiv},
-year={2025},
-volume={abs/2508.15002},
-doi={10.48550/arxiv.2508.15002}
+  title={GraspQP: Differentiable Optimization of Force Closure for Diverse and Robust Dexterous Grasping},
+  author={Ren{\'e} Zurbr{\"u}gg and Andrei Cramariuc and Marco Hutter},
+  journal={ArXiv},
+  year={2025},
+  volume={abs/2508.15002},
 }
 
 @article{Beccari2019A,
@@ -326,13 +318,24 @@ volume={75},
 doi={10.1016/j.cagd.2019.101784}
 }
 
-@misc{Lyche2018Foundations,
-title={Foundations of Spline Theory: B-Splines, Spline Approximation, and Hierarchical Refinement},
-author={T. Lyche and C. Manni and H. Speleers},
-year={2018},
-pages={1-76},
-doi={10.1007/978-3-319-94911-6_1}
+@Inbook{Lyche2018Foundations,
+author="Lyche, Tom
+and Manni, Carla
+and Speleers, Hendrik",
+editor="Lyche, Tom
+and Manni, Carla
+and Speleers, Hendrik",
+title="Foundations of Spline Theory: B-Splines, Spline Approximation, and Hierarchical Refinement",
+bookTitle="Splines and PDEs: From Approximation Theory to Numerical Linear Algebra: Cetraro, Italy 2017",
+year="2018",
+publisher="Springer International Publishing",
+address="Cham",
+pages="1--76",
+isbn="978-3-319-94911-6",
+doi="10.1007/978-3-319-94911-6_1",
 }
+
+
 
 @article{Gebauer2024Uncertainty-integrating,
 title={Uncertainty-integrating, automated design of gripper jaws for robust grasping of electrical connectors},
@@ -366,7 +369,7 @@ doi={10.1177/0278364913519148}
 
 @article{Khalid2025Design,
 title={Design and Development of a Novel Universal Gripper Having Rigid Mechanics With Self-Adaptable Fingers for Industrial Applications},
-author={Muhammad Usman Khalid and Michal Jilich and M. Frascio and B. Lévesque and A. Zanella and Matteo Zoppi},
+author={Muhammad Usman Khalid and Michal Jilich and M. Frascio and B. L{\'e}vesque and A. Zanella and Matteo Zoppi},
 journal={IEEE Access},
 year={2025},
 volume={13},
@@ -374,19 +377,9 @@ pages={119789-119809},
 doi={10.1109/access.2025.3587328}
 }
 
-@article{Mantriota2006Optimal,
-title={Optimal grasp of vacuum grippers with multiple suction cups},
-author={G. Mantriota},
-journal={Mechanism and Machine Theory},
-year={2006},
-volume={42},
-pages={18-33},
-doi={10.1016/j.mechmachtheory.2006.02.007}
-}
-
 @article{Gabriel2020Modeling,
 title={Modeling of vacuum grippers for the design of energy efficient vacuum-based handling processes},
-author={Felix Gabriel and Markus Fahning and Julia Meiners and F. Dietrich and K. Dröder},
+author={Felix Gabriel and Markus Fahning and Julia Meiners and F. Dietrich and K. Dr{\"o}der},
 journal={Production Engineering},
 year={2020},
 volume={14},
@@ -394,23 +387,21 @@ pages={545 - 554},
 doi={10.1007/s11740-020-00990-9}
 }
 
-@article{Tu2022Joint,
-title={Joint Entropy Search for Multi-objective Bayesian Optimization},
-author={Ben Tu and A. Gandy and N. Kantas and B. Shafei},
-journal={ArXiv},
+@inproceedings{Tu2022Joint,
+title={Joint Entropy Search for Multi-Objective Bayesian Optimization},
+author={Ben Tu and Axel Gandy and Nikolas Kantas and Behrang Shafei},
+booktitle={Advances in Neural Information Processing Systems},
+editor={Alice H. Oh and Alekh Agarwal and Danielle Belgrave and Kyunghyun Cho},
 year={2022},
-volume={abs/2210.02905},
-doi={10.48550/arxiv.2210.02905}
 }
 
-@article{Belakaria2021Output,
-title={Output Space Entropy Search Framework for Multi-Objective Bayesian Optimization},
-author={Syrine Belakaria and Aryan Deshwal and J. Doppa},
-journal={ArXiv},
-year={2021},
-volume={abs/2110.06980},
-doi={10.1613/jair.1.12966}
+@inproceedings{Belakaria2021Output,
+  title={Max-value entropy search for multi-objective bayesian optimization},
+  author={Belakaria, Syrine and Deshwal, Aryan},
+  booktitle={International Conference on Neural Information Processing Systems (NeurIPS)},
+  year={2019}
 }
+
 @article{Fernandez-Sanchez2023Improved,
 title={Improved max-value entropy search for multi-objective bayesian optimization with constraints},
 author={Daniel Fernández-Sánchez and E. Garrido-Merchán and Daniel Hernández-Lobato},
@@ -420,14 +411,19 @@ volume={546},
 pages={126290},
 doi={10.1016/j.neucom.2023.126290}
 }
-@article{Ament2023Unexpected,
-title={Unexpected Improvements to Expected Improvement for Bayesian Optimization},
-author={S. Ament and Sam Daulton and David Eriksson and M. Balandat and E. Bakshy},
-journal={ArXiv},
-year={2023},
-volume={abs/2310.20708},
-doi={10.48550/arxiv.2310.20708}
+
+@inproceedings{Ament2023Unexpected,
+ author = {Ament, Sebastian and Daulton, Samuel and Eriksson, David and Balandat, Maximilian and Bakshy, Eytan},
+ booktitle = {Advances in Neural Information Processing Systems},
+ doi = {10.52202/075280-0904},
+ editor = {A. Oh and T. Naumann and A. Globerson and K. Saenko and M. Hardt and S. Levine},
+ pages = {20577--20612},
+ publisher = {Curran Associates, Inc.},
+ title = {Unexpected Improvements to Expected Improvement for Bayesian Optimization},
+ volume = {36},
+ year = {2023}
 }
+
 
 @article{DeAth2019Greed,
 title={Greed Is Good: Exploration and Exploitation Trade-offs in Bayesian Optimisation},
@@ -447,14 +443,30 @@ year={2026},
 doi={10.3390/make8070193}
 }
 
-@article{Pawar2021Optimizing,
-title={Optimizing Bayesian acquisition functions in Gaussian Processes},
-author={Ashish Anil Pawar and Ujwal Warbhe},
-journal={ArXiv},
-year={2021},
-volume={abs/2111.04930},
-doi={10.48550/arxiv.2111.04930}
+@inproceedings{Kouw_2025_BayesianAutoregression,
+  title={Bayesian autoregression to optimize temporal Mat{\'e}rn kernel Gaussian process hyperparameters},
+  author={Kouw, Wouter M.},
+  booktitle={Proceedings of the First International Conference on Probabilistic Numerics},
+  pages={122--130},
+  year={2025},
+  volume={271},
+  series={Proceedings of Machine Learning Research},
+  publisher={PMLR},
 }
+
+
+@article{Park_2022_RobustGP,
+  title={Robust Gaussian process regression with a bias model},
+  author={Park, Chiwoo and Borth, David J. and Wilson, Nicholas S. and Hunter, Chad N. and Friedersdorf, Fritz J.},
+  journal={Pattern Recognition},
+  volume={124},
+  pages={108444},
+  year={2022},
+  publisher={Elsevier},
+  doi={10.1016/j.patcog.2021.108444},
+}
+
+
 @article{Binois2021A,
 title={A Survey on High-dimensional Gaussian Process Modeling with Application to Bayesian Optimization},
 author={M. Binois and Nathan Wycoff},
@@ -495,13 +507,23 @@ pages={1},
 doi={10.1007/s00158-016-1491-5}
 }
 
-@article{Adam2019No,
-title={No Free Lunch Theorem: A Review},
-author={S. Adam and Stamatios-Aggelos N. Alexandropoulos and P. Pardalos and M. N. Vrahatis},
-journal={Approximation and Optimization},
-year={2019},
-doi={10.1007/978-3-030-12767-1_5}
+@Inbook{Adam2019No,
+author="Adam, Stavros P.
+and Alexandropoulos, Stamatios-Aggelos N.
+and Pardalos, Panos M.
+and Vrahatis, Michael N.",
+editor="Demetriou, Ioannis C.
+and Pardalos, Panos M.",
+title="No Free Lunch Theorem: A Review",
+bookTitle="Approximation and Optimization : Algorithms, Complexity and Applications",
+year="2019",
+publisher="Springer International Publishing",
+address="Cham",
+pages="57--82",
+isbn="978-3-030-12767-1",
+doi="10.1007/978-3-030-12767-1_5"
 }
+
 
 @article{Latorre2020A,
 title={A prescription of methodological guidelines for comparing bio-inspired optimization algorithms},
@@ -512,16 +534,25 @@ volume={67},
 pages={100973},
 doi={10.1016/j.swevo.2021.100973}
 }
-@article{Vermetten2022Analyzing,
-title={Analyzing the impact of undersampling on the benchmarking and configuration of evolutionary algorithms},
-author={D. Vermetten and Hongya Wang and Manuel López-Ibáñez and C. Doerr and T. Back},
-journal={Proceedings of the Genetic and Evolutionary Computation Conference},
-year={2022},
-doi={10.1145/3512290.3528799}
+@inproceedings{Vermetten2022Analyzing,
+author = {Vermetten, Diederick and Wang, Hao and L{\'o}pez-Iba{\~n}ez, Manuel and Doerr, Carola and B{\"a}ck, Thomas},
+title = {Analyzing the impact of undersampling on the benchmarking and configuration of evolutionary algorithms},
+year = {2022},
+isbn = {9781450392372},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+doi = {10.1145/3512290.3528799},
+booktitle = {Proceedings of the Genetic and Evolutionary Computation Conference},
+pages = {867–875},
+numpages = {9},
+keywords = {algorithm configuration, evolution strategies, parameter tuning, performance measures},
+location = {Boston, Massachusetts},
+series = {GECCO '22}
 }
+
 @article{Wang2020IOHanalyzer,
 title={IOHanalyzer: Detailed Performance Analyses for Iterative Optimization Heuristics},
-author={Hongya Wang and D. Vermetten and Furong Ye and C. Doerr and Thomas Bäck},
+author={Hongya Wang and D. Vermetten and Furong Ye and C. Doerr and Thomas Baeck},
 journal={ACM Transactions on Evolutionary Learning and Optimization},
 year={2020},
 volume={2},
@@ -560,7 +591,7 @@ doi={10.1145/3453474}
 
 @article{VonLuecken2014A,
 title={A survey on multi-objective evolutionary algorithms for many-objective problems},
-author={C. von Lücken and B. Barán and Carlos A. Brizuela},
+author={C. von L{\"u}cken and B. Bar{\'a}n and Carlos A. Brizuela},
 journal={Computational Optimization and Applications},
 year={2014},
 volume={58},
@@ -577,12 +608,19 @@ volume={48},
 pages={1 - 35},
 doi={10.1145/2792984}
 }
-@misc{Spenrath2012Gripping,
-title={Gripping Point Determination and Collision Prevention in a Bin- Picking application},
-author={Felix Spenrath and A. Spiller and A. Verl},
-year={2012},
-pages={1-6}
-}
+
+@INPROCEEDINGS{Spenrath2012Gripping,
+  author={Spenrath, Felix and Spiller, Alexander and Verl, Alexander},
+  booktitle={ROBOTIK 2012; 7th German Conference on Robotics}, 
+  title={Gripping Point Determination and Collision Prevention in a Bin- Picking application}, 
+  year={2012},
+  volume={},
+  number={},
+  pages={1-6},
+  keywords={Grippers;Solid modeling;Robot sensing systems;Testing;Design automation;Flanges},
+  doi={}}
+
+
 @article{Wan2020Planning,
 title={Planning Grasps With Suction Cups and Parallel Grippers Using Superimposed Segmentation of Object Meshes},
 author={Weiwei Wan and K. Harada and F. Kanehiro},
@@ -594,7 +632,7 @@ doi={10.1109/tro.2020.3014036}
 }
 @article{Tipary2021Planning,
 title={Planning and optimization of robotic pick-and-place operations in highly constrained industrial environments},
-author={B. Tipary and A. Kovács and F. Erdós},
+author={B. Tipary and A. 	Kov{\'a}cs and F. Erd{\H{o}}s},
 journal={Assembly Automation},
 year={2021},
 doi={10.1108/aa-07-2020-0099}
@@ -608,23 +646,24 @@ pages={461-467},
 doi={10.1109/case49439.2021.9551426}
 }
 
-@article{Kyprianou2023Bin-Picking,
-title={Bin-Picking in the Industry 4.0 Era},
-author={Georgios Kyprianou and L. Doitsidis and Athanasios Ch. Kapoutsis and Z. Zinonos and Savvas A Chatzichristofis},
-journal={2023 IEEE International Conference on Consumer Electronics (ICCE)},
-year={2023},
-pages={01-05},
-doi={10.1109/icce56470.2023.10043452}
-}
+@INPROCEEDINGS{Kyprianou2023Bin-Picking,
+  author={Kyprianou, Georgios and Doitsidis, Lefteris and Kapoutsis, Athanasios Ch. and Zinonos, Zinon and Chatzichristofis, Savvas A.},
+  booktitle={2023 IEEE International Conference on Consumer Electronics (ICCE)}, 
+  title={Bin-Picking in the Industry 4.0 Era}, 
+  year={2023},
+  volume={},
+  number={},
+  pages={01-05},
+  keywords={Three-dimensional displays;Service robots;Bibliographies;Grasping;Robot sensing systems;Fourth Industrial Revolution;Trajectory},
+  doi={10.1109/ICCE56470.2023.10043452}}
 
-@misc{Khalid2021Automatic,
-title={Automatic Grasp Generation for Vacuum Grippers for Random Bin Picking},
-author={Muhammad Usman Khalid and Felix Spenrath and Marius Moosmann and Richard Bormann and H. Kunz and Marco F. Huber},
-year={2021},
-pages={247-255},
-doi={10.1007/978-3-662-62962-8_29}
+@inproceedings{Khalid2021Automatic,
+author = {Khalid, Muhammad Usman and Spenrath, Felix and Mönnig, Manuel and Moosmann, Marius and Bormann, Richard and Kunz, Holger and Huber, Marco},
+year = {2021},
+month = {02},
+pages = {},
+title = {Automatic Grasp Generation for Vacuum Grippers for Random Bin Picking}
 }
-
 @article{Mnyussiwalla2022Evaluation,
 title={Evaluation and selection of grasp quality criteria for dexterous manipulation},
 author={H. Mnyussiwalla and Pascal Seguin and P. Vulliez and J. Gazeau},
@@ -670,13 +709,22 @@ year={2024},
 volume={14},
 doi={10.1038/s41598-023-50673-5}
 }
-@misc{Morecki1999Manipulator,
-title={Manipulator and robot grippers},
-author={A. Morecki},
-year={1999},
-pages={197-222},
-doi={10.1007/978-3-7091-2532-8_8}
+@Inbook{Morecki1999Manipulator,
+author="Morecki, Adam
+and Knapczyk, J{\'o}zef",
+editor="Morecki, Adam
+and Knapczyk, J{\'o}zef",
+title="Manipulator and Robot Grippers",
+bookTitle="Basics of Robotics: Theory and Components of Manipulators and Robots",
+year="1999",
+publisher="Springer Vienna",
+address="Vienna",
+pages="197--222",
+isbn="978-3-7091-2532-8",
+doi="10.1007/978-3-7091-2532-8_8",
 }
+
+
 @article{Zhou2021Bio-Inspired,
 title={Bio-Inspired Soft Grippers Based on Impactive Gripping},
 author={Liang Zhou and Li-Li Ren and You Chen and Shichao Niu and Zhiwu Han and Lu-Jun Ren},
@@ -719,17 +767,22 @@ volume={11},
 pages={44},
 doi={10.3390/robotics11020044}
 }
-@article{Lee2022Vocabulary,
-title={Vocabulary standard for robotics in ISO},
-author={Soon-Geul Lee},
-journal={Value-Sharing between Humans and Robots},
-year={2022},
-doi={10.13180/icres.2022.18-19.07.025}
-}
+
+@inproceedings{Lee2022Vocabulary,
+  author    = {Lee, Soon-Geul},
+  title     = {Vocabulary Standard for Robotics in {ISO}},
+  booktitle = {Value-Sharing between Humans and Robots: Proceedings of the 7th International Conference on Robot Ethics and Standards ({ICRES} 2022)},
+  year      = {2022},
+  month     = jul,
+  pages     = {184--189},
+  address   = {Seoul, South Korea},
+  publisher = {CLAWAR Association},
+  doi       = {10.13180/icres.2022.18-19.07.025}
+  }
 
 @article{Mueller2017SOCEMO,
 title={SOCEMO: Surrogate Optimization of Computationally Expensive Multiobjective Problems},
-author={Juliane Müller},
+author={Juliane 	M{\"u}ller},
 journal={INFORMS J. Comput.},
 year={2017},
 volume={29},
@@ -755,41 +808,64 @@ System},author={Jun Liu and J. Low and Q. Han and Marisa Lim and Dingjie Lu and 
 Liu},journal={IEEE Robotics and Automation
 Letters},year={2022},volume={7},pages={5803-5810},doi={10.1109/lra.2022.3155825}}
 
-@misc{madan2022realrobotchallenge2021,
-      title={Real Robot Challenge 2021: Cartesian Position Control with Triangle Grasp and Trajectory Interpolation}, 
-      author={Rishabh Madan and Harshit Sikchi and Ethan K. Gordon and Tapomayukh Bhattacharjee},
-      year={2022},
-      eprint={2203.08371},
-      archivePrefix={arXiv},
-      primaryClass={cs.RO},
-      url={https://arxiv.org/abs/2203.08371}, 
+
+@article{Mantriota_2007,
+  title={Optimal grasp of vacuum grippers with multiple suction cups},
+  author={Mantriota, Giacomo},
+  journal={Mechanism and Machine Theory},
+  volume={42},
+  number={1},
+  pages={18--33},
+  year={2007},
+  publisher={Elsevier},
+  doi={10.1016/j.mechmachtheory.2006.02.007}
 }
 
-@misc{Datta2011Optimizing,
-title={Optimizing and Deciphering Design Principles of Robot Gripper Configurations Using an Evolutionary Multi-Objective Optimization Method},
-author={Rituparna Datta and K. Deb},
-year={2011}
-}
-
-@article{Belakaria2020Uncertainty-Aware,
-title={Uncertainty-Aware Search Framework for Multi-Objective Bayesian Optimization},
-author={Syrine Belakaria and Aryan Deshwal and Nitthilan Kanappan Jayakodi and J. Doppa},
-journal={ArXiv},
-year={2020},
-volume={abs/2204.05944},
-doi={10.1609/aaai.v34i06.6561}
+@article{Roa_Suarez_2015,
+  title={Grasp quality measures: review and performance},
+  author={Roa, M{\'a}ximo A. and Su{\'a}rez, Ra{\'u}l},
+  journal={Autonomous Robots},
+  volume={38},
+  number={1},
+  pages={65--88},
+  year={2015},
+  publisher={Springer},
+  doi={10.1007/s10514-014-9402-3}
 }
 
 
+@inproceedings{Datta2011Optimizing,
+  title={Optimizing and Deciphering Design Principles of Robot Gripper Configurations Using an Evolutionary Multi-Objective Optimization Method},
+  author={Rituparna Datta and Kalyanmoy Deb},
+  year={2011}
+}
 
+@article{Belakaria2020Uncertainty,
+  title={Uncertainty-Aware Search Framework for Multi-Objective Bayesian Optimization},
+  author={Belakaria, Syrine and Deshwal, Aryan and Jayakodi, Nitthilan Kannappan and Doppa, Janardhan Rao},
+  journal={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={34},
+  number={06},
+  pages={10044--10052},
+  year={2020},
+  month={Apr.},
+  doi={10.1609/aaai.v34i06.6561},
+}
 
-
-@article{Doerr2022A,
-title={A Mathematical Runtime Analysis of the Non-dominated Sorting Genetic Algorithm III (NSGA-III)},
-author={Benjamin Doerr and Simon Wietheger},
-journal={Proceedings of the Genetic and Evolutionary Computation Conference Companion},
-year={2022},
-doi={10.1145/3638530.3664062}
+@inproceedings{Doerr2022A,
+author = {Wietheger, Simon and Doerr, Benjamin},
+title = {A Mathematical Runtime Analysis of the Non-dominated Sorting Genetic Algorithm III (NSGA-III)},
+year = {2024},
+isbn = {9798400704956},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+doi = {10.1145/3638530.3664062},
+booktitle = {Proceedings of the Genetic and Evolutionary Computation Conference Companion},
+pages = {63–64},
+numpages = {2},
+keywords = {NSGA-III, runtime analysis, multi-objective optimization, theory},
+location = {Melbourne, VIC, Australia},
+series = {GECCO '24 Companion}
 }
 
 @article{Trivedi2017A,
@@ -812,13 +888,28 @@ pages={839-852},
 doi={10.1109/tevc.2020.2964705}
 }
 
-@article{Schillinger2023Model-Free, title={Model-Free Grasping with Multi-Suction Cup Grippers for Robotic Bin Picking}, author={Philipp Schillinger
-and Miroslav Gabriel and Alexander Kuss and Hanna Ziesche and Ngo Anh Vien}, journal={2023 IEEE/RSJ International Conference on Intelligent Robots and
-Systems (IROS)}, year={2023}, pages={3107-3113}, doi={10.1109/iros55552.2023.10341555} }
+@INPROCEEDINGS{Schillinger2023Model-Free,
+  author={Schillinger, Philipp and Gabriel, Miroslav and Kuss, Alexander and Ziesche, Hanna and Vien, Ngo Anh},
+  booktitle={2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, 
+  title={Model-Free Grasping with Multi-Suction Cup Grippers for Robotic Bin Picking}, 
+  year={2023},
+  volume={},
+  number={},
+  pages={3107-3113},
+  keywords={Training;Service robots;Training data;Predictive models;Labeling;Reliability;Grippers},
+  doi={10.1109/IROS55552.2023.10341555}}
 
-@article{Geng2025Experimental, title={Experimental Investigation on the Handling Stability of Vacuum Grippers with Multiple Suction Cups},
-author={Paul Geng and S. Fendt and Stephan Trattnig and Johannes C. Bauer and Lukas Tanz and Rüdiger Daub}, journal={2025 IEEE 30th International
-Conference on Emerging Technologies and Factory Automation (ETFA)}, year={2025}, pages={1-8}, doi={10.1109/etfa65518.2025.11205738} }
+@INPROCEEDINGS{Geng2025Experimental,
+  author={Geng, Paul and Fendt, Sebastian and Trattnig, Stephan and Bauer, Johannes C. and Tanz, Lukas and Daub, Rüdiger},
+  booktitle={2025 IEEE 30th International Conference on Emerging Technologies and Factory Automation (ETFA)}, 
+  title={Experimental Investigation on the Handling Stability of Vacuum Grippers with Multiple Suction Cups}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-8},
+  keywords={Resistance;Vacuum systems;Uncertainty;Systematics;Stability analysis;Robustness;Grippers;Sustainable development;Robots;Standards;vacuum gripper;robot-based handling;suction cup;sustainability},
+  doi={10.1109/ETFA65518.2025.11205738}}
+
 
 @article{Lee2024Grasp, title={Grasp Failure Constraints for Fast and Reliable Pick-and-Place Using Multi-Suction-Cup Grippers}, author={Jee-eun Lee
 and Robert Sun and Andrew Bylard and Luis Sentis}, journal={IEEE Transactions on Automation Science and Engineering}, year={2024}, volume={23},
@@ -857,13 +948,16 @@ doi={10.1109/lra.2024.3440837}
 }
 
 @article{Milojevic2021A,
-title={A Novel Simple, Adaptive, and Versatile Soft-Robotic Compliant Two-Finger Gripper With an Inherently Gentle Touch},
-author={A. Milojevic et. al.},
-journal={Journal of Mechanisms and Robotics},
-year={2021},
-volume={13},
-doi={10.1115/1.4048752}
+  author  = {Milojevi{\'c}, Andrija and Lin{\ss}, Sebastian and {\v{C}}ojba{\v{s}}i{\'c}, {\v{Z}}arko and Handroos, Heikki},
+  title   = {A Novel Simple, Adaptive, and Versatile Soft-Robotic Compliant Two-Finger Gripper With an Inherently Gentle Touch},
+  journal = {Journal of Mechanisms and Robotics},
+  volume  = {13},
+  number  = {1},
+  pages   = {011015},
+  year    = {2021},
+  doi     = {10.1115/1.4048752}
 }
+
 @article{Xiong2023A,
 title={A problem transformation-based and decomposition-based evolutionary algorithm for large-scale multiobjective optimization},
 author={Zhijian Xiong and Xiaojing Wang and Yu Li and Wei Feng and Ya-Shuang Liu},
@@ -975,7 +1069,7 @@ doi={10.1109/lra.2020.3005131}
 @article{Wolniakowski2017Task,
 title={Task and Context Sensitive Gripper Design Learning Using Dynamic Grasp Simulation},
 author={A. Wolniakowski and K. Miatliuk and Z. Gosiewski and L. Bodenhagen and H. G. Petersen and L. C. M. W. Schwartz
-and J. A. Jørgensen and Lars-Peter Ellekilde and N. Krüger},
+and J. A. J{\o}rgensen and Lars-Peter Ellekilde and N. Kr{\"u}ger},
 journal={Journal of Intelligent and Robotic Systems},
 year={2017},
 volume={87},
@@ -993,23 +1087,28 @@ pages={791 - 801},
 doi={10.1089/soro.2023.0134}
 }
 
-@article{Weisz2012Pose,
-title={Pose error robust grasping from contact wrench space metrics},
-author={Jonathan Weisz and P. Allen},
-journal={2012 IEEE International Conference on Robotics and Automation},
-year={2012},
-pages={557-562},
-doi={10.1109/icra.2012.6224697}
-}
+@INPROCEEDINGS{Weisz2012Pose,
+  author={Weisz, Jonathan and Allen, Peter K.},
+  booktitle={2012 IEEE International Conference on Robotics and Automation}, 
+  title={Pose error robust grasping from contact wrench space metrics}, 
+  year={2012},
+  volume={},
+  number={},
+  pages={557-562},
+  keywords={Robustness;Grasping;Measurement;Databases;Uncertainty;Force;Joints},
+  doi={10.1109/ICRA.2012.6224697}}
 
-@article{Bo2023A,
-title={A Data-Driven Topology Optimization Framework for Designing Robotic Grippers},
-author={Valerio Bo and Enrico Turco and Maria Pozzi and M. Malvezzi and D. Prattichizzo},
-journal={2023 IEEE International Conference on Soft Robotics (RoboSoft)},
-year={2023},
-pages={1-6},
-doi={10.1109/robosoft55895.2023.10122000}
-}
+@INPROCEEDINGS{Bo2023A,
+  author={Bo, Valerio and Turco, Enrico and Pozzi, Maria and Malvezzi, Monica and Prattichizzo, Domenico},
+  booktitle={2023 IEEE International Conference on Soft Robotics (RoboSoft)}, 
+  title={A Data-Driven Topology Optimization Framework for Designing Robotic Grippers}, 
+  year={2023},
+  volume={},
+  number={},
+  pages={1-6},
+  keywords={Heuristic algorithms;Architecture;Force;Dynamics;Training data;Grasping;Topology},
+  doi={10.1109/RoboSoft55895.2023.10122000}}
+
 
 @article{Pinskier2024Diversity-Based,
 title={Diversity-Based Topology Optimization of Soft Robotic Grippers},
@@ -1020,13 +1119,20 @@ volume={6},
 doi={10.1002/aisy.202300505}
 }
 
-
-@article{Cenikj2022SELECTOR:,
-title={SELECTOR: selecting a representative benchmark suite for reproducible statistical comparison},
-author={Gjorgjina Cenikj and Ryan Dieter Lang and A. Engelbrecht and Carola Doerr and P. Korošec and T. Eftimov},
-journal={Proceedings of the Genetic and Evolutionary Computation Conference},
-year={2022},
-doi={10.1145/3512290.3528809}
+@inproceedings{Cenikj2022SELECTOR,
+author = {Cenikj, Gjorgjina and Lang, Ryan Dieter and Engelbrecht, Andries Petrus and Doerr, Carola and Koro{\v s}ec, Peter and Eftimov, Tome},
+title = {SELECTOR: selecting a representative benchmark suite for reproducible statistical comparison},
+year = {2022},
+isbn = {9781450392372},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+doi = {10.1145/3512290.3528809},
+booktitle = {Proceedings of the Genetic and Evolutionary Computation Conference},
+pages = {620-629},
+numpages = {10},
+keywords = {benchmarking, black-box optimization, optimization algorithm performance evaluation, single-objective optimization},
+location = {Boston, Massachusetts},
+series = {GECCO '22}
 }
 
 @article{Yazdani2020Benchmarking,
@@ -1049,7 +1155,7 @@ pages={102880},
 doi={10.1016/j.cad.2020.102880}
 }
 
-@article{Bischl2017mlrMBO:,
+@article{Bischl2017mlrMBO,
 title={mlrMBO: A Modular Framework for Model-Based Optimization of Expensive Black-Box Functions},
 author={B. Bischl and J. Richter and Jakob Bossek and Daniel Horn and Janek Thomas and Michel Lang},
 journal={arXiv: Machine Learning},
@@ -1066,15 +1172,16 @@ pages={815 - 848},
 doi={10.1007/s11081-017-9366-1}
 }
 
-@article{Bouthillier2021Accounting,
-title={Accounting for Variance in Machine Learning Benchmarks},
-author={Xavier Bouthillier and Pierre Delaunay and Mirko Bronzi and Assya Trofimov and B. Nichyporuk and Justin Szeto and Naz Sepah and Edward Raff
-and Kanika Madan and Vikram S. Voleti and Samira Ebrahimi Kahou and Vincent Michalski and Dmitriy Serdyuk and T. Arbel and C. Pal and G. Varoquaux and
-Pascal Vincent},
-journal={ArXiv},
-year={2021},
-volume={abs/2103.03098}
+@inproceedings{Bouthillier2021Accounting,
+ author = {Bouthillier, Xavier and Delaunay, Pierre and Bronzi, Mirko and Trofimov, Assya and Nichyporuk, Brennan and Szeto, Justin and Mohammadi Sepahvand, Nazanin and Raff, Edward and Madan, Kanika and Voleti, Vikram and Ebrahimi Kahou, Samira and Michalski, Vincent and Arbel, Tal and Pal, Chris and Varoquaux, Gael and Vincent, Pascal},
+ booktitle = {Proceedings of Machine Learning and Systems},
+ editor = {A. Smola and A. Dimakis and I. Stoica},
+ pages = {747--769},
+ title = {Accounting for Variance in Machine Learning Benchmarks},
+ volume = {3},
+ year = {2021}
 }
+
 
 @article{Trautmann2009Statistical,
 title={Statistical Methods for Convergence Detection of Multi-Objective Evolutionary Algorithms},
@@ -1112,14 +1219,14 @@ publisher={Springer International Publishing},
 doi={10.1007/978-3-319-68913-5}
 }
 
-@article{Jones2022Constrained,
-title={Constrained Efficient Global Optimization of Expensive Black-box Functions},
-author={Donald R. Jones and Matthias Schonlau and W. Welch},
-journal={Journal of Global Optimization},
-year={2022},
-pages={38485-38498}
+@inproceedings{xu2023constrained,
+  title={Constrained Efficient Global Optimization of Expensive Black-Box Functions},
+  author={Xu, Wenjie and Jiang, Yuning and Svetozarevic, Bratislav and Jones, Colin N.},
+  booktitle={Proceedings of the 40th International Conference on Machine Learning (ICML)},
+  pages={38485--38498},
+  year={2023},
+  organization={PMLR}
 }
-
 
 @incollection{Deb2011Multi-objective,
 title={Multi-objective Optimisation Using Evolutionary Algorithms: An Introduction},
@@ -1190,12 +1297,15 @@ doi={10.1109/tevc.2014.2373386}
 }
 
 @article{Tanabe2020An,
-title={An easy-to-use real-world multi-objective optimization problem suite},
-author={Ryoji Tanabe and H. Ishibuchi},
-journal={ArXiv},
-year={2020},
-volume={abs/2009.12867},
-doi={10.1016/j.asoc.2020.106078}
+title = {An easy-to-use real-world multi-objective optimization problem suite},
+journal = {Applied Soft Computing},
+volume = {89},
+pages = {106078},
+year = {2020},
+issn = {1568-4946},
+doi = {https://doi.org/10.1016/j.asoc.2020.106078},
+author = {Ryoji Tanabe and Hisao Ishibuchi},
+keywords = {Evolutionary multi-objective optimization, Test problems, Real-world problems},
 }
 
 @article{Ishibuchi2017Performance,
@@ -1258,12 +1368,47 @@ pages={86-101},
 doi={10.1145/3520304.3533634}
 }
 
-@article{Frazier2018A,
-title={A Tutorial on Bayesian Optimization},
-author={P. Frazier},
-journal={ArXiv},
-year={2018},
-volume={abs/1807.02811}
+@article{Sobol1967,
+  author  = {Sobol, Ilya M.},
+  title   = {On the Distribution of Points in a Cube and the Approximate
+             Evaluation of Integrals},
+  journal = {USSR Computational Mathematics and Mathematical Physics},
+  year    = {1967},
+  volume  = {7},
+  number  = {4},
+  pages   = {86--112},
+  doi     = {10.1016/0041-5553(67)90144-9}
+}
+
+@inproceedings{Daulton2021qNEHVI,
+ author = {Daulton, Samuel and Balandat, Maximilian and Bakshy, Eytan},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {M. Ranzato and A. Beygelzimer and Y. Dauphin and P.S. Liang and J. Wortman Vaughan},
+ pages = {2187--2200},
+ publisher = {Curran Associates, Inc.},
+ title = {Parallel Bayesian Optimization of Multiple Noisy Objectives with Expected Hypervolume Improvement},
+ volume = {34},
+ year = {2021}
+}
+
+@inproceedings{daulton2022multi,
+  title={Multi-objective {Bayesian} optimization over high-dimensional search spaces},
+  author={Daulton, Samuel and Eriksson, David and Balandat, Maximilian and Bakshy, Eytan},
+  booktitle={Proceedings of the Thirty-Eighth Conference on Uncertainty in Artificial Intelligence},
+  pages={507--517},
+  year={2022},
+  organization={PMLR}
+}
+
+@incollection{Frazier2018A,
+  author    = {Frazier, Peter I.},
+  title     = {Bayesian Optimization},
+  booktitle = {Recent Advances in Optimization and Modeling of Contemporary Problems},
+  series    = {INFORMS TutORials in Operations Research},
+  pages     = {255--278},
+  year      = {2018},
+  publisher = {INFORMS},
+  doi       = {10.1287/educ.2018.0188}
 }
 
 @article{Lu2022Surrogate,
@@ -1284,14 +1429,17 @@ year={2016},
 doi={10.1101/095190}
 }
 
-@article{Candelieri2021A,
-title={A Gentle Introduction to Bayesian Optimization},
-author={Antonio Candelieri},
-journal={2021 Winter Simulation Conference (WSC)},
-year={2021},
-pages={1-16},
-doi={10.1109/wsc52266.2021.9715413}
-}
+@INPROCEEDINGS{Candelieri2021A,
+  author={Candelieri, Antonio},
+  booktitle={2021 Winter Simulation Conference (WSC)}, 
+  title={A Gentle Introduction to Bayesian Optimization}, 
+  year={2021},
+  volume={},
+  number={},
+  pages={1-16},
+  keywords={Uncertainty;Optimization methods;Tutorials;Probabilistic logic;Linear programming;Bayes methods;Numerical models},
+  doi={10.1109/WSC52266.2021.9715413}}
+
 
 @article{Wang2022Recent,
 title={Recent Advances in Bayesian Optimization},
@@ -1303,39 +1451,31 @@ pages={1 - 36},
 doi={10.1145/3582078}
 }
 
-@article{Probst2018Tunability:,
-title={Tunability: Importance of Hyperparameters of Machine Learning Algorithms},
-author={Philipp Probst and A. Boulesteix and B. Bischl},
-journal={J. Mach. Learn. Res.},
-year={2018},
-volume={20},
-pages={53:1-53:32}
+@INPROCEEDINGS{Nguyen1986Constructing,
+  author={Nguyen, V.-D.},
+  booktitle={Proceedings. 1986 IEEE International Conference on Robotics and Automation}, 
+  title={Constructing force-closure grasps}, 
+  year={1986},
+  volume={3},
+  number={},
+  pages={1368-1373},
+  keywords={Fingers;Artificial intelligence;Laboratories;Fasteners;Mathematics;Physics computing;Polynomials;Friction;Pressing;Shape},
+  doi={10.1109/ROBOT.1986.1087483}}
+
+@Inbook{Prattichizzo2014Robot,
+author="Prattichizzo, Domenico",
+editor="Baillieul, John
+and Samad, Tariq",
+title="Robot Grasp Control",
+bookTitle="Encyclopedia of Systems and Control",
+year="2014",
+publisher="Springer London",
+address="London",
+pages="1--9",
+isbn="978-1-4471-5102-9",
+doi="10.1007/978-1-4471-5102-9_171-1",
 }
 
-@misc{Sivaprasad2019Optimizer,
-title={Optimizer Benchmarking Needs to Account for Hyperparameter Tuning},
-author={Prabhu Teja Sivaprasad and Florian Mai and Thijs Vogels and Martin Jaggi and Franccois Fleuret Idiap Research Institute and Epfl},
-year={2019},
-pages={9036-9045}
-}
-
-@article{Nguyen1986Constructing,
-title={Constructing force-closure grasps},
-author={V.-D. Nguyen},
-journal={Proceedings. 1986 IEEE International Conference on Robotics and Automation},
-year={1986},
-volume={3},
-pages={1368-1373},
-doi={10.1109/robot.1986.1087483}
-}
-
-@article{Prattichizzo2014Robot,
-title={Robot Grasp Control},
-author={D. Prattichizzo},
-journal={Encyclopedia of Systems and Control},
-year={2014},
-doi={10.1007/978-1-4471-5102-9_171-1}
-}
 
 @article{Peyre2010Geodesic,
 title={Geodesic Methods in Computer Vision and Graphics},
@@ -1359,7 +1499,7 @@ doi={10.1214/ss/1038425655}
 
 @article{Hasan2024B-spline,
 title={B-spline curve theory: An overview and applications in real life},
-author={Md. Shahid Hasan and Md. Nur Alam and Md. Fayz-Al-Asad and N. Muhammad and C. Tunç},
+author={Md. Shahid Hasan and Md. Nur Alam and Md. Fayz-Al-Asad and N. Muhammad and C. Tun{\c{c}}},
 journal={Nonlinear Engineering},
 year={2024},
 volume={13},
@@ -1416,5 +1556,4 @@ doi={10.1186/s40323-022-00217-9}
   day          = {20},
   publisher    = {Zenodo},
   doi          = {10.5281/zenodo.20777093},
-  url          = {https://doi.org/10.5281/zenodo.20777093}
 }

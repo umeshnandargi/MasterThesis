@@ -157,7 +157,8 @@
 
 \usepackage{booktabs}
 \usepackage{tabularx} % tabularx nach hyperref laden
-
+\usepackage{multirow}
+\usepackage{longtable}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % 9. figures and placement
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -272,16 +273,17 @@ backgroundcolor=\color{lightgray},	  % % Hintergrundfarbe der Listings
 \clearpairofpagestyles
 \clearmainofpairofpagestyles
 \clearplainofpairofpagestyles
-\chead{\headmark}
+% Kopfzeile: Kapitelname nur einmal, zentriert
+\chead{\leftmark}
 % loescht voreingestellte Stile
 %
 % [scrplain]{scrheadings}
 
 % %%% Kopfzeile
 % einseitig: Bei einseitigem Layout, nur folgende Zeilen verwenden !!!
-\ihead[]{\leftmark} % links: Kapitel
+%\ihead[]{\leftmark} % links: Kapitel
  %\chead[\pagemark]{\pagemark} % mitte:
-\ohead[]{\rightmark} % rechts: Section
+%\ohead[]{\rightmark} % rechts: Section
 
 % %zweiseitig: Bei zweiseitigem Layout, nur folgende Zeilen verwenden !!!
 %\ihead[]{} % innen
@@ -289,9 +291,9 @@ backgroundcolor=\color{lightgray},	  % % Hintergrundfarbe der Listings
 %\ohead[]{\headmark} % aussen: Kapitel (linke Seite) und Section (rechte Seite)
 %
 % %%% Fusszeile
-\ifoot[\workMarkDateTime]{\workMarkDateTime} % innen:
-%\cfoot[\pagemark]{\pagemark} % mitte:
-\ofoot[\pagemark]{\pagemark} % aussen: Seitenzahl
+% \ifoot[\workMarkDateTime]{\workMarkDateTime} % innen:
+\cfoot[\pagemark]{\pagemark} % mitte:
+% \ofoot[\pagemark]{\pagemark} % aussen: Seitenzahl
 
 % Angezeigte Abschnitte im Header
 \automark[section]{chapter} % Inhalt von [\rightmark]{\leftmark}
@@ -312,8 +314,17 @@ backgroundcolor=\color{lightgray},	  % % Hintergrundfarbe der Listings
 % -- Koma Schriften --
 \newcommand\SectionFontStyle{\sffamily}
 
-\setkomafont{chapter}{\huge\SectionFontStyle}    % Chapter
+\setkomafont{chapter}{\huge\SectionFontStyle\bfseries}    % Chapter
 \setkomafont{sectioning}{\SectionFontStyle} %  % Titelzeilen % \bfseries
+\setkomafont{section}{\Large\bfseries}        % Section: one step bigger + bold
+\setkomafont{subsection}{\large\bfseries}     % Subsection: one step bigger + bold
+\setkomafont{subsubsection}{\bfseries}  % Subsubsection: one step bigger + bold
+
+% Reduce the gap between headings and the following paragraph
+% (KOMA defaults: section/subsection = 2.3ex, subsubsection = 1.7ex)
+\RedeclareSectionCommand[afterskip=1.2ex]{section}
+\RedeclareSectionCommand[afterskip=1ex]{subsection}
+\RedeclareSectionCommand[afterskip=0.8ex]{subsubsection}
 
 \setkomafont{pagenumber}{\bfseries\SectionFontStyle} % Seitenzahl
 \setkomafont{pagehead}{\small\sffamily}	       % Kopfzeile

@@ -1,9 +1,47 @@
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 
+This master's thesis investigates multi-objective optimization methods
+for the design of robotic grippers used in bin-picking applications.
+The aim is to compare selected optimization algorithms on two
+gripper-design problems: the placement of three suction cups and the
+design of rigid parallel-jaw contours. Both problems are treated as
+black-box optimization tasks with multiple, potentially conflicting
+objectives.
 
+First, an overview of robotic grasping, gripper design, and
+multi-objective optimization is presented. The principles of
+evolutionary algorithms, Bayesian optimization, and performance
+indicators are then introduced. A literature review examines existing
+approaches to grasp planning, gripper design, and algorithm comparison.
+
+Subsequently, the two gripper-design problems are formulated and
+integrated into a common optimization framework. Suction-cup layouts
+are assessed using grasp diversity, the number of retained grasps, and
+the area spanned by the cups. Parallel-jaw contours are represented
+by splines and evaluated using geometric proximity at four predefined
+workpiece orientations.
+
+NSGA-II, NSGA-III, MOEA/D, SMS-EMOA, and CMOPSO are compared on four
+workpieces. Their results are assessed using inverted generational
+distance plus, hypervolume, and runtime. For the suction-cup problem,
+SMS-EMOA achieves the lowest mean inverted generational distance plus
+on all four workpieces. For the parallel-jaw problem, NSGA-II achieves
+the highest mean archive hypervolume on all four workpieces.
+
+Bayesian optimization is also investigated. The main attempt is stopped
+because of its runtime and produces no final result files. A subsequent
+single-run test on the parallel-jaw gripper and connecting rod provides
+indicative results but does not support a conclusive comparison.
+
+Finally, the limitations of the study and directions for future work
+are discussed. These include further Bayesian experiments, improved
+reproducibility, non-overlap constraints for the suction cups, and
+physical validation of the optimized gripper designs.
 
 \vspace{1em}
-\noindent\textbf{Keywords:} Pymoo, FastAPI
+\noindent\textbf{Keywords:} multi-objective optimization, robotic
+gripper design, bin picking, suction-cup gripper, parallel-jaw gripper, evolutionary algorithms, Bayesian
+optimization
 
 \newpage

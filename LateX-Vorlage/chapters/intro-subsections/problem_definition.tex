@@ -17,12 +17,15 @@ However, their performance depends on factors such as the problem representation
 evaluation budget \cite{Santoni2023Comparison,Raponi2023Optimizing}. Consequently, results obtained for generic test problems or other applications
 cannot necessarily be transferred directly to task-specific gripper design.
 
-The primary goal of this thesis is therefore to apply and comparatively evaluate selected evolutionary and Bayesian multi-objective optimization
-methods for automated gripper configuration. Two application cases are considered: the
+The primary goal of this thesis is therefore to apply and comparatively evaluate
+selected multi-objective evolutionary algorithms for automated gripper
+configuration, and to examine the practical applicability of multi-objective
+Bayesian optimization under the computational conditions of the investigated
+problems. Two application cases are considered: the
 configuration of a multi-suction-cup gripper and the optimization of rigid jaw contours for a two-finger gripper. In the first case, the positions of
 the suction cups are optimized to obtain layouts that perform well for a given workpiece. In the second case, spline-based jaw contours are
 optimized to provide suitable geometric conformity at predefined grasp points. The two cases provide different geometric representations and
-objective structures through which the behaviour of the selected optimization algorithms can be investigated.
+objective structures through which the behavior of the selected optimization algorithms can be investigated.
 
 The objective is not to identify a universally superior optimization algorithm. Instead, the thesis examines how the selected methods perform on the
 two specific gripper-design problems under comparable experimental conditions. The comparison considers the quality of the obtained
@@ -52,7 +55,7 @@ To achieve this goal, the following tasks are defined:
     suitable multi-objective indicators.
 
     \item \textbf{Result analysis:}
-    Analyze the obtained results with respect to solution quality, convergence behaviour, robustness across repeated runs, and sensitivity to the
+    Analyze the obtained results with respect to solution quality, convergence behavior, robustness across repeated runs, and sensitivity to the
     characteristics of the investigated gripper-design problems.
     
 \end{itemize}

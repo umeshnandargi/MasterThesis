@@ -77,22 +77,22 @@ or internal dependency of the external libraries.
     \textbf{EvolutionaryOptimization
     Problem}\\
     \rule{4.2cm}{0.3pt}\\
-    \texttt{\_evaluate()}\\
-    \texttt{get\_default\_algorithm()}\\
-    \texttt{optimize()}
+    \_evaluate()\\
+    get\_default\_algorithm()\\
+    optimize()
 };
 \node[cls] (bo) at (3.1,-3.2) {
     \textbf{BayesianOptimization}\\
     \rule{4.2cm}{0.3pt}\\
-    \texttt{\_build\_params()}\\
-    \texttt{\_evaluate()}\\
-    \texttt{optimize()}
+    \_build\_params()\\
+    \_evaluate()\\
+    optimize()
 };
 \node[cls] (client) at (7,0) {
     \textbf{EvaluationClient}\\
     \rule{4.2cm}{0.3pt}\\
-    \texttt{fetch\_evaluation(request)}\\
-    sends \texttt{EvaluationRequest}\\
+    fetch\_evaluation(request)\\
+    sends EvaluationRequest\\
     returns objective vector
 };
 \node[cls] (callback) at (-3.1,-6.2) {
@@ -123,7 +123,8 @@ or internal dependency of the external libraries.
 \label{fig:common_class_diagram}
 \end{figure}
 
-\subsection{Configuration and Experimental Budgets}
+\subsection{Configuration, Budgets, and Termination}
+\label{sec:two_finger_termination}
 
 Each optimization request specifies the workpiece, gripper problem, ordered
 variables and bounds, objective count, optimization method, and evaluation
@@ -131,31 +132,99 @@ endpoint. Variable order is preserved when constructing the evaluation
 request, and returned objective values are interpreted in their configured
 order.
 
-The evolutionary experiments use a population size of 100 and a termination
-budget of 20,000 objective evaluations. The configured generation count of 200
-provides the nominal budgeting basis for population-based runs; it is not an
-independent stopping criterion in the experimental setup described here.
-Termination instead depends on the actual evaluation count. Consequently,
-the budget does not depend on how an algorithm defines a generation or how
-many offspring it evaluates in one update.
+Table~\ref{tab:budget_termination} summarizes the evaluation budgets and
+termination criteria for both optimization problems.
 
-Bayesian experiments perform 100 candidate-generation batches, requesting up
-to 10 trials per batch. For this implementation, the existing generation-count
-configuration setting stores the number of batches. The maximum requested
-budget is therefore 1,000 evaluations. The realized count can be smaller if
-Ax returns fewer than ten trials in a batch. No additional trials are requested
-to compensate for such a shortfall.
+Evolutionary runs use a population size of 100 and stop
+once the configured number of objective evaluations (\texttt{n\_evals}) is
+reached: 20,000 for the suction cup and 10,000 for the two-finger gripper.
+The nominal budgeting basis is population size $\times$ generations (200 and
+100 generations, respectively), but the generation count is not an
+independent stopping criterion. Design-space tolerances, objective-space
+tolerances, and hypervolume (HV) stagnation are likewise not used.
+Consequently, the budget does not depend on how an algorithm defines a
+generation or how many offspring it evaluates in one update. The evaluation
+counts were capped separately for each gripper because computing the
+cumulative HV in the higher-dimensional objective space adds considerable
+computational overhead.
 
-The Bayesian budget is limited because model-based candidate generation
-becomes time-consuming as observations accumulate, particularly beyond
-approximately 50 batches in the observed runs. This is a computational-budget
-choice, not a convergence criterion.
+Bayesian runs request up to 10 trials per
+candidate-generation batch and end after 100 batches (\texttt{num\_batches}),
+which is stored in the existing generation-count setting. The maximum budget
+is therefore 1,000 evaluations. Because Ax may return fewer trials than
+requested, and no additional trials are requested to compensate, this value is
+an upper bound on the number of evaluations actually completed. The limit of
+100 batches was chosen because model-based candidate generation becomes
+increasingly time-consuming as observations accumulate, particularly beyond
+approximately 80 batches in the observed trial runs.
 
-The two approaches therefore share the evaluation pipeline but not the same
-total evaluation budget. Progress is compared at common evaluation counts
+The two approaches share the evaluation pipeline but not the same total
+evaluation budget. In both cases, the budget is a computational-cost choice,
+not a convergence criterion. Progress is compared at common evaluation counts
 where available, and final results are interpreted together with their
 respective budgets and wall-clock times.
 
+\begin{table}[H]
+    \centering
+    \small
+    \setlength{\tabcolsep}{4pt}
+    \caption{Evaluation budgets and termination settings.}
+    \label{tab:budget_termination}
+    \begin{tabularx}{\linewidth}{@{}ll *{3}{>{\centering\arraybackslash}X} l@{}}
+        \toprule
+        Problem & Algorithm & Pop./batch size & Gen./batches
+                & Max.\ evals & Termination \\
+        \midrule
+        \multirow{2}{*}{Suction cup}
+            & Evolutionary & 100 & 200 & 20,000    & \texttt{n\_evals} \\
+            & Bayesian     & 10  & 100  & $\le 1,000$ & \texttt{num\_batches} \\
+        \midrule
+        \multirow{2}{*}{Two-finger}
+            & Evolutionary & 100 & 100 & 10,000    & \texttt{n\_evals} \\
+            & Bayesian     & 10  & 100  & $\le 1,000$ & \texttt{num\_batches} \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsection{Computing Environment}
+\label{sec:computing_environment}
+
+The experiments were run on four PCs (Table~\ref{tab:hardware}) under Ubuntu
+Linux (24.04 on PCs 1, 2 and 4; 22.04 on PC 3). The software was implemented in
+Python 3.12 with the packages listed in Table~\ref{tab:software}. Because the
+GPUs differ, wall-clock times are indicative only.
+
+\begin{table}[htbp]
+\centering
+\caption{Hardware used for the experiments.}
+\label{tab:hardware}
+\begin{tabular}{@{}clllc@{}}
+\toprule
+\textbf{PC} & \textbf{CPU} & \textbf{GPU used} & \textbf{GPU memory} & \textbf{RAM} \\
+\midrule
+1 & Intel Core i9-14900K  & 1$\times$ RTX 5090     & 32 GB      & 64 GB  \\
+2 & Intel Core i9-10980XE & 1$\times$ RTX 3060 Ti  & 8 GB       & 64 GB  \\
+3 & 2$\times$ Intel Xeon E5-2698 v4 & 2$\times$ Tesla V100 & 32 GB each & 512 GB \\
+4 & Intel Core i9-13900K  & 1$\times$ RTX 3090 Ti  & 24 GB      & 64 GB  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Software packages and versions.}
+\label{tab:software}
+\begin{tabular}{@{}lllr@{}}
+\toprule
+\textbf{Package} & \textbf{Version} & \textbf{Package} & \textbf{Version} \\
+\midrule
+pymoo        & 0.6.1.6 & CadQuery & 2.8.0  \\
+Ax (ax-platform) & 1.3.1 & Open3D   & 0.19.0 \\
+PyTorch      & 2.13.0  & NumPy    & 2.4.4  \\
+FastAPI      & 0.136.1 & trimesh  & 4.12.2 \\
+\bottomrule
+\end{tabular}
+\end{table}
 \subsection{Evolutionary Algorithm Setup}
 \label{sec:two_finger_initialization}
 
@@ -182,8 +251,7 @@ The choice of \texttt{energy} for higher-dimensional objective spaces avoids
 the rapid growth of the Das--Dennis construction. For a fixed partition count,
 the number of Das--Dennis directions increases rapidly with the number of
 objectives, substantially increasing reference-direction generation and
-processing costs. This is particularly relevant to the ten-objective
-two-finger problem. The \texttt{energy} method instead allows the direction
+processing costs. The \texttt{energy} method instead allows the direction
 count to remain fixed at 100. Both methods are briefly described in
 Section~\ref{sec:reference_direction_generation}.
 
@@ -201,7 +269,7 @@ The application does not specify a custom generation strategy, Sobol sample
 count, surrogate model, kernel, or acquisition function. Ax manages
 initialization and the transition to its modular BoTorch model using its
 defaults. These settings are therefore not presented as manually chosen
-experimental hyperparameters. The workflow diagram denotes the default
+experimental hyperparameters. The workflow diagram (Figure~\ref{fig:optimization_overview}) denotes the default
 initialization and model-based stages as Sobol and MBM (modular BoTorch model), respectively.
 
 For each of the 100 batches, the implementation requests up to ten new
@@ -269,98 +337,12 @@ EA and BO denote evolutionary and Bayesian optimization, respectively.}
 
 Figure~\ref{fig:evaluation_sequence} illustrates the evaluation of a single candidate design. The optimizer submits the ordered decision vector
 \texttt{X} through the \texttt{EvaluationClient} to the evaluation service, which reconstructs the geometry, evaluates the grasps, and assembles the
-key performance indicators (KPIs) explained in \ref{sec:multi_sc_objective_evaluation} and \ref{sec:two_finger_objective_evaluation}. The resulting
+key performance indicators (KPIs) explained in Sections~\ref{sec:multi_sc_objective_evaluation} and \ref{sec:two_finger_objective_evaluation}. The resulting
 non-negative objective vector is returned to the optimizer. Evolutionary optimization (EA) negates these values to accommodate the minimization
 convention of \texttt{pymoo}, whereas Bayesian optimization (BO) reports them unchanged to Ax. The optimizer waits for the evaluation result before
 proceeding
 to the next candidate.
 
-\subsection{Execution and Termination}
-\label{sec:two_finger_termination}
-
-Evolutionary runs stop at the configured budget of 20,000 evaluations.
-Design-space tolerances, objective-space tolerances, hypervolume stagnation,
-and generation count are not independent experimental termination criteria.
-Bayesian execution ends after its 100 configured batch requests,
-corresponding to at most 1,000 completed evaluations.
-
-Figure~\ref{fig:optimization_overview} summarizes the application workflow.
-Algorithm-specific population updates and Ax model operations remain
-delegated to the respective libraries.
-
-\begin{figure}[H]
-\centering
-\resizebox{0.88\linewidth}{!}{%
-\begin{tikzpicture}[
-    box/.style={
-        draw, rounded corners, align=center,
-        text width=4.1cm, minimum height=0.8cm, font=\small
-    },
-    decision/.style={
-        draw, diamond, aspect=2.4, align=center,
-        inner sep=2pt, font=\small
-    },
-    arrow/.style={-{Latex}, thick}
-]
-\node[box] (cfg) at (0,0)
-    {Load problem and server configuration};
-\node[decision] (choice) at (0,-1.5) {Optimizer?};
-
-\node[box] (ea) at (-3.2,-3.0)
-    {Construct \texttt{pymoo} algorithm\\population size 100};
-\node[box] (bo) at (3.2,-3.0)
-    {Configure Ax experiment\\default Sobol / MBM settings};
-
-\node[box] (earun) at (-3.2,-4.6)
-    {Run optimizer\\evaluate candidates sequentially};
-\node[box] (borun) at (3.2,-4.6)
-    {Request up to 10 trials\\evaluate and complete sequentially};
-
-\node[box] (eahv) at (-3.2,-6.2)
-    {Record current and cumulative HV\\after optimizer updates};
-\node[box] (bohv) at (3.2,-6.2)
-    {Store observations\\for cumulative HV};
-
-\node[decision] (eabudget) at (-3.2,-7.8)
-    {evaluations\\completed?};
-\node[decision] (bobudget) at (3.2,-7.8)
-    {batches\\processed?};
-
-\node[box,text width=5.8cm] (out) at (0,-9.7)
-    {Serialize approximate frontier, configuration,\\
-     HV progression, and wall-clock time};
-
-\draw[arrow] (cfg) -- (choice);
-\draw[arrow] (choice.west) -|
-    node[above,pos=0.25,font=\small]
-    {Evolutionary} (ea.north);
-\draw[arrow] (choice.east) -|
-    node[above,pos=0.25,font=\small]
-    {Bayesian} (bo.north);
-
-\draw[arrow] (ea) -- (earun);
-\draw[arrow] (earun) -- (eahv);
-\draw[arrow] (eahv) -- (eabudget);
-
-\draw[arrow] (bo) -- (borun);
-\draw[arrow] (borun) -- (bohv);
-\draw[arrow] (bohv) -- (bobudget);
-
-\draw[arrow] (eabudget.west) -- ++(-1,0) |-
-    node[left,pos=0.25,font=\small]{No} (earun.west);
-\draw[arrow] (bobudget.east) -- ++(1,0) |-
-    node[right,pos=0.25,font=\small]{No} (borun.east);
-
-\draw[arrow] (eabudget.south) |-
-    node[left,pos=0.2,font=\small]{Yes} (out.west);
-\draw[arrow] (bobudget.south) |-
-    node[right,pos=0.2,font=\small]{Yes} (out.east);
-\end{tikzpicture}%
-}
-\caption{Implemented execution workflow. Both branches use the same
-problem-specific evaluation service but different evaluation budgets.}
-\label{fig:optimization_overview}
-\end{figure}
 
 \subsection{Hypervolume Monitoring}
 \label{sec:two_finger_monitoring}
@@ -371,12 +353,12 @@ The reference point has value $-0.1$ in every objective dimension in the natural
 Because the original KPIs are non-negative, this reference point is worse
 than the evaluated outcomes.
 
-\subsubsection{Evolutionary optimization.}
+\subsubsection{Hypervolume Monitoring for Evolutionary optimization.}
 The evolutionary monitoring component records two distinct series:
 \begin{itemize}
-    \item \textbf{Current-population hypervolume:} calculated from the feasible
-          objective vectors in the population retained at the current optimizer
-          update. This series may decrease.
+    \item \textbf{Current-population hypervolume:} calculated based on the feasible objective vectors in the population retained at the current
+    optimizer update. Since the hypervolume is computed exclusively from the non-dominated solutions of the current generation, without considering
+    non-dominated solutions from previous generations, this metric may exhibit fluctuations or decreases over successive generations.
     \item \textbf{Cumulative-archive hypervolume:} calculated from a persistent
           non-dominated archive. After each optimizer update, feasible
           population and offspring vectors are merged into the archive,
@@ -389,8 +371,8 @@ The monitoring component also records the optimizer's cumulative evaluation
 count. This provides the appropriate evaluation coordinate when algorithms
 evaluate different numbers of offspring per update.
 
-\subsubsection{Bayesian optimization.}
-Only cumulative hypervolume is calculated. After each completed trial,
+\subsubsection{Hypervolume Monitoring for Bayesian optimization.}
+For Bayesian optimization only cumulative hypervolume is calculated. After each completed trial,
 the tracker stores the observed objective vector. During result serialization,
 hypervolume is calculated for successively longer prefixes of this observation
 history. Each entry therefore corresponds to one completed evaluation,
@@ -418,33 +400,216 @@ Each run produces a JSON-compatible result containing:
 The general hypervolume-history field contains the current-population series
 for evolutionary runs but the cumulative series for Bayesian runs.
 Evolutionary results additionally contain a separate cumulative-archive
-hypervolume field. The stored series must therefore be interpreted according
+hypervolume field. The stored series is therefore interpreted according
 to the optimizer family.
 
 The evolutionary frontier consists of the decision vectors and corresponding objective values returned by the optimizer at termination. It must not be
 confused with the monitoring component's cumulative archive: the final returned frontier can have lower hypervolume than the best-so-far archive. The
 complete frontier archive is not stored due to computational limitations. For Bayesian optimization, Ax identifies the Pareto-frontier trials. The
-implementation uses the stored observations associated with those trials where available; otherwise, it uses the objective metric means returned by
+implementation uses the stored observations associated with those trials where available. Otherwise, it uses the objective metric means returned by
 Ax.
 
 These outputs are finite-search approximations rather than guarantees of
-the global Pareto front.
-
-Since the true reference front is unknown, IGD+ is evaluated against an
+the global Pareto front. Since the true reference front is unknown, IGD+ is evaluated against an
 empirical non-dominated reference set assembled from repeated runs of the
-same workpiece and algorithm. This provides a within-problem,
-within-algorithm measure of the coverage of the reference approximation,
+same workpiece. This provides a within-problem
+measure of the coverage of the reference approximation,
 with lower values preferred. It is not an absolute distance to the unknown
 true Pareto front, and values based on different empirical reference sets
 are not directly comparable.
 
-The repeated-run processing exports rankings and summary statistics, using
-IGD+ as the primary ranking measure and final cumulative hypervolume as a
-tie-breaker. Hypervolume plots distinguish the cumulative series from the
-current-population series. Where sufficient repeated runs are available,
-median and interquartile-range summaries are also produced.
+\subsection{Summary of the Optimization Workflow}
+
+Figure~\ref{fig:optimization_overview} illustrates the general optimization workflow described in this section, encompassing configuration, evaluation, monitoring,
+termination, and result storage. Both optimization branches rely on the same problem-specific evaluation service but operate with different evaluation
+budgets. Dashed arrows indicate requests sent to and responses received from the shared evaluation API.
+
+
+\begin{figure}[H]
+\centering
+\begin{adjustbox}{
+    max width=\linewidth,
+    max totalheight=0.80\textheight
+}
+
+\begin{tikzpicture}[
+    terminal/.style={
+        draw,
+        ellipse,
+        minimum width=2cm,
+        minimum height=0.7cm,
+        align=center,
+        font=\small
+    },
+    process/.style={
+        draw,
+        rounded corners=2pt,
+        minimum width=4.1cm,
+        minimum height=1cm,
+        inner sep=5pt,
+        align=center,
+        font=\small
+    },
+    decision/.style={
+        draw,
+        diamond,
+        aspect=2.3,
+        inner sep=2pt,
+        align=center,
+        font=\small
+    },
+    apibox/.style={
+        draw,
+        rounded corners=2pt,
+        fill=gray!10,
+        minimum width=2.7cm,
+        minimum height=1.2cm,
+        inner sep=5pt,
+        align=center,
+        font=\small
+    },
+    flow/.style={
+        -{Latex[length=2mm]},
+        thick
+    },
+    apilink/.style={
+        {Latex[length=2mm]}-{Latex[length=2mm]},
+        dashed,
+        thick
+    },
+    flowlabel/.style={
+        font=\small,
+        fill=white,
+        inner sep=2pt
+    }
+]
+
+% ---------- Common ----------
+\node[terminal] (start) at (0,0)
+    {Start};
+
+\node[process] (cfg) at (0,-1.3)
+    {Load configuration};
+
+\node[decision] (method) at (0,-2.8)
+    {Method?};
+
+% ---------- Initialization ----------
+\node[process] (eainit) at (-5.6,-4.5)
+    {Initialize evolutionary\\algorithm};
+
+\node[process] (boinit) at (5.6,-4.5)
+    {Configure Ax experiment};
+
+% ---------- Candidate generation ----------
+\node[process] (eagen) at (-5.6,-6.2)
+    {Generate initial population\\or offspring};
+
+\node[process] (bogen) at (5.6,-6.2)
+    {Request candidate batch\\
+     {\scriptsize Sobol or model-based generation}};
+
+% ---------- Evaluation ----------
+\node[process] (eaeval) at (-5.6,-7.9)
+    {Evaluate candidates and\\update population};
+
+\node[apibox] (api) at (0,-7.9)
+    {\textbf{External evaluation API}\\
+     {\scriptsize Gripper-specific evaluation}};
+
+\node[process] (boeval) at (5.6,-7.9)
+    {Evaluate and complete trials\\sequentially};
+
+% ---------- Hypervolume monitoring ----------
+\node[process] (eahv) at (-5.6,-9.7)
+    {Record current-population HV\\
+     and cumulative HV\\
+     after optimizer updates};
+
+\node[process] (bohv) at (5.6,-9.7)
+    {Store observations for\\cumulative HV};
+
+% ---------- Termination ----------
+\node[decision] (eaterm) at (-5.6,-12.0)
+    {Evaluation\\budget\\reached?};
+
+\node[decision] (boterm) at (5.6,-12.0)
+    {All batches\\processed?};
+
+% ---------- Output ----------
+\node[process, fill=gray!10] (out) at (0,-14.2)
+    {Output: approximate Pareto frontier,\\
+     objective values, HV progression,\\
+     and wall-clock time};
+
+\node[terminal] (end) at (0,-15.8)
+    {End};
+
+% ---------- Common arrows ----------
+\draw[flow] (start) -- (cfg);
+\draw[flow] (cfg) -- (method);
+
+\draw[flow] (method.west) -|
+    node[flowlabel, above, pos=0.25] {Evolutionary}
+    (eainit.north);
+
+\draw[flow] (method.east) -|
+    node[flowlabel, above, pos=0.25] {Bayesian}
+    (boinit.north);
+
+% ---------- Evolutionary arrows ----------
+\draw[flow] (eainit) -- (eagen);
+\draw[flow] (eagen) -- (eaeval);
+\draw[flow] (eaeval) -- (eahv);
+\draw[flow] (eahv) -- (eaterm);
+
+% Return to candidate generation
+\draw[flow] (eaterm.west) --
+    node[flowlabel, above] {No}
+    (-8.7,-12.0) |- (eagen.west);
+
+% Proceed to output
+\draw[flow] (eaterm.south) --
+    node[flowlabel, left] {Yes}
+    (-5.6,-14.2) -- (out.west);
+
+% ---------- Bayesian arrows ----------
+\draw[flow] (boinit) -- (bogen);
+\draw[flow] (bogen) -- (boeval);
+\draw[flow] (boeval) -- (bohv);
+\draw[flow] (bohv) -- (boterm);
+
+% Request another batch
+\draw[flow] (boterm.east) --
+    node[flowlabel, above] {No}
+    (8.7,-12.0) |- (bogen.east);
+
+% Proceed to output
+\draw[flow] (boterm.south) --
+    node[flowlabel, right] {Yes}
+    (5.6,-14.2) -- (out.east);
+
+% ---------- Shared API links ----------
+\draw[apilink] (eaeval.east) -- (api.west);
+\draw[apilink] (boeval.west) -- (api.east);
+
+% ---------- End ----------
+\draw[flow] (out) -- (end);
+
+\end{tikzpicture}
+\end{adjustbox}
+
+\caption{Overview of the evolutionary (\texttt{pymoo}) and Bayesian
+(\texttt{Ax}/\texttt{BoTorch}) optimization workflows.}
+\label{fig:optimization_overview}
+\end{figure}
+
+
 
 % ============================================================================
+\section{Implementation of Multi-Suction Cup Gripper Optimization}
+\label{sec:multi_sc_gripper_optimization}
+
 \subsection{Decision Variables and Bounds for Multi-Suction Cup Gripper}
 \label{sec:multi_sc_decision_variables}
 
@@ -456,9 +621,8 @@ Table~\ref{tab:multi_sc_variables}. For a suction-cup diameter of
 $0.01\,\mathrm{m}$ (adopted from the suction-cup configuration
 employed in the bin-picking demonstration conducted by Fraunhofer IPA), 
 the configured lower radial bound is
-$0.005\,\mathrm{m}$ for all workpieces and is calculated using equation \ref{eq:r_min}. The upper radial bound depends on
-the workpiece. All angular variables use the interval $[0,2\pi)$;
-the upper endpoint is excluded.
+$0.005\,\mathrm{m}$ for all workpieces and is calculated using Eq.~\ref{eq:r_min}. The upper radial bound depends on
+the workpiece. All angular variables use the interval $[0,2\pi)$.
 
 \begin{table}[htbp]
 \centering
@@ -488,7 +652,7 @@ The radial search interval is expressed as
 \end{equation}
 The radial bounds are determined separately for each workpiece.
 The workpiece is oriented such that its longest dimension lies in the
-horizontal plane, the horizontal bounding box is centred at
+horizontal plane, the horizontal bounding box is centered at
 $(x,y)=(0,0)$, and the base of the workpiece is placed at $z=0$.
 This establishes a consistent coordinate system for defining the
 gripper-design bounds.
@@ -532,17 +696,17 @@ suction-cup radius $r_{\mathrm{cup}}$:
 \end{equation}
 This lower bound corresponds to the circumradius of an equilateral
 triangle with side length $2r_{\mathrm{cup}}$, i.e.\ the configuration
-in which neighbouring cups just touch.
+in which neighboring cups just touch.
 
 All optimization methods generate candidate values within these bounds.
 In the evolutionary algorithms, the initial population is obtained by
 random sampling and subsequently modified through the operators of the
 selected algorithm. In Bayesian optimization, Ax first evaluates the
-centre of the search space and then uses Sobol sampling to generate an
+center of the search space and then uses Sobol sampling to generate an
 initial space-filling design. After sufficient initialization data have
 been collected, Ax transitions to model-based Bayesian optimization.
 
-\nomenclature{$r$}{Common radial distance of the suction-cup centres from the gripper origin}
+\nomenclature{$r$}{Common radial distance of the suction-cup centers from the gripper origin}
 \nomenclature{$\alpha_i$}{Angular position of suction cup $i$, $i=1,2,3$}
 \nomenclature{$r_{\min}$}{Lower radial bound for suction-cup placement}
 \nomenclature{$r_{\max}$}{Upper radial bound for suction-cup placement}
@@ -554,7 +718,7 @@ been collected, Ax transitions to model-based Bayesian optimization.
 Each candidate is sent to the external evaluation API as the reduced
 decision vector $\mathbf{q}_{\mathrm{SC}}=[r,\alpha_1,\alpha_2,\alpha_3]$. The server maps this vector to the Cartesian cup
 configuration $\mathbf{P}=\Phi(\mathbf{q}_{\mathrm{SC}})$, generates and
-filters grasps, and returns the objectives defined in \ref{sec:multi_sc_objective_evaluation}:
+filters grasps, and returns the objectives defined in \ref{sec:multi_sc_objective_evaluation}.
 
 Algorithm~\ref{alg:multi_sc_api_evaluation} summarizes one evaluation request.
 
@@ -588,16 +752,15 @@ Algorithm~\ref{alg:multi_sc_api_evaluation} summarizes one evaluation request.
 
 The evaluation service constructs the Cartesian gripper configuration
 $\mathbf{P}=[\mathbf{p}_1,\mathbf{p}_2,\mathbf{p}_3]$ from the received
-decision vector and computes the grasp-quality measures through the
-following procedure.
+decision vector and computes the initial grasp candidates, performs collision check using a gripper collider
+model and clusters the valid grasps through the following procedure:
 
-     \subsubsection{Candidate Grasp Generation and Feasibility Filtering}
+\subsubsection{Candidate Grasp Generation and Feasibility Filtering}
 
-    Suction grasp candidates are generated using a method developed by Fraunhofer IPA, following the
-    automatic suction grasp generation procedure described by~\cite{Kleeberger}. Points are
-    uniformly sampled on the surface of the workpiece, and each sampled point defines a candidate
-    grasp through its position and local surface normal. The local surface normal determines the
-    approach direction of the suction cup.
+    Suction grasp candidates are generated using a method developed by Fraunhofer IPA, following the procedure described in~\cite{Kleeberger}. A total of
+    1,000 points are uniformly sampled across the surface of the workpiece to obtain a sufficiently dense spatial distribution of potential grasp
+    locations. Each sampled point defines a candidate grasp characterized by its position and the corresponding local surface normal. The surface normal
+    determines the approach direction of the suction cup.
 
     In the original method, each suction grasp candidate is tested for feasible seal formation using
     a quasi-static spring model of a suction cup, as introduced in~\cite{SC_quasi_static}. If the
@@ -613,23 +776,23 @@ following procedure.
     seal-formation and the collision checks form the set of valid grasps $\mathcal{H}_{\mathrm{valid}}$, which is the input to the subsequent
     clustering step.
 
-    \subsubsection{Clustering of Valid Grasps}
+\subsubsection{Clustering of Valid Grasps}
 
     The set $\mathcal{H}_{\mathrm{valid}}$ typically contains many grasps that are nearly identical
     in position and orientation. If the number of valid grasps
     $n_{\mathrm{v}} = |\mathcal{H}_{\mathrm{valid}}|$ exceeds the clustering budget
     $K_{\mathrm{clst}} = 15$, the grasps are clustered using the greedy farthest-point sampling
     (FPS) algorithm of~\cite{gonzalez1985clustering}, which iteratively selects the grasp with the
-    largest minimum distance to the already selected representatives; otherwise all valid grasps are
+    largest minimum distance to the already selected representatives. Otherwise, all valid grasps are
     retained. The value of $K_{\mathrm{clst}} = 15$ is selected to strike a balance between computational cost and obtaining a sufficiently large
     number of candidate grasps for meaningful diversity calculations.
 
     Since grasp poses combine a translational and a rotational component, the sampling operates on a
     combined pose metric in which the Euclidean distance between the grasp positions
-    $\mathbf{x}_i \in \mathbb{R}^3$ is normalised by the diagonal extent of the axis-aligned
+    $\mathbf{x}_i \in \mathbb{R}^3$ is normalized by the diagonal extent of the axis-aligned
     bounding box of all candidates, and the difference between the orientations
     $\mathbf{R}_i \in SO(3)$ is measured as the geodesic angle normalised by $\pi$.
-    With the resulting normalised terms $\hat{\rho}_{\mathrm{pos}}$ and $\hat{\rho}_{\mathrm{ori}}$
+    With the resulting normalized terms $\hat{\rho}_{\mathrm{pos}}$ and $\hat{\rho}_{\mathrm{ori}}$
     and an orientation weight $w \in [0,1]$,
     \begin{equation}
         \label{eq:combined-metric}
@@ -646,7 +809,7 @@ following procedure.
             \forall\, i,j \in \{1,\ldots,N\},
         \end{gathered}
     \end{equation}
-    so that $w = 0$ corresponds to purely position-based and $w = 1$ to purely orientation-based sampling; here $w = 0.35$ is chosen to balance
+    so that $w = 0$ corresponds to purely position-based and $w = 1$ to purely orientation-based sampling. Here $w = 0.35$ is chosen to balance
     positional and orientational differences, with a greater emphasis on positional variation. All distances are evaluated on the GPU, which keeps the
     selection tractable for large candidate sets.
 
@@ -656,24 +819,6 @@ following procedure.
     above by $K_{\mathrm{clst}}$. The resulting subset
     $\mathcal{H}_{\mathrm{clst}} \subseteq \mathcal{H}_{\mathrm{valid}}$ with
     $|\mathcal{H}_{\mathrm{clst}}| = K^{*}$ is passed on to the diversity evaluation.
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 \subsection{Objective Evaluation of Multi-Suction Cup Gripper}
@@ -692,7 +837,7 @@ After grasp evaluation, each candidate layout is assigned the natural objective 
     \mathbf{P}=\Phi(\mathbf{q}_{\mathrm{SC}}).
 \end{equation}
 
-The three Objectives are calclated as follows : 
+The three objectives are calculated as follows: 
 \subsubsection{Diversity Metric Calculation ($D(\mathbf{P}$))}
 
 The diversity score combines spatial and rotational diversity:
@@ -700,7 +845,7 @@ The diversity score combines spatial and rotational diversity:
     \label{eq:grasp_diversity}
     \begin{gathered}
         \begin{aligned}
-            D &=
+            && D &=
             \begin{cases}
                 0, & n_{\mathrm{g}} < 2,\\[2pt]
                 \operatorname{clip}_{[0,1]}
@@ -709,19 +854,29 @@ The diversity score combines spatial and rotational diversity:
                     + (1-\lambda) D_{\mathrm{rot}}
                 \right), & n_{\mathrm{g}} \geq 2,
             \end{cases}
-            \\[3pt]
-            D_{\mathrm{pos}}
+            \\[6pt]
+            \text{where} &&
+            \\
+            && D_{\mathrm{pos}}
             &=
             (1-\beta_{\mathrm{cov}}) D_{\mathrm{spread}}
             + \beta_{\mathrm{cov}} D_{\mathrm{cov}},
             \\[3pt]
-            D_{\mathrm{spread}}
+            && D_{\mathrm{rot}}
+            &=
+            \frac{1}{\pi M}
+            \sum_{(i,j)\in\mathcal{I}}
+            \rho_{\mathrm{geo}}(\mathbf{R}_{i},\mathbf{R}_{j}),
+            \\[6pt]
+            \text{where} &&
+            \\
+            && D_{\mathrm{spread}}
             &=
             \frac{1}{Ms}
             \sum_{(i,j)\in\mathcal{I}}
             \|\mathbf{y}_{i}-\mathbf{y}_{j}\|_{2},
             \\[3pt]
-            D_{\mathrm{cov}}
+            && D_{\mathrm{cov}}
             &=
             \operatorname{clip}_{[0,1]}
             \!\left(
@@ -731,14 +886,8 @@ The diversity score combines spatial and rotational diversity:
                     1-\hat{\mathbf{u}}_{i}^{\mathsf{T}}\hat{\mathbf{u}}_{j}
                 \right)
             \right),
-            \\[3pt]
-            D_{\mathrm{rot}}
-            &=
-            \frac{1}{\pi M}
-            \sum_{(i,j)\in\mathcal{I}}
-            \rho_{\mathrm{geo}}(\mathbf{R}_{i},\mathbf{R}_{j}),
         \end{aligned}
-        \\[4pt]
+        \\[6pt]
         n_{\mathrm{g}} \in \left\{ n \in \mathbb{Z} \mid n \ge 0 \right\},
         \\[2pt]
         \lambda,\, \beta_{\mathrm{cov}}
@@ -858,7 +1007,7 @@ which guards against floating-point errors:
     \end{gathered}
 \end{equation}
 
-    \subsubsection{Normalised Grasp Count ($\hat{n}_{\mathrm{g}}(\mathbf{P})$)}
+    \subsubsection{Normalized Grasp Count ($\hat{n}_{\mathrm{g}}(\mathbf{P})$)}
 
     The grasp-count objective measures the number of grasps retained for
     evaluation, rather than the total number of feasible candidates.
@@ -892,9 +1041,10 @@ which guards against floating-point errors:
     by unity without further clipping. A value of one indicates that the layout produced at least as
     many valid grasps as the clustering budget permits, whereas a value of zero corresponds to a
     layout for which no valid grasp was found.
-    \nomenclature{$\hat{n}_{\mathrm{g}}(\cdot)$}{Normalised grasp count of a gripper layout, i.e.\ the number of evaluated grasps divided by the clustering budget}
+    
+    \nomenclature{$\hat{n}_{\mathrm{g}}(\cdot)$}{Normalized grasp count of a gripper layout, i.e.\ the number of evaluated grasps divided by the clustering budget}
 
-    \subsubsection{Normalized Area Calculation ($\hat{A}(\mathbf{P}$)}
+    \subsubsection{Normalized Area Calculation ($\hat{A}(\mathbf{P}$))}
 
     The area of the triangle formed by the three suction cups is computed from their Cartesian
     coordinates. With the planar coordinates $ \mathbf{P} = (p_{i,x},p_{i,y})$ of cup $i$,
@@ -931,37 +1081,47 @@ which guards against floating-point errors:
         \end{gathered}
     \end{equation}
 The area is zero exactly when the three cups lie on one line. It reaches
-$A_{\max}$ when they form an equilateral triangle on the circle of radius
-$r_{\max}$.
+$A_{\max}$ when they form an equilateral triangle on a circle of radius
+$r_{\max}$, where $r_{\max}$ in the expression for $A_{\max}$ is set to the
+value of the Stanford Bunny, $0.048\,\mathrm{m}$ 
 
-    To make this objective comparable in magnitude with the remaining objectives, the area is
-    normalised by the largest triangle area that can be realised within the admissible mounting
-    region. The suction-cup reference points are restricted to a circle of radius $r_{\max}$, and
-    the maximum-area triangle inscribed in a circle is the equilateral one, so that
+    To make this objective comparable in magnitude with the remaining objectives and
+    across workpieces, the area is normalized by a single global constant. $A_{\max}$ is calculated
+    for the largest $r_{\max}$ among all four workpieces. The maximum-area
+    triangle inscribed in a circle is the equilateral one, 
     \begin{equation}
         \label{eq:cup_area_max}
         \begin{gathered}
             A_{\max} = \frac{3\sqrt{3}}{4}\, r_{\max}^{2},
             \\[4pt]
-            r_{\max} \in \left\{ r \in \mathbb{R} \mid r \ge 0 \right\},
+            r_{\max} = r_{\max}^{\text{Bunny}} = 0.048\,\mathrm{m},
             \\[2pt]
             A_{\max} \in \left\{ r \in \mathbb{R} \mid r \ge 0 \right\}.
         \end{gathered}
     \end{equation}
-    The radius $r_{\max}$ is not a global constant but is determined per workpiece as the largest
-    circle that still fits inside the admissible mounting bounds. Consequently $\hat{A}$ expresses
-    the achieved area relative to what is geometrically possible for that specific workpiece.
+    Here, $r_{\max}$ is set to the value of the Stanford Bunny, giving
+    $A_{\max}\approx 2.993\times10^{-3}\,\mathrm{m^2}$. This value is used for all
+    workpieces. Elsewhere in this thesis, $r_{\max}$ denotes the workpiece-specific
+    upper radial bound.
 
-    The normalised area objective is therefore
+    The normalized area objective is therefore
     \begin{equation}
         \hat{A} = \frac{A}{A_{\max}} \in [0,1].
     \end{equation}
 
-    This objective favours gripper layouts with a wider support polygon, which is associated with
-    the assumption of improved grasp stability.
+    This objective favors gripper layouts with a wider support polygon, which is associated with
+    the assumption of improved grasp stability. Because the cups are restricted to the $r_{\max}$ of the
+    respective workpiece, $\hat{A}$ can reach 1 only for the Stanford Bunny. For the
+    other workpieces, the largest attainable value is
+    $(r_{\max}/0.048\,\mathrm{m})^{2}$, using the workpiece-specific $r_{\max}$:
+    approximately 0.730 (IPAIntermediatePlate), 0.473 (IPAConnectingRod), and
+    0.417 (MCBA\_Knob).
     \nomenclature{$A(\cdot)$}{Area of the triangle formed by the three suction cups of a gripper layout}
-    \nomenclature{$\hat{A}(\cdot)$}{Normalised triangle-area objective of a gripper layout}
-    \nomenclature{$A_{\max}$}{Maximum triangle area attainable within the admissible mounting circle}
+    \nomenclature{$\hat{A}(\cdot)$}{Normalized triangle-area objective of a gripper layout}
+    \nomenclature{$A_{\max}$}{Global normalization constant: area of the
+    equilateral triangle inscribed in a circle with $r_{\max}$ set to the
+    Stanford Bunny value ($0.048\,\mathrm{m}$), the largest among the four
+    workpieces}
 
 
 Continuity considerations : The suction objectives are not guaranteed to be continuous in the
@@ -988,7 +1148,7 @@ Section~\ref{sec:gripper_optimization_framework}.
 \subsection{Decision Variables and Bounds for Two-Finger Gripper Problem}
 \label{sec:two_finger_decision_variables}
 
-The decision variables and their bounds for two-finger gripper is summarized in Table~\ref{tab:two_finger_variables}.
+The decision variables and their bounds for two-finger gripper are summarized in Table~\ref{tab:two_finger_variables}.
 
 \begin{table}[htbp]
 \centering
@@ -1005,11 +1165,12 @@ $h_3$                & 2  & 10 \\
 \bottomrule
 \end{tabular}
 \end{table}
+
 \nomenclature{$\ell_{\mathrm{gn}}$}{Length of the spline-based gripping contour}
 \nomenclature{$h_j$}{Spline depth parameter at relative contour position $j/4$, $j=1,2,3$}
 
 All four decision variables are treated as continuous. The bounds were selected to ensure that the contour length remains sufficiently large relative
-to the depth offsets, while avoiding physically unfeasible jaw contours.
+to the depth offsets, while avoiding physically infeasible jaw contours.
 
 For evolutionary optimization, the variables are initially sampled within these bounds and
 subsequently modified by the operators of the selected algorithm. For Bayesian optimization, Ax
@@ -1091,17 +1252,18 @@ of the generated poses are discarded. The grasp set is
         \mathbf{R}_1,\ldots,\mathbf{R}_{n_{\mathrm{or}}}
     \right\},
     \qquad
-    n_{\mathrm{or}} = 10 .
+    n_{\mathrm{or}} = 4 .
 \end{equation}
+
 \nomenclature{$\gamma_i$}{Grasp $i$ of the predefined grasp set}
 \nomenclature{$\mathcal{R}$}{Set of predefined workpiece orientations of a two-finger optimization run}
 \nomenclature{$n_{\mathrm{or}}$}{Number of predefined grasp orientations of a two-finger optimization run}
 \nomenclature{$\mathcal{W}_i$}{Workpiece geometry in the orientation of grasp $\gamma_i$}
 
-In the present study, $n_{\mathrm{or}} = 10$ orientations are configured. This value is selected as a compromise between optimization complexity and
-having a sufficiently large number of grasps for evaluation.
-The predefined grasps are spatially
-spread subset of the physically admissible grasps of the given workpiece, which ensures that the
+In the present study, $n_{\mathrm{or}} = 4$ orientations are configured. This value is selected as a compromise between the dimensionality of the
+optimization problem and retaining sufficient directional diversity to evaluate the grasping performance across the workpiece geometry.
+The predefined grasps are a spatially
+distributed subset of the physically admissible grasps of the given workpiece, which ensures that the
 evaluated orientations are mutually dissimilar and at the same time realizable on the part geometry.
 
 The grasp set is generated once before the optimization starts and is stored as part of the workpiece list. It is therefore identical for all
@@ -1115,7 +1277,7 @@ Following the proximity criterion in
 Section~\ref{subsec:objective_two_finger_gripper}, the gripper is evaluated
 for each grasp $\gamma_i$, $i=1,\ldots,n_{\mathrm{or}}$.
 The gripper remains in its assembly pose while the workpiece is rotated
-to the corresponding orientation. Both geometries are voxelized;
+to the corresponding orientation. Both geometries are voxelized and
 gripper surface voxels are closed by morphological dilation and hole
 filling, with part labels retained to distinguish the jaws.
 
@@ -1152,13 +1314,13 @@ $\chi_{\mathcal{W}_i}$:
 \end{equation}
 Here, $\mathbf{v}$ is a discrete displacement and
 $\varepsilon_{\mathrm{col}}$ absorbs single-precision FFT round-off.
-Collision freedom refers only to the voxelized jaw model; the gripper
+Collision freedom refers only to the voxelized jaw model. The gripper
 base is excluded. Padding to a common grid size makes the transform cyclic.
 
 Each overlap map is convolved with a one-sided Gaussian kernel along
-the jaw's closing direction, favouring placements where a small closing
+the jaw's closing direction, favoring placements where a small closing
 motion would establish contact. Kernel standard deviations are converted
-from millimetres to voxel units using the voxel edge length. Only the
+from millimeters to voxel units using the voxel edge length. Only the
 width and height deviations affect the score because the kernel acts
 in the plane orthogonal to the gripper length axis. Colliding
 displacements are excluded.
@@ -1168,13 +1330,28 @@ select their best collision-free closing-axis positions. Maximizing
 their summed proximity over the plane yields $p_i$: both jaws share
 the length--height placement but move independently along the closing
 axis. FFT computations use GPU-accelerated PyTorch. The score is
-dimensionless, unnormalized, and Gaussian-weighted; it measures neither
+dimensionless, unnormalized, and Gaussian-weighted. It measures neither
 distance nor voxel count and depends on workpiece geometry and voxel
 resolution.
 
+Figure~\ref{fig:grasp_proximity_map} shows the combined proximity map
+for one workpiece orientation. For each length--height grid index,
+the implementation selects the highest collision-free proximity value
+along the closing axis independently for each jaw and then adds the two
+values. Brighter finite values represent higher combined scores. The
+maximum of the map gives $p_i$ before the opening-width feasibility
+test is applied.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\linewidth]{fig/ch-implementation/max_prox_left_right.png}
+    \caption{Combined jaw proximity map.}
+    \label{fig:grasp_proximity_map}
+\end{figure}
+
 The difference between the selected jaw positions defines the signed
 opening width $\delta_i$. Negative values indicate closing onto the
-workpiece; non-negative values require opening beyond the modelled
+workpiece, while non-negative values require opening beyond the modeled
 position. Only the sign is tested, not the magnitude relative to the
 stroke. The returned KPI is
 \begin{equation}
@@ -1201,8 +1378,7 @@ stroke. The returned KPI is
     \end{gathered}
 \end{equation}
 Initial unscaled KPI values typically ranged from 0 to 200.
-Division by 100 reduces objective magnitudes and makes the resulting
-ten-objective hypervolume realizable.
+Division by 100 reduces objective magnitudes and makes the resulting hypervolume numerically well-scaled.
 
 Feasibility is assessed independently per grasp. An infeasible
 orientation receives zero, the worst non-negative objective value,
@@ -1212,9 +1388,9 @@ rather than imposing a hard constraint on the entire candidate.
 \label{sec:two_finger_objective_evaluation}
 
 The evaluation service returns one grasp-quality KPI for each configured grasp. Since each optimization run considers a single workpiece and its
-associated set of grasps, the number of objectives is directly determined by the size of the grasp set, resulting in ten objectives.
-The individual KPIs are not aggregated into a scalar value; each grasp retains its own objective,
-which preserves the information about which orientations a given contour favours.
+associated set of grasps, the number of objectives is directly determined by the size of the grasp set.
+The individual KPIs are not aggregated into a scalar value and each grasp retains its own objective,
+which preserves the information about which orientations a given contour favors.
 
 Since a larger proximity KPI represents a better grasp result, the natural optimization problem is
 \begin{equation}
@@ -1223,7 +1399,7 @@ Since a larger proximity KPI represents a better grasp result, the natural optim
         k_i(\mathbf{q}_{\mathrm{PJ}}),
         \qquad i=1,\ldots,n_{\mathrm{or}},\\[4pt]
         \mathcal{Q}\subset\mathbb{R}^{4},
-        \qquad n_{\mathrm{or}}=10,\\[2pt]
+        \qquad n_{\mathrm{or}}=4,\\[2pt]
         k_i:\mathcal{Q}\rightarrow
         \mathcal{K}\subseteq\mathbb{R}_{\geq 0}
     \end{gathered}
@@ -1236,14 +1412,15 @@ with the objective vector
         k_1(\mathbf{q}_{\mathrm{PJ}}) &
         k_2(\mathbf{q}_{\mathrm{PJ}}) &
         \cdots &
-        k_m(\mathbf{q}_{\mathrm{PJ}})
+        k_{n_{\mathrm{or}}}(\mathbf{q}_{\mathrm{PJ}})
     \end{bmatrix}^{\mathsf{T}}
-    \in\mathbb{R}_{\geq 0}^{m}.
+    \in\mathbb{R}_{\geq 0}^{n_{\mathrm{or}}}.
 \end{equation}
-\nomenclature{$k_i(\cdot)$}{Grasp-quality KPI (\texttt{max\_prox}) of grasp $\gamma_i$}
 
 Because the four decision variables define a single jaw contour that is shared by all grasps, the
 objectives are generally conflicting: a contour whose depth profile conforms closely to the
 workpiece in one orientation does not necessarily conform in the remaining ones. The optimization
-therefore yields Pareto-optimal contours that represent different compromises in geometric
-conformity across the ten predefined orientations.
+therefore yields a Pareto-front approximation that represent different compromises in geometric
+conformity across the predefined orientations.
+
+\nomenclature{$k_i(\cdot)$}{Grasp-quality KPI (\texttt{max\_prox}) of grasp $\gamma_i$}

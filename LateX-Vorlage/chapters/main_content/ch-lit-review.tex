@@ -17,10 +17,12 @@ Although Todescato et al.\ \cite{Todescato} establish gripper geometry as an opt
 cup. In their objective-function evaluation the suction-contact feasibility is assessed
 using quasi-static criteria related to the methods presented by Kleeberger et al.\ \cite{Kleeberger} and the compliant suction-contact model of
 Mahler et al.\ \cite{SC_quasi_static}. However, their formulation primarily considers the availability of valid suction grasps and does not explicitly
-evaluate the distribution/coverage of the resulting grasp set. The present thesis extends this approach to a multi-suction-cup layout by optimizing
-the spatial positions of the individual cups and evaluating valid grasps using orientation and spatial diversity metrics. These metrics distinguish
+evaluate the distribution/coverage of the resulting grasp set. Building on this work, the present thesis explores different approaches
+to evaluating multi-suction-cup layouts. In addition to grasp
+availability, these include measures of the spatial and orientational
+distribution of valid grasps. These metrics distinguish
 between layouts that provide a similar number of valid grasps but differ in how broadly those grasps are distributed across positions and
-orientations.\todo{Ask what it means - Maybe add that different validation approaches will be explored.}
+orientations.
 
 The studies therefore address complementary but different questions. Grasp planning determines how an existing gripper should interact with a
 workpiece, whereas gripper-configuration optimization determines which geometry should be available before grasp planning is performed. Improving the
@@ -34,7 +36,7 @@ assume predefined suction-cup layouts. Schillinger et al.\ \cite{Schillinger2023
 grasp pose and gripper selection from a predefined set of multi-suction grippers. Their method selects among existing layouts rather than optimizing
 the positions of the individual cups.
 
-Geng et al.\ \cite{Geng2025Experimental} experimentally investigate how suction-cup size, geometric arrangement, centre of gravity offset, and robot
+Geng et al.\ \cite{Geng2025Experimental} experimentally investigate how suction-cup size, geometric arrangement, center of gravity offset, and robot
 acceleration influence grasp stability. Although different arrangements are evaluated, these are predefined experimental configurations rather than
 layouts generated through multi-objective optimization.
 
@@ -52,7 +54,7 @@ layout-optimization problem.
 Research on two-finger gripper design includes the optimization of compliant fingers, underactuated mechanisms, and task-specific jaw geometries. Sun
 et al.\ \cite{Sun2022LARG} use three-dimensional topology optimization to design compliant continuum fingers and a lightweight gripper base. The
 resulting fingers deform passively to adapt to objects with different shapes. Similarly, Xie et al.\ \cite{Xie2024Design} optimize the topology of
-flexible fingers while accounting for contact behaviour and contact-stress constraints. Their objective is to achieve adaptive, damage-free grasping
+flexible fingers while accounting for contact behavior and contact-stress constraints. Their objective is to achieve adaptive, damage-free grasping
 of fragile and geometrically variable objects. Both studies focus on structural compliance and deformation, whereas this thesis considers the
 geometric optimization of rigid jaw contours.
 
@@ -70,12 +72,12 @@ at a specified evaluation configuration rather than providing a complete force- 
 Reichert formulates the jaw-design problem using two fixed workpiece orientations, each contributing an objective to the optimization. This
 demonstrates the feasibility of combining spline-based jaw generation, geometric KPI evaluation, and multi-objective black-box optimization. However,
 the formulation is restricted to the two investigated evaluation configurations. This thesis continues Reichert's work by extending the evaluation
-from two fixed configurations to a set of \(n\) predefined grasp points. 
+from two fixed configurations to a set of $n_{\mathrm{or}}$ predefined grasp points. 
 
 The optimization therefore seeks Pareto-optimal rigid jaw contours that provide different compromises in geometric conformity across the predefined
 grasp points. Compared with the studies on compliant and underactuated grippers, the formulation concerns rigid task-specific contact contours.
 Compared with Reichert's direct predecessor formulation, the principal extension is the evaluation and optimization of one separate objective for
-each of the \(n\) predefined grasp points.
+each of the $n_{\mathrm{or}}$ predefined grasp points.
 
 \section{Comparative Studies of Multi-Objective Optimization Algorithms}
 \label{subsec:comparative_optimization_studies}
@@ -89,13 +91,13 @@ and spread.
 
 For expensive optimization, Qin et al.\ \cite{Qin2019Bayesian} compare two combinations of evolutionary and Bayesian optimization on ZDT
 (Zitzler-Deb-Thiele) and DTLZ (Deb-Thiele-Laumanns-Zitzler) problems and find that Bayesian evolutionary optimization is more efficient under their experimental conditions. Santoni
-et al.\ \cite{Santoni2023Comparison} compare high-dimensional Bayesian optimization methods on single-objective BBOB functions and report that
+et al.\ \cite{Santoni2023Comparison} compare high-dimensional Bayesian optimization methods on single-objective BBOB (Black-Box Optimization Benchmarking) functions and report that
 performance varies with dimensionality, function landscape, and evaluation budget. These findings are therefore specific to the investigated problems
 and settings.
 
 Such results cannot be transferred directly to the collision-aware suction-layout and spline-based jaw-contour problems considered in this thesis.
-Therefore, this thesis compares selected multi-objective evolutionary and Bayesian algorithms under common evaluation budgets, initialization
-conditions, repeated runs, and statistical procedures. The aim of this comparison is to identify methods suitable for these specific gripper-design
+Therefore, this thesis compares selected multi-objective evolutionary and Bayesian algorithms using defined evaluation budgets, initialization
+conditions, and repeated runs where available. The aim of this comparison is to identify methods suitable for these specific gripper-design
 problems rather than a universally superior optimizer.
 
 \section{Comparative Synthesis and Research Gap}
@@ -109,12 +111,12 @@ suited to the two geometric gripper-design problems considered in this thesis.
 
 For the multi-suction gripper, the unresolved problem is to optimize the positions of the individual cups to maximize grasp coverage on every
 workpiece and the area formed by the cup arrangement. For the two-finger gripper, this thesis continues Reichert's framework by optimizing a rigid
-spline-based jaw contour across a predefined grasp points. Each grasp point contributes an individual geometric conformity objective. Both
-formulations are expensive multi-objective black-box problems, but their different representations, numbers of objectives, and evaluation procedures
-may favour different optimization methods.
+spline-based jaw contour across predefined grasp points. Each grasp point contributes an individual geometric conformity objective. Both
+formulations are expensive multi-objective black-box problems, but their different representations, number of objectives, and evaluation procedures
+may favor different optimization methods.
 
 Within the literature reviewed for this thesis, no controlled comparison of evolutionary and Bayesian multi-objective algorithms was identified for
-these two gripper-design formulations.
+these two gripper design formulations.
 
 \section{Research Positioning and Contribution}
 \label{subsec:research_positioning}
@@ -125,7 +127,7 @@ designs are assessed using problem-specific geometric and collision-aware evalua
 
 A modular framework separates geometric evaluation from optimization through a common interface. This allows the applicable algorithms to operate on
 the same problem formulation, constraints, and evaluation conditions. Selected evolutionary and Bayesian multi-objective algorithms are compared under
-defined evaluation budgets using repeated independent runs, convergence histories, multi-objective performance indicators, and statistical tests.
+defined evaluation budgets using repeated independent runs, convergence histories, and multi-objective performance indicators.
 Evaluation counts and optimizer overhead are reported separately where computational cost is relevant.
 
 The contribution of this thesis is therefore a problem-specific comparison rather than a claim of universal algorithm superiority. The results provide
